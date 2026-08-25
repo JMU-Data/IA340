@@ -7,29 +7,29 @@ title: "Home - IA 340"
 
 **James Madison University | Intelligence Analysis | Fall 2026**
 
-![IA 340 Course Hero](assets/images/course-logo.png)
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="assets/images/course-logo.png" alt="IA 340 Course Hero" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+</div>
 
 > *An introduction to modern Data Analytics, Cloud Databases, and AI integration for Intelligence Analysis.*
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
-  <a href="syllabus/" style="text-decoration: none; color: inherit; display: block;">
-    <div style="padding: 1.5rem; background-color: #f8f9fa; border: 1px solid #e1e4e8; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); text-align: center; height: 100%; box-sizing: border-box;">
-      <h3 style="margin: 0 0 0.5rem 0; color: #0366d6;">Syllabus</h3>
-      <p style="margin: 0; font-size: 0.9em; color: #586069;">Course policies, grading, and logistics</p>
-    </div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+  <a href="syllabus/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #0969da; display: flex; align-items: center; gap: 0.5rem;">📖 Course Syllabus</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Review the Fall 2026 course policies, grading structure, and official AI guidelines.</p>
   </a>
-  <a href="modules/module-1/" style="text-decoration: none; color: inherit; display: block;">
-    <div style="padding: 1.5rem; background-color: #f8f9fa; border: 1px solid #e1e4e8; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); text-align: center; height: 100%; box-sizing: border-box;">
-      <h3 style="margin: 0 0 0.5rem 0; color: #28a745;">Module 1</h3>
-      <p style="margin: 0; font-size: 0.9em; color: #586069;">Intro to Data Mining & Workspace Onboarding</p>
-    </div>
+
+  <a href="modules/module-1/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #2da44e; display: flex; align-items: center; gap: 0.5rem;">🚀 Module 1</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Intro to Data Mining & Workspace Onboarding</p>
   </a>
-  <a href="assignments/github-account-verification/" style="text-decoration: none; color: inherit; display: block;">
-    <div style="padding: 1.5rem; background-color: #f8f9fa; border: 1px solid #e1e4e8; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); text-align: center; height: 100%; box-sizing: border-box;">
-      <h3 style="margin: 0 0 0.5rem 0; color: #6f42c1;">Week 1 Assignment</h3>
-      <p style="margin: 0; font-size: 0.9em; color: #586069;">GitHub Account Verification</p>
-    </div>
+
+  <a href="assignments/github-account-verification/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #8250df; display: flex; align-items: center; gap: 0.5rem;">📝 Week 1 Assignment</h3>
+    <p style="margin-bottom: 0; color: #57606a;">GitHub Account Verification</p>
   </a>
+
 </div>
 
 ## Course Overview

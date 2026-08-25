@@ -2,14 +2,17 @@
 
 **James Madison University | Intelligence Analysis | Fall 2026**
 
-![IA 340 Course Hero](docs/assets/images/course-logo.png)
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="docs/assets/images/course-logo.png" alt="IA 340 Course Hero" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+</div>
 
-*An introduction to modern Data Analytics, Cloud Databases, and AI integration for Intelligence Analysis.*
+> *An introduction to modern Data Analytics, Cloud Databases, and AI integration for Intelligence Analysis.*
 
 ## Quick Links
 - [Syllabus](docs/syllabus/index.md)
 - [Module 1: Introduction to Data Mining & AI](docs/modules/module-1/index.md)
 - [Week 1 Assignment: GitHub Account Verification](docs/assignments/github-account-verification/index.md)
+
 *(Note: A formal GitHub Pages course website URL will be added here once deployment is verified.)*
 
 ## Course Overview

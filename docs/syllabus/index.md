@@ -64,7 +64,7 @@ You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist wi
 - **Class Projects**: Late submissions/resubmissions of the class projects will **not** be accepted.
 
 ## Attendance / Excused Absence
-Attendance is mandatory and constitutes a significant portion (20%) of your grade. Attendance will be taken at every class meeting. Absence, early leaving without permission, being late more than 20 minutes, or disturbing the class will result in 0 points each time. Being late more than 5 minutes will result in a late penalty.
+Attendance is mandatory and constitutes a significant portion (20%) of your grade. Attendance will be taken at every class meeting. Absence, early leaving without permission, being late more than 20 minutes, or disrespectful/disturbing behavior will result in 0 points each time. Being late more than 5 minutes will result in a late penalty.
 
 In the following situations, absences can be excused:
 - Sickness or health issues.

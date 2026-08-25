@@ -1,23 +1,36 @@
+---
+layout: default
+title: "Syllabus - IA 340"
+---
+
 # Syllabus
 
-**IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases**  
-**Term**: Fall 2026  
-**Instructor**: Dr. Xuebin Wei ([weixx@jmu.edu](mailto:weixx@jmu.edu))
+## Course / Term / Instructor
+- **Course**: IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
+- **Term**: Fall 2026  
+- **Instructor**: Dr. Xuebin Wei ([weixx@jmu.edu](mailto:weixx@jmu.edu))
 
 ---
 
 ## Course Description
 This course provides a comprehensive introduction to modern Data Analytics, Cloud Databases, and AI integration. Moving beyond basic spreadsheets, we explore data processing pipelines, relational and NoSQL databases, and apply Large Language Models (LLMs) to practical data mining scenarios.
 
+## Learning Goals
+Upon completion of this course, students are expected to:
+- Differentiate and design relational and NoSQL databases, and manage cloud-based storage solutions.
+- Collect, query, and analyze real-world data using SQL, MQL, Python, and cloud services.
+- Apply AI-powered methods (LLMs, vector databases) to support data analytics.
+- Address ethical and security considerations in data management and analysis.
+
+## Required Textbook / Resources
+Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press, 2024.
+
 ## Communication Policy
 - **Primary Contact**: You must use your **JMU student email** to contact the instructor. 
 - **Canvas Usage**: Canvas is strictly used for grades, official announcements, and basic logistics.
 - **DO NOT** use the Canvas messaging system to contact the instructor. It will not be monitored.
 
-## Required Textbook
-Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press, 2024.
-
-## Artificial Intelligence (AI) Policy
+## AI Policy
 **AI is part of this course, and may be expected or required in specific assignments.** 
 You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist with data analysis and workflow construction as instructed. However, you are strictly responsible for the output you submit. You must **inspect, test, verify, correct, and explain** any AI-assisted work. Blindly copying and pasting AI output without understanding it is a violation of the learning objectives and academic integrity.
 
@@ -32,31 +45,25 @@ You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist wi
 | - *Final Project* | *20%* |
 | Google AI Professional Certificate | 10% |
 
-**Google AI Professional Certificate Progress**:
+*Google AI Professional Certificate Progress*:
 - Completion of 1 module/course = 3%
 - Completion of 2 modules/courses = 6%
 - Completion of 3 or more modules/courses = 10%
 
-### Letter-Grade Scale
-- **A**: 93.0 - 100.0% | **A-**: 90.0 - 92.9%
-- **B+**: 87.0 - 89.9% | **B**: 83.0 - 86.9% | **B-**: 80.0 - 82.9%
-- **C+**: 77.0 - 79.9% | **C**: 73.0 - 76.9% | **C-**: 70.0 - 72.9%
-- **D+**: 67.0 - 69.9% | **D**: 60.0 - 66.9%
-- **F**: Below 60.0%
+## Letter-Grade Scale
+- **A**: 94.00 – 100% | **A-**: 90.00 – 93.99%
+- **B+**: 87.00 – 89.99% | **B**: 84.00 – 86.99% | **B-**: 80.00 – 83.99%
+- **C+**: 77.00 – 79.99% | **C**: 74.00 – 76.99% | **C-**: 70.00 – 73.99%
+- **D+**: 67.00 – 69.99% | **D**: 64.00 – 66.99% | **D-**: 61.00 – 63.99%
+- **F**: < 61%
 
-## Course Policies
+## Resubmission / Late Work / Project Policy
+- **Resubmission**: You are allowed to resubmit assignments multiple times *before* the deadline. Only the final submission made prior to the deadline will be graded.
+- **Late Work**: Late submissions will incur a **10% penalty per day**, but no more than 40% of the total amount, unless prior arrangements have been made. 
+- **Final Exam Week**: **No late submissions** will be accepted during the final exam week.
+- **Class Projects**: Late submissions/resubmissions of the class projects will **not** be accepted.
 
-### Resubmission Policy
-You are allowed to resubmit assignments multiple times *before* the deadline. Only the final submission made prior to the deadline will be graded.
-
-### Late Work
-- Assignments submitted after the deadline will incur a **10% penalty per day**.
-- The maximum accumulated penalty for late work is **40%**.
-- Exceptions require **prior instructor approval**.
-- **No late submissions** will be accepted during final-exam week.
-- **Projects**: Major projects may have stricter late/resubmission rules. Please refer to the specific project instructions for details.
-
-### Attendance and Excused Absences
+## Attendance / Excused Absence
 Attendance is mandatory and constitutes a significant portion (20%) of your grade. Attendance will be taken at every class meeting. Absence, early leaving without permission, being late more than 20 minutes, or disturbing the class will result in 0 points each time. Being late more than 5 minutes will result in a late penalty.
 
 In the following situations, absences can be excused:
@@ -64,25 +71,22 @@ In the following situations, absences can be excused:
 - Mandatory activities with written documents.
 - Other situations with the instructor's approval.
 
-### Academic Integrity and JMU Honor Code
+## Academic Integrity / Honor Code
 All students are expected to adhere to the [JMU Honor Code](https://www.jmu.edu/honorcode/). While AI use is permitted and encouraged as defined in the AI policy, plagiarizing another student's work, fabricating data, or presenting unverified AI output as original thought without proper testing and explanation is strictly prohibited and will be reported to the Honor Council.
 
-### Accessibility and Disability Support
+## Accessibility / Student Support
 JMU is committed to creating a universally accessible learning environment. If you have a documented disability and require accommodations, please register with the Office of Disability Services (ODS, [https://www.jmu.edu/ods/](https://www.jmu.edu/ods/)) and contact the instructor as soon as possible so we can implement your approved accommodations.
 
-### Student Support Resources
 JMU offers numerous resources to support your academic and personal success. If you are struggling, please reach out:
 - **JMU Counseling Center**: Support for mental health and well-being.
 - **Learning Centers**: Tutoring and academic support.
-- **Science & Math Learning Center**: Assistance with quantitative skills.
 
-### Inclement Weather
-In the event of inclement weather or other emergencies, we will follow the official JMU closure and delay policies. Any changes to the course schedule, assignment deadlines, or transitions to online instruction will be communicated via Canvas announcements.
+## Inclement Weather
+During the semester, there may be days during which the class will not meet due to inclement weather. Please check Canvas for the latest class arrangement and refer to the official JMU policy on inclement weather.
 
 ---
 
-## Tentative Module-Level Roadmap
-
+## Module-Level Roadmap
 The course is organized into high-level phases. Specific dates and assignments will be announced in class and on Canvas.
 
 - **Phase 1: Foundation (AI Data Analytics Workspace)**
@@ -99,3 +103,9 @@ The course is organized into high-level phases. Specific dates and assignments w
 - **Phase 4: Synthesis & Final Project**
   - End-to-end data pipeline construction.
   - Project presentations (subject to available time and instructor decision).
+
+---
+
+<div style="margin-top: 2rem;">
+  <a href="../../">← Return to Course Home</a> | <a href="../../modules/module-1/">Go to Module 1 →</a>
+</div>

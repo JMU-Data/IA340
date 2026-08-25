@@ -37,7 +37,7 @@ See the official [JMU Intelligence Analysis Undergraduate Curriculum](https://ww
 **Dr. Xuebin Wei**  
 Associate Professor, James Madison University (Geography / Intelligence Analysis)  
 Email: **weixx@jmu.edu**  
-[Official JMU Faculty Profile](https://www.jmu.edu/sis/people/faculty/wei-xuebin.shtml)
+[Official JMU Faculty Profile](https://www.jmu.edu/cise/people/faculty/wei-xuebin.shtml)
 
 *Dr. Wei's research and teaching focus on data science, artificial intelligence, cloud computing, GIS/geospatial analysis, and social data analytics.*
 

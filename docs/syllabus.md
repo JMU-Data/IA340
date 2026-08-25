@@ -57,9 +57,12 @@ You are allowed to resubmit assignments multiple times *before* the deadline. On
 - **Projects**: Major projects may have stricter late/resubmission rules. Please refer to the specific project instructions for details.
 
 ### Attendance and Excused Absences
-Attendance is mandatory and constitutes a significant portion (20%) of your grade. Data mining concepts build on each other weekly, and in-class labs are crucial for success.
-- Absences may be excused for university-approved reasons (e.g., documented illness, university-sponsored events, religious observances, or family emergencies).
-- You must notify the instructor in advance (or as soon as reasonably possible) and provide appropriate documentation for an absence to be excused.
+Attendance is mandatory and constitutes a significant portion (20%) of your grade. Attendance will be taken at every class meeting. Absence, early leaving without permission, being late more than 20 minutes, or disturbing the class will result in 0 points each time. Being late more than 5 minutes will result in a late penalty.
+
+In the following situations, absences can be excused:
+- Sickness or health issues.
+- Mandatory activities with written documents.
+- Other situations with the instructor's approval.
 
 ### Academic Integrity and JMU Honor Code
 All students are expected to adhere to the [JMU Honor Code](https://www.jmu.edu/honorcode/). While AI use is permitted and encouraged as defined in the AI policy, plagiarizing another student's work, fabricating data, or presenting unverified AI output as original thought without proper testing and explanation is strictly prohibited and will be reported to the Honor Council.
@@ -86,7 +89,7 @@ The course is organized into high-level phases. Specific dates and assignments w
   - Introduction, AI in Data Analysis, and Workspace Setup (Colab, Drive, GitHub).
   - Python basics for data manipulation.
 - **Phase 2: Relational Databases & SQL**
-  - Introduction to Google Cloud SQL.
+  - Introduction to relational database/SQL and cloud-based relational database workflows.
   - Designing relational schemas.
   - Querying data using SQL and integrating with Python.
 - **Phase 3: NoSQL, Social Media Data & AI**
@@ -95,4 +98,4 @@ The course is organized into high-level phases. Specific dates and assignments w
   - GenAI integration, vector embeddings, and advanced querying.
 - **Phase 4: Synthesis & Final Project**
   - End-to-end data pipeline construction.
-  - Project presentations and insights discovery.
+  - Project presentations (subject to available time and instructor decision).

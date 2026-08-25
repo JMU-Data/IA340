@@ -26,8 +26,7 @@ This course follows a modern data-analysis pipeline:
 
 ## Official course information
 
-- **Catalog Entry**: [JMU Course Catalog - IA 340](https://www.jmu.edu/catalog/) (Search for IA 340)
-- **Curriculum**: [JMU Intelligence Analysis Curriculum](https://www.jmu.edu/cise/intelligence-analysis/academics/curriculum.shtml)
+- **Curriculum**: See the official [JMU Intelligence Analysis Undergraduate Curriculum](https://www.jmu.edu/cise/intelligence-analysis/academics/curriculum.shtml) and the current university catalog for official IA 340 prerequisites and course descriptions.
 
 ## Instructor
 

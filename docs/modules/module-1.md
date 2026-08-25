@@ -48,14 +48,14 @@ The way we approach data has shifted. We are moving from manual coding and query
   <div style="display: flex; align-items: stretch; background: #fff8c5; border-left: 4px solid #bf8700; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
     <div style="background: #bf8700; color: white; padding: 1rem; display: flex; align-items: center; justify-content: center; font-weight: bold; width: 120px; flex-shrink: 0;">3. Harness</div>
     <div style="padding: 1rem;">
-      <strong>Building the workflow.</strong> Integrating AI directly into automated workflows (harnesses) using APIs and agents to process, classify, and analyze data at scale.
+      <strong>Building the workflow.</strong> Combining AI + trusted context/data + tools, workflows, and agents. The exact provider, API implementations, and automated processing details will be introduced later.
     </div>
   </div>
   
 </div>
 
 ### The Modern Data Analysis Workflow
-By mastering these three layers, your workflow evolves. You will use AI to help you write SQL queries (Prompt Engineering), provide the AI with your exact database schema to fix bugs (Context Engineering), and ultimately build scripts that programmatically leverage AI endpoints to process large datasets automatically (Harness Engineering).
+By mastering these three layers, your workflow evolves. You will use AI to help you write SQL queries (Prompt Engineering), provide the AI with your exact database schema to fix bugs (Context Engineering), and ultimately learn how data workflows can integrate AI (Harness Engineering).
 
 ## Fall 2026 Roadmap
 Here is a high-level look at our journey this semester:

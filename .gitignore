@@ -1,7 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*$py.class
+*.class
 
 # C extensions
 *.so
@@ -50,3 +50,11 @@ venv.bak/
 # Static site generators (MkDocs/Jekyll)
 site/
 _site/
+
+# Secrets and Credentials
+*.pem
+*.key
+*secret*.json
+*credentials*.json
+client_secrets.json
+.gcp/

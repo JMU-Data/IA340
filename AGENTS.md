@@ -30,3 +30,8 @@ This file defines the strict rules and workflows for any AI Agents (e.g., Antigr
 - **NO Grading Scripts**: Any code written to check, grade, or audit student homework/databases **MUST NEVER** be committed to this repository. Such scripts must be saved elsewhere (e.g., a separate private repository or locally ignored folders).
 - **NO Student Privacy Data**: The Agent must NEVER ask for, store, output, or commit any student emails, names, grades, or credentials.
 - **Secret Management**: Student database URLs and credentials will be securely stored by the Instructor in **Google Cloud Secret Manager**. The Agent will only interact with these via secure API calls in local, non-public grading scripts. Do NOT hardcode or leak any secrets.
+
+## 6. Asset Storage & Sharing Policy
+- **GitHub Repository**: Store all code, Markdown (lectures, labs, syllabus), and images here. All additions must be made via PR.
+- **Google Drive**: Used for heavy assets, raw materials, and AI-generated videos (e.g., Google Vids). Agents are authorized to read from and write to the Instructor's specified Google Drive folders for course preparation.
+- **Video Embeds**: For videos generated in Google Vids, embed them directly in Markdown if a URL is available. Otherwise, embed YouTube links provided by the Instructor.

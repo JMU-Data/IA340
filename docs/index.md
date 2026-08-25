@@ -1,17 +1,33 @@
 # IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
 
-![Course Logo](assets/images/course-logo.png)
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="assets/images/course-logo.png" alt="IA 340 Course Banner showing Data Mining concepts" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+</div>
 
 Welcome to the official course website for **IA 340 (Fall 2026)** at James Madison University.
 
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+  <div style="border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #0969da;">📖 <a href="syllabus.md" style="text-decoration: none;">Course Syllabus</a></h3>
+    <p style="margin-bottom: 0; color: #57606a;">Review the Fall 2026 course policies, grading structure, and official AI guidelines.</p>
+  </div>
+
+  <div style="border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #2da44e;">🚀 <a href="modules/module-1.md" style="text-decoration: none;">Module 1</a></h3>
+    <p style="margin-bottom: 0; color: #57606a;">Introduction to Data Mining, AI workflows, and workspace onboarding.</p>
+  </div>
+
+  <div style="border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #8250df;">📝 <a href="assignments/github-account-verification.md" style="text-decoration: none;">Week 1 Assignment</a></h3>
+    <p style="margin-bottom: 0; color: #57606a;">Verify your GitHub account to join the course organization.</p>
+  </div>
+
+</div>
+
 ## Course Information
 - **Instructor**: [Dr. Xuebin Wei](https://www.jmu.edu/sis/people/faculty/wei-xuebin.shtml) (weixx@jmu.edu)
-- **Location**: GitHub / Colab / GCP
+- **Primary Platforms**: Canvas (Grades/Submissions) & GitHub (Code/Version Control)
 
-## Quick Links
-- [Syllabus](syllabus.md)
-- [Module 1: Introduction to Data Mining & AI](modules/module-1.md)
-- [Assignment: GitHub Account Verification](assignments/github-account-verification.md)
-
-## Repository
-All source code and public materials are available in our [GitHub Repository](https://github.com/JMU-Data/IA340).
+## About This Site
+This site is published directly from the course's public GitHub repository using GitHub Pages. All source markdown files, public materials, and instructional assets are maintained in the [JMU-Data/IA340 Repository](https://github.com/JMU-Data/IA340).

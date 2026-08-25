@@ -18,8 +18,8 @@ This course provides a comprehensive introduction to modern Data Analytics, Clou
 Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press, 2024.
 
 ## Artificial Intelligence (AI) Policy
-**AI is part of this course.** 
-You can, and in many cases will be required to, use Artificial Intelligence (e.g., Google Gemini, ChatGPT, GitHub Copilot) to assist with coding, debugging, and data analysis. However, you are strictly responsible for the output you submit. You must **inspect, test, verify, correct, and explain** any AI-generated code or text. Blindly copying and pasting AI output without understanding it is a violation of the learning objectives and academic integrity.
+**AI is part of this course, and may be expected or required in specific assignments.** 
+You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist with data analysis and workflow construction as instructed. However, you are strictly responsible for the output you submit. You must **inspect, test, verify, correct, and explain** any AI-assisted work. Blindly copying and pasting AI output without understanding it is a violation of the learning objectives and academic integrity.
 
 ## Grading Breakdown
 
@@ -37,20 +37,44 @@ You can, and in many cases will be required to, use Artificial Intelligence (e.g
 - Completion of 2 modules/courses = 6%
 - Completion of 3 or more modules/courses = 10%
 
+### Letter-Grade Scale
+- **A**: 93.0 - 100.0% | **A-**: 90.0 - 92.9%
+- **B+**: 87.0 - 89.9% | **B**: 83.0 - 86.9% | **B-**: 80.0 - 82.9%
+- **C+**: 77.0 - 79.9% | **C**: 73.0 - 76.9% | **C-**: 70.0 - 72.9%
+- **D+**: 67.0 - 69.9% | **D**: 60.0 - 66.9%
+- **F**: Below 60.0%
+
 ## Course Policies
 
-### Late Work & Resubmissions
-- Assignments submitted after the deadline will incur a standard late penalty (typically 10% per day).
-- If you face an extenuating circumstance, contact the instructor **before** the deadline via JMU email.
+### Resubmission Policy
+You are allowed to resubmit assignments multiple times *before* the deadline. Only the final submission made prior to the deadline will be graded.
 
-### Attendance
+### Late Work
+- Assignments submitted after the deadline will incur a **10% penalty per day**.
+- The maximum accumulated penalty for late work is **40%**.
+- Exceptions require **prior instructor approval**.
+- **No late submissions** will be accepted during final-exam week.
+- **Projects**: Major projects may have stricter late/resubmission rules. Please refer to the specific project instructions for details.
+
+### Attendance and Excused Absences
 Attendance is mandatory and constitutes a significant portion (20%) of your grade. Data mining concepts build on each other weekly, and in-class labs are crucial for success.
+- Absences may be excused for university-approved reasons (e.g., documented illness, university-sponsored events, religious observances, or family emergencies).
+- You must notify the instructor in advance (or as soon as reasonably possible) and provide appropriate documentation for an absence to be excused.
 
-### Academic Integrity
-All students are expected to adhere to the JMU Honor Code. While AI use is permitted and encouraged as defined in the AI policy, plagiarizing another student's work or presenting unverified AI output as original thought without proper testing and explanation is strictly prohibited.
+### Academic Integrity and JMU Honor Code
+All students are expected to adhere to the [JMU Honor Code](https://www.jmu.edu/honorcode/). While AI use is permitted and encouraged as defined in the AI policy, plagiarizing another student's work, fabricating data, or presenting unverified AI output as original thought without proper testing and explanation is strictly prohibited and will be reported to the Honor Council.
 
-### Accessibility and Support
-JMU is committed to creating a universally accessible learning environment. If you have a documented disability and require accommodations, please register with the Office of Disability Services (ODS) and contact the instructor as soon as possible so we can implement your approved accommodations.
+### Accessibility and Disability Support
+JMU is committed to creating a universally accessible learning environment. If you have a documented disability and require accommodations, please register with the Office of Disability Services (ODS, [https://www.jmu.edu/ods/](https://www.jmu.edu/ods/)) and contact the instructor as soon as possible so we can implement your approved accommodations.
+
+### Student Support Resources
+JMU offers numerous resources to support your academic and personal success. If you are struggling, please reach out:
+- **JMU Counseling Center**: Support for mental health and well-being.
+- **Learning Centers**: Tutoring and academic support.
+- **Science & Math Learning Center**: Assistance with quantitative skills.
+
+### Inclement Weather
+In the event of inclement weather or other emergencies, we will follow the official JMU closure and delay policies. Any changes to the course schedule, assignment deadlines, or transitions to online instruction will be communicated via Canvas announcements.
 
 ---
 

@@ -9,9 +9,9 @@ This course is designed to take you beyond basic spreadsheets and introduce you 
 
 ## Syllabus Highlights
 Before we dive in, please review the full [Syllabus](../syllabus.md). Here are the key takeaways:
-- **Communication**: Use your JMU email to contact the instructor. Do not use Canvas messages.
+- **Communication**: Use your JMU institutional email to contact the instructor. Do not use Canvas messages.
 - **Grading**: Labs (40%) and Projects (30%) make up the bulk of your grade. Attendance (20%) is mandatory.
-- **AI Policy**: AI is a required tool in this course, but you must take ownership of your work. You are responsible for inspecting, testing, and verifying everything the AI generates.
+- **AI Policy**: AI is part of the course and may be expected or required in specific assignments. You are responsible for inspecting, testing, verifying, and explaining any AI-assisted work.
 
 ## The Role of IA340 in 2026
 In 2026, data analysis is fundamentally intertwined with Artificial Intelligence. As future intelligence analysts, you are not just learning how to write code or query databases; you are learning how to **orchestrate** tools, data, and AI models to solve complex problems. 
@@ -21,25 +21,49 @@ IA340 bridges the gap between raw data collection and actionable intelligence by
 ## AI in Data Analysis: A New Paradigm
 The way we approach data has shifted. We are moving from manual coding and querying to a hybrid approach where AI assists in every step. To succeed in this environment, you need to understand three core layers of interacting with AI:
 
-### 1. Prompt Engineering
-This is the most basic level: asking the AI the right question. A good prompt is clear, specific, and provides necessary constraints. In data analysis, instead of just asking "analyze this data", you learn to ask "Write a Python script using pandas to find the top 5 anomalies in this dataset."
+<div style="display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; font-family: system-ui, sans-serif;">
+  
+  <div style="display: flex; align-items: stretch; background: #f0f6fc; border-left: 4px solid #0969da; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+    <div style="background: #0969da; color: white; padding: 1rem; display: flex; align-items: center; justify-content: center; font-weight: bold; width: 120px; flex-shrink: 0;">1. Prompt</div>
+    <div style="padding: 1rem;">
+      <strong>Asking the right question.</strong> Instead of generic prompts, write clear, specific constraints. <em>"Write a Python script using pandas to find the top 5 anomalies in this dataset."</em>
+    </div>
+  </div>
 
-### 2. Context Engineering
-AI models need context to be effective. If the AI doesn't know the structure of your database or the specific libraries you are using, its output will be generic or wrong. Context engineering involves providing the AI with schemas, documentation, and specific data samples so it can give you tailored, accurate solutions.
+  <div style="display: flex; justify-content: center; color: #6e7781;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+  </div>
 
-### 3. Harness Engineering
-This is the most advanced level, where we integrate AI directly into our automated workflows (harnesses). Instead of copying and pasting code from ChatGPT, we write scripts that programmatically call APIs (like the Gemini API) to classify text, extract entities, or generate embeddings on thousands of records at once.
+  <div style="display: flex; align-items: stretch; background: #f6f8fa; border-left: 4px solid #8250df; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+    <div style="background: #8250df; color: white; padding: 1rem; display: flex; align-items: center; justify-content: center; font-weight: bold; width: 120px; flex-shrink: 0;">2. Context</div>
+    <div style="padding: 1rem;">
+      <strong>Providing the environment.</strong> AI needs schemas, documentation, and specific data samples so it can give you tailored, accurate solutions rather than generic hallucinations.
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: center; color: #6e7781;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+  </div>
+
+  <div style="display: flex; align-items: stretch; background: #fff8c5; border-left: 4px solid #bf8700; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+    <div style="background: #bf8700; color: white; padding: 1rem; display: flex; align-items: center; justify-content: center; font-weight: bold; width: 120px; flex-shrink: 0;">3. Harness</div>
+    <div style="padding: 1rem;">
+      <strong>Building the workflow.</strong> Integrating AI directly into automated workflows (harnesses) using APIs and agents to process, classify, and analyze data at scale.
+    </div>
+  </div>
+  
+</div>
 
 ### The Modern Data Analysis Workflow
-By mastering these three layers, your workflow evolves. You will use AI to help you write SQL queries (Prompt Engineering), provide the AI with your exact database schema to fix bugs (Context Engineering), and ultimately build Python scripts that use AI to process social media posts automatically (Harness Engineering).
+By mastering these three layers, your workflow evolves. You will use AI to help you write SQL queries (Prompt Engineering), provide the AI with your exact database schema to fix bugs (Context Engineering), and ultimately build scripts that programmatically leverage AI endpoints to process large datasets automatically (Harness Engineering).
 
 ## Fall 2026 Roadmap
 Here is a high-level look at our journey this semester:
 
-1. **Workspace Setup**: Getting comfortable with Google Colab (our coding environment), Google Drive (our data lake), and GitHub (our version control and assignment submission platform).
+1. **Workspace Setup**: Getting comfortable with Google Colab (our coding environment), Google Drive (our data lake), and GitHub (our version control platform).
 2. **Python Analysis**: Using Python to manipulate, clean, and analyze datasets.
-3. **Relational Databases & SQL**: Building structured databases in Google Cloud SQL and querying them.
-4. **NoSQL, Social Data, & AI**: Working with unstructured data in MongoDB, collecting social media data, and integrating GenAI for advanced analysis.
+3. **Relational Databases & SQL**: Building structured databases and querying them.
+4. **NoSQL, Social Data, & AI**: Working with unstructured data, collecting social media or API data, and integrating GenAI for advanced analysis.
 5. **Final Project**: Applying all these skills to a comprehensive, end-to-end data mining project.
 
 ## Action Items for Week 1

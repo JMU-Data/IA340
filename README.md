@@ -10,16 +10,16 @@
 
 IA 340 provides a comprehensive introduction to modern data analysis, teaching students how to collect, organize, query, and quantitatively analyze data. Moving beyond basic spreadsheets, this course introduces the tools and techniques used in modern cloud and AI-assisted environments. 
 
-Students will learn how to set up an analytics workspace, structure and query relational databases, interact with NoSQL systems for social data, and apply Large Language Models (LLMs) to practical data mining scenarios.
+Students will learn how to set up an analytics workspace, structure and query relational databases, interact with NoSQL systems for social data, and apply artificial intelligence to practical data mining scenarios.
 
 ## What students learn
 
 This course follows a modern data-analysis pipeline:
 
-1. **Workspace & Foundations**: Google Colab, Python, and GenAI integration.
-2. **Relational Data**: Google Cloud SQL, sensor data, and structural querying.
-3. **NoSQL & Social Data**: MongoDB, unstructured data, and social media analysis.
-4. **AI-Assisted Analysis**: Vector embeddings, LLM-assisted data mining, and applied insights.
+1. **Workspace & Foundations**: Google Colab, Python, and generative AI integration.
+2. **Relational Data**: Cloud SQL and structural querying.
+3. **NoSQL & Social Data**: Document databases, unstructured data, and social media analysis.
+4. **AI-Assisted Analysis**: Vector embeddings, AI-assisted data mining, and applied insights.
 5. **Final Project**: End-to-end data collection, modeling, and discovery.
 
 *See the [Syllabus](docs/syllabus.md) and [Module 1](docs/modules/module-1.md) for current onboarding requirements and weekly topics.*

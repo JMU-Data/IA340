@@ -34,7 +34,7 @@ This course is part of a larger technical sequence in the Intelligence Analysis 
   <div style="display: flex; align-items: stretch; background: #f6f8fa; border-left: 4px solid #57606a; border-radius: 4px; overflow: hidden; opacity: 0.8;">
     <div style="background: #57606a; color: white; padding: 1rem; display: flex; align-items: center; justify-content: center; font-weight: bold; width: 100px; flex-shrink: 0;">IA 343</div>
     <div style="padding: 1rem;">
-      <strong>Causal Analysis</strong>: Interactive and AI systems to help humans and AI interpret data and assess causality.
+      <strong>System Interpretation</strong>: Interactive and AI systems to help humans and AI interpret data.
     </div>
   </div>
 </div>

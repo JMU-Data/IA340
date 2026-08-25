@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases"
+title: "Home - IA 340"
 ---
 
 # IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
@@ -13,20 +13,20 @@ title: "IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases"
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-  <div style="border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
-    <h3 style="margin-top: 0; color: #0969da;">📖 <a href="syllabus/" style="text-decoration: none;">Course Syllabus</a></h3>
+  <a href="syllabus/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #0969da; display: flex; align-items: center; gap: 0.5rem;">📖 Course Syllabus</h3>
     <p style="margin-bottom: 0; color: #57606a;">Review the Fall 2026 course policies, grading structure, and official AI guidelines.</p>
-  </div>
+  </a>
 
-  <div style="border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
-    <h3 style="margin-top: 0; color: #2da44e;">🚀 <a href="modules/module-1/" style="text-decoration: none;">Module 1</a></h3>
+  <a href="modules/module-1/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #2da44e; display: flex; align-items: center; gap: 0.5rem;">🚀 Module 1</h3>
     <p style="margin-bottom: 0; color: #57606a;">Introduction to Data Mining, AI workflows, and workspace onboarding.</p>
-  </div>
+  </a>
 
-  <div style="border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
-    <h3 style="margin-top: 0; color: #8250df;">📝 <a href="assignments/github-account-verification/" style="text-decoration: none;">Week 1 Assignment</a></h3>
+  <a href="assignments/github-account-verification/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #8250df; display: flex; align-items: center; gap: 0.5rem;">📝 Week 1 Assignment</h3>
     <p style="margin-bottom: 0; color: #57606a;">Verify your GitHub account to join the course organization.</p>
-  </div>
+  </a>
 
 </div>
 

@@ -1,0 +1,111 @@
+---
+layout: default
+title: "Syllabus - IA 340"
+---
+
+# Syllabus
+
+## Course / Term / Instructor
+- **Course**: IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
+- **Term**: Fall 2026  
+- **Instructor**: Dr. Xuebin Wei ([weixx@jmu.edu](mailto:weixx@jmu.edu))
+
+---
+
+## Course Description
+This course provides a comprehensive introduction to modern Data Analytics, Cloud Databases, and AI integration. Moving beyond basic spreadsheets, we explore data processing pipelines, relational and NoSQL databases, and apply Large Language Models (LLMs) to practical data mining scenarios.
+
+## Learning Goals
+Upon completion of this course, students are expected to:
+- Differentiate and design relational and NoSQL databases, and manage cloud-based storage solutions.
+- Collect, query, and analyze real-world data using SQL, MQL, Python, and cloud services.
+- Apply AI-powered methods (LLMs, vector databases) to support data analytics.
+- Address ethical and security considerations in data management and analysis.
+
+## Required Textbook / Resources
+Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press, 2024.
+
+## Communication Policy
+- **Primary Contact**: You must use your **JMU student email** to contact the instructor. 
+- **Canvas Usage**: Canvas is strictly used for grades, official announcements, and basic logistics.
+- **DO NOT** use the Canvas messaging system to contact the instructor. It will not be monitored.
+
+## AI Policy
+**AI is part of this course, and may be expected or required in specific assignments.** 
+You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist with data analysis and workflow construction as instructed. However, you are strictly responsible for the output you submit. You must **inspect, test, verify, correct, and explain** any AI-assisted work. Blindly copying and pasting AI output without understanding it is a violation of the learning objectives and academic integrity.
+
+## Grading Breakdown
+
+| Category | Weight |
+|----------|--------|
+| Attendance | 20% |
+| Labs | 40% |
+| Projects (Total) | 30% |
+| - *Mini Project* | *10%* |
+| - *Final Project* | *20%* |
+| Google AI Professional Certificate | 10% |
+
+*Google AI Professional Certificate Progress*:
+- Completion of 1 module/course = 3%
+- Completion of 2 modules/courses = 6%
+- Completion of 3 or more modules/courses = 10%
+
+## Letter-Grade Scale
+- **A**: 94.00 – 100% | **A-**: 90.00 – 93.99%
+- **B+**: 87.00 – 89.99% | **B**: 84.00 – 86.99% | **B-**: 80.00 – 83.99%
+- **C+**: 77.00 – 79.99% | **C**: 74.00 – 76.99% | **C-**: 70.00 – 73.99%
+- **D+**: 67.00 – 69.99% | **D**: 64.00 – 66.99% | **D-**: 61.00 – 63.99%
+- **F**: < 61%
+
+## Resubmission / Late Work / Project Policy
+- **Resubmission**: You are allowed to resubmit assignments multiple times *before* the deadline. Only the final submission made prior to the deadline will be graded.
+- **Late Work**: Late submissions will incur a **10% penalty per day**, but no more than 40% of the total amount, unless prior arrangements have been made. 
+- **Final Exam Week**: **No late submissions** will be accepted during the final exam week.
+- **Class Projects**: Late submissions/resubmissions of the class projects will **not** be accepted.
+
+## Attendance / Excused Absence
+Attendance is mandatory and constitutes a significant portion (20%) of your grade. Attendance will be taken at every class meeting. Absence, early leaving without permission, being late more than 20 minutes, or disrespectful/disturbing behavior will result in 0 points each time. Being late more than 5 minutes will result in a late penalty.
+
+In the following situations, absences can be excused:
+- Sickness or health issues.
+- Mandatory activities with written documents.
+- Other situations with the instructor's approval.
+
+## Academic Integrity / Honor Code
+All students are expected to adhere to the [JMU Honor Code](https://www.jmu.edu/honorcode/). While AI use is permitted and encouraged as defined in the AI policy, plagiarizing another student's work, fabricating data, or presenting unverified AI output as original thought without proper testing and explanation is strictly prohibited and will be reported to the Honor Council.
+
+## Accessibility / Student Support
+JMU is committed to creating a universally accessible learning environment. If you have a documented disability and require accommodations, please register with the Office of Disability Services (ODS, [https://www.jmu.edu/ods/](https://www.jmu.edu/ods/)) and contact the instructor as soon as possible so we can implement your approved accommodations.
+
+JMU offers numerous resources to support your academic and personal success. If you are struggling, please reach out:
+- **JMU Counseling Center**: Support for mental health and well-being.
+- **Learning Centers**: Tutoring and academic support.
+
+## Inclement Weather
+During the semester, there may be days during which the class will not meet due to inclement weather. Please check Canvas for the latest class arrangement and refer to the official JMU policy on inclement weather.
+
+---
+
+## Module-Level Roadmap
+The course is organized into high-level phases. Specific dates and assignments will be announced in class and on Canvas.
+
+- **Phase 1: Foundation (AI Data Analytics Workspace)**
+  - Introduction, AI in Data Analysis, and Workspace Setup (Colab, Drive, GitHub).
+  - Python basics for data manipulation.
+- **Phase 2: Relational Databases & SQL**
+  - Introduction to relational database/SQL and cloud-based relational database workflows.
+  - Designing relational schemas.
+  - Querying data using SQL and integrating with Python.
+- **Phase 3: NoSQL, Social Media Data & AI**
+  - Introduction to MongoDB for unstructured and semi-structured data.
+  - Social data collection (e.g., via APIs).
+  - GenAI integration, vector embeddings, and advanced querying.
+- **Phase 4: Synthesis & Final Project**
+  - End-to-end data pipeline construction.
+  - Project presentations (subject to available time and instructor decision).
+
+---
+
+<div style="margin-top: 2rem;">
+  <a href="../../">← Return to Course Home</a> | <a href="../../modules/module-1/">Go to Module 1 →</a>
+</div>

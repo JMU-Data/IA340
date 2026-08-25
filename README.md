@@ -1,39 +1,49 @@
-# IA340: Data Mining (James Madison University)
+# IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
 
-Welcome to the course repository for IA340 (Data Mining) at James Madison University.
+**James Madison University | Intelligence Analysis | Fall 2026**
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="docs/assets/images/course-logo.png" alt="IA 340 Course Hero" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+</div>
+
+> *An introduction to modern Data Analytics, Cloud Databases, and AI integration for Intelligence Analysis.*
+
+## Quick Links
+- [Syllabus](docs/syllabus/index.md)
+- [Module 1: Introduction to Data Mining & AI](docs/modules/module-1/index.md)
+- [Week 1 Assignment: GitHub Account Verification](docs/assignments/github-account-verification/index.md)
+
+*(Note: A formal GitHub Pages course website URL will be added here once deployment is verified.)*
 
 ## Course Overview
-This course provides a comprehensive introduction to modern Data Analytics, Cloud Databases, and AI integration. We will explore data processing, relational and NoSQL databases, and apply Large Language Models (LLMs) to practical data mining scenarios.
 
-### Course Phases
-- **Phase 1: Foundation (AI Data Analytics Workspace)**
-  - Google Colab, Google Drive Data Lake, GitHub, and Gemini API integration.
-- **Phase 2: Relational Databases & SQL**
-  - Google Cloud SQL, sensor data collection via APIs.
-- **Phase 3: NoSQL, Social Media Data & AI**
-  - MongoDB, Twitter (X) data collection, Vector Embeddings, and GenAI querying.
+IA 340 provides a comprehensive introduction to modern data analysis, teaching students how to collect, organize, query, and quantitatively analyze data. Moving beyond basic spreadsheets, this course introduces the tools and techniques used in modern cloud and AI-assisted environments. 
 
-## Repository Structure
-- `docs/`: Course materials, syllabus, lectures, and labs (Published via GitHub Pages).
-- `src/`: Source code, Jupyter/Colab notebooks, and datasets.
+Students will learn how to set up an analytics workspace, structure and query relational databases, interact with NoSQL systems for social data, and apply artificial intelligence to practical data mining scenarios.
 
-## For Students: Pre-requisites & Onboarding
+## Course Roadmap / Major Modules
 
-Before we begin the course, you must complete the following onboarding steps to set up your Data Analytics workspace:
+This course follows a modern data-analysis pipeline:
 
-### 1. Google Account (JMU Email Required)
-Students must use their official JMU email address to create or associate a Google Account for course Google services and Google Cloud teaching credits. This account will be used to access Google Colab, Google Drive (our Data Lake), and Google Cloud Platform.
+1. **Workspace & Foundations**: Google Colab, Python, and generative AI integration.
+2. **Relational Data**: Relational database workflows and structural querying.
+3. **NoSQL & Social Data**: Document databases, unstructured data, and social media analysis.
+4. **AI-Assisted Analysis**: Vector embeddings, AI-assisted data mining, and applied insights.
+5. **Final Project**: End-to-end data collection, modeling, and discovery.
 
-### 2. GitHub Account (Existing Account Acceptable)
-You may use an existing GitHub account, or create a new one. You are **not** required to use your JMU email for your GitHub account. 
+## Official Course Information
 
-**Action Required**: Submit your GitHub username to the instructor so you can be invited to the `JMU-Data` organization and the appropriate course team.
+See the official [JMU Intelligence Analysis Undergraduate Curriculum](https://www.jmu.edu/cise/intelligence-analysis/academics/curriculum.shtml) and the current university catalog for official IA 340 prerequisites and course descriptions.
 
-### 3. Google Cloud Student Credits
-Once your JMU Google Account is ready, you will register for Google Cloud Platform and redeem your $50 student credits. These credits will be necessary to build your Cloud SQL databases for Phase 2.
+## Instructor
 
-### 4. Workspace Setup
-All coding exercises will be conducted in Google Colab using your JMU Google account. Your code and assignments will be synced with your GitHub account.
+**Dr. Xuebin Wei**  
+Associate Professor, James Madison University (Geography / Intelligence Analysis)  
+Email: **weixx@jmu.edu**  
+[Official JMU Faculty Profile](https://www.jmu.edu/cise/people/faculty/wei-xuebin.shtml)
 
-## Contributing
-See `AGENTS.md` for AI agent workflow guidelines and repository rules.
+*Dr. Wei's research and teaching focus on data science, artificial intelligence, cloud computing, GIS/geospatial analysis, and social data analytics.*
+
+## Repository / Reuse / Privacy Boundary
+
+This repository (`JMU-Data/IA340`) contains the public course source and materials. It is designed for transparency and reuse. Private student data, grading operations, and internal Canvas details are managed securely outside of this public repository.

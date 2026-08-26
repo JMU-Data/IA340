@@ -8,9 +8,6 @@ on:
       - synchronize
       - closed
 
-concurrency:
-  group: pr-preview-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   build-and-preview:

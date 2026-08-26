@@ -177,7 +177,7 @@ Here is a high-level look at our learning progression this semester:
 ## Week 1 Action Items
 To get started, you only have one assignment this week. We are using a "just-in-time" onboarding approach, so we will set up Google Cloud and other tools later when we actually need them.
 
-👉 **[Go to Week 1 Assignment: GitHub Account Verification]({{ site.baseurl }}/assignments/github-account-verification/)**
+👉 **[Go to Week 1 Assignment: Account Setup & AI Program Registration]({{ site.baseurl }}/assignments/github-account-verification/)**
 
 ---
 

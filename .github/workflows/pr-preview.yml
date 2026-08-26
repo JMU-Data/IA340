@@ -31,7 +31,6 @@ jobs:
           destination: ./_site
 
       - name: Deploy PR Preview
-        if: github.event.pull_request.head.repo.full_name == github.repository
         uses: rossjrw/pr-preview-action@df22037db54ab6ee34d3c1e2b8810ac040a530c6 # v1.6.0
         with:
           source-dir: ./_site

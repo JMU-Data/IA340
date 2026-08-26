@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "Lab 1: GitHub Account Verification - IA 340"
+title: "Lab 1: Account Setup & AI Program Registration - IA 340"
 ---
 
-# Lab 1: GitHub Account Verification
+# Lab 1: Account Setup & AI Program Registration
 
 <nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
   <a href="{{ site.baseurl }}/" style="text-decoration: none; color: #57606a;">Home</a>
@@ -16,7 +16,7 @@ title: "Lab 1: GitHub Account Verification - IA 340"
 *(Note: Canvas is the authoritative source for the exact due date/time and submission status.)*  
 **Submission Location:** Canvas
 
-## What is GitHub?
+## Part 1: GitHub Account Verification
 
 **Version control** is a system that records every change made to a file (or set of files) over time, so you can recall specific versions later and collaborate without overwriting each other's work. **GitHub** is the world's most popular platform built on top of Git — think of it as Google Docs with a complete, permanent edit history, but designed for code, data, and analysis notebooks.
 
@@ -147,25 +147,41 @@ Throughout this course, we will use two distinct platforms:
   </div>
 </div>
 
-Your first task is to ensure you have a working GitHub account and to share your username with the instructor so you can be added to the course organization (`JMU-Data`).
+## Part 2: Google Account & AI Pro Setup
+
+In this course, you will be heavily utilizing AI tools to assist with data mining and analysis. Google currently offers a 1-year free student discount for their AI Pro plan (Gemini Advanced). 
+
+You will need to associate your **JMU email address** with a Google account to apply for this student offer.
+
+## Part 3: Coursera & Google AI Professional Certificate
+
+As part of the course curriculum, we will be utilizing the Google AI Professional Certificate program hosted on Coursera. You will join the JMU learning program to access this content.
 
 ## Instructions
 
-1. **Create or Log In to GitHub**
-   - If you do not have a GitHub account, go to [GitHub.com](https://github.com/) and create one. 
-   - *Note: You are not required to use your JMU institutional email for GitHub, but you may if you prefer.*
-   - If you already have a GitHub account, simply log in.
+Please complete the following setup steps during Week 1:
 
-2. **Locate Your Profile URL**
-   - Go to your GitHub profile page (click your profile picture in the top right and select "Your profile").
-   - Copy the URL from your browser's address bar. It should look like this: `https://github.com/your-username`.
+### 1. GitHub Setup
+- **Create or Log In to GitHub:** Go to [GitHub.com](https://github.com/) and create an account (or log in if you have one). *Note: You are not required to use your JMU institutional email for GitHub, but you may if you prefer.*
+- **Locate Your Profile URL:** Go to your profile page and copy the URL (e.g., `https://github.com/your-username`).
+
+### 2. Google Account & Gemini Advanced (AI Pro)
+- **Create/Link Google Account:** Use your **JMU email address** (`@dukes.jmu.edu` or `@jmu.edu`) to create or associate a Google account.
+- **Apply for AI Pro Student Offer:** Visit the [Google Gemini Student Offer page](https://gemini.google/students/) and sign up for the 1-year free trial.
+- ⚠️ **Important Reminder:** Make sure to set a calendar reminder to cancel the subscription before the 1-year mark to avoid being charged!
+
+### 3. Coursera & AI Professional Certificate
+- **Register for Coursera:** Create a Coursera account using your **JMU email address**.
+- **Join the JMU Learning Program:** After creating your account, go to this specific link to enroll in the JMU program: [Google Learning Program for JMU IA Students](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)
+- **Enroll in the Certificate:** Once you have joined the JMU program via the link, enroll in the **Google AI Professional Certificate**.
 
 ## What to Submit (on Canvas)
-Go to the official course Canvas page, navigate to the **Assignments** section, and find this lab.
+Go to the official course Canvas page, navigate to the **Assignments** section, and find Lab 1.
 
-Submit the following two pieces of information in the text box on Canvas:
+Submit the following in the text box on Canvas to verify completion:
 1. Your GitHub Username (e.g., `janedoe`)
 2. Your GitHub Profile URL (e.g., `https://github.com/janedoe`)
+3. A brief confirmation statement that you have signed up for the Google AI Pro student offer and enrolled in the Coursera JMU AI Certificate Program (e.g., "I have successfully registered for GitHub, applied for the Gemini AI student offer, and enrolled in the Coursera AI Certificate program.")
 
 *Note: You do not need to create any repositories, write any code, or submit a GitHub repo for this assignment. Further setup will be handled in subsequent weeks.*
 

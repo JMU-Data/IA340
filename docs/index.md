@@ -21,24 +21,24 @@ title: "Home - IA 340"
 </div>
 
 <div style="text-align: center; margin: 2rem 0;">
-  <img src="assets/images/course-logo.png" alt="IA 340 Course Hero" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+  <img src="{{ site.baseurl }}/assets/images/course-logo.png" alt="IA 340 Course Hero" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
 </div>
 
 > *An introduction to modern Data Analytics, Cloud Databases, and AI integration for Intelligence Analysis.*
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-  <a href="syllabus/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+  <a href="{{ site.baseurl }}/syllabus/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
     <h3 style="margin-top: 0; color: #0969da; display: flex; align-items: center; gap: 0.5rem;">📖 Course Syllabus</h3>
     <p style="margin-bottom: 0; color: #57606a;">Review the Fall 2026 course policies, grading structure, and official AI guidelines.</p>
   </a>
 
-  <a href="modules/module-1/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+  <a href="{{ site.baseurl }}/modules/module-1/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
     <h3 style="margin-top: 0; color: #2da44e; display: flex; align-items: center; gap: 0.5rem;">🚀 Module 1</h3>
     <p style="margin-bottom: 0; color: #57606a;">Intro to Data Mining & Workspace Onboarding</p>
   </a>
 
-  <a href="assignments/github-account-verification/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+  <a href="{{ site.baseurl }}/assignments/github-account-verification/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
     <h3 style="margin-top: 0; color: #8250df; display: flex; align-items: center; gap: 0.5rem;">📝 Week 1 Assignment</h3>
     <p style="margin-bottom: 0; color: #57606a;">GitHub Account Verification</p>
   </a>

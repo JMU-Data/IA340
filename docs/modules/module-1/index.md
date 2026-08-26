@@ -15,7 +15,7 @@ title: "Module 1 - IA 340"
 Welcome to IA 340! In this first week, we will introduce the core concepts of the course, discuss the evolving landscape of AI in data analysis, and set the foundation for your analytical workspace.
 
 ## Welcome / Syllabus Highlights
-See the [Syllabus](../../syllabus/) for grading, attendance, communication, and AI policies.
+See the [Syllabus]({{ site.baseurl }}/syllabus/) for grading, attendance, communication, and AI policies.
 
 ## Intelligence Analysis Technical Curriculum
 These courses are complementary within the Intelligence Analysis curriculum (note: IA 342 does not depend on concurrent IA 340). To understand where you are, let's look at how the three core courses fit together:
@@ -45,6 +45,8 @@ These courses are complementary within the Intelligence Analysis curriculum (not
 
 ## Humans, AI Agents, and Teaching Stacks in GeoAI Education
 In 2026, data analysis is fundamentally intertwined with Artificial Intelligence. We are moving from manual coding and querying to a hybrid approach. 
+
+**[UCGIS 2026 Presentation: Humans, AI Agents, and Teaching Stacks in GeoAI Education](https://xbwei.github.io/data-analysis-with-generative-ai/UCGIS2026/talk.html)**
 
 ### Human vs. AI Capabilities
 To effectively work with AI, you must understand the division of labor. AI can generate code, but **students still need to understand data, context, verification, and workflow design**.
@@ -175,10 +177,10 @@ Here is a high-level look at our learning progression this semester:
 ## Week 1 Action Items
 To get started, you only have one assignment this week. We are using a "just-in-time" onboarding approach, so we will set up Google Cloud and other tools later when we actually need them.
 
-👉 **[Go to Week 1 Assignment: GitHub Account Verification](../../assignments/github-account-verification/)**
+👉 **[Go to Week 1 Assignment: GitHub Account Verification]({{ site.baseurl }}/assignments/github-account-verification/)**
 
 ---
 
 <div style="margin-top: 2rem;">
-  <a href="../../syllabus/">← Review Syllabus</a> | <a href="../../">Return to Course Home</a>
+  <a href="{{ site.baseurl }}/syllabus/">← Review Syllabus</a> | <a href="{{ site.baseurl }}/">Return to Course Home</a>
 </div>

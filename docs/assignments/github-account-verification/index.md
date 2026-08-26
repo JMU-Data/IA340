@@ -51,5 +51,5 @@ Your GitHub username and profile will be visible to other students in the course
 ---
 
 <div style="margin-top: 2rem;">
-  <a href="../../modules/module-1/">← Return to Module 1</a> | <a href="../../">Course Home</a>
+  <a href="{{ site.baseurl }}/modules/module-1/">← Return to Module 1</a> | <a href="{{ site.baseurl }}/">Course Home</a>
 </div>

@@ -40,3 +40,25 @@ The Owner uses Antigravity across multiple devices (personal and school computer
 4. **Resume**: Resume work on an existing remote PR branch when applicable; otherwise, branch from the current remote `main`.
 5. **Bootstrap from Source**: Rely solely on repository-tracked configuration/lock files. Do NOT depend on local project memory, chat history, uncommitted files, or machine-specific IDE state.
 6. **Minimal Local Auth**: Request only the minimum Owner-side machine-local auth/setup when credentials are missing. Machine-local `.env`, auth files, and local absolute paths must never become the repository source of truth.
+
+## 8. Course Development & Local Preview Workflow
+1. **Engineering / Architecture Work**: 
+   - Do not arbitrarily expand the scope on issues like repository architecture, automation, API/integration, security/privacy, cross-repo dependency, deployment architecture, or tool/service selection.
+   - The Owner will brainstorm and finalize high-level requirements/decisions via ChatGPT or GitHub Issues first. 
+   - Antigravity must treat these established requirements/Issues as strict implementation boundaries.
+2. **Existing Teaching Materials as Substantive Sources**: 
+   - Before rewriting course content, prioritize reading the Owner's specified existing materials (repo, Google Drive, old syllabus, lectures, labs, assignments, slides, etc.).
+   - Reuse valid teaching content. Do not guess about outdated, conflicting, or uncertain material; explicitly flag it or ask the Owner.
+   - New web content is a presentation/evolution layer; do not abandon mature teaching material without reason.
+3. **Content Iteration**: 
+   - The Owner can directly iterate with Antigravity on syllabus wording, module content, lab instructions, course-site visuals, HTML/CSS presentation, links, icons, and layout. 
+   - These modifications do not require re-validation through ChatGPT or new Issues unless they involve new architecture/policy/security/cross-repo decisions.
+4. **Local Preview Before PR for Substantial Redesign**: 
+   - Substantial GitHub Pages / course-site visual or content work must be done on a feature branch.
+   - Before creating a PR, start a local Jekyll/GitHub Pages preview and provide the localhost URL to the Owner.
+   - Keep the local server running for visual/content review. Iterate on the same branch based on feedback.
+   - Create the PR only after the Owner approves the local preview. If a PR was already created early, continue using the same PR branch for localhost review without creating new ones.
+5. **PR Fast-Path Principle**: 
+   - Do not require unnecessary multi-round reviews for typos, small wording changes, URL corrections, or minor visual tweaks.
+   - Substantive redesigns should still ultimately pass through a single PR. 
+   - No direct commits to `main`; the Owner retains final merge authority.

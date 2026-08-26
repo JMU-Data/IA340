@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   deploy:
@@ -14,6 +13,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      
+
       - name: Set production baseurl
         run: echo 'baseurl: "/IA340"' >> ./docs/_config.yml
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1
+        with:
+          source: ./docs/
+          destination: ./_site
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4
+        with:
+          folder: ./_site
+          branch: gh-pages
+          clean-exclude: pr-preview

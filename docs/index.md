@@ -5,7 +5,20 @@ title: "Home - IA 340"
 
 # IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
 
-**James Madison University | Intelligence Analysis | Fall 2026**
+<nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
+  <a href="{{ site.baseurl }}/" style="text-decoration: none; font-weight: 600; color: #0969da;">Home</a>
+  <a href="{{ site.baseurl }}/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
+  <a href="{{ site.baseurl }}/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
+  <a href="{{ site.baseurl }}/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+</nav>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; color: #57606a; font-weight: 500; font-size: 0.9em; margin-bottom: 1.5rem;">
+  <span>James Madison University</span>
+  <span style="color: #d0d7de;">&bull;</span>
+  <span>Intelligence Analysis</span>
+  <span style="color: #d0d7de;">&bull;</span>
+  <span>Fall 2026</span>
+</div>
 
 <div style="text-align: center; margin: 2rem 0;">
   <img src="assets/images/course-logo.png" alt="IA 340 Course Hero" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />

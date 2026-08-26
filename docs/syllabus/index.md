@@ -3,12 +3,20 @@ layout: default
 title: "Syllabus - IA 340"
 ---
 
-# Syllabus
+# IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
+
+<nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
+  <a href="{{ site.baseurl }}/" style="text-decoration: none; color: #57606a;">Home</a>
+  <a href="{{ site.baseurl }}/syllabus/" style="text-decoration: none; font-weight: 600; color: #0969da;">Syllabus</a>
+  <a href="{{ site.baseurl }}/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
+  <a href="{{ site.baseurl }}/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+</nav>
 
 ## Course / Term / Instructor
 - **Course**: IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
 - **Term**: Fall 2026  
 - **Instructor**: Dr. Xuebin Wei ([weixx@jmu.edu](mailto:weixx@jmu.edu))
+- **Office Hours**: Monday and Wednesday, 9:30–11:00 AM
 
 ---
 
@@ -22,8 +30,67 @@ Upon completion of this course, students are expected to:
 - Apply AI-powered methods (LLMs, vector databases) to support data analytics.
 - Address ethical and security considerations in data management and analysis.
 
+## IA340 Learning Journey
+
+<div style="display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; font-family: system-ui, sans-serif;">
+  
+  <div style="border: 1px solid #d0d7de; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <div style="background: #f6f8fa; padding: 1rem 1.5rem; border-bottom: 1px solid #d0d7de; font-weight: 600; color: #0969da; display: flex; align-items: center; justify-content: space-between;">
+      <span>PHASE 1 — Cloud Data & Python</span>
+      <span style="font-size: 1.2em;">☁️</span>
+    </div>
+    <div style="padding: 1.5rem;">
+      <p style="margin-top: 0; margin-bottom: 0.5rem;"><a href="https://colab.research.google.com/" target="_blank"><strong>Google Colab</strong></a></p>
+      <div style="color: #57606a; margin-left: 1rem; margin-bottom: 0.5rem;">↳ Google Drive / cloud object storage / data lake concept (e.g., S3 principles)</div>
+      <div style="color: #57606a; margin-left: 1.5rem; margin-bottom: 0.5rem;">↳ Python / Pandas</div>
+      <div style="color: #57606a; margin-left: 2rem;">↳ cleaning / quantitative analysis</div>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #d0d7de; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <div style="background: #f6f8fa; padding: 1rem 1.5rem; border-bottom: 1px solid #d0d7de; font-weight: 600; color: #2da44e; display: flex; align-items: center; justify-content: space-between;">
+      <span>PHASE 2 — Relational Data</span>
+      <span style="font-size: 1.2em;">🗄️</span>
+    </div>
+    <div style="padding: 1.5rem;">
+      <p style="margin-top: 0; margin-bottom: 0.5rem;"><strong>Data modeling / ER</strong></p>
+      <div style="color: #57606a; margin-left: 1rem; margin-bottom: 0.5rem;">↳ relational database</div>
+      <div style="color: #57606a; margin-left: 1.5rem; margin-bottom: 0.5rem;">↳ SQL</div>
+      <div style="color: #57606a; margin-left: 2rem;">↳ Python + AI-assisted SQL/query workflows</div>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #d0d7de; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <div style="background: #f6f8fa; padding: 1rem 1.5rem; border-bottom: 1px solid #d0d7de; font-weight: 600; color: #bf8700; display: flex; align-items: center; justify-content: space-between;">
+      <span>PHASE 3 — NoSQL / Social / API Data</span>
+      <span style="font-size: 1.2em;">🌐</span>
+    </div>
+    <div style="padding: 1.5rem;">
+      <p style="margin-top: 0; margin-bottom: 0.5rem;"><strong>APIs / social data</strong></p>
+      <div style="color: #57606a; margin-left: 1rem; margin-bottom: 0.5rem;">↳ <a href="https://www.mongodb.com/" target="_blank"><strong>MongoDB</strong></a></div>
+      <div style="color: #57606a; margin-left: 1.5rem; margin-bottom: 0.5rem;">↳ query / aggregation</div>
+      <div style="color: #57606a; margin-left: 2rem; margin-bottom: 0.5rem;">↳ embeddings / vector search</div>
+      <div style="color: #57606a; margin-left: 2.5rem;">↳ AI-assisted analysis</div>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #d0d7de; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <div style="background: #f6f8fa; padding: 1rem 1.5rem; border-bottom: 1px solid #d0d7de; font-weight: 600; color: #8250df; display: flex; align-items: center; justify-content: space-between;">
+      <span>PHASE 4 — Final Project</span>
+      <span style="font-size: 1.2em;">🎓</span>
+    </div>
+    <div style="padding: 1.5rem;">
+      <div style="color: #57606a; display: flex; align-items: center; gap: 0.5rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        <strong>end-to-end data collection / storage / analysis workflow</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
 ## Required Textbook / Resources
-Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press, 2024.
+[Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press / Routledge, 2024.](https://www.routledge.com/Social-Data-Analytics-in-the-Cloud-with-AI/Wei-Ye/p/book/9781032306232)
+*(Note: Refer to Canvas for any specific JMU free-access instructions for required materials.)*
 
 ## Communication Policy
 - **Primary Contact**: You must use your **JMU student email** to contact the instructor. 
@@ -88,6 +155,7 @@ During the semester, there may be days during which the class will not meet due 
 
 ## Module-Level Roadmap
 The course is organized into high-level phases. Specific dates and assignments will be announced in class and on Canvas.
+*(Note: This roadmap is subject to change based on course progress and instructional needs.)*
 
 - **Phase 1: Foundation (AI Data Analytics Workspace)**
   - Introduction, AI in Data Analysis, and Workspace Setup (Colab, Drive, GitHub).

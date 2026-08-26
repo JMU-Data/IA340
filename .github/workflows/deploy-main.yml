@@ -12,13 +12,13 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@v4
 
       - name: Set production baseurl
         run: echo 'baseurl: "/IA340"' >> ./docs/_config.yml
 
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1
+        uses: actions/jekyll-build-pages@v1
         with:
           source: ./docs/
           destination: ./_site

@@ -17,11 +17,135 @@ title: "Lab 1: GitHub Account Verification - IA 340"
 **Submission Location:** Canvas
 
 ## What is GitHub?
-GitHub is a Git-based platform for version control, code sharing, collaboration, and professional technical portfolios.
+
+**Version control** is a system that records every change made to a file (or set of files) over time, so you can recall specific versions later and collaborate without overwriting each other's work. **GitHub** is the world's most popular platform built on top of Git — think of it as Google Docs with a complete, permanent edit history, but designed for code, data, and analysis notebooks.
+
+<!-- ── Comparison diagram ─────────────────────────────────────── -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; font-size: 0.92em;">
+
+  <div style="background: #fff8f0; border: 1px solid #f0c070; border-radius: 8px; padding: 1rem;">
+    <div style="font-weight: 700; color: #b45309; margin-bottom: 0.6rem;">❌ Without Version Control</div>
+    <div style="font-family: monospace; color: #57606a; line-height: 1.8;">
+      analysis_final.py<br>
+      analysis_final_v2.py<br>
+      analysis_FINAL_USE_THIS.py<br>
+      analysis_fix_Apr7.py<br>
+      <span style="color:#b45309;">😰 Which one is the real final?</span>
+    </div>
+  </div>
+
+  <div style="background: #f0fdf4; border: 1px solid #6ee7b7; border-radius: 8px; padding: 1rem;">
+    <div style="font-weight: 700; color: #065f46; margin-bottom: 0.6rem;">✅ With Version Control (GitHub)</div>
+    <div style="font-family: monospace; color: #57606a; line-height: 1.8;">
+      analysis.py &nbsp;<span style="color:#065f46;">← one file</span><br>
+      <span style="color:#6b7280;">↳ commit: "initial draft"</span><br>
+      <span style="color:#6b7280;">↳ commit: "fix null values"</span><br>
+      <span style="color:#6b7280;">↳ commit: "add visualization"</span><br>
+      <span style="color:#065f46;">😌 Full history, always clean.</span>
+    </div>
+  </div>
+
+</div>
+
+### Key Concepts at a Glance
+
+<!-- ── Key concept cards ──────────────────────────────────────── -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin: 1rem 0 1.5rem;">
+
+  <div style="background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 0.9rem; text-align: center;">
+    <div style="font-size: 1.6rem;">🗂️</div>
+    <div style="font-weight: 700; margin: 0.3rem 0 0.2rem;">Repository</div>
+    <div style="font-size: 0.85em; color: #57606a;">A project folder in the cloud that stores all your files <em>and</em> their full change history.</div>
+  </div>
+
+  <div style="background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 0.9rem; text-align: center;">
+    <div style="font-size: 1.6rem;">💾</div>
+    <div style="font-weight: 700; margin: 0.3rem 0 0.2rem;">Commit</div>
+    <div style="font-size: 0.85em; color: #57606a;">A labeled snapshot of your changes — like pressing "Save" with a descriptive note.</div>
+  </div>
+
+  <div style="background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 0.9rem; text-align: center;">
+    <div style="font-size: 1.6rem;">🌿</div>
+    <div style="font-weight: 700; margin: 0.3rem 0 0.2rem;">Branch</div>
+    <div style="font-size: 0.85em; color: #57606a;">A safe copy of your project where you can experiment without affecting the main version.</div>
+  </div>
+
+  <div style="background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 0.9rem; text-align: center;">
+    <div style="font-size: 1.6rem;">🔀</div>
+    <div style="font-weight: 700; margin: 0.3rem 0 0.2rem;">Pull Request</div>
+    <div style="font-size: 0.85em; color: #57606a;">A request to merge your branch back in — where review and feedback happen.</div>
+  </div>
+
+</div>
+
+**Why does IA 340 use GitHub?**  
+This course hosts all lab instructions, Colab notebooks, and course materials on GitHub. As you progress through the semester, you will submit analysis notebooks, share code, and collaborate using the same tools used by data professionals.
+
+### The Workflow You'll Use This Semester
+
+You don't need to master this on Day 1 — but here's the flow you'll become familiar with:
+
+<!-- ── Workflow pipeline ───────────────────────────────────────── -->
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 1rem 0 1.5rem; font-size: 0.88em;">
+
+  <div style="background: #dbeafe; border: 1px solid #93c5fd; border-radius: 6px; padding: 0.5rem 0.8rem; text-align: center; min-width: 90px;">
+    <div style="font-size: 1.1rem;">✏️</div>
+    <div style="font-weight: 600; color: #1e40af;">Make Changes</div>
+    <div style="color: #3b82f6; font-size: 0.82em;">edit your notebook</div>
+  </div>
+  <div style="color: #9ca3af; font-size: 1.2rem; font-weight: 300;">→</div>
+
+  <div style="background: #ede9fe; border: 1px solid #c4b5fd; border-radius: 6px; padding: 0.5rem 0.8rem; text-align: center; min-width: 90px;">
+    <div style="font-size: 1.1rem;">🌿</div>
+    <div style="font-weight: 600; color: #5b21b6;">Branch</div>
+    <div style="color: #7c3aed; font-size: 0.82em;">safe workspace</div>
+  </div>
+  <div style="color: #9ca3af; font-size: 1.2rem; font-weight: 300;">→</div>
+
+  <div style="background: #fef9c3; border: 1px solid #fde047; border-radius: 6px; padding: 0.5rem 0.8rem; text-align: center; min-width: 90px;">
+    <div style="font-size: 1.1rem;">🔀</div>
+    <div style="font-weight: 600; color: #713f12;">Pull Request</div>
+    <div style="color: #92400e; font-size: 0.82em;">propose changes</div>
+  </div>
+  <div style="color: #9ca3af; font-size: 1.2rem; font-weight: 300;">→</div>
+
+  <div style="background: #dcfce7; border: 1px solid #86efac; border-radius: 6px; padding: 0.5rem 0.8rem; text-align: center; min-width: 90px;">
+    <div style="font-size: 1.1rem;">👁️</div>
+    <div style="font-weight: 600; color: #14532d;">Preview</div>
+    <div style="color: #166534; font-size: 0.82em;">see it live</div>
+  </div>
+  <div style="color: #9ca3af; font-size: 1.2rem; font-weight: 300;">→</div>
+
+  <div style="background: #fee2e2; border: 1px solid #fca5a5; border-radius: 6px; padding: 0.5rem 0.8rem; text-align: center; min-width: 90px;">
+    <div style="font-size: 1.1rem;">✅</div>
+    <div style="font-weight: 600; color: #7f1d1d;">Review</div>
+    <div style="color: #991b1b; font-size: 0.82em;">instructor check</div>
+  </div>
+  <div style="color: #9ca3af; font-size: 1.2rem; font-weight: 300;">→</div>
+
+  <div style="background: #f0fdf4; border: 2px solid #4ade80; border-radius: 6px; padding: 0.5rem 0.8rem; text-align: center; min-width: 90px;">
+    <div style="font-size: 1.1rem;">🎉</div>
+    <div style="font-weight: 700; color: #14532d;">Merged!</div>
+    <div style="color: #166534; font-size: 0.82em;">published</div>
+  </div>
+
+</div>
+
+**For now, all you need is a GitHub account.** The rest will be introduced step by step.
 
 Throughout this course, we will use two distinct platforms:
-- **GitHub** = technical work / code / collaboration
-- **Canvas** = official submission / gradebook / deadline authority
+
+<!-- ── Platform comparison ────────────────────────────────────── -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 0.75rem 0 1.25rem; font-size: 0.92em;">
+  <div style="background: #f6f8fa; border-left: 4px solid #24292f; border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;">
+    <div style="font-weight: 700; margin-bottom: 0.25rem;">🐙 GitHub</div>
+    <div style="color: #57606a;">Technical work · code · notebooks · collaboration</div>
+  </div>
+  <div style="background: #f6f8fa; border-left: 4px solid #e52030; border-radius: 0 6px 6px 0; padding: 0.75rem 1rem;">
+    <div style="font-weight: 700; margin-bottom: 0.25rem;">🎓 Canvas</div>
+    <div style="color: #57606a;">Official submission · gradebook · deadline authority</div>
+  </div>
+</div>
 
 Your first task is to ensure you have a working GitHub account and to share your username with the instructor so you can be added to the course organization (`JMU-Data`).
 
@@ -51,5 +175,5 @@ Your GitHub username and profile will be visible to other students in the course
 ---
 
 <div style="margin-top: 2rem;">
-  <a href="../../modules/module-1/">← Return to Module 1</a> | <a href="../../">Course Home</a>
+  <a href="{{ site.baseurl }}/modules/module-1/">← Return to Module 1</a> | <a href="{{ site.baseurl }}/">Course Home</a>
 </div>

@@ -175,5 +175,5 @@ The course is organized into high-level phases. Specific dates and assignments w
 ---
 
 <div style="margin-top: 2rem;">
-  <a href="../../">← Return to Course Home</a> | <a href="../../modules/module-1/">Go to Module 1 →</a>
+  <a href="{{ site.baseurl }}/">← Return to Course Home</a> | <a href="{{ site.baseurl }}/modules/module-1/">Go to Module 1 →</a>
 </div>

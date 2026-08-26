@@ -6,9 +6,6 @@ on:
       - reopened
       - synchronize
       - closed
-concurrency:
-  group: pr-preview-${{ github.event.number }}
-  cancel-in-progress: true
 jobs:
   build-and-preview:
     runs-on: ubuntu-latest

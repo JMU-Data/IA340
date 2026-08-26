@@ -17,7 +17,25 @@ title: "Lab 1: GitHub Account Verification - IA 340"
 **Submission Location:** Canvas
 
 ## What is GitHub?
-GitHub is a Git-based platform for version control, code sharing, collaboration, and professional technical portfolios.
+
+**Version control** is a system that records every change made to a file (or set of files) over time, so you can recall specific versions later and collaborate without overwriting each other's work.
+
+**GitHub** is the most widely used cloud platform built on top of Git — an open-source version control tool. Think of GitHub like Google Docs with a complete, permanent edit history — except designed for code, data, and analysis notebooks. Every change is saved as a *commit*, and the full history of a project lives in a **repository** (repo).
+
+In data science and intelligence analysis work, version control matters because:
+- Your analysis steps are documented and reproducible.
+- You can experiment safely (without breaking the "working" version).
+- Collaborators (or future-you) can trace exactly what changed and why.
+
+**Why does IA 340 use GitHub?**  
+This course hosts all lab instructions, Colab notebooks, and course materials on GitHub. As you progress through the semester, you will submit analysis notebooks, share code, and collaborate using the same tools used by data professionals. Getting comfortable with GitHub now is your first step toward working like a data analyst.
+
+**A preview of what you'll do later in the course:**  
+You don't need to worry about these details yet — but by the end of the semester, you'll be familiar with this flow:
+
+> **Make changes** → save to a **branch** → open a **pull request** → preview your work → instructor **review / validation** → merge
+
+For now, all you need is a GitHub account.
 
 Throughout this course, we will use two distinct platforms:
 - **GitHub** = technical work / code / collaboration

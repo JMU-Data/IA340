@@ -147,15 +147,31 @@ Throughout this course, we will use two distinct platforms:
   </div>
 </div>
 
-## Part 2: Google Account & AI Pro Setup
+<div style="background: #f0f6fc; border-left: 4px solid #0969da; border-radius: 6px; padding: 1.2rem 1.5rem; margin: 1.5rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="font-weight: 700; color: #0969da; font-size: 1.05em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+    <span>📢 Policy Update & Clarification: Google AI Pro is Strictly Optional</span>
+  </div>
+  <p style="margin: 0 0 0.75rem 0; font-size: 0.95em; color: #24292f; line-height: 1.6;">
+    Following our in-class walkthrough, please note this updated course policy regarding the Google AI Pro student offer:
+  </p>
+  <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.92em; color: #57606a; line-height: 1.6;">
+    <li><strong style="color: #24292f;">Zero Grade Impact:</strong> Whether you activate the AI Pro offer or not will <strong>never affect your grade</strong> in IA 340. All course labs, exercises, and final projects are fully supported using standard access without any paid tier.</li>
+    <li><strong style="color: #24292f;">Payment Information:</strong> The AI Pro student promotion requires entering personal payment/credit card information for post-trial auto-renewal. Financial decisions are strictly your personal choice.</li>
+    <li><strong style="color: #24292f;">Document Privacy & Verification Warning:</strong> During identity verification (SheerID), you may be prompted to upload verification documents. <strong>We strongly advise against uploading sensitive personal records such as official academic transcripts.</strong> If you choose to verify, you should at most upload a class schedule, and avoid sharing any sensitive documents. Due to these requirements, you do <strong>not</strong> need to apply for AI Pro.</li>
+    <li><strong style="color: #24292f;">JMU Google Account Remains Required:</strong> You <strong>must</strong> still have an active Google account associated with your official James Madison University email (<code>@dukes.jmu.edu</code> or <code>@jmu.edu</code>) to access Google Colab, Google Drive, and course datasets.</li>
+  </ul>
+</div>
 
-In this course, you will be heavily utilizing AI tools to assist with data mining and analysis. Google currently offers a 1-year free student discount for their AI Pro plan (Gemini Advanced). 
+## Part 2: Google Account & AI Tools
 
-You will need to associate your **JMU email address** with a Google account to apply for this student offer.
+In this course, we will utilize cloud notebooks and AI-assisted workflows for data mining.
+
+- **Google Account (Required):** You must create or link a Google account using your **James Madison University email address** (`@dukes.jmu.edu` or `@jmu.edu`). This account is required to run Google Colab notebooks, access shared datasets on Google Drive, and submit technical labs.
+- **Google AI Pro / Gemini Advanced (Optional Recommendation):** You may optionally explore the 1-year free student offer if you wish, but it is **not required**, requires payment information, and has **zero impact on your grade**.
 
 ## Part 3: Coursera & Google AI Professional Certificate
 
-As part of the course curriculum, we will be utilizing the Google AI Professional Certificate program hosted on Coursera. You will join the JMU learning program to access this content.
+As part of the course curriculum, we will be utilizing the Google AI Professional Certificate program hosted on Coursera. You will join the JMU learning program using your JMU email to access this content.
 
 ## Instructions
 
@@ -165,12 +181,14 @@ Please complete the following setup steps during Week 1:
 - **Create or Log In to GitHub:** Go to [GitHub.com](https://github.com/) and create an account (or log in if you have one). *Note: You are not required to use your JMU institutional email for GitHub, but you may if you prefer.*
 - **Locate Your Profile URL:** Go to your profile page and copy the URL (e.g., `https://github.com/your-username`).
 
-### 2. Google Account & Gemini Advanced (AI Pro)
-- **Create/Link Google Account:** Use your **JMU email address** (`@dukes.jmu.edu` or `@jmu.edu`) to create or associate a Google account.
-- **Apply for AI Pro Student Offer:** Visit the [Google Gemini Student Offer page](https://gemini.google/students/) and sign up for the 1-year free trial.
-- ⚠️ **Important Reminder:** Make sure to set a calendar reminder to cancel the subscription before the 1-year mark to avoid being charged!
+### 2. Google Account Setup (Required) & AI Pro (Optional)
+- **Create/Link JMU Google Account (Required):** Ensure you have an active Google account associated with your **JMU email address** (`@dukes.jmu.edu` or `@jmu.edu`). You will use this account throughout the semester for Google Colab and cloud storage.
+- **AI Pro Student Offer (Optional):** If you personally choose to claim the Gemini Advanced student offer, you can visit the [Google Gemini Student Offer page](https://gemini.google/students/). Remember:
+  - *Do NOT upload sensitive documents like official transcripts.* If verification is requested, at most upload a class schedule and avoid submitting sensitive personal records.
+  - *Set a calendar reminder* to cancel before the 1-year trial ends to prevent unintended charges.
+  - *You may completely skip this step without any penalty.*
 
-### 3. Coursera & AI Professional Certificate
+### 3. Coursera & AI Professional Certificate (Required)
 - **Register for Coursera:** Create a Coursera account using your **JMU email address**.
 - **Join the JMU Learning Program:** After creating your account, go to this specific link to enroll in the JMU program: [Google Learning Program for JMU IA Students](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)
 - **Enroll in the Certificate:** Once you have joined the JMU program via the link, enroll in the **Google AI Professional Certificate**.
@@ -181,12 +199,12 @@ Go to the official course Canvas page, navigate to the **Assignments** section, 
 Submit the following in the text box on Canvas to verify completion:
 1. Your GitHub Username (e.g., `janedoe`)
 2. Your GitHub Profile URL (e.g., `https://github.com/janedoe`)
-3. A brief confirmation statement that you have signed up for the Google AI Pro student offer and enrolled in the Coursera JMU AI Certificate Program (e.g., "I have successfully registered for GitHub, applied for the Gemini AI student offer, and enrolled in the Coursera AI Certificate program.")
+3. A brief confirmation statement that you have configured your Google account using your JMU email address (`@dukes.jmu.edu` or `@jmu.edu`) and enrolled in the Coursera JMU AI Certificate Program (e.g., *"I have registered for GitHub, set up my JMU Google account, and enrolled in the Coursera AI Certificate program."*).
 
 *Note: You do not need to create any repositories, write any code, or submit a GitHub repo for this assignment. Further setup will be handled in subsequent weeks.*
 
 ## Privacy Note
-Your GitHub username and profile will be visible to other students in the course organization. Do not put private personal information (like your home address or phone number) in your public GitHub profile.
+Your GitHub username and profile will be visible to other students in the course organization. Do not put private personal information (like your home address or phone number) in your public GitHub profile. Avoid sharing sensitive academic or financial documents during any third-party tool registrations.
 
 ---
 

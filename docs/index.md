@@ -40,7 +40,7 @@ title: "Home - IA 340"
 
   <a href="{{ site.baseurl }}/assignments/github-account-verification/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
     <h3 style="margin-top: 0; color: #8250df; display: flex; align-items: center; gap: 0.5rem;">📝 Week 1 Assignment</h3>
-    <p style="margin-bottom: 0; color: #57606a;">GitHub Account Verification</p>
+    <p style="margin-bottom: 0; color: #57606a;">Account Setup & AI Program Registration</p>
   </a>
 
 </div>

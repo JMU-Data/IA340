@@ -88,9 +88,12 @@ Upon completion of this course, students are expected to:
   </div>
 </div>
 
-## Required Textbook / Resources
-[Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press / Routledge, 2024.](https://www.routledge.com/Social-Data-Analytics-in-the-Cloud-with-AI/Wei-Ye/p/book/9781032306232)
-*(Note: Refer to Canvas for any specific JMU free-access instructions for required materials.)*
+## Required Textbook & Account Setup
+- **Textbook**: [Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press / Routledge, 2024.](https://www.routledge.com/Social-Data-Analytics-in-the-Cloud-with-AI/Wei-Ye/p/book/9781032306232) *(Note: Refer to Canvas for any specific JMU free-access instructions for required materials.)*
+- **Google Account (Required)**: You must use your **James Madison University email address** (`@dukes.jmu.edu` or `@jmu.edu`) to create or link a Google account for accessing Google Colab, Drive, and cloud datasets.
+- **GitHub Account (Required)**: Required for accessing course repositories, lab materials, and submitting technical work.
+- **Coursera JMU AI Program (Required)**: Required for completing the Google AI Professional Certificate component.
+- **Google AI Pro / Gemini Advanced (Optional — Zero Grade Impact)**: Google offers an optional 1-year free student subscription for Gemini Advanced. Because this promotion requires personal payment details and third-party document verification, students are **not required** to sign up, and opting out has **zero impact on your grade**. (If verifying, students are strongly advised not to upload sensitive documents like official academic transcripts).
 
 ## Communication Policy
 - **Primary Contact**: You must use your **JMU student email** to contact the instructor. 

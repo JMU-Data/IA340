@@ -18,7 +18,7 @@
 - **[Course Website](https://jmu-data.github.io/IA340/)**
 - [Syllabus](docs/syllabus/index.md)
 - [Module 1](docs/modules/module-1/index.md)
-- [Lab 1: GitHub Account Verification](docs/assignments/github-account-verification/index.md)
+- [Lab 1: Account Setup & AI Program Registration](docs/assignments/github-account-verification/index.md)
 
 ## Course Overview
 

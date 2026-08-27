@@ -175,7 +175,7 @@ Here is a high-level look at our learning progression this semester:
 </div>
 
 ## Week 1 Action Items
-To get started, you only have one assignment this week. We are using a "just-in-time" onboarding approach, so we will set up Google Cloud and other tools later when we actually need them.
+To get started, you only have one assignment this week. You will set up your GitHub account, link your JMU Google account for Google Colab/Drive, enroll in the Coursera AI Certificate program, and optionally explore the recommended Gemini AI Pro student offer. We are using a "just-in-time" onboarding approach, so we will set up Google Cloud and other tools later when we actually need them.
 
 👉 **[Go to Week 1 Assignment: Account Setup & AI Program Registration]({{ site.baseurl }}/assignments/github-account-verification/)**
 

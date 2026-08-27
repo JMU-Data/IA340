@@ -156,24 +156,29 @@ During the semester, there may be days during which the class will not meet due 
 
 ---
 
-## Module-Level Roadmap
-The course is organized into high-level phases. Specific dates and assignments will be announced in class and on Canvas.
-*(Note: This roadmap is subject to change based on course progress and instructional needs.)*
+## Course Schedule (Fall 2026)
 
-- **Phase 1: Foundation (AI Data Analytics Workspace)**
-  - Introduction, AI in Data Analysis, and Workspace Setup (Colab, Drive, GitHub).
-  - Python basics for data manipulation.
-- **Phase 2: Relational Databases & SQL**
-  - Introduction to relational database/SQL and cloud-based relational database workflows.
-  - Designing relational schemas.
-  - Querying data using SQL and integrating with Python.
-- **Phase 3: NoSQL, Social Media Data & AI**
-  - Introduction to MongoDB for unstructured and semi-structured data.
-  - Social data collection (e.g., via APIs).
-  - GenAI integration, vector embeddings, and advanced querying.
-- **Phase 4: Synthesis & Final Project**
-  - End-to-end data pipeline construction.
-  - Project presentations (subject to available time and instructor decision).
+*Schedule updated: August 27, 2026*
+
+| Week | Dates | Topic | Key Concepts & Hands-on Activities | Notes / Milestones |
+|:---:|:---|:---|:---|:---|
+| **Week 1** | Aug 24–28 | Introduction & Account Setup | • Course introduction<br>• Required account and environment setup | Classes begin Wednesday, Aug 26 |
+| **Week 2** | Aug 31–Sep 4 | GitHub, Colab & Google Drive Setup | • Create and configure individual GitHub repository<br>• README and Markdown basics<br>• Demonstrate branch / Pull Request / merge workflow<br>• Set up Google Colab & connect to Google Drive<br>• Load sample diamonds dataset<br>• Save and share notebook via GitHub | |
+| **Week 3** | Sep 7–11 | Pandas & Matplotlib Review | • Pandas data analysis<br>• AI-assisted coding and explanation with demo notebook & Colab/Gemini<br>• Matplotlib data visualization using the same dataset | |
+| **Week 4** | Sep 14–18 | Relational Database, Google Cloud & ER Diagram | • Set up a relational database on Google Cloud<br>• Relational database concepts<br>• ER diagrams<br>• Create database tables | |
+| **Week 5** | Sep 21–25 | Database Connection, SQL & Census API | • Connect from Colab to cloud database<br>• Basic SQL queries and `INSERT`<br>• Census API integration<br>• Load API data into the relational database | |
+| **Week 6** | Sep 28–Oct 2 | SQL Analytics & Visualization | • Advanced SQL queries (`JOIN`, `GROUP BY`, aggregation)<br>• Analyze query results with Python/Pandas<br>• Visualization of query results | |
+| **Week 7** | Oct 5–9 | Mini Project | • Students independently identify a dataset<br>• AI-assisted data analysis<br>• Data stored in Google Drive, relational database, or course workflows<br>• Final deliverable: reproducible notebook in student GitHub repo | **Fall Break** begins Oct 7 |
+| **Week 8** | Oct 12–16 | NoSQL & MongoDB | • Relational vs. NoSQL databases<br>• Document database concepts<br>• MongoDB setup<br>• JSON / document structure<br>• Basic MongoDB operations | |
+| **Week 9** | Oct 19–23 | Social Media Data Collection & Document Queries | • Collect Twitter/X or course-provided social media data<br>• Store data in MongoDB<br>• Document queries | |
+| **Week 10** | Oct 26–30 | MongoDB Aggregation & Natural Language Queries | • MongoDB aggregation pipeline<br>• Filtering, grouping, and aggregation<br>• AI / natural-language-assisted queries | |
+| **Week 11** | Nov 2–6 | Large Language Models for Social Media Analysis | • LLM foundations & rationale for text analysis<br>• Prompt engineering fundamentals<br>• Calling LLM API from Python/Colab<br>• Process social-media text (e.g., classification, extraction, sentiment, summarization) | |
+| **Week 12** | Nov 9–13 | Vector Database & RAG | • Embeddings<br>• Vector databases<br>• Semantic search<br>• Retrieval-Augmented Generation (RAG) with social-media text data | |
+| **Week 13** | Nov 16–20 | Dashboard & Natural Language Analytics | • Build analytical dashboards using MongoDB/social-media analysis results<br>• Natural-language-assisted analysis and visualization | |
+| **Week 14** | Nov 23–27 | Thanksgiving Holiday | *No Class* | **Thanksgiving Holiday** (No Class) |
+| **Week 15** | Nov 30–Dec 4 | Gemini & NotebookLM | • Gemini and NotebookLM workflows<br>• Integrate generative AI tools with data-analysis workflows | |
+| **Week 16** | Dec 7–11 | Final Project Week | • Standardized social-media analytical pipeline:<br>&nbsp;&nbsp;1. Collect Twitter/X/social-media data<br>&nbsp;&nbsp;2. Store data in MongoDB<br>&nbsp;&nbsp;3. Perform database/data analysis<br>&nbsp;&nbsp;4. Apply LLM-assisted text analysis<br>&nbsp;&nbsp;5. Build a shareable analytical dashboard<br>&nbsp;&nbsp;6. Maintain project code/docs in GitHub | Final Project in progress |
+| **Week 17** | Dec 12–18 | Final Exam Week — Final Project Submission | • Students submit the completed Final Project<br>• No final presentation | **Final Project Due**<br>*(No late submissions during exam week)* |
 
 ---
 

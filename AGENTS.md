@@ -11,6 +11,11 @@ This file defines the strict rules and workflows for any AI Agents (e.g., Antigr
 - **Antigravity (Primary Agent)**: Responsible for course material design, lab creation, markdown formatting for GitHub Pages, and PR management.
 - **Other Agents**: Do not execute tasks unless explicitly mentioned or delegated. (Note: Automatic Codex PR reviews are NOT required in this repository).
 
+### Teaching-Coding Tools Usage Boundary (CRITICAL)
+- **Tool Purpose**: The `teaching-coding` folder / repository (`xbwei/jmu-teaching-coding`) contains Python scripts and automation tools for managing Canvas LMS, grading validation, and tracking student performance.
+- **Role Boundary (User, NOT Developer)**: In the context of IA340 and course management, Antigravity acts strictly as an **end-user / runner** of these scripts, **NOT their developer**. Antigravity will be instructed by the Instructor on how to run them when needed, but must NOT attempt to develop, refactor, or modify the `teaching-coding` code here.
+- **Privacy & Isolation**: Tools from `teaching-coding`, student grades, LMS tokens, and grading outputs belong strictly to the private instructor environment and must NEVER be committed to or referenced in this public repository (`JMU-Data/IA340`).
+
 ## 3. Strict Pull Request (PR) Workflow & Self-Auditing
 - **NO DIRECT COMMITS TO MAIN.**
 - Every change must be made on a new branch (e.g., `feat/week1-lab`, `update/syllabus`).

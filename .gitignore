@@ -58,3 +58,7 @@ _site/
 *credentials*.json
 client_secrets.json
 .gcp/
+
+# Private instructor tooling
+teaching-coding/
+*teaching-coding*

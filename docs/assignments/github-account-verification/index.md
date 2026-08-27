@@ -157,7 +157,7 @@ Throughout this course, we will use two distinct platforms:
   <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.92em; color: #57606a; line-height: 1.6;">
     <li><strong style="color: #24292f;">Zero Grade Impact:</strong> Whether you activate the AI Pro offer or not will <strong>never affect your grade</strong> in IA 340. All course labs, exercises, and final projects are fully supported using standard access without any paid tier.</li>
     <li><strong style="color: #24292f;">Payment Information:</strong> The AI Pro student promotion requires entering personal payment/credit card information for post-trial auto-renewal. Financial decisions are strictly your personal choice.</li>
-    <li><strong style="color: #24292f;">Document Privacy & Verification Warning:</strong> During identity verification (SheerID), you may be prompted to upload verification documents. <strong>We strongly advise against uploading sensitive personal records such as official academic transcripts.</strong> If you choose to verify, at most submit a non-sensitive document (e.g., a current class schedule). Due to these requirements, you do <strong>not</strong> need to apply for AI Pro.</li>
+    <li><strong style="color: #24292f;">Document Privacy & Verification Warning:</strong> During identity verification (SheerID), you may be prompted to upload verification documents. <strong>We strongly advise against uploading sensitive personal records such as official academic transcripts.</strong> If you choose to verify, you should at most upload a class schedule, and avoid sharing any sensitive documents. Due to these requirements, you do <strong>not</strong> need to apply for AI Pro.</li>
     <li><strong style="color: #24292f;">JMU Google Account Remains Required:</strong> You <strong>must</strong> still have an active Google account associated with your official James Madison University email (<code>@dukes.jmu.edu</code> or <code>@jmu.edu</code>) to access Google Colab, Google Drive, and course datasets.</li>
   </ul>
 </div>
@@ -184,7 +184,7 @@ Please complete the following setup steps during Week 1:
 ### 2. Google Account Setup (Required) & AI Pro (Optional)
 - **Create/Link JMU Google Account (Required):** Ensure you have an active Google account associated with your **JMU email address** (`@dukes.jmu.edu` or `@jmu.edu`). You will use this account throughout the semester for Google Colab and cloud storage.
 - **AI Pro Student Offer (Optional):** If you personally choose to claim the Gemini Advanced student offer, you can visit the [Google Gemini Student Offer page](https://gemini.google/students/). Remember:
-  - *Do NOT upload sensitive documents like official transcripts.* A class schedule is sufficient if verification is requested.
+  - *Do NOT upload sensitive documents like official transcripts.* If verification is requested, at most upload a class schedule and avoid submitting sensitive personal records.
   - *Set a calendar reminder* to cancel before the 1-year trial ends to prevent unintended charges.
   - *You may completely skip this step without any penalty.*
 

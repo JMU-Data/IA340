@@ -93,7 +93,7 @@ Upon completion of this course, students are expected to:
 - **Google Account (Required)**: You must use your **James Madison University email address** (`@dukes.jmu.edu` or `@jmu.edu`) to create or link a Google account for accessing Google Colab, Drive, and cloud datasets.
 - **GitHub Account (Required)**: Required for accessing course repositories, lab materials, and submitting technical work.
 - **Coursera JMU AI Program (Required)**: Required for completing the Google AI Professional Certificate component.
-- **Google AI Pro / Gemini Advanced (Recommended)**: Google offers an optional 1-year free student subscription for Gemini Advanced. While recommended for enhanced AI assistance, it is **not mandatory**.
+- **Google AI Pro / Gemini Advanced (Optional — Zero Grade Impact)**: Google offers an optional 1-year free student subscription for Gemini Advanced. Because this promotion requires personal payment details and third-party document verification, students are **not required** to sign up, and opting out has **zero impact on your grade**. (If verifying, students are strongly advised not to upload sensitive documents like official academic transcripts).
 
 ## Communication Policy
 - **Primary Contact**: You must use your **JMU student email** to contact the instructor. 

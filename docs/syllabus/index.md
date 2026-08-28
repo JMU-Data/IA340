@@ -95,10 +95,10 @@ Upon completion of this course, students are expected to:
 - **Coursera JMU AI Program (Required)**: Required for completing the Google AI Professional Certificate component.
 - **Google AI Pro / Gemini Advanced (Optional — Zero Grade Impact)**: Google offers an optional 1-year free student subscription for Gemini Advanced. Because this promotion requires personal payment details and third-party document verification, students are **not required** to sign up, and opting out has **zero impact on your grade**. (If verifying, students are strongly advised not to upload sensitive documents like official academic transcripts).
 
-## Communication Policy
-- **Primary Contact**: You must use your **JMU student email** to contact the instructor. 
-- **Canvas Usage**: Canvas is strictly used for grades, official announcements, and basic logistics.
-- **DO NOT** use the Canvas messaging system to contact the instructor. It will not be monitored.
+## Email Communication
+- **Primary Contact**: Emailing the instructor from your **JMU student account** is the primary method of communication.
+- **Response Time**: The instructor typically responds within **1–2 business days**. Emails received after 5:00 PM will be treated as received on the next business day. The instructor does not normally respond to emails on weekends or JMU holidays.
+- **Canvas Usage**: Canvas is strictly used for grades, official announcements, and basic course logistics. **Do not use Canvas messaging** to contact the instructor; it is not regularly monitored.
 
 ## AI Policy
 **AI is part of this course, and may be expected or required in specific assignments.** 
@@ -127,19 +127,23 @@ You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist wi
 - **D+**: 67.00 – 69.99% | **D**: 64.00 – 66.99% | **D-**: 61.00 – 63.99%
 - **F**: < 61%
 
+## Technical Assignment Support
+Technical assignments may require troubleshooting. Start assignments early and allow sufficient time to resolve technical issues. Requests for assistance made shortly before a deadline may not receive a response before the deadline and do not automatically excuse late submissions.
+
 ## Resubmission / Late Work / Project Policy
 - **Resubmission**: You are allowed to resubmit assignments multiple times *before* the deadline. Only the final submission made prior to the deadline will be graded.
 - **Late Work**: Late submissions will incur a **10% penalty per day**, but no more than 40% of the total amount, unless prior arrangements have been made. 
 - **Final Exam Week**: **No late submissions** will be accepted during the final exam week.
 - **Class Projects**: Late submissions/resubmissions of the class projects will **not** be accepted.
 
-## Attendance / Excused Absence
+## Attendance & Registered Section Policy
 Attendance is mandatory and constitutes a significant portion (20%) of your grade. Attendance will be taken at every class meeting. Absence, early leaving without permission, being late more than 20 minutes, or disrespectful/disturbing behavior will result in 0 points each time. Being late more than 5 minutes will result in a late penalty.
 
-In the following situations, absences can be excused:
-- Sickness or health issues.
-- Mandatory activities with written documents.
-- Other situations with the instructor's approval.
+- **Registered Section Attendance**: Students must attend the course section in which they are officially registered unless the instructor approves an exception in advance.
+- **Excused Absences**: In the following situations, absences can be excused:
+  - Sickness or health issues.
+  - Mandatory activities with written documents.
+  - Other situations with the instructor's approval.
 
 ## Academic Integrity / Honor Code
 All students are expected to adhere to the [JMU Honor Code](https://www.jmu.edu/honorcode/). While AI use is permitted and encouraged as defined in the AI policy, plagiarizing another student's work, fabricating data, or presenting unverified AI output as original thought without proper testing and explanation is strictly prohibited and will be reported to the Honor Council.

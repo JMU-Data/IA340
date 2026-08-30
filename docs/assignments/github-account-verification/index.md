@@ -10,6 +10,8 @@ title: "Lab 1: Account Setup & AI Program Registration - IA 340"
   <a href="{{ site.baseurl }}/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
   <a href="{{ site.baseurl }}/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
   <a href="{{ site.baseurl }}/assignments/github-account-verification/" style="text-decoration: none; font-weight: 600; color: #0969da;">Lab 1</a>
+  <a href="{{ site.baseurl }}/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
 </nav>
 
 **Target Date:** Friday, August 28, 2026  

@@ -1,0 +1,89 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "lab-2",
+      "title": "Lab 2 \u2014 Building Your AI Data Analytics Workspace: Drive, Colab, GitHub, and Canvas",
+      "assignment_group": "Labs",
+      "points": 100.0,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_url"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-2/"
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "lab-2-rubric",
+      "title": "Lab 2 \u2014 Building Your AI Data Analytics Workspace",
+      "assignment": "lab-2",
+      "use_for_grading": true,
+      "scoring": "free_form",
+      "criteria": [
+        {
+          "key": "final-github-notebook-and-submission",
+          "description": "Final GitHub notebook & submission",
+          "points": 20.0,
+          "ratings": []
+        },
+        {
+          "key": "google-drive-data-access-and-load",
+          "description": "Google Drive data access & load",
+          "points": 20.0,
+          "ratings": []
+        },
+        {
+          "key": "aggregation-analysis",
+          "description": "Aggregation analysis",
+          "points": 20.0,
+          "ratings": []
+        },
+        {
+          "key": "chart-visualization",
+          "description": "Chart / visualization",
+          "points": 20.0,
+          "ratings": []
+        },
+        {
+          "key": "markdown-explanation-and-ai-verification",
+          "description": "Markdown explanation & AI verification",
+          "points": 20.0,
+          "ratings": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "module-2",
+      "title": "Module 2",
+      "published": true,
+      "items": [
+        {
+          "key": "lecture",
+          "type": "ExternalUrl",
+          "title": "Lecture \u2014 Building Your AI Data Analytics Workspace",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/modules/module-2/",
+          "assignment": null
+        },
+        {
+          "key": "lab-2",
+          "type": "Assignment",
+          "title": "Lab 2 \u2014 Building Your AI Data Analytics Workspace: Drive, Colab, GitHub, and Canvas",
+          "published": true,
+          "external_url": null,
+          "assignment": "lab-2"
+        }
+      ]
+    }
+  ]
+}

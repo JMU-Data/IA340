@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <text x="70" y="82" font-family="Arial,Helvetica,sans-serif" font-size="38" font-weight="700" fill="#1f2937">Why Google Drive for IA340?</text>
+  <text x="70" y="122" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#6b7280">Start with a simple working-data layer; scale up later.</text>
+
+  <g font-family="Arial,Helvetica,sans-serif">
+    <rect x="90" y="190" width="450" height="330" rx="28" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <circle cx="315" cy="260" r="42" fill="#dbeafe"/>
+    <text x="315" y="272" text-anchor="middle" font-size="30" font-weight="700" fill="#1d4ed8">D</text>
+    <text x="315" y="330" text-anchor="middle" font-size="30" font-weight="700" fill="#111827">Google Drive</text>
+    <text x="315" y="374" text-anchor="middle" font-size="21" fill="#334155">simple • persistent • familiar</text>
+    <text x="315" y="410" text-anchor="middle" font-size="21" fill="#334155">personal • student • small team</text>
+    <rect x="160" y="450" width="310" height="46" rx="16" fill="#ffffff" stroke="#bfdbfe"/>
+    <text x="315" y="480" text-anchor="middle" font-size="20" font-weight="700" fill="#1d4ed8">Week 2 working data</text>
+
+    <rect x="660" y="190" width="450" height="330" rx="28" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="885" cy="260" r="42" fill="#e2e8f0"/>
+    <text x="885" y="272" text-anchor="middle" font-size="28" font-weight="700" fill="#334155">DL</text>
+    <text x="885" y="330" text-anchor="middle" font-size="30" font-weight="700" fill="#111827">Enterprise Data Lake</text>
+    <text x="885" y="374" text-anchor="middle" font-size="21" fill="#334155">scale • pipelines • governance</text>
+    <text x="885" y="410" text-anchor="middle" font-size="21" fill="#334155">security • lifecycle • automation</text>
+    <rect x="745" y="450" width="280" height="46" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="885" y="480" text-anchor="middle" font-size="20" font-weight="700" fill="#475569">Enterprise analytics</text>
+  </g>
+
+  <path d="M545 355 H650" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+  <path d="M650 355 l-18 -11 v22 z" fill="#2563eb"/>
+  <text x="598" y="332" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#64748b">later</text>
+
+  <rect x="240" y="548" width="720" height="88" rx="20" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="600" y="584" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#1d4ed8">
+    <tspan x="600" dy="0">Google Drive is simple for Week 2</tspan>
+    <tspan x="600" dy="30">— not an enterprise data lake.</tspan>
+  </text>
+</svg>

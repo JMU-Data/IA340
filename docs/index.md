@@ -10,6 +10,8 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
   <a href="{{ site.baseurl }}/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
   <a href="{{ site.baseurl }}/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+  <a href="{{ site.baseurl }}/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
 </nav>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; color: #57606a; font-weight: 500; font-size: 0.9em; margin-bottom: 1.5rem;">
@@ -39,8 +41,18 @@ title: "Home - IA 340"
   </a>
 
   <a href="{{ site.baseurl }}/assignments/github-account-verification/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
-    <h3 style="margin-top: 0; color: #8250df; display: flex; align-items: center; gap: 0.5rem;">📝 Week 1 Assignment</h3>
+    <h3 style="margin-top: 0; color: #8250df; display: flex; align-items: center; gap: 0.5rem;">📝 Lab 1</h3>
     <p style="margin-bottom: 0; color: #57606a;">Account Setup & AI Program Registration</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/modules/module-2/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #0969da; display: flex; align-items: center; gap: 0.5rem;">💻 Module 2</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Building Your AI Data Analytics Workspace (Slide Deck)</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/lab-2/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #1a7f37; display: flex; align-items: center; gap: 0.5rem;">🔬 Lab 2</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Google Drive → Colab + Gemini → GitHub → Canvas</p>
   </a>
 
 </div>

@@ -10,6 +10,8 @@ title: "Module 1 - IA 340"
   <a href="{{ site.baseurl }}/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
   <a href="{{ site.baseurl }}/modules/module-1/" style="text-decoration: none; font-weight: 600; color: #0969da;">Module 1</a>
   <a href="{{ site.baseurl }}/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+  <a href="{{ site.baseurl }}/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
 </nav>
 
 Welcome to IA 340! In this first week, we will introduce the core concepts of the course, discuss the evolving landscape of AI in data analysis, and set the foundation for your analytical workspace.

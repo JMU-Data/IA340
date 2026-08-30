@@ -51,11 +51,10 @@ IA340
 
 in **My Drive** of the personal Google account you use for IA340.
 
-Next, download the Week 2 dataset from the public IA340 repository:
+Next, download the Week 2 dataset from the course repository:
 
-[Download `diamonds.csv`](https://raw.githubusercontent.com/JMU-Data/IA340/main/docs/assets/data/diamonds.csv)
-
-<!-- publication contract: before student release, Antigravity must publish the Drive source assets/diamonds.csv to JMU-Data/IA340 at docs/assets/data/diamonds.csv -->
+👉 **[Download `diamonds.csv`]({{ site.baseurl }}/assets/data/diamonds.csv)**
+*(Alternate direct raw URL: `https://raw.githubusercontent.com/JMU-Data/IA340/main/docs/assets/data/diamonds.csv`)*
 
 Upload the downloaded file into your Drive folder so you have:
 

@@ -1,5 +1,7 @@
 # IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
 
+# This is a test 
+
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; color: #57606a; font-weight: 500; font-size: 0.9em; margin-bottom: 1.5rem;">
   <span>James Madison University</span>
   <span style="color: #d0d7de;">&bull;</span>

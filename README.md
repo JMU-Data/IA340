@@ -19,6 +19,8 @@
 - [Syllabus](docs/syllabus/index.md)
 - [Module 1](docs/modules/module-1/index.md)
 - [Lab 1: Account Setup & AI Program Registration](docs/assignments/github-account-verification/index.md)
+- [Module 2](docs/modules/module-2/index.md)
+- [Lab 2: Building Your AI Data Analytics Workspace](docs/assignments/lab-2/index.md)
 
 ## Course Overview
 

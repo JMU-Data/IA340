@@ -22,7 +22,7 @@
 {"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Lab 2: Building Your AI Data Analytics Workspace - IA 340","url":"https://jmu-data.github.io/IA340/assignments/lab-2/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=5d5e75af1840aab93f443a8fc3e3cc3926c69e8f">
+    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=036104f5b5f2a3d0766fb080c922248cc50dd1e1">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -313,7 +313,7 @@ Briefly explain how you used Gemini and how you verified or revised its output.
   <p><strong>DO NOT SKIP THIS STEP.</strong> The first GitHub save contained an empty or nearly empty notebook. Your final save must contain the data-loading output, aggregation, chart, and Markdown.</p>
 </blockquote>
 
-<p>For this lab, <strong>do not create a branch or pull request</strong>. Monday’s activity taught the branch/PR workflow. For the regular data-science notebook workflow, we are keeping delivery simple: save directly from Colab to <code class="language-plaintext highlighter-rouge">main</code>.</p>
+<p>For the notebook itself, <strong>do not create a branch or pull request</strong>. Monday’s in-class activity taught and evaluated the branch/PR workflow on <code class="language-plaintext highlighter-rouge">README.md</code>. For the regular data-science notebook workflow, we are keeping delivery simple: save directly from Colab to <code class="language-plaintext highlighter-rouge">main</code> as <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code>.</p>
 
 <p>Colab may keep a working notebook copy in Google Drive, but <strong>GitHub is not automatically synchronized</strong>. Only an explicit GitHub save updates the version that will be graded.</p>
 
@@ -331,31 +331,74 @@ Briefly explain how you used Gemini and how you verified or revised its output.
 
 <hr />
 
-<h1 id="part-9--submit-the-direct-notebook-url-in-canvas">Part 9 — Submit the Direct Notebook URL in Canvas</h1>
+<h1 id="part-9--submit-your-assigned-private-repository-url-in-canvas">Part 9 — Submit Your Assigned Private Repository URL in Canvas</h1>
 
-<p>Submit the <strong>direct GitHub URL to the notebook</strong>, not the repository home page.</p>
+<p>Submit your <strong>assigned private IA340 GitHub repository root URL</strong> in Canvas:</p>
 
-<p>It should look like:</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/JMU-Data/&lt;your-assigned-repository&gt;/blob/main/week2_workspace.ipynb
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/JMU-Data/&lt;your-assigned-private-repository&gt;
 </code></pre></div></div>
 
-<p>This makes the exact artifact to be graded unambiguous.</p>
+<blockquote>
+  <p><strong>Submit your assigned private IA340 GitHub repository URL in Canvas. The grader will inspect the required Week 2 evidence inside that repository.</strong></p>
+</blockquote>
+
+<p>Do <strong>not</strong> submit:</p>
+<ul>
+  <li>your personal GitHub profile URL;</li>
+  <li>the direct <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code> blob URL;</li>
+  <li>a Pull Request URL; or</li>
+  <li>the public <code class="language-plaintext highlighter-rouge">JMU-Data/IA340</code> course repository URL.</li>
+</ul>
+
+<h3 id="week-2-evidence-monday-readme-pull-request--wednesday-notebook">Week 2 Evidence: Monday README Pull Request + Wednesday Notebook</h3>
+
+<p>Lab 2 evaluates both components of your Week 2 setup inside your private course repository:</p>
+
+<ol>
+  <li><strong>Monday in-class GitHub activity:</strong> In your assigned private IA340 repository:
+    <ul>
+      <li>create a feature branch;</li>
+      <li>edit <code class="language-plaintext highlighter-rouge">README.md</code>;</li>
+      <li>commit your changes;</li>
+      <li>open a Pull Request into <code class="language-plaintext highlighter-rouge">main</code>;</li>
+      <li>inspect the diff; and</li>
+      <li>merge the Pull Request into <code class="language-plaintext highlighter-rouge">main</code>.</li>
+    </ul>
+
+    <p>Grading checks that at least one qualifying PR modifying <code class="language-plaintext highlighter-rouge">README.md</code> was opened into <code class="language-plaintext highlighter-rouge">main</code> and merged before the deadline. Grading does <strong>not</strong> evaluate README writing quality, PR descriptions, commit messages, or Markdown formatting.</p>
+  </li>
+  <li><strong>Wednesday Google Drive + Colab notebook:</strong> Saved directly to <code class="language-plaintext highlighter-rouge">main/week2_workspace.ipynb</code> from Colab (no notebook PR required).</li>
+</ol>
 
 <hr />
 
 <h1 id="deadline-rule--read-carefully">Deadline Rule — Read Carefully</h1>
 
-<p>Your official completion time is the <strong>later</strong> of:</p>
+<p>Your official completion time is determined by three required timestamps:</p>
 
 <ol>
-  <li>the time you submit the notebook URL in Canvas; and</li>
-  <li>the time of the latest GitHub commit on <code class="language-plaintext highlighter-rouge">main</code> that changes <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code>.</li>
+  <li>The time you submit your private repository URL in Canvas;</li>
+  <li>The time the qualifying Week 2 README Pull Request was merged into <code class="language-plaintext highlighter-rouge">main</code> (<code class="language-plaintext highlighter-rouge">merged_at</code>); and</li>
+  <li>The time of the latest GitHub commit on <code class="language-plaintext highlighter-rouge">main</code> that modifies <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code>.</li>
 </ol>
 
-<p><strong>Both must be at or before the Canvas deadline to be on time.</strong></p>
+<p><strong>All three must be at or before the authoritative Canvas deadline for the lab to be on time.</strong></p>
 
-<p>Example: submitting the Canvas URL before the deadline and then updating the notebook after the deadline counts as a late submission, because the later GitHub notebook update determines the completion time.</p>
+<p>Conceptually:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>completion_time = max(
+  canvas_submission_time,
+  qualifying_readme_pr_merged_time,
+  latest_notebook_commit_time
+)
+</code></pre></div></div>
+
+<p><strong>Important notes:</strong></p>
+<ul>
+  <li>Once a qualifying Week 2 README PR has been merged on time, later unrelated README changes or PRs will not retroactively make Lab 2 late.</li>
+  <li>The notebook completion time is determined by the <strong>latest</strong> commit that modifies <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code>. Saving or updating the notebook after the deadline makes the lab submission late.</li>
+  <li>Submitting the repository URL in Canvas after the deadline also makes the lab submission late.</li>
+</ul>
 
 <p>The normal course late-work policy is applied to that official completion time.</p>
 
@@ -363,52 +406,46 @@ Briefly explain how you used Gemini and how you verified or revised its output.
 
 <h1 id="canvas-rubric--100-points">Canvas Rubric — 100 Points</h1>
 
-<p>The same rubric will be used in Canvas.</p>
+<p>The following five 20-point criteria are used for grading in Canvas:</p>
 
 <table>
   <thead>
     <tr>
       <th>Criterion</th>
       <th style="text-align: right">Points</th>
-      <th>What must be visible in the submitted GitHub notebook</th>
+      <th>Evidence Checked in Submitted Private Repository</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Final GitHub notebook &amp; submission</strong></td>
+      <td><strong>Private IA340 repository submission</strong></td>
       <td style="text-align: right">20</td>
-      <td>Direct notebook URL submitted; completed notebook saved on <code class="language-plaintext highlighter-rouge">main</code>; final GitHub version contains the work to be graded</td>
+      <td>Canvas submission is the student’s assigned private IA340 repository root URL (<code class="language-plaintext highlighter-rouge">https://github.com/JMU-Data/&lt;assigned-repo&gt;</code>); repository belongs to the correct course scope, exists, is accessible to course graders, and follows private repo conventions. Duplicate repository submissions across students are flagged for instructor review.</td>
     </tr>
     <tr>
-      <td><strong>Google Drive data access &amp; load</strong></td>
+      <td><strong>Week 2 README pull-request workflow</strong></td>
       <td style="text-align: right">20</td>
-      <td><code class="language-plaintext highlighter-rouge">diamonds.csv</code> is loaded from the student’s Google Drive <code class="language-plaintext highlighter-rouge">IA340</code> folder; first rows / basic inspection are visible</td>
+      <td>At least one qualifying PR modifying <code class="language-plaintext highlighter-rouge">README.md</code> was opened into <code class="language-plaintext highlighter-rouge">main</code> and merged into <code class="language-plaintext highlighter-rouge">main</code>. (Grading does not evaluate README writing quality, PR description, commit messages, or formatting.)</td>
     </tr>
     <tr>
-      <td><strong>Aggregation analysis</strong></td>
+      <td><strong>Final Week 2 notebook</strong></td>
       <td style="text-align: right">20</td>
-      <td>At least one meaningful aggregation using the diamonds data, with a visible output that the student has checked</td>
+      <td><code class="language-plaintext highlighter-rouge">main/week2_workspace.ipynb</code> exists, is a valid and readable Jupyter notebook, and contains the final saved artifact for grading. (No pull request is required for the notebook.)</td>
     </tr>
     <tr>
-      <td><strong>Chart / visualization</strong></td>
+      <td><strong>Google Drive data load + aggregation</strong></td>
       <td style="text-align: right">20</td>
-      <td>At least one meaningful chart with readable labels/title and visible output</td>
+      <td><strong>10 pts:</strong> <code class="language-plaintext highlighter-rouge">diamonds.csv</code> is loaded from Google Drive / IA340 folder with saved successful evidence.<br /><strong>10 pts:</strong> At least one aggregation is completed with saved non-error output.</td>
     </tr>
     <tr>
-      <td><strong>Markdown explanation &amp; AI verification</strong></td>
+      <td><strong>Chart + Markdown explanation</strong></td>
       <td style="text-align: right">20</td>
-      <td>Markdown explains data source, aggregation, chart, and reflection; student explains how Gemini output was checked/revised</td>
+      <td><strong>10 pts:</strong> At least one chart / visualization is successfully generated with saved output.<br /><strong>10 pts:</strong> Substantive Markdown explanations are present (beyond boilerplate or heading-only text; no semantic writing-quality grading or AI/Gemini mention required).</td>
     </tr>
   </tbody>
 </table>
 
-<p>Suggested Canvas ratings for each 20-point criterion:</p>
-
-<ul>
-  <li><strong>Complete — 20</strong></li>
-  <li><strong>Partial — 10</strong></li>
-  <li><strong>Missing — 0</strong></li>
-</ul>
+<p>Total: <strong>100 Points</strong></p>
 
 <p>Apply the course late-work penalty <strong>after</strong> rubric scoring, using the official completion-time rule above.</p>
 
@@ -418,7 +455,7 @@ Briefly explain how you used Gemini and how you verified or revised its output.
 
 <p>You should be able to repeat this workflow:</p>
 
-<p><strong>public dataset → personal Drive folder → Colab + Gemini → verify/revise analysis → explicit final GitHub save → direct notebook URL → Canvas</strong></p>
+<p><strong>public dataset → personal Drive folder → Colab + Gemini → verify/revise analysis → explicit final GitHub save (<code class="language-plaintext highlighter-rouge">main</code>) + merged README PR → private repo URL → Canvas</strong></p>
 
 <p>You should also understand that:</p>
 

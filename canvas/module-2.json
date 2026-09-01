@@ -29,32 +29,32 @@
       "scoring": "free_form",
       "criteria": [
         {
-          "key": "final-github-notebook-and-submission",
-          "description": "Final GitHub notebook & submission",
+          "key": "private-ia340-repository-submission",
+          "description": "Private IA340 repository submission",
           "points": 20.0,
           "ratings": []
         },
         {
-          "key": "google-drive-data-access-and-load",
-          "description": "Google Drive data access & load",
+          "key": "week-2-readme-pull-request-workflow",
+          "description": "Week 2 README pull-request workflow",
           "points": 20.0,
           "ratings": []
         },
         {
-          "key": "aggregation-analysis",
-          "description": "Aggregation analysis",
+          "key": "final-week-2-notebook",
+          "description": "Final Week 2 notebook",
           "points": 20.0,
           "ratings": []
         },
         {
-          "key": "chart-visualization",
-          "description": "Chart / visualization",
+          "key": "google-drive-data-load-and-aggregation",
+          "description": "Google Drive data load + aggregation",
           "points": 20.0,
           "ratings": []
         },
         {
-          "key": "markdown-explanation-and-ai-verification",
-          "description": "Markdown explanation & AI verification",
+          "key": "chart-and-markdown-explanation",
+          "description": "Chart + Markdown explanation",
           "points": 20.0,
           "ratings": []
         }

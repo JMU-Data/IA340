@@ -69,12 +69,16 @@ The Owner uses Antigravity across multiple devices (personal and school computer
    - Substantive redesigns should still ultimately pass through a single PR. 
    - No direct commits to `main`; the Owner retains final merge authority.
 
-## 9. Canvas Rubric & Lab Authoring Convention
-All weekly labs and assignments in this course adhere to the standardized ratings rubric convention:
-- **Scoring Mode**: Always use `"scoring": "ratings"` in Canvas Content Profiles (`canvas/module-*.json`).
-- **Binary Rating Tiers**: Each criterion must define exactly two rating levels:
-  - `PASS`: Full maximum points for that criterion (`points`).
-  - `MISSING`: `0.0` points.
-- **No Fixed `PARTIAL` Tier**: Intermediate `PARTIAL` ratings are intentionally excluded from pre-defined rubric buttons to keep SpeedGrader UX clean and predictable.
-- **Manual Partial Credit**: Partial credit remains fully supported in Canvas SpeedGrader via manual criterion point entry when needed.
-- **Automation Invariant**: Verification automation only inspects student submissions and leaves instructional feedback comments. Automation NEVER writes grades or rubric rating assessments.
+## 9. Canvas Lab Rubric Default
+
+Unless the Owner specifies otherwise, new weekly Lab rubrics should use:
+
+- scoring: "ratings"
+- each criterion defines exactly two default ratings:
+  - PASS = full criterion points
+  - MISSING = 0
+- no predefined PARTIAL rating
+- instructors may enter manual intermediate criterion scores in Canvas SpeedGrader.
+
+The number of criteria, criterion descriptions, and point weights are defined by each Lab's learning objectives and must not be copied mechanically from another Lab.
+

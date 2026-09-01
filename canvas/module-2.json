@@ -26,37 +26,92 @@
       "title": "Lab 2 \u2014 Building Your AI Data Analytics Workspace",
       "assignment": "lab-2",
       "use_for_grading": true,
-      "scoring": "free_form",
+      "scoring": "ratings",
       "criteria": [
         {
           "key": "private-ia340-repository-submission",
           "description": "Private IA340 repository submission",
           "points": 20.0,
-          "ratings": []
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
         },
         {
           "key": "week-2-readme-pull-request-workflow",
           "description": "Week 2 README pull-request workflow",
           "points": 20.0,
-          "ratings": []
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
         },
         {
           "key": "final-week-2-notebook",
           "description": "Final Week 2 notebook",
           "points": 20.0,
-          "ratings": []
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
         },
         {
           "key": "google-drive-data-load-and-aggregation",
           "description": "Google Drive data load + aggregation",
           "points": 20.0,
-          "ratings": []
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
         },
         {
           "key": "chart-and-markdown-explanation",
           "description": "Chart + Markdown explanation",
           "points": 20.0,
-          "ratings": []
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
         }
       ]
     }

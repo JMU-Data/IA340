@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 2: Building Your AI Data Analytics Workspace - IA 340 | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Lab 2: Building Your AI Data Analytics Workspace - IA 340" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
+<meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-23/assignments/lab-2/" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-23/assignments/lab-2/" />
+<meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 2: Building Your AI Data Analytics Workspace - IA 340" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Lab 2: Building Your AI Data Analytics Workspace - IA 340","url":"https://jmu-data.github.io/IA340/pr-preview/pr-23/assignments/lab-2/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-23/assets/css/style.css?v=eed013d062ce446d9a15ccd9993e61e69dc06bfb">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/IA340/pr-preview/pr-23/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://jmu-data.github.io/IA340/pr-preview/pr-23/">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</a></h1>
+      
+
+      <h1 id="lab-2-building-your-ai-data-analytics-workspace">Lab 2: Building Your AI Data Analytics Workspace</h1>
+
+<nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
+  <a href="/IA340/pr-preview/pr-23/" style="text-decoration: none; color: #57606a;">Home</a>
+  <a href="/IA340/pr-preview/pr-23/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
+  <a href="/IA340/pr-preview/pr-23/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
+  <a href="/IA340/pr-preview/pr-23/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+  <a href="/IA340/pr-preview/pr-23/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="/IA340/pr-preview/pr-23/assignments/lab-2/" style="text-decoration: none; font-weight: 600; color: #0969da;">Lab 2</a>
+</nav>
+
+<p><strong>Target Date:</strong> Friday, September 4, 2026<br />
+<em>(Note: Canvas is the authoritative source for the exact due date/time and submission status.)</em><br />
+<strong>Submission Location:</strong> Canvas<br />
+<strong>Points:</strong> 100</p>
+
+<h2 id="google-drive--colab--gemini--github--canvas">Google Drive → Colab + Gemini → GitHub → Canvas</h2>
+
+<h3 id="goal">Goal</h3>
+
+<p>Run one complete, practical IA340 data-science workflow:</p>
+
+<p><strong>public course data → your Google Drive → Colab + Gemini → GitHub notebook → Canvas</strong></p>
+
+<p>This lab is intentionally small. You are <strong>not</strong> expected to memorize pandas syntax. You are expected to communicate clearly with Gemini, inspect the generated code, run it, verify the result, and revise when necessary.</p>
+
+<h3 id="cost">Cost</h3>
+
+<p>You do <strong>not</strong> need to buy anything for this lab.</p>
+
+<ul>
+  <li><strong>GitHub:</strong> your course repository is provided through the course’s GitHub Education organization. No student payment is required for the private course repo or Team access.</li>
+  <li><strong>Google Drive:</strong> use the personal Google account you registered with your JMU email. The course dataset is small and should fit easily within normal free-account storage limits.</li>
+  <li><strong>Google Colab:</strong> the free tier is sufficient. Colab Pro is optional and <strong>not required</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>Colab runtimes are temporary. They can time out when inactive or when usage limits are reached, and the exact limits can vary. Do not treat the runtime filesystem as permanent storage.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="part-1--prepare-your-ia340-folder-in-google-drive">Part 1 — Prepare Your IA340 Folder in Google Drive</h1>
+
+<p>Create a folder named:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IA340
+</code></pre></div></div>
+
+<p>in <strong>My Drive</strong> of the personal Google account you use for IA340.</p>
+
+<p>Next, download the Week 2 dataset from the course repository:</p>
+
+<p>👉 <strong><a href="/IA340/pr-preview/pr-23/assets/data/diamonds.csv">Download <code class="language-plaintext highlighter-rouge">diamonds.csv</code></a></strong>
+<em>(Alternate direct raw URL: <code class="language-plaintext highlighter-rouge">https://raw.githubusercontent.com/JMU-Data/IA340/main/docs/assets/data/diamonds.csv</code>)</em></p>
+
+<p>Upload the downloaded file into your Drive folder so you have:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>My Drive/
+└── IA340/
+    └── diamonds.csv
+</code></pre></div></div>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-google-drive-diamonds.png" alt="Google Drive IA340 folder containing diamonds.csv" /></p>
+
+<h3 id="checkpoint">Checkpoint</h3>
+
+<p>Open Google Drive and confirm that <code class="language-plaintext highlighter-rouge">diamonds.csv</code> is inside your <code class="language-plaintext highlighter-rouge">IA340</code> folder before opening Colab.</p>
+
+<hr />
+
+<h1 id="part-2--authorize-colab-with-github-then-save-the-blank-notebook">Part 2 — Authorize Colab with GitHub, Then Save the Blank Notebook</h1>
+
+<ol>
+  <li>Open Google Colab.</li>
+  <li>Create a <strong>blank notebook</strong>.</li>
+  <li>Rename it:</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>week2_workspace.ipynb
+</code></pre></div></div>
+
+<ol>
+  <li>Choose <strong>File → Save a copy in GitHub</strong>.</li>
+</ol>
+
+<h3 id="step-2a--authorize-google-colab-to-use-your-github-account">Step 2A — Authorize Google Colab to use your GitHub account</h3>
+
+<p>The first time you use this integration, GitHub should open an authorization page <strong>before you can choose the repository and save the notebook</strong>.</p>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-colab-github-authorization.png" alt="GitHub authorization screen for Google Colab" /></p>
+
+<p>Use the <strong>same personal GitHub account you submitted in Lab 1</strong>. Authorize <strong>Collaboratory by Google Colaboratory</strong> to access the GitHub repositories needed for this course.</p>
+
+<p>Under <strong>Organization access</strong>, check <code class="language-plaintext highlighter-rouge">JMU-Data</code>. The instructor has already approved the Google Colab OAuth app for the organization during course testing, so most students should only need to authorize their own GitHub account.</p>
+
+<p>If you still see <strong>Request access</strong>, organization approval required, or your assigned repository is missing, request access if offered and contact the instructor. Do <strong>not</strong> switch GitHub accounts and do <strong>not</strong> create another repository.</p>
+
+<h3 id="step-2b--after-authorization-save-the-first-github-checkpoint">Step 2B — After authorization, save the first GitHub checkpoint</h3>
+
+<p>After GitHub authorization succeeds, Colab opens the <strong>Copy to GitHub</strong> dialog.</p>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-colab-copy-to-github.png" alt="Colab Copy to GitHub dialog shown after GitHub authorization" /></p>
+
+<p>Select:</p>
+
+<ul>
+  <li><strong>Repository:</strong> your assigned private IA340 repository</li>
+  <li><strong>Branch:</strong> <code class="language-plaintext highlighter-rouge">main</code></li>
+  <li><strong>File path:</strong> <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code></li>
+  <li><strong>Commit message:</strong> <code class="language-plaintext highlighter-rouge">Initialize Week 2 Colab notebook</code></li>
+</ul>
+
+<p>Then save the notebook.</p>
+
+<blockquote>
+  <p><strong>IMPORTANT — THIS IS NOT YOUR FINAL SAVE.</strong> At this point the GitHub notebook may be nearly empty. This first save only proves that the Colab ↔ GitHub authorization and save workflow works. You <strong>must save the completed notebook to GitHub again at the end of the lab</strong>.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="part-3--connect-your-google-drive-in-colab">Part 3 — Connect Your Google Drive in Colab</h1>
+
+<p>Use the <strong>Files</strong> panel in Colab and select the Google Drive / Mount Drive button. You do not need to type a Drive password into the notebook.</p>
+
+<p>When Colab asks, choose <strong>Connect to Google Drive</strong> and approve access for the Google account that contains your <code class="language-plaintext highlighter-rouge">IA340</code> folder.</p>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-colab-drive-permission.png" alt="Colab permission dialog for connecting Google Drive" /></p>
+
+<p>A new Colab runtime may ask you to approve Drive access again. This is normal: connecting Drive gives notebook code access to files in that Drive.</p>
+
+<p>After connecting, expand the Files panel and confirm that you can browse to your Drive and see the IA340 folder.</p>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-colab-drive-mounted.png" alt="Google Drive mounted in the Colab Files panel" /></p>
+
+<p>Your data path will normally look similar to:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/content/drive/MyDrive/IA340/diamonds.csv
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="part-4--ask-gemini-to-load-and-inspect-the-data">Part 4 — Ask Gemini to Load and Inspect the Data</h1>
+
+<p>Open Gemini in Colab and describe what you want in <strong>natural language</strong>. You do not need to copy the instructor’s prompt word-for-word.</p>
+
+<p>For example:</p>
+
+<blockquote>
+  <p>I have a CSV file at <code class="language-plaintext highlighter-rouge">/content/drive/MyDrive/IA340/diamonds.csv</code>. Use pandas to load it into a DataFrame named <code class="language-plaintext highlighter-rouge">df</code>, show the first five rows, and show the number of rows and columns. Explain the code briefly.</p>
+</blockquote>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-gemini-load-data.png" alt="Gemini helping load diamonds.csv in Colab" /></p>
+
+<p>The real dataset uses these columns:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IDNO, WEIGHT, COLOR, CLARITY, RATER, PRICE
+</code></pre></div></div>
+
+<p>Inspect Gemini’s code before running it. Then run it and verify that:</p>
+
+<ul>
+  <li>the file loads without an error;</li>
+  <li>the first rows look like diamond records; and</li>
+  <li>the columns match the list above.</li>
+</ul>
+
+<p>If the result is wrong, <strong>revise your prompt or edit the Python code yourself</strong>. Both are acceptable.</p>
+
+<hr />
+
+<h1 id="part-5--ask-gemini-for-one-aggregation">Part 5 — Ask Gemini for One Aggregation</h1>
+
+<p>Ask Gemini to summarize the data using an aggregation. Your wording can differ from the example.</p>
+
+<p>Example:</p>
+
+<blockquote>
+  <p>Using the existing DataFrame <code class="language-plaintext highlighter-rouge">df</code>, group the diamonds by <code class="language-plaintext highlighter-rouge">COLOR</code> and calculate the average <code class="language-plaintext highlighter-rouge">PRICE</code> for each color. Keep the result in a clearly named variable and explain what the code does.</p>
+</blockquote>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-gemini-aggregation.png" alt="Gemini-assisted aggregation in Colab" /></p>
+
+<p>Run the code and check that the result makes sense. You do <strong>not</strong> need to memorize <code class="language-plaintext highlighter-rouge">groupby()</code> syntax this week.</p>
+
+<p>Your responsibility is to verify that Gemini used the correct columns and produced a sensible summary.</p>
+
+<hr />
+
+<h1 id="part-6--ask-gemini-for-one-chart">Part 6 — Ask Gemini for One Chart</h1>
+
+<p>Ask Gemini to create a useful chart from the diamonds data. You do <strong>not</strong> have to reproduce the instructor’s chart exactly.</p>
+
+<p>For example, you might ask for a chart that shows the relationship between <code class="language-plaintext highlighter-rouge">WEIGHT</code> and <code class="language-plaintext highlighter-rouge">PRICE</code>, or a chart based on your aggregation.</p>
+
+<p>A natural-language prompt could be:</p>
+
+<blockquote>
+  <p>Create one clear chart that helps me understand the diamonds data. Use appropriate columns from <code class="language-plaintext highlighter-rouge">df</code>, add a title and axis labels, and briefly explain what the chart shows.</p>
+</blockquote>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-gemini-chart.png" alt="Gemini-assisted chart in Colab" /></p>
+
+<p>Run the code, inspect the chart, and decide whether it actually answers the question you intended. If it does not, revise the prompt or modify the Python code.</p>
+
+<hr />
+
+<h1 id="part-7--use-markdown-to-turn-the-notebook-into-an-explanation">Part 7 — Use Markdown to Turn the Notebook into an Explanation</h1>
+
+<p>A final notebook should not be a pile of code cells. Add Markdown before and after the analysis so another person can understand what you did.</p>
+
+<p>You may write the Markdown yourself <strong>or ask Gemini to draft it</strong>, then edit it so it accurately reflects your own notebook and results.</p>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-gemini-markdown.png" alt="Gemini helping draft Markdown for the notebook" /></p>
+
+<p>Your notebook should contain at least:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># IA340 Week 2</span>
+
+<span class="gu">## Data Source and Loading</span>
+Explain that diamonds.csv is stored in your Google Drive IA340 folder and loaded into Colab.
+
+<span class="gu">## Aggregation</span>
+Explain what you grouped, what metric you calculated, and what the output means.
+
+<span class="gu">## Chart</span>
+Explain what the chart shows and one pattern you observe.
+
+<span class="gu">## Reflection</span>
+Briefly explain how you used Gemini and how you verified or revised its output.
+</code></pre></div></div>
+
+<h3 id="ai-rule-for-this-lab">AI rule for this lab</h3>
+
+<p><strong>Natural language is flexible; verification is required.</strong></p>
+
+<p>You may:</p>
+
+<ul>
+  <li>ask Gemini in your own words;</li>
+  <li>follow up conversationally when the first result is not right;</li>
+  <li>edit Gemini-generated Python yourself; and</li>
+  <li>write or revise Markdown yourself.</li>
+</ul>
+
+<p>You may <strong>not</strong> treat AI output as automatically correct.</p>
+
+<hr />
+
+<h1 id="part-8--final-save-to-github">Part 8 — FINAL Save to GitHub</h1>
+
+<p>This is the critical second save.</p>
+
+<p>Choose <strong>File → Save a copy in GitHub</strong> again.</p>
+
+<p>Select:</p>
+
+<ul>
+  <li>your assigned private IA340 repository;</li>
+  <li>branch: <code class="language-plaintext highlighter-rouge">main</code>;</li>
+  <li>file: <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code>.</li>
+</ul>
+
+<p>Use a meaningful commit message such as:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Complete Week 2 Colab analysis
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>DO NOT SKIP THIS STEP.</strong> The first GitHub save contained an empty or nearly empty notebook. Your final save must contain the data-loading output, aggregation, chart, and Markdown.</p>
+</blockquote>
+
+<p>For the notebook itself, <strong>do not create a branch or pull request</strong>. Monday’s in-class activity taught and evaluated the branch/PR workflow on <code class="language-plaintext highlighter-rouge">README.md</code>. For the regular data-science notebook workflow, we are keeping delivery simple: save directly from Colab to <code class="language-plaintext highlighter-rouge">main</code> as <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code>.</p>
+
+<p>Colab may keep a working notebook copy in Google Drive, but <strong>GitHub is not automatically synchronized</strong>. Only an explicit GitHub save updates the version that will be graded.</p>
+
+<p>Open the notebook on GitHub and confirm that it renders with:</p>
+
+<ul>
+  <li>code cells;</li>
+  <li>visible outputs;</li>
+  <li>one aggregation result;</li>
+  <li>one chart; and</li>
+  <li>your Markdown explanations.</li>
+</ul>
+
+<p><img src="/IA340/pr-preview/pr-23/assets/week-2/screenshots/lab-final-notebook-github.png" alt="Completed Week 2 notebook rendered on GitHub" /></p>
+
+<hr />
+
+<h1 id="part-9--submit-your-assigned-private-repository-url-in-canvas">Part 9 — Submit Your Assigned Private Repository URL in Canvas</h1>
+
+<p>Submit your <strong>assigned private IA340 GitHub repository root URL</strong> in Canvas:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/JMU-Data/&lt;your-assigned-private-repository&gt;
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Submit your assigned private IA340 GitHub repository URL in Canvas. The grader will inspect the required Week 2 evidence inside that repository.</strong></p>
+</blockquote>
+
+<p>Do <strong>not</strong> submit:</p>
+<ul>
+  <li>your personal GitHub profile URL;</li>
+  <li>the direct <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code> blob URL;</li>
+  <li>a Pull Request URL; or</li>
+  <li>the public <code class="language-plaintext highlighter-rouge">JMU-Data/IA340</code> course repository URL.</li>
+</ul>
+
+<h3 id="week-2-evidence-monday-readme-pull-request--wednesday-notebook">Week 2 Evidence: Monday README Pull Request + Wednesday Notebook</h3>
+
+<p>Lab 2 evaluates both components of your Week 2 setup inside your private course repository:</p>
+
+<ol>
+  <li><strong>Monday in-class GitHub activity:</strong> In your assigned private IA340 repository:
+    <ul>
+      <li>create a feature branch;</li>
+      <li>edit <code class="language-plaintext highlighter-rouge">README.md</code>;</li>
+      <li>commit your changes;</li>
+      <li>open a Pull Request into <code class="language-plaintext highlighter-rouge">main</code>;</li>
+      <li>inspect the diff; and</li>
+      <li>merge the Pull Request into <code class="language-plaintext highlighter-rouge">main</code>.</li>
+    </ul>
+
+    <p>Grading checks that at least one qualifying PR modifying <code class="language-plaintext highlighter-rouge">README.md</code> was opened into <code class="language-plaintext highlighter-rouge">main</code> and merged before the deadline. Grading does <strong>not</strong> evaluate README writing quality, PR descriptions, commit messages, or Markdown formatting.</p>
+  </li>
+  <li><strong>Wednesday Google Drive + Colab notebook:</strong> Saved directly to <code class="language-plaintext highlighter-rouge">main/week2_workspace.ipynb</code> from Colab (no notebook PR required).</li>
+</ol>
+
+<hr />
+
+<h1 id="deadline-rule--read-carefully">Deadline Rule — Read Carefully</h1>
+
+<p>Your official completion time is determined by three required timestamps:</p>
+
+<ol>
+  <li>The time you submit your private repository URL in Canvas;</li>
+  <li>The time the qualifying Week 2 README Pull Request was merged into <code class="language-plaintext highlighter-rouge">main</code> (<code class="language-plaintext highlighter-rouge">merged_at</code>); and</li>
+  <li>The time of the latest GitHub commit on <code class="language-plaintext highlighter-rouge">main</code> that modifies <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code>.</li>
+</ol>
+
+<p><strong>All three must be at or before the authoritative Canvas deadline for the lab to be on time.</strong></p>
+
+<p>Conceptually:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>completion_time = max(
+  canvas_submission_time,
+  qualifying_readme_pr_merged_time,
+  latest_notebook_commit_time
+)
+</code></pre></div></div>
+
+<p><strong>Important notes:</strong></p>
+<ul>
+  <li>Once a qualifying Week 2 README PR has been merged on time, later unrelated README changes or PRs will not retroactively make Lab 2 late.</li>
+  <li>The notebook completion time is determined by the <strong>latest</strong> commit that modifies <code class="language-plaintext highlighter-rouge">week2_workspace.ipynb</code>. Saving or updating the notebook after the deadline makes the lab submission late.</li>
+  <li>Submitting the repository URL in Canvas after the deadline also makes the lab submission late.</li>
+</ul>
+
+<p>The normal course late-work policy is applied to that official completion time.</p>
+
+<hr />
+
+<h1 id="canvas-rubric--100-points">Canvas Rubric — 100 Points</h1>
+
+<p>The following five 20-point criteria are used for grading in Canvas:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Criterion</th>
+      <th style="text-align: right">Points</th>
+      <th>Evidence Checked in Submitted Private Repository</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Private IA340 repository submission</strong></td>
+      <td style="text-align: right">20</td>
+      <td>Canvas submission is the student’s assigned private IA340 repository root URL (<code class="language-plaintext highlighter-rouge">https://github.com/JMU-Data/&lt;assigned-repo&gt;</code>); repository belongs to the correct course scope, exists, is accessible to course graders, and follows private repo conventions. Duplicate repository submissions across students are flagged for instructor review.</td>
+    </tr>
+    <tr>
+      <td><strong>Week 2 README pull-request workflow</strong></td>
+      <td style="text-align: right">20</td>
+      <td>At least one qualifying PR modifying <code class="language-plaintext highlighter-rouge">README.md</code> was opened into <code class="language-plaintext highlighter-rouge">main</code> and merged into <code class="language-plaintext highlighter-rouge">main</code>. (Grading does not evaluate README writing quality, PR description, commit messages, or formatting.)</td>
+    </tr>
+    <tr>
+      <td><strong>Final Week 2 notebook</strong></td>
+      <td style="text-align: right">20</td>
+      <td><code class="language-plaintext highlighter-rouge">main/week2_workspace.ipynb</code> exists, is a valid and readable Jupyter notebook, and contains the final saved artifact for grading. (No pull request is required for the notebook.)</td>
+    </tr>
+    <tr>
+      <td><strong>Google Drive data load + aggregation</strong></td>
+      <td style="text-align: right">20</td>
+      <td><strong>10 pts:</strong> <code class="language-plaintext highlighter-rouge">diamonds.csv</code> is loaded from Google Drive / IA340 folder with saved successful evidence.<br /><strong>10 pts:</strong> At least one aggregation is completed with saved non-error output.</td>
+    </tr>
+    <tr>
+      <td><strong>Chart + Markdown explanation</strong></td>
+      <td style="text-align: right">20</td>
+      <td><strong>10 pts:</strong> At least one chart / visualization is successfully generated with saved output.<br /><strong>10 pts:</strong> Substantive Markdown explanations are present (beyond boilerplate or heading-only text; no semantic writing-quality grading or AI/Gemini mention required).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Total: <strong>100 Points</strong></p>
+
+<p>Apply the course late-work penalty <strong>after</strong> rubric scoring, using the official completion-time rule above.</p>
+
+<hr />
+
+<h1 id="what-you-should-know-after-this-lab">What You Should Know After This Lab</h1>
+
+<p>You should be able to repeat this workflow:</p>
+
+<p><strong>public dataset → personal Drive folder → Colab + Gemini → verify/revise analysis → explicit final GitHub save (<code class="language-plaintext highlighter-rouge">main</code>) + merged README PR → private repo URL → Canvas</strong></p>
+
+<p>You should also understand that:</p>
+
+<ul>
+  <li>Drive is persistent working-data storage;</li>
+  <li>the Colab runtime is temporary;</li>
+  <li>Gemini can generate Python and Markdown, but you verify the result;</li>
+  <li>GitHub is the versioned course record; and</li>
+  <li>a final GitHub save is required even if Colab has already saved a working copy elsewhere.</li>
+</ul>
+
+<hr />
+
+<div style="margin-top: 2rem;">
+  <a href="/IA340/pr-preview/pr-23/modules/module-2/">← Return to Module 2</a> | <a href="/IA340/pr-preview/pr-23/">Course Home</a>
+</div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

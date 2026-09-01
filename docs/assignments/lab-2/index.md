@@ -256,7 +256,7 @@ Complete Week 2 Colab analysis
 
 > **DO NOT SKIP THIS STEP.** The first GitHub save contained an empty or nearly empty notebook. Your final save must contain the data-loading output, aggregation, chart, and Markdown.
 
-For this lab, **do not create a branch or pull request**. Monday's activity taught the branch/PR workflow. For the regular data-science notebook workflow, we are keeping delivery simple: save directly from Colab to `main`.
+For the notebook itself, **do not create a branch or pull request**. Monday's in-class activity taught and evaluated the branch/PR workflow on `README.md`. For the regular data-science notebook workflow, we are keeping delivery simple: save directly from Colab to `main` as `week2_workspace.ipynb`.
 
 Colab may keep a working notebook copy in Google Drive, but **GitHub is not automatically synchronized**. Only an explicit GitHub save updates the version that will be graded.
 
@@ -272,30 +272,64 @@ Open the notebook on GitHub and confirm that it renders with:
 
 ---
 
-# Part 9 — Submit the Direct Notebook URL in Canvas
+# Part 9 — Submit Your Assigned Private Repository URL in Canvas
 
-Submit the **direct GitHub URL to the notebook**, not the repository home page.
-
-It should look like:
+Submit your **assigned private IA340 GitHub repository root URL** in Canvas:
 
 ```text
-https://github.com/JMU-Data/<your-assigned-repository>/blob/main/week2_workspace.ipynb
+https://github.com/JMU-Data/<your-assigned-private-repository>
 ```
 
-This makes the exact artifact to be graded unambiguous.
+> **Submit your assigned private IA340 GitHub repository URL in Canvas. The grader will inspect the required Week 2 evidence inside that repository.**
+
+Do **not** submit:
+- your personal GitHub profile URL;
+- the direct `week2_workspace.ipynb` blob URL;
+- a Pull Request URL; or
+- the public `JMU-Data/IA340` course repository URL.
+
+### Week 2 Evidence: Monday README Pull Request + Wednesday Notebook
+
+Lab 2 evaluates both components of your Week 2 setup inside your private course repository:
+
+1. **Monday in-class GitHub activity:** In your assigned private IA340 repository:
+   - create a feature branch;
+   - edit `README.md`;
+   - commit your changes;
+   - open a Pull Request into `main`;
+   - inspect the diff; and
+   - merge the Pull Request into `main`.
+
+   Grading checks that at least one qualifying PR modifying `README.md` was opened into `main` and merged before the deadline. Grading does **not** evaluate README writing quality, PR descriptions, commit messages, or Markdown formatting.
+
+2. **Wednesday Google Drive + Colab notebook:** Saved directly to `main/week2_workspace.ipynb` from Colab (no notebook PR required).
 
 ---
 
 # Deadline Rule — Read Carefully
 
-Your official completion time is the **later** of:
+Your official completion time is determined by three required timestamps:
 
-1. the time you submit the notebook URL in Canvas; and
-2. the time of the latest GitHub commit on `main` that changes `week2_workspace.ipynb`.
+1. The time you submit your private repository URL in Canvas;
+2. The time the qualifying Week 2 README Pull Request was merged into `main` (`merged_at`); and
+3. The time of the latest GitHub commit on `main` that modifies `week2_workspace.ipynb`.
 
-**Both must be at or before the Canvas deadline to be on time.**
+**All three must be at or before the authoritative Canvas deadline for the lab to be on time.**
 
-Example: submitting the Canvas URL before the deadline and then updating the notebook after the deadline counts as a late submission, because the later GitHub notebook update determines the completion time.
+Conceptually:
+
+```text
+completion_time = max(
+  canvas_submission_time,
+  qualifying_readme_pr_merged_time,
+  latest_notebook_commit_time
+)
+```
+
+**Important notes:**
+- Once a qualifying Week 2 README PR has been merged on time, later unrelated README changes or PRs will not retroactively make Lab 2 late.
+- The notebook completion time is determined by the **latest** commit that modifies `week2_workspace.ipynb`. Saving or updating the notebook after the deadline makes the lab submission late.
+- Submitting the repository URL in Canvas after the deadline also makes the lab submission late.
 
 The normal course late-work policy is applied to that official completion time.
 
@@ -303,21 +337,17 @@ The normal course late-work policy is applied to that official completion time.
 
 # Canvas Rubric — 100 Points
 
-The same rubric will be used in Canvas.
+The following five 20-point criteria are used for grading in Canvas:
 
-| Criterion | Points | What must be visible in the submitted GitHub notebook |
+| Criterion | Points | Evidence Checked in Submitted Private Repository |
 |---|---:|---|
-| **Final GitHub notebook & submission** | 20 | Direct notebook URL submitted; completed notebook saved on `main`; final GitHub version contains the work to be graded |
-| **Google Drive data access & load** | 20 | `diamonds.csv` is loaded from the student's Google Drive `IA340` folder; first rows / basic inspection are visible |
-| **Aggregation analysis** | 20 | At least one meaningful aggregation using the diamonds data, with a visible output that the student has checked |
-| **Chart / visualization** | 20 | At least one meaningful chart with readable labels/title and visible output |
-| **Markdown explanation & AI verification** | 20 | Markdown explains data source, aggregation, chart, and reflection; student explains how Gemini output was checked/revised |
+| **Private IA340 repository submission** | 20 | Canvas submission is the student's assigned private IA340 repository root URL (`https://github.com/JMU-Data/<assigned-repo>`); repository belongs to the correct course scope, exists, is accessible to course graders, and follows private repo conventions. Duplicate repository submissions across students are flagged for instructor review. |
+| **Week 2 README pull-request workflow** | 20 | At least one qualifying PR modifying `README.md` was opened into `main` and merged into `main`. (Grading does not evaluate README writing quality, PR description, commit messages, or formatting.) |
+| **Final Week 2 notebook** | 20 | `main/week2_workspace.ipynb` exists, is a valid and readable Jupyter notebook, and contains the final saved artifact for grading. (No pull request is required for the notebook.) |
+| **Google Drive data load + aggregation** | 20 | **10 pts:** `diamonds.csv` is loaded from Google Drive / IA340 folder with saved successful evidence.<br>**10 pts:** At least one aggregation is completed with saved non-error output. |
+| **Chart + Markdown explanation** | 20 | **10 pts:** At least one chart / visualization is successfully generated with saved output.<br>**10 pts:** Substantive Markdown explanations are present (beyond boilerplate or heading-only text; no semantic writing-quality grading or AI/Gemini mention required). |
 
-Suggested Canvas ratings for each 20-point criterion:
-
-- **Complete — 20**
-- **Partial — 10**
-- **Missing — 0**
+Total: **100 Points**
 
 Apply the course late-work penalty **after** rubric scoring, using the official completion-time rule above.
 
@@ -327,7 +357,7 @@ Apply the course late-work penalty **after** rubric scoring, using the official 
 
 You should be able to repeat this workflow:
 
-**public dataset → personal Drive folder → Colab + Gemini → verify/revise analysis → explicit final GitHub save → direct notebook URL → Canvas**
+**public dataset → personal Drive folder → Colab + Gemini → verify/revise analysis → explicit final GitHub save (`main`) + merged README PR → private repo URL → Canvas**
 
 You should also understand that:
 

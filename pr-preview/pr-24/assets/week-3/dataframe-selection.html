@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive DataFrame Selection, Slicing, Filtering, and Sorting</title>
+  <style>
+    :root {
+      --bg:#f6f8fa; --panel:#fff; --text:#1f2328; --muted:#57606a;
+      --line:#d0d7de; --accent:#0969da; --select:#ddf4ff;
+      --keep:#dafbe1; --drop:#ffebe9; --code:#0d1117;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+    .stage{width:min(1200px,100%);min-height:675px;margin:0 auto;padding:20px;display:grid;grid-template-rows:auto auto 1fr auto;gap:13px}
+    header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    h1{margin:0;font-size:clamp(24px,3vw,37px);line-height:1.12}
+    .subtitle{margin:6px 0 0;color:var(--muted)}
+    .badge{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 11px;color:var(--muted);font-size:13px;white-space:nowrap}
+    .controls{display:flex;flex-wrap:wrap;gap:7px}
+    button{font:inherit;font-weight:720;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text);padding:8px 11px;cursor:pointer;transition:.16s ease}
+    button:hover{transform:translateY(-1px);border-color:var(--accent)}
+    button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .workspace{display:grid;grid-template-columns:1.16fr .84fr;gap:13px;min-height:0}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 2px rgba(31,35,40,.05)}
+    .panel-title{padding:10px 13px;border-bottom:1px solid var(--line);font-weight:760;display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .table-wrap{overflow:auto;max-height:430px}
+    table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+    th,td{padding:9px 10px;border-bottom:1px solid #eaeef2;text-align:left;transition:.25s ease;font-size:13px}
+    th{background:#f6f8fa;position:sticky;top:0;z-index:1}
+    th.selected,td.selected{background:var(--select);font-weight:700}
+    tr.kept td{background:var(--keep)}
+    tr.removed td{opacity:.28;text-decoration:line-through;background:var(--drop)}
+    tr.slice-hit td{background:var(--select)}
+    .side{display:grid;grid-template-rows:auto 1fr;gap:13px;min-height:0}
+    .code{margin:0;padding:16px;background:var(--code);color:#e6edf3;font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;min-height:120px}
+    .explain{padding:16px;line-height:1.5}
+    .explain h2{margin:0 0 8px;font-size:19px}
+    .explain p{margin:0 0 10px}
+    .result{display:inline-block;border-radius:999px;padding:4px 8px;background:#ddf4ff;color:#0550ae;font-weight:800;font-size:12px}
+    footer{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:13px}
+    @media(max-width:880px){.workspace{grid-template-columns:1fr}.stage{min-height:auto;padding:13px}header{flex-direction:column}.badge{white-space:normal}}
+  </style>
+</head>
+<body>
+<main class="stage">
+  <header>
+    <div>
+      <h1>Selection, Slicing, Filtering, and Sorting</h1>
+      <p class="subtitle">Click one operation at a time and watch what changes: columns, rows, or row order.</p>
+    </div>
+    <div class="badge">Small illustrative table — not graded results</div>
+  </header>
+
+  <nav class="controls" aria-label="Pandas operations">
+    <button data-mode="all" aria-pressed="true">Reset</button>
+    <button data-mode="series" aria-pressed="false">One column</button>
+    <button data-mode="columns" aria-pressed="false">Four columns</button>
+    <button data-mode="slice" aria-pressed="false">Rows 0:3</button>
+    <button data-mode="filter" aria-pressed="false">deaths &gt; 5</button>
+    <button data-mode="and" aria-pressed="false">Two conditions</button>
+    <button data-mode="sort" aria-pressed="false">Sort deaths ↓</button>
+  </nav>
+
+  <section class="workspace">
+    <article class="panel">
+      <div class="panel-title"><span>Mini DataFrame</span><span id="rowCount" class="result">6 rows × 6 columns</span></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th data-col="date">date</th><th data-col="country">country</th><th data-col="cases">cases</th>
+            <th data-col="deaths">deaths</th><th data-col="pop">pop</th><th data-col="cum">cum</th>
+          </tr></thead>
+          <tbody id="body"></tbody>
+        </table>
+      </div>
+    </article>
+
+    <aside class="side">
+      <article class="panel">
+        <div class="panel-title">Pandas expression</div>
+        <pre id="code" class="code">covid</pre>
+      </article>
+      <article class="panel explain">
+        <h2 id="title">The full DataFrame</h2>
+        <p id="explanation">No rows or columns are removed. The table keeps its original shape.</p>
+        <p><strong>What changes?</strong> <span id="changes">Nothing yet.</span></p>
+        <p><strong>Question to ask:</strong> <span id="question">Do I need every row and every variable?</span></p>
+      </article>
+    </aside>
+  </section>
+
+  <footer>
+    <span>Selection changes columns. Slicing and filtering change rows. Sorting changes order.</span>
+    <span>IA340 Week 3</span>
+  </footer>
+</main>
+<script>
+  const rows=[
+    {date:"2020-12-14",country:"Alpha",cases:746,deaths:6,pop:38.0,cum:9.01},
+    {date:"2020-12-14",country:"Beta",cases:420,deaths:3,pop:10.2,cum:5.40},
+    {date:"2020-12-14",country:"Gamma",cases:905,deaths:12,pop:22.5,cum:14.30},
+    {date:"2020-12-13",country:"Alpha",cases:298,deaths:9,pop:38.0,cum:7.05},
+    {date:"2020-12-13",country:"Beta",cases:510,deaths:4,pop:10.2,cum:6.10},
+    {date:"2020-12-13",country:"Gamma",cases:830,deaths:7,pop:22.5,cum:13.90}
+  ];
+  const columns=["date","country","cases","deaths","pop","cum"];
+  const body=document.getElementById("body");
+  const code=document.getElementById("code");
+  const rowCount=document.getElementById("rowCount");
+  const title=document.getElementById("title");
+  const explanation=document.getElementById("explanation");
+  const changes=document.getElementById("changes");
+  const question=document.getElementById("question");
+  const buttons=[...document.querySelectorAll("button[data-mode]")];
+
+  function render(data,{selected=[],kept=null,removedVisible=false,sliceIndexes=[]}={}){
+    body.innerHTML="";
+    data.forEach((row,index)=>{
+      const tr=document.createElement("tr");
+      const originalIndex=rows.indexOf(row);
+      if(kept){
+        if(kept(row)) tr.classList.add("kept");
+        else if(removedVisible) tr.classList.add("removed");
+      }
+      if(sliceIndexes.includes(originalIndex)) tr.classList.add("slice-hit");
+      columns.forEach(col=>{
+        const td=document.createElement("td");
+        td.dataset.col=col;
+        td.textContent=row[col];
+        if(selected.includes(col)) td.classList.add("selected");
+        tr.appendChild(td);
+      });
+      body.appendChild(tr);
+    });
+    document.querySelectorAll("th").forEach(th=>th.classList.toggle("selected",selected.includes(th.dataset.col)));
+  }
+
+  function setMode(mode){
+    buttons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===mode)));
+    document.querySelectorAll("th").forEach(th=>th.classList.remove("selected"));
+    if(mode==="series"){
+      render(rows,{selected:["cases"]});
+      code.textContent='covid["cases"]';
+      rowCount.textContent="6 values (Series)";
+      title.textContent="Select one column";
+      explanation.textContent="Only the cases variable is returned. A one-column selection with single brackets returns a Series.";
+      changes.textContent="Columns change; rows remain the same.";
+      question.textContent="Which single variable do I need?";
+    }else if(mode==="columns"){
+      render(rows,{selected:["date","country","cases","deaths"]});
+      code.textContent='covid[["date", "country", "cases", "deaths"]]';
+      rowCount.textContent="6 rows × 4 columns";
+      title.textContent="Select several columns";
+      explanation.textContent="The result remains a DataFrame because a list of column names is placed inside the outer brackets.";
+      changes.textContent="Four variables remain; all six rows remain.";
+      question.textContent="Which variables are relevant to this analysis?";
+    }else if(mode==="slice"){
+      render(rows,{sliceIndexes:[0,1,2]});
+      code.textContent="covid.iloc[0:3]";
+      rowCount.textContent="3 rows × 6 columns";
+      title.textContent="Slice rows by position";
+      explanation.textContent="iloc keeps positions 0, 1, and 2. The stop position 3 is not included.";
+      changes.textContent="Rows change by position; columns remain the same.";
+      question.textContent="Do I want rows by position rather than by value?";
+    }else if(mode==="filter"){
+      const keep=r=>r.deaths>5;
+      render(rows,{kept:keep,removedVisible:true});
+      code.textContent='covid[covid["deaths"] > 5]';
+      rowCount.textContent="4 kept rows × 6 columns";
+      title.textContent="Filter with one condition";
+      explanation.textContent="Rows where deaths is greater than 5 are kept. The faded rows evaluate to False.";
+      changes.textContent="Rows change according to their values.";
+      question.textContent="Which observations satisfy my condition?";
+    }else if(mode==="and"){
+      const keep=r=>r.country==="Gamma" && r.cases>850;
+      render(rows,{kept:keep,removedVisible:true});
+      code.textContent='covid[(covid["country"] == "Gamma")\n      & (covid["cases"] > 850)]';
+      rowCount.textContent="1 kept row × 6 columns";
+      title.textContent="Combine two conditions";
+      explanation.textContent="A row must belong to Gamma AND have more than 850 cases. Each condition is enclosed in parentheses.";
+      changes.textContent="Only rows satisfying both tests remain.";
+      question.textContent="Must both conditions be true, or would either condition be enough?";
+    }else if(mode==="sort"){
+      const sorted=[...rows].sort((a,b)=>b.deaths-a.deaths);
+      render(sorted);
+      code.textContent='covid.sort_values("deaths", ascending=False)';
+      rowCount.textContent="6 rows × 6 columns";
+      title.textContent="Sort from largest to smallest";
+      explanation.textContent="No observation is removed. The same rows are reordered by deaths, with the largest value first.";
+      changes.textContent="Only row order changes.";
+      question.textContent="Do I need to identify the largest or smallest values?";
+    }else{
+      render(rows);
+      code.textContent="covid";
+      rowCount.textContent="6 rows × 6 columns";
+      title.textContent="The full DataFrame";
+      explanation.textContent="No rows or columns are removed. The table keeps its original shape.";
+      changes.textContent="Nothing yet.";
+      question.textContent="Do I need every row and every variable?";
+    }
+  }
+
+  buttons.forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));
+  setMode("all");
+</script>
+</body>
+</html>

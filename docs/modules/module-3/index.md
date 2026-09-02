@@ -631,10 +631,10 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 8: 06 — Load and Standardize the Official ECDC CSV -->
+    <!-- SLIDE 8: 06 — Mount Drive and Load Official ECDC CSV -->
     <div class="slide" data-slide="8">
       <span class="slide-badge">Step 06</span>
-      <h2>06 — Load and Standardize the Official ECDC CSV</h2>
+      <h2>06 — Mount Drive and Load Official ECDC CSV</h2>
       <div class="slide-text-large">
         <pre><code class="language-python">from google.colab import drive
         drive.mount(&quot;/content/drive&quot;)
@@ -643,8 +643,17 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
         
         DATA_PATH = &quot;/content/drive/MyDrive/IA340/covid_2020.csv&quot;
         raw = pd.read_csv(DATA_PATH)
-        
-        covid = (
+        </code></pre>
+        <p><code>raw</code> keeps all original columns from the official ECDC historical file. We then standardize it in the next step.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: 06 — Standardize Columns and Parse Dates -->
+    <div class="slide" data-slide="9">
+      <span class="slide-badge">Step 06</span>
+      <h2>06 — Standardize Columns and Parse Dates</h2>
+      <div class="slide-text-large">
+        <pre><code class="language-python">covid = (
             raw
             .rename(columns={
                 &quot;dateRep&quot;: &quot;date&quot;,
@@ -659,12 +668,12 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
         covid[&quot;date&quot;] = pd.to_datetime(covid[&quot;date&quot;], dayfirst=True)
         covid.head()
         </code></pre>
-        <p><code>raw</code> keeps the official ECDC fields. <code>covid</code> is the simpler six-column DataFrame we use for class.</p>
+        <p><code>covid</code> is the standardized six-column DataFrame we use throughout the lecture and lab.</p>
       </div>
     </div>
 
-    <!-- SLIDE 9: 06 — Tip: Gemini Prompt for Loading CSV -->
-    <div class="slide" data-slide="9">
+    <!-- SLIDE 10: 06 — Tip: Gemini Prompt for Loading CSV -->
+    <div class="slide" data-slide="10">
       <span class="slide-badge">Step 06</span>
       <h2>06 — Tip: Gemini Prompt for Loading CSV</h2>
       <div class="slide-text-large">
@@ -677,8 +686,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 10: 06 — Example: Loading and Standardizing ECDC File -->
-    <div class="slide" data-slide="10">
+    <!-- SLIDE 11: 06 — Example: Loading and Standardizing ECDC File -->
+    <div class="slide" data-slide="11">
       <span class="slide-badge">Step 06</span>
       <h2>06 — Example: Loading and Standardizing ECDC File</h2>
       <div class="slide-text-large">
@@ -687,8 +696,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 11: 07 — Interactive: DataFrame, Series, Rows, Columns, and Index -->
-    <div class="slide" data-slide="11">
+    <!-- SLIDE 12: 07 — Interactive: DataFrame, Series, Rows, Columns, and Index -->
+    <div class="slide" data-slide="12">
       <span class="slide-badge">Step 07</span>
       <h2>07 — Interactive: DataFrame, Series, Rows, Columns, and Index</h2>
       <div class="slide-text-large" style="justify-content: flex-start;">
@@ -699,8 +708,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 12: 08 — How Colab Shows Output: Last Expression, display(), and print() -->
-    <div class="slide" data-slide="12">
+    <!-- SLIDE 13: 08 — How Colab Shows Output: Last Expression, display(), and print() -->
+    <div class="slide" data-slide="13">
       <span class="slide-badge">Step 08</span>
       <h2>08 — How Colab Shows Output: Last Expression, display(), and print()</h2>
       <div class="slide-text-large">
@@ -736,8 +745,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 13: 08 — How head() and shape Work -->
-    <div class="slide" data-slide="13">
+    <!-- SLIDE 14: 08 — How head() and shape Work -->
+    <div class="slide" data-slide="14">
       <span class="slide-badge">Step 08</span>
       <h2>08 — How head() and shape Work</h2>
       <div class="slide-text-large">
@@ -749,8 +758,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 14: 08 — head() and shape Colab Output -->
-    <div class="slide" data-slide="14">
+    <!-- SLIDE 15: 08 — head() and shape Colab Output -->
+    <div class="slide" data-slide="15">
       <span class="slide-badge">Step 08</span>
       <h2>08 — head() and shape Colab Output</h2>
       <div class="slide-text-large">
@@ -759,8 +768,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 15: 09 — Inspect Types, Non-Null Counts, and Distributions -->
-    <div class="slide" data-slide="15">
+    <!-- SLIDE 16: 09 — Inspect Types, Non-Null Counts, and Distributions -->
+    <div class="slide" data-slide="16">
       <span class="slide-badge">Step 09</span>
       <h2>09 — Inspect Types, Non-Null Counts, and Distributions</h2>
       <div class="slide-text-large">
@@ -779,8 +788,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 16: 09 — info() and describe() Output Examples -->
-    <div class="slide" data-slide="16">
+    <!-- SLIDE 17: 09 — info() and describe() Output Examples -->
+    <div class="slide" data-slide="17">
       <span class="slide-badge">Step 09</span>
       <h2>09 — info() and describe() Output Examples</h2>
       <div class="slide-text-large">
@@ -794,8 +803,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 17: 10 — Select One Column or Several Columns -->
-    <div class="slide" data-slide="17">
+    <!-- SLIDE 18: 10 — Select One Column or Several Columns -->
+    <div class="slide" data-slide="18">
       <span class="slide-badge">Step 10</span>
       <h2>10 — Select One Column or Several Columns</h2>
       <div class="slide-text-large">
@@ -813,8 +822,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 18: 10 — Column Selection Colab Output -->
-    <div class="slide" data-slide="18">
+    <!-- SLIDE 19: 10 — Column Selection Colab Output -->
+    <div class="slide" data-slide="19">
       <span class="slide-badge">Step 10</span>
       <h2>10 — Column Selection Colab Output</h2>
       <div class="slide-text-large">
@@ -823,8 +832,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 19: 11 — Interactive: Selection, Slicing, Filtering, and Sorting -->
-    <div class="slide" data-slide="19">
+    <!-- SLIDE 20: 11 — Interactive: Selection, Slicing, Filtering, and Sorting -->
+    <div class="slide" data-slide="20">
       <span class="slide-badge">Step 11</span>
       <h2>11 — Interactive: Selection, Slicing, Filtering, and Sorting</h2>
       <div class="slide-text-large" style="justify-content: flex-start;">
@@ -835,8 +844,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 20: 12 — Slice Rows by Position -->
-    <div class="slide" data-slide="20">
+    <!-- SLIDE 21: 12 — Slice Rows by Position -->
+    <div class="slide" data-slide="21">
       <span class="slide-badge">Step 12</span>
       <h2>12 — Slice Rows by Position</h2>
       <div class="slide-text-large">
@@ -849,8 +858,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 21: 12 — Slicing Rows Colab Output -->
-    <div class="slide" data-slide="21">
+    <!-- SLIDE 22: 12 — Slicing Rows Colab Output -->
+    <div class="slide" data-slide="22">
       <span class="slide-badge">Step 12</span>
       <h2>12 — Slicing Rows Colab Output</h2>
       <div class="slide-text-large">
@@ -859,8 +868,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 22: 13 — Filter Rows with One Condition -->
-    <div class="slide" data-slide="22">
+    <!-- SLIDE 23: 13 — Filter Rows with One Condition -->
+    <div class="slide" data-slide="23">
       <span class="slide-badge">Step 13</span>
       <h2>13 — Filter Rows with One Condition</h2>
       <div class="slide-text-large">
@@ -875,8 +884,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 23: 13 — Filter Rows Colab Output -->
-    <div class="slide" data-slide="23">
+    <!-- SLIDE 24: 13 — Filter Rows Colab Output -->
+    <div class="slide" data-slide="24">
       <span class="slide-badge">Step 13</span>
       <h2>13 — Filter Rows Colab Output</h2>
       <div class="slide-text-large">
@@ -885,8 +894,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 24: 14 — Select Columns after Filtering -->
-    <div class="slide" data-slide="24">
+    <!-- SLIDE 25: 14 — Select Columns after Filtering -->
+    <div class="slide" data-slide="25">
       <span class="slide-badge">Step 14</span>
       <h2>14 — Select Columns after Filtering</h2>
       <div class="slide-text-large">
@@ -903,8 +912,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 25: 14 — Selected Columns Colab Output -->
-    <div class="slide" data-slide="25">
+    <!-- SLIDE 26: 14 — Selected Columns Colab Output -->
+    <div class="slide" data-slide="26">
       <span class="slide-badge">Step 14</span>
       <h2>14 — Selected Columns Colab Output</h2>
       <div class="slide-text-large">
@@ -913,8 +922,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 26: 15 — Combine Two Conditions -->
-    <div class="slide" data-slide="26">
+    <!-- SLIDE 27: 15 — Combine Two Conditions -->
+    <div class="slide" data-slide="27">
       <span class="slide-badge">Step 15</span>
       <h2>15 — Combine Two Conditions</h2>
       <div class="slide-text-large">
@@ -930,8 +939,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 27: 15 — Combined Conditions Colab Output -->
-    <div class="slide" data-slide="27">
+    <!-- SLIDE 28: 15 — Combined Conditions Colab Output -->
+    <div class="slide" data-slide="28">
       <span class="slide-badge">Step 15</span>
       <h2>15 — Combined Conditions Colab Output</h2>
       <div class="slide-text-large">
@@ -940,8 +949,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 28: 16 — Sort the Result -->
-    <div class="slide" data-slide="28">
+    <!-- SLIDE 29: 16 — Sort the Result -->
+    <div class="slide" data-slide="29">
       <span class="slide-badge">Step 16</span>
       <h2>16 — Sort the Result</h2>
       <div class="slide-text-large">
@@ -958,8 +967,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 29: 16 — Sort Result Colab Output -->
-    <div class="slide" data-slide="29">
+    <!-- SLIDE 30: 16 — Sort Result Colab Output -->
+    <div class="slide" data-slide="30">
       <span class="slide-badge">Step 16</span>
       <h2>16 — Sort Result Colab Output</h2>
       <div class="slide-text-large">
@@ -968,8 +977,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 30: 17 — Check Missing Values and Negative Corrections -->
-    <div class="slide" data-slide="30">
+    <!-- SLIDE 31: 17 — Check Missing Values and Negative Corrections -->
+    <div class="slide" data-slide="31">
       <span class="slide-badge">Step 17</span>
       <h2>17 — Check Missing Values and Negative Corrections</h2>
       <div class="slide-text-large">
@@ -989,8 +998,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 31: 17 — Data Quality Output Inspection -->
-    <div class="slide" data-slide="31">
+    <!-- SLIDE 32: 17 — Data Quality Output Inspection -->
+    <div class="slide" data-slide="32">
       <span class="slide-badge">Step 17</span>
       <h2>17 — Data Quality Output Inspection</h2>
       <div class="slide-text-large">
@@ -1004,8 +1013,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 32: 18 — Why We Need groupby() -->
-    <div class="slide" data-slide="32">
+    <!-- SLIDE 33: 18 — Why We Need groupby() -->
+    <div class="slide" data-slide="33">
       <span class="slide-badge">Step 18</span>
       <h2>18 — Why We Need groupby()</h2>
       <div class="slide-text-large">
@@ -1023,8 +1032,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 33: 19 — Interactive: Split → Apply → Combine -->
-    <div class="slide" data-slide="33">
+    <!-- SLIDE 34: 19 — Interactive: Split → Apply → Combine -->
+    <div class="slide" data-slide="34">
       <span class="slide-badge">Step 19</span>
       <h2>19 — Interactive: Split → Apply → Combine</h2>
       <div class="slide-text-large" style="justify-content: flex-start;">
@@ -1035,8 +1044,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 34: 20 — Default GroupBy: as_index=True -->
-    <div class="slide" data-slide="34">
+    <!-- SLIDE 35: 20 — Default GroupBy: as_index=True -->
+    <div class="slide" data-slide="35">
       <span class="slide-badge">Step 20</span>
       <h2>20 — Default GroupBy: as_index=True</h2>
       <div class="slide-text-large">
@@ -1057,8 +1066,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 35: 20 — Keeping Columns: as_index=False -->
-    <div class="slide" data-slide="35">
+    <!-- SLIDE 36: 20 — Keeping Columns: as_index=False -->
+    <div class="slide" data-slide="36">
       <span class="slide-badge">Step 20</span>
       <h2>20 — Keeping Columns: as_index=False</h2>
       <div class="slide-text-large">
@@ -1079,8 +1088,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 36: 21 — A Simple GroupBy and Sum -->
-    <div class="slide" data-slide="36">
+    <!-- SLIDE 37: 21 — A Simple GroupBy and Sum -->
+    <div class="slide" data-slide="37">
       <span class="slide-badge">Step 21</span>
       <h2>21 — A Simple GroupBy and Sum</h2>
       <div class="slide-text-large">
@@ -1103,8 +1112,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 37: 22 — Aggregate More Than One Metric -->
-    <div class="slide" data-slide="37">
+    <!-- SLIDE 38: 22 — Aggregate More Than One Metric -->
+    <div class="slide" data-slide="38">
       <span class="slide-badge">Step 22</span>
       <h2>22 — Aggregate More Than One Metric</h2>
       <div class="slide-text-large">
@@ -1126,8 +1135,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 38: 22 — agg() Rules and Colab Output -->
-    <div class="slide" data-slide="38">
+    <!-- SLIDE 39: 22 — agg() Rules and Colab Output -->
+    <div class="slide" data-slide="39">
       <span class="slide-badge">Step 22</span>
       <h2>22 — agg() Rules and Colab Output</h2>
       <div class="slide-text-large">
@@ -1137,8 +1146,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 39: 23 — Work with Dates Using .dt -->
-    <div class="slide" data-slide="39">
+    <!-- SLIDE 40: 23 — Work with Dates Using .dt -->
+    <div class="slide" data-slide="40">
       <span class="slide-badge">Step 23</span>
       <h2>23 — Work with Dates Using .dt</h2>
       <div class="slide-text-large">
@@ -1157,8 +1166,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 40: 23 — Date Extraction Colab Output -->
-    <div class="slide" data-slide="40">
+    <!-- SLIDE 41: 23 — Date Extraction Colab Output -->
+    <div class="slide" data-slide="41">
       <span class="slide-badge">Step 23</span>
       <h2>23 — Date Extraction Colab Output</h2>
       <div class="slide-text-large">
@@ -1167,8 +1176,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 41: 24 — Group One Country by Month -->
-    <div class="slide" data-slide="41">
+    <!-- SLIDE 42: 24 — Group One Country by Month -->
+    <div class="slide" data-slide="42">
       <span class="slide-badge">Step 24</span>
       <h2>24 — Group One Country by Month</h2>
       <div class="slide-text-large">
@@ -1191,8 +1200,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 42: 24 — Monthly GroupBy Output -->
-    <div class="slide" data-slide="42">
+    <!-- SLIDE 43: 24 — Monthly GroupBy Output -->
+    <div class="slide" data-slide="43">
       <span class="slide-badge">Step 24</span>
       <h2>24 — Monthly GroupBy Output</h2>
       <div class="slide-text-large">
@@ -1201,8 +1210,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 43: 25 — Pandas Plotting Is a Simple Matplotlib Wrapper -->
-    <div class="slide" data-slide="43">
+    <!-- SLIDE 44: 25 — Pandas Plotting Is a Simple Matplotlib Wrapper -->
+    <div class="slide" data-slide="44">
       <span class="slide-badge">Step 25</span>
       <h2>25 — Pandas Plotting Is a Simple Matplotlib Wrapper</h2>
       <div class="slide-text-large">
@@ -1218,8 +1227,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 44: 26 — Line Plot: Change over Time -->
-    <div class="slide" data-slide="44">
+    <!-- SLIDE 45: 26 — Line Plot: Change over Time -->
+    <div class="slide" data-slide="45">
       <span class="slide-badge">Step 26</span>
       <h2>26 — Line Plot: Change over Time</h2>
       <div class="slide-text-large">
@@ -1239,8 +1248,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 45: 27 — Bar Plot: Compare Categories -->
-    <div class="slide" data-slide="45">
+    <!-- SLIDE 46: 27 — Bar Plot: Compare Categories -->
+    <div class="slide" data-slide="46">
       <span class="slide-badge">Step 27</span>
       <h2>27 — Bar Plot: Compare Categories</h2>
       <div class="slide-text-large">
@@ -1266,8 +1275,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 46: 27 — Horizontal Bar Chart Output -->
-    <div class="slide" data-slide="46">
+    <!-- SLIDE 47: 27 — Horizontal Bar Chart Output -->
+    <div class="slide" data-slide="47">
       <span class="slide-badge">Step 27</span>
       <h2>27 — Horizontal Bar Chart Output</h2>
       <div class="slide-text-large">
@@ -1276,8 +1285,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 47: 28 — Histogram: Distribution of Daily Cases -->
-    <div class="slide" data-slide="47">
+    <!-- SLIDE 48: 28 — Histogram: Distribution of Daily Cases -->
+    <div class="slide" data-slide="48">
       <span class="slide-badge">Step 28</span>
       <h2>28 — Histogram: Distribution of Daily Cases</h2>
       <div class="slide-text-large">
@@ -1292,8 +1301,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 48: 28 — Histogram Output: United States -->
-    <div class="slide" data-slide="48">
+    <!-- SLIDE 49: 28 — Histogram Output: United States -->
+    <div class="slide" data-slide="49">
       <span class="slide-badge">Step 28</span>
       <h2>28 — Histogram Output: United States</h2>
       <div class="slide-text-large">
@@ -1302,8 +1311,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 49: 28 — Box Plot: Medians, Spread, and Outliers -->
-    <div class="slide" data-slide="49">
+    <!-- SLIDE 50: 28 — Box Plot: Medians, Spread, and Outliers -->
+    <div class="slide" data-slide="50">
       <span class="slide-badge">Step 28</span>
       <h2>28 — Box Plot: Medians, Spread, and Outliers</h2>
       <div class="slide-text-large">
@@ -1320,8 +1329,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 50: 29 — Scatter Plot: Compare Two Numeric Variables -->
-    <div class="slide" data-slide="50">
+    <!-- SLIDE 51: 29 — Scatter Plot: Compare Two Numeric Variables -->
+    <div class="slide" data-slide="51">
       <span class="slide-badge">Step 29</span>
       <h2>29 — Scatter Plot: Compare Two Numeric Variables</h2>
       <div class="slide-text-large">
@@ -1339,8 +1348,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 51: 30 — Match the Chart to the Question -->
-    <div class="slide" data-slide="51">
+    <!-- SLIDE 52: 30 — Match the Chart to the Question -->
+    <div class="slide" data-slide="52">
       <span class="slide-badge">Step 30</span>
       <h2>30 — Match the Chart to the Question</h2>
       <div class="slide-text-large">
@@ -1378,22 +1387,31 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 52: 31 — Research Question: Sort and Aggregate -->
-    <div class="slide" data-slide="52">
+    <!-- SLIDE 53: 31 — Research Question: Sort Values to Identify Highest Month -->
+    <div class="slide" data-slide="53">
       <span class="slide-badge">Step 31</span>
-      <h2>31 — Research Question: Sort and Aggregate</h2>
+      <h2>31 — Research Question: Sort Values to Identify Highest Month</h2>
       <div class="slide-text-large">
         <p>Example question:</p>
         <blockquote>
         <p>Which month had the highest total reported cases in the United States?</p>
         </blockquote>
-        <p>The analysis already produced <code>usa_monthly_cases</code>. Sort it to identify the answer:</p>
+        <p>The analysis already produced <code>usa_monthly_cases</code>. Sort it in descending order to identify the top month:</p>
         <pre><code class="language-python">usa_monthly_cases.sort_values(
             &quot;cases&quot;,
             ascending=False,
         ).head()
         </code></pre>
-        <p>Then plot the same monthly summary as a bar chart:</p>
+        <p>The first row reveals the month with the maximum reported cases.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 54: 31 — Research Question: Visualize with Bar Chart -->
+    <div class="slide" data-slide="54">
+      <span class="slide-badge">Step 31</span>
+      <h2>31 — Research Question: Visualize with Bar Chart</h2>
+      <div class="slide-text-large">
+        <p>Now plot the same monthly summary table as a bar chart:</p>
         <pre><code class="language-python">usa_monthly_cases.plot.bar(
             x=&quot;month&quot;,
             y=&quot;cases&quot;,
@@ -1404,11 +1422,12 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
             figsize=(10, 5),
         )
         </code></pre>
+        <p>The tallest bar visually corroborates the sorted table.</p>
       </div>
     </div>
 
-    <!-- SLIDE 53: 31 — Research Question: Visual Evidence -->
-    <div class="slide" data-slide="53">
+    <!-- SLIDE 55: 31 — Research Question: Visual Evidence -->
+    <div class="slide" data-slide="55">
       <span class="slide-badge">Step 31</span>
       <h2>31 — Research Question: Visual Evidence</h2>
       <div class="slide-text-large">
@@ -1417,8 +1436,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 54: 31 — Research Question: Gemini Verification -->
-    <div class="slide" data-slide="54">
+    <!-- SLIDE 56: 31 — Research Question: Gemini Verification -->
+    <div class="slide" data-slide="56">
       <span class="slide-badge">Step 31</span>
       <h2>31 — Research Question: Gemini Verification</h2>
       <div class="slide-text-large">
@@ -1427,8 +1446,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 55: 32 — Interactive: Does the Evidence Answer the Question? -->
-    <div class="slide" data-slide="55">
+    <!-- SLIDE 57: 32 — Interactive: Does the Evidence Answer the Question? -->
+    <div class="slide" data-slide="57">
       <span class="slide-badge">Step 32</span>
       <h2>32 — Interactive: Does the Evidence Answer the Question?</h2>
       <div class="slide-text-large" style="justify-content: flex-start;">
@@ -1439,8 +1458,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 56: 33 — What Makes a Research Question Usable? -->
-    <div class="slide" data-slide="56">
+    <!-- SLIDE 58: 33 — What Makes a Research Question Usable? -->
+    <div class="slide" data-slide="58">
       <span class="slide-badge">Step 33</span>
       <h2>33 — What Makes a Research Question Usable?</h2>
       <div class="slide-text-large">
@@ -1460,8 +1479,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 57: 34 — Gemini Practice 1: Explain Code -->
-    <div class="slide" data-slide="57">
+    <!-- SLIDE 59: 34 — Gemini Practice 1: Explain Code -->
+    <div class="slide" data-slide="59">
       <span class="slide-badge">Step 34</span>
       <h2>34 — Gemini Practice 1: Explain Code</h2>
       <div class="slide-text-large">
@@ -1479,8 +1498,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 58: 34 — Gemini Explanation Output -->
-    <div class="slide" data-slide="58">
+    <!-- SLIDE 60: 34 — Gemini Explanation Output -->
+    <div class="slide" data-slide="60">
       <span class="slide-badge">Step 34</span>
       <h2>34 — Gemini Explanation Output</h2>
       <div class="slide-text-large">
@@ -1489,8 +1508,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 59: 35 — Exercise A: Repair a Code Error -->
-    <div class="slide" data-slide="59">
+    <!-- SLIDE 61: 35 — Exercise A: Repair a Code Error -->
+    <div class="slide" data-slide="61">
       <span class="slide-badge">Step 35</span>
       <h2>35 — Exercise A: Repair a Code Error</h2>
       <div class="slide-text-large">
@@ -1502,8 +1521,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 60: 35 — Exercise A: Colab Output -->
-    <div class="slide" data-slide="60">
+    <!-- SLIDE 62: 35 — Exercise A: Colab Output -->
+    <div class="slide" data-slide="62">
       <span class="slide-badge">Step 35</span>
       <h2>35 — Exercise A: Colab Output</h2>
       <div class="slide-text-large">
@@ -1512,8 +1531,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 61: 35 — Exercise B: Revise an Analysis -->
-    <div class="slide" data-slide="61">
+    <!-- SLIDE 63: 35 — Exercise B: Revise an Analysis -->
+    <div class="slide" data-slide="63">
       <span class="slide-badge">Step 35</span>
       <h2>35 — Exercise B: Revise an Analysis</h2>
       <div class="slide-text-large">
@@ -1526,8 +1545,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 62: 35 — Exercise B: Colab Output -->
-    <div class="slide" data-slide="62">
+    <!-- SLIDE 64: 35 — Exercise B: Colab Output -->
+    <div class="slide" data-slide="64">
       <span class="slide-badge">Step 35</span>
       <h2>35 — Exercise B: Colab Output</h2>
       <div class="slide-text-large">
@@ -1536,8 +1555,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 63: 36 — Gemini Practice 3: Compare Two Charts -->
-    <div class="slide" data-slide="63">
+    <!-- SLIDE 65: 36 — Gemini Practice 3: Compare Two Charts -->
+    <div class="slide" data-slide="65">
       <span class="slide-badge">Step 36</span>
       <h2>36 — Gemini Practice 3: Compare Two Charts</h2>
       <div class="slide-text-large">
@@ -1553,8 +1572,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 64: 37 — Save the Lecture Notebook to GitHub — Save #1 of 2 -->
-    <div class="slide" data-slide="64">
+    <!-- SLIDE 66: 37 — Save the Lecture Notebook to GitHub — Save #1 of 2 -->
+    <div class="slide" data-slide="66">
       <span class="slide-badge">Step 37</span>
       <h2>37 — Save the Lecture Notebook to GitHub — Save #1 of 2</h2>
       <div class="slide-text-large">
@@ -1566,8 +1585,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 65: Week 3 Takeaway -->
-    <div class="slide" data-slide="65">
+    <!-- SLIDE 67: Week 3 Takeaway -->
+    <div class="slide" data-slide="67">
       <span class="slide-badge">Week 3 Summary</span>
       <h2>Week 3 Takeaway</h2>
       <div class="slide-text-large">

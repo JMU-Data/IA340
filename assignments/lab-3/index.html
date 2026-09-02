@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 3: Independent Country COVID-19 Analysis - IA 340 | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Lab 3: Independent Country COVID-19 Analysis - IA 340" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
+<meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/assignments/lab-3/" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/assignments/lab-3/" />
+<meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 3: Independent Country COVID-19 Analysis - IA 340" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Lab 3: Independent Country COVID-19 Analysis - IA 340","url":"https://jmu-data.github.io/IA340/assignments/lab-3/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=ee44baca2fbbc33d9a126802f34f73c193de52fd">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/IA340/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://jmu-data.github.io/IA340/">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</a></h1>
+      
+
+      <h1 id="lab-3-independent-country-covid-19-analysis">Lab 3: Independent Country COVID-19 Analysis</h1>
+
+<nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
+  <a href="/IA340/" style="text-decoration: none; color: #57606a;">Home</a>
+  <a href="/IA340/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
+  <a href="/IA340/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
+  <a href="/IA340/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+  <a href="/IA340/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="/IA340/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
+  <a href="/IA340/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
+  <a href="/IA340/assignments/lab-3/" style="text-decoration: none; font-weight: 600; color: #0969da;">Lab 3</a>
+</nav>
+<p><strong>Target Date:</strong> Friday, September 11, 2026<br />
+<em>(Canvas is the authoritative source for the exact due date/time and submission status.)</em><br />
+<strong>Submission Location:</strong> Canvas<br />
+<strong>Points:</strong> 100</p>
+
+<h2 id="goal">Goal</h2>
+
+<p>Week 3 produces <strong>two separate notebooks</strong>:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>week3_pandas_matplotlib_practice.ipynb   Classroom practice — 40 points
+lab3_covid_analysis.ipynb                Independent country analysis — 60 points
+</code></pre></div></div>
+
+<p>The lecture notebook is created and saved during class. <strong>Do not continue the Lab inside that notebook.</strong> Create a separate <code class="language-plaintext highlighter-rouge">lab3_covid_analysis.ipynb</code> for the independent analysis.</p>
+
+<p>For the Lab, analyze <strong>the country assigned to you through the Canvas group set</strong> and answer <strong>two different research questions</strong>. Each question must include:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>question in Markdown
+→ relevant country data
+→ groupby and aggregation
+→ visible result table
+→ matching visualization
+→ finding and validation in Markdown
+</code></pre></div></div>
+
+<p>You may use Gemini to help write, explain, revise, or troubleshoot code. You remain responsible for the final result.</p>
+
+<blockquote>
+  <p><strong>Accuracy responsibility:</strong> You are responsible for the accuracy of your code, calculations, tables, visualizations, findings, and conclusions—even when Gemini helps generate, revise, or explain the work.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="graded-deliverables">Graded Deliverables</h1>
+
+<p>By the deadline, your private IA340 GitHub repository must contain <strong>both</strong> Week 3 notebooks on <code class="language-plaintext highlighter-rouge">main</code>:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>week3_pandas_matplotlib_practice.ipynb
+lab3_covid_analysis.ipynb
+</code></pre></div></div>
+
+<p>The first file is the completed classroom practice. The second file is the independent Lab. In Canvas, submit the <strong>GitHub repository URL</strong> for your private IA340 repository. The grading workflow will use that repository to locate and score both required notebook files on <code class="language-plaintext highlighter-rouge">main</code>.</p>
+
+<p>Use this structure in the Lab notebook:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Independent Country Analysis</span>
+
+<span class="gu">## Assigned Country</span>
+
+<span class="gu">## Question 1</span>
+<span class="gu">### Research Question</span>
+<span class="gu">### Analysis</span>
+<span class="gu">### Visualization</span>
+<span class="gu">### Finding and Validation</span>
+
+<span class="gu">## Question 2</span>
+<span class="gu">### Research Question</span>
+<span class="gu">### Analysis</span>
+<span class="gu">### Visualization</span>
+<span class="gu">### Finding and Validation</span>
+
+<span class="gu">## Short Analysis Report</span>
+
+<span class="gu">## Gemini Use</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="dataset">Dataset</h1>
+
+<p>Use the <strong>same official ECDC historical CSV and exact Drive filename used in the lecture</strong>:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>My Drive/IA340/covid_2020.csv
+</code></pre></div></div>
+
+<p>Official ECDC archive page:</p>
+
+<p><a href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide</a></p>
+
+<p>During classroom practice, the official ECDC fields are standardized into the <code class="language-plaintext highlighter-rouge">covid</code> DataFrame with these six columns:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">date</code></td>
+      <td>reporting date</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">country</code></td>
+      <td>country or territory</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cases</code></td>
+      <td>daily reported cases</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">deaths</code></td>
+      <td>daily reported deaths</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pop</code></td>
+      <td>country population</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cum</code></td>
+      <td>14-day cumulative cases per 100,000 people</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Do not switch to a different file or filename for the independent analysis. The ECDC archive ends in December 2020 and is used for learning data analysis, not for describing current public-health conditions.</p>
+
+<hr />
+
+<h1 id="use-your-canvas-assigned-country">Use Your Canvas-Assigned Country</h1>
+
+<p>The instructor will create a Canvas group set with <strong>30 country groups</strong> and randomly assign each student to one group.</p>
+
+<p>Your Canvas group name is your required country for this lab. You may <strong>not</strong> choose a different country.</p>
+
+<p>Under <code class="language-plaintext highlighter-rouge">## Assigned Country</code>:</p>
+
+<ul>
+  <li>state the exact Canvas group name assigned to you;</li>
+  <li>filter the full COVID-19 dataset to that country using the method practiced in class;</li>
+  <li>show the first few rows of the filtered data; and</li>
+  <li>show how many rows are available.</li>
+</ul>
+
+<p>The lab intentionally does <strong>not</strong> provide the filtering code. Selecting and filtering the assigned country is part of the assignment. You may write the code yourself or ask Gemini for help, but you must inspect the result.</p>
+
+<p>The Canvas group names are designed to match the country values used in the dataset. The grader will use your Canvas group name as the expected country and compare it with the country actually analyzed in your notebook.</p>
+
+<p>If your notebook analyzes a different country from your Canvas group, the independent-analysis portion is not considered complete until it is corrected.</p>
+
+<h3 id="example-structure">Example structure</h3>
+
+<p>The screenshot below is from an instructor test run and uses the United States only to illustrate the notebook structure. <strong>Your required country is the country shown in your Canvas group.</strong></p>
+
+<p><img src="/IA340/assets/week-3/screenshots/lab%20Screenshot%202026-09-02%20104449.png" alt="Instructor test-run example showing an Assigned Country section and filtered country rows in Colab" style="max-width:100%; border:1px solid #d0d7de; border-radius:8px;" /></p>
+
+<hr />
+
+<h1 id="question-1">Question 1</h1>
+
+<p>Under <code class="language-plaintext highlighter-rouge">### Research Question</code>, write one complete, answerable question about your Canvas-assigned country.</p>
+
+<p>Question 1 must:</p>
+
+<ul>
+  <li>be answerable with the available fields;</li>
+  <li>use a meaningful grouping, such as month, quarter, or another justified category;</li>
+  <li>require at least one <code class="language-plaintext highlighter-rouge">groupby()</code> operation and aggregation;</li>
+  <li>produce a visible result table; and</li>
+  <li>lead to a chart that represents the same result.</li>
+</ul>
+
+<p>One possible direction is to ask which month had the highest total reported cases. You may choose a different question.</p>
+
+<p>Under <code class="language-plaintext highlighter-rouge">### Finding and Validation</code>, directly answer the question and cite specific values, dates, months, ranks, or labels visible in your output. Explain how you checked that the written answer matches the table and chart.</p>
+
+<p>Example of a research-question section with code below it:</p>
+
+<p><img src="/IA340/assets/week-3/screenshots/lab%20Screenshot%202026-09-02%20105028.png" alt="Example Lab Question 1 asking about a weekly pattern and beginning the analysis code" style="max-width:100%; border:1px solid #d0d7de; border-radius:8px;" /></p>
+
+<hr />
+
+<h1 id="question-2">Question 2</h1>
+
+<p>Write a second research question about the <strong>same Canvas-assigned country</strong>.</p>
+
+<p>Question 2 must be meaningfully different from Question 1. Change at least one of the following:</p>
+
+<ul>
+  <li>the metric—for example, cases, deaths, or <code class="language-plaintext highlighter-rouge">cum</code>;</li>
+  <li>the aggregation—for example, total, average, maximum, or count;</li>
+  <li>the time grouping—for example, month or quarter; or</li>
+  <li>the analytical purpose—for example, peak, trend, distribution, or relationship.</li>
+</ul>
+
+<p>Possible directions include:</p>
+
+<ul>
+  <li>Which quarter had the highest average 14-day rate?</li>
+  <li>How did monthly reported deaths change during the available period?</li>
+  <li>Which month had the greatest number of days above a justified case threshold?</li>
+  <li>Which month had the highest average daily cases rather than the highest total?</li>
+</ul>
+
+<p>Question 2 must also include a <code class="language-plaintext highlighter-rouge">groupby()</code> aggregation, visible result table, appropriate visualization, direct finding, and validation.</p>
+
+<p>Do not simply copy Question 1 and replace one column name.</p>
+
+<hr />
+
+<h1 id="time-data">Time Data</h1>
+
+<p>At least one of your two questions must use a time unit created from <code class="language-plaintext highlighter-rouge">date</code>, such as:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>year
+month
+quarter
+</code></pre></div></div>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">.dt</code> methods practiced in the lecture. Choose a time unit that makes sense for the question.</p>
+
+<hr />
+
+<h1 id="visualization">Visualization</h1>
+
+<p>Use the simple pandas plotting methods introduced in class:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.plot.line()
+.plot.bar()
+.plot.barh()
+.plot.hist()
+.plot.box()
+.plot.scatter()
+</code></pre></div></div>
+
+<p>For each question:</p>
+
+<ul>
+  <li>choose a plot type that matches the question;</li>
+  <li>use the same metric shown in the result table;</li>
+  <li>add a clear title and axis labels; and</li>
+  <li>keep the chart visible in the saved notebook.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">df.plot(kind="bar")</code> is also valid, but the named methods above are usually easier to read.</p>
+
+<p>Gemini may sometimes propose direct Matplotlib or another plotting library. The screenshot below shows an AI-assisted draft from an instructor test run. The simple pandas plotting methods from class are sufficient; if you keep different generated plotting code, you must understand what it does and verify that the chart represents the same data and metric as your analysis.</p>
+
+<p><img src="/IA340/assets/week-3/screenshots/lab%20Screenshot%202026-09-02%20105047.png" alt="Instructor test-run visualization generated with AI assistance for a weekly COVID case pattern" style="max-width:100%; border:1px solid #d0d7de; border-radius:8px;" /></p>
+
+<hr />
+
+<h1 id="short-analysis-report">Short Analysis Report</h1>
+
+<p>Under <code class="language-plaintext highlighter-rouge">## Short Analysis Report</code>, write a concise Markdown report that states:</p>
+
+<ul>
+  <li>your Canvas-assigned country;</li>
+  <li>the answer to Question 1 with specific evidence;</li>
+  <li>the answer to Question 2 with specific evidence;</li>
+  <li>how the two findings relate or differ; and</li>
+  <li>one limitation of the historical dataset or your analysis.</li>
+</ul>
+
+<p>The report must be based on the visible tables and charts in your notebook.</p>
+
+<p>An AI-generated interpretation can be a useful draft, but it may go beyond what the data actually establish. For example, causal explanations about reporting delays or behavior require evidence beyond a simple grouped chart. <strong>Keep only claims you can support and verify. You are responsible for the accuracy of the final report.</strong></p>
+
+<p><img src="/IA340/assets/week-3/screenshots/lab%20Screenshot%202026-09-02%20105059.png" alt="Instructor test-run interpretation illustrating a draft that must be checked for supported and unsupported claims" style="max-width:100%; border:1px solid #d0d7de; border-radius:8px;" /></p>
+
+<hr />
+
+<h1 id="gemini-use">Gemini Use</h1>
+
+<p>Gemini is allowed. Useful requests include:</p>
+
+<blockquote>
+  <p>Explain what this filter or <code class="language-plaintext highlighter-rouge">groupby()</code> code does.</p>
+</blockquote>
+
+<blockquote>
+  <p>Help me fix this <code class="language-plaintext highlighter-rouge">KeyError</code> by comparing my code with the actual column names.</p>
+</blockquote>
+
+<blockquote>
+  <p>Rewrite this long pandas expression as two or three simpler steps.</p>
+</blockquote>
+
+<blockquote>
+  <p>Suggest a simple pandas plot that matches this research question.</p>
+</blockquote>
+
+<blockquote>
+  <p>Tell me which values in my summary table I should compare to validate my written answer. Do not invent the result.</p>
+</blockquote>
+
+<p>Under <code class="language-plaintext highlighter-rouge">## Gemini Use</code>, briefly state:</p>
+
+<ul>
+  <li>what Gemini helped with; and</li>
+  <li>what you checked or revised before keeping the result.</li>
+</ul>
+
+<p>A prompt transcript is not required. Never include passwords, access tokens, credentials, or sensitive personal information.</p>
+
+<p>Gemini assistance does not transfer responsibility for accuracy. Check the filtered country, calculations, displayed tables, chart axes/metrics, and written conclusions yourself before saving the notebook.</p>
+
+<hr />
+
+<h1 id="save-2-of-2--save-the-lab-to-github-and-submit">Save #2 of 2 — Save the Lab to GitHub and Submit</h1>
+
+<p>You should already have completed <strong>Save #1</strong> during the lecture:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>week3_pandas_matplotlib_practice.ipynb
+</code></pre></div></div>
+
+<p>Now run the separate Lab notebook from top to bottom after connecting Google Drive. Fix unresolved errors and keep the required outputs visible.</p>
+
+<p>Choose <strong>File → Save a copy in GitHub</strong> and select:</p>
+
+<ul>
+  <li>your private IA340 repository;</li>
+  <li>branch: <code class="language-plaintext highlighter-rouge">main</code>;</li>
+  <li>file path: <code class="language-plaintext highlighter-rouge">lab3_covid_analysis.ipynb</code>.</li>
+</ul>
+
+<p><strong>This is Save #2.</strong> The two Week 3 notebooks must remain as separate files on <code class="language-plaintext highlighter-rouge">main</code>.</p>
+
+<p>Submit the <strong>repository URL</strong> in Canvas:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/JMU-Data/&lt;your-course-repository&gt;
+</code></pre></div></div>
+
+<p>The grader will locate both fixed notebook filenames in that repository. Do not submit a Colab sharing URL, PDF, screenshot, or ZIP file.</p>
+
+<hr />
+
+<h1 id="deadline-rule">Deadline Rule</h1>
+
+<p>Your official completion time is the latest of:</p>
+
+<ol>
+  <li>the Canvas submission timestamp;</li>
+  <li>the latest GitHub commit on <code class="language-plaintext highlighter-rouge">main</code> that changes <code class="language-plaintext highlighter-rouge">week3_pandas_matplotlib_practice.ipynb</code>; and</li>
+  <li>the latest GitHub commit on <code class="language-plaintext highlighter-rouge">main</code> that changes <code class="language-plaintext highlighter-rouge">lab3_covid_analysis.ipynb</code>.</li>
+</ol>
+
+<p>The two notebook saves and the Canvas submission must be completed by the Canvas deadline to count as on time. The normal course late-work policy is applied after rubric scoring.</p>
+
+<hr />
+
+<h1 id="canvas-rubric--100-points">Canvas Rubric — 100 Points</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Criterion</th>
+      <th style="text-align: right">Points</th>
+      <th>What will be evaluated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Classroom Practice: Pandas Operations</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td>The separate <code class="language-plaintext highlighter-rouge">week3_pandas_matplotlib_practice.ipynb</code> contains the completed class work for loading/standardizing the official ECDC file, inspection, selection, slicing, filtering, sorting, and data-quality checks. Outputs are visible and sensible.</td>
+    </tr>
+    <tr>
+      <td><strong>Classroom Practice: GroupBy, Time, and Visualization</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td>The separate lecture-practice notebook contains the completed class work for <code class="language-plaintext highlighter-rouge">groupby()</code>, aggregation, <code class="language-plaintext highlighter-rouge">as_index</code>, time fields such as month/quarter, and the basic pandas plotting examples, with no unresolved execution errors.</td>
+    </tr>
+    <tr>
+      <td><strong>Independent Question 1</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td>The question is about the Canvas-assigned country and can be answered with the data. The notebook shows an appropriate aggregation, visible result table, matching visualization, direct finding, and validation with specific evidence.</td>
+    </tr>
+    <tr>
+      <td><strong>Independent Question 2</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td>A second meaningfully different question is answered for the same Canvas-assigned country with an appropriate aggregation, visible result table, matching visualization, direct finding, and validation with specific evidence.</td>
+    </tr>
+    <tr>
+      <td><strong>Assigned-Country Compliance, Report, and Submission</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td>The Lab analyzes the student’s Canvas-assigned country consistently; the short report summarizes both findings and one limitation; Gemini use is recorded; both Week 3 notebooks are saved separately to <code class="language-plaintext highlighter-rouge">main</code>; and Canvas receives the GitHub repository URL so both Week 3 notebooks can be graded.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="how-the-work-will-be-checked">How the Work Will Be Checked</h2>
+
+<p>The first <strong>40 points</strong> are checked from <code class="language-plaintext highlighter-rouge">week3_pandas_matplotlib_practice.ipynb</code>, primarily with deterministic Python rules: required operations, stored outputs, and absence of traceback errors.</p>
+
+<p>The <strong>60-point independent analysis</strong> is checked from <code class="language-plaintext highlighter-rouge">lab3_covid_analysis.ipynb</code> and is graded primarily by the instructor. Automation is intentionally limited to a pre-check: confirm the file exists and runs cleanly, confirm the notebook uses the student’s Canvas-assigned country, and flag missing question/table/chart sections. These checks support grading but do not replace instructor judgment. An LLM will <strong>not</strong> decide whether the questions, findings, or validation are correct.</p>
+
+<hr />
+
+<div style="margin-top: 2rem;">
+  <a href="/IA340/modules/module-3/">← Return to Module 3 Lecture</a> | <a href="/IA340/">Course Home</a>
+</div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

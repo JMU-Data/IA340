@@ -147,6 +147,13 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
   padding-bottom: 0.35rem;
 }
 
+.slide h3 {
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+  color: #1f2328;
+  font-size: 1.15rem;
+}
+
 .slide-center-box {
   max-width: 900px;
   margin: auto;
@@ -187,6 +194,62 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
   flex: 1;
 }
 
+.slide-text-large p {
+  margin: 0.4rem 0;
+}
+
+.slide-text-large pre {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+  font-size: 0.9em;
+  line-height: 1.45;
+  margin: 0.5rem 0;
+}
+
+.slide-text-large code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+  background: rgba(175, 184, 193, 0.2);
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+}
+
+.slide-text-large pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.slide-text-large table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.6rem 0;
+  font-size: 0.92rem;
+}
+
+.slide-text-large th, .slide-text-large td {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid #d0d7de;
+  text-align: left;
+}
+
+.slide-text-large th {
+  background: #f6f8fa;
+  font-weight: 600;
+}
+
+.slide-text-large blockquote {
+  margin: 0.5rem 0;
+  padding: 0.4rem 1rem;
+  color: #57606a;
+  border-left: 0.25em solid #d0d7de;
+  background: #f6f8fa;
+  border-radius: 0 6px 6px 0;
+}
+
 .slide-media-box {
   text-align: center;
   background: #f6f8fa;
@@ -209,7 +272,7 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
 .iframe-container {
   width: 100%;
   flex: 1;
-  min-height: 480px;
+  min-height: 520px;
   display: flex;
   flex-direction: column;
   margin: 0.4rem 0;
@@ -218,7 +281,7 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
 .iframe-container iframe {
   width: 100%;
   flex: 1;
-  min-height: 460px;
+  min-height: 500px;
   border: 1px solid #d0d7de;
   border-radius: 8px;
   background: #ffffff;
@@ -270,55 +333,71 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
   color: #ffffff;
 }
 
-/* Fullscreen mode */
-:fullscreen .deck-container,
-:-webkit-full-screen .deck-container {
-  max-width: 100vw;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
+/* Fullscreen mode: matches #lectureDeck or .deck-container directly */
+#lectureDeck:fullscreen,
+#lectureDeck:-webkit-full-screen,
+.deck-container:fullscreen,
+.deck-container:-webkit-full-screen {
+  max-width: none !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
   display: flex;
   flex-direction: column;
 }
 
-:fullscreen .deck-stage,
-:-webkit-full-screen .deck-stage {
-  height: calc(100vh - 48px);
+#lectureDeck:fullscreen .deck-stage,
+#lectureDeck:-webkit-full-screen .deck-stage,
+.deck-container:fullscreen .deck-stage,
+.deck-container:-webkit-full-screen .deck-stage {
+  height: calc(100vh - 48px) !important;
   flex: 1;
-  border-radius: 0;
-  border: none;
+  border-radius: 0 !important;
+  border: none !important;
   overflow: hidden;
 }
 
-:fullscreen .slide.active,
-:-webkit-full-screen .slide.active {
+#lectureDeck:fullscreen .slide.active,
+#lectureDeck:-webkit-full-screen .slide.active,
+.deck-container:fullscreen .slide.active,
+.deck-container:-webkit-full-screen .slide.active {
   height: 100%;
   overflow-y: auto;
-  padding: 1.8rem 4rem;
-  font-size: 1.15rem;
+  padding: 2rem 4.5rem;
+  font-size: 1.22rem;
+  line-height: 1.65;
 }
 
-:fullscreen .slide h2,
-:-webkit-full-screen .slide h2 {
-  font-size: 1.9rem;
+#lectureDeck:fullscreen .slide h2,
+#lectureDeck:-webkit-full-screen .slide h2,
+.deck-container:fullscreen .slide h2,
+.deck-container:-webkit-full-screen .slide h2 {
+  font-size: 2.1rem;
 }
 
-:fullscreen .slide-media-box img,
-:-webkit-full-screen .slide-media-box img {
-  max-height: 60vh;
+#lectureDeck:fullscreen .slide-media-box img,
+#lectureDeck:-webkit-full-screen .slide-media-box img,
+.deck-container:fullscreen .slide-media-box img,
+.deck-container:-webkit-full-screen .slide-media-box img {
+  max-height: 65vh;
 }
 
-:fullscreen .iframe-container,
-:-webkit-full-screen .iframe-container {
+#lectureDeck:fullscreen .iframe-container,
+#lectureDeck:-webkit-full-screen .iframe-container,
+.deck-container:fullscreen .iframe-container,
+.deck-container:-webkit-full-screen .iframe-container {
   flex: 1;
   height: calc(100vh - 160px);
-  min-height: 520px;
+  min-height: 550px;
 }
 
-:fullscreen .iframe-container iframe,
-:-webkit-full-screen .iframe-container iframe {
+#lectureDeck:fullscreen .iframe-container iframe,
+#lectureDeck:-webkit-full-screen .iframe-container iframe,
+.deck-container:fullscreen .iframe-container iframe,
+.deck-container:-webkit-full-screen .iframe-container iframe {
   height: 100%;
-  min-height: 500px;
+  min-height: 530px;
 }
 
 @media (max-width: 860px) {
@@ -346,7 +425,8 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
   <div class="deck-progress-track">
     <div class="deck-progress-fill" id="progressBar"></div>
   </div>
-  <div class="deck-stage">    <!-- SLIDE 1: Title -->
+  <div class="deck-stage">
+    <!-- SLIDE 1: Title -->
     <div class="slide active" data-slide="1">
       <div class="slide-center-box">
         <h1 class="slide-main-title">Pandas &amp; Matplotlib Review</h1>
@@ -370,22 +450,16 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       <span class="slide-badge">Step 01</span>
       <h2>01 — The Week 3 Workflow</h2>
       <div class="slide-text-large">
-
-
-We will use one common historical COVID-19 dataset.
-
-```text
-load the table
-→ inspect it
-→ select and filter rows
-→ work with dates
-→ group and aggregate
-→ visualize the result
-→ explain what the result means
-```
-
-The class works through the operations together. In the lab, each student analyzes the country randomly assigned through the Canvas country group and asks two questions that can be answered with the data.
-
+        <p>We will use one common historical COVID-19 dataset.</p>
+        <pre><code class="language-text">load the table
+        → inspect it
+        → select and filter rows
+        → work with dates
+        → group and aggregate
+        → visualize the result
+        → explain what the result means
+        </code></pre>
+        <p>The class works through the operations together. In the lab, each student analyzes the country randomly assigned through the Canvas country group and asks two questions that can be answered with the data.</p>
       </div>
     </div>
 
@@ -394,20 +468,18 @@ The class works through the operations together. In the lab, each student analyz
       <span class="slide-badge">Step 02</span>
       <h2>02 — Learning Goals</h2>
       <div class="slide-text-large">
-
-
-By the end of the week, you should be able to:
-
-- load a CSV from Google Drive into a pandas DataFrame;
-- explain DataFrame, Series, row, column, and index;
-- explain what `head`, `shape`, `dtypes`, `info`, and `describe` show;
-- select columns and slice, filter, and sort rows;
-- create useful time units from a date column;
-- explain `groupby()` and common aggregation functions;
-- create simple line, bar, histogram, box, and scatter plots;
-- write a research question that can be answered with the available data;
-- use Gemini to explain, revise, and troubleshoot code.
-
+        <p>By the end of the week, you should be able to:</p>
+        <ul>
+        <li>load a CSV from Google Drive into a pandas DataFrame;</li>
+        <li>explain DataFrame, Series, row, column, and index;</li>
+        <li>explain what <code>head</code>, <code>shape</code>, <code>dtypes</code>, <code>info</code>, and <code>describe</code> show;</li>
+        <li>select columns and slice, filter, and sort rows;</li>
+        <li>create useful time units from a date column;</li>
+        <li>explain <code>groupby()</code> and common aggregation functions;</li>
+        <li>create simple line, bar, histogram, box, and scatter plots;</li>
+        <li>write a research question that can be answered with the available data;</li>
+        <li>use Gemini to explain, revise, and troubleshoot code.</li>
+        </ul>
       </div>
     </div>
 
@@ -416,29 +488,55 @@ By the end of the week, you should be able to:
       <span class="slide-badge">Step 03</span>
       <h2>03 — The Dataset</h2>
       <div class="slide-text-large">
-
-
-We use the **official ECDC historical worldwide COVID-19 dataset**, archived through **14 December 2020**. ECDC provides the historical file in CSV and other formats.
-
-Official archive page:
-
-<https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide>
-
-The official CSV contains fields such as `dateRep`, `cases`, `deaths`, `countriesAndTerritories`, `popData2019`, and the 14-day case rate. During class, we rename and keep six fields so the rest of the analysis is easier to read:
-
-| Classroom field | ECDC source field | Meaning |
-|---|---|---|
-| `date` | `dateRep` | reporting date |
-| `country` | `countriesAndTerritories` | country or territory |
-| `cases` | `cases` | daily reported cases |
-| `deaths` | `deaths` | daily reported deaths |
-| `pop` | `popData2019` | country population |
-| `cum` | `Cumulative_number_for_14_days_of_COVID-19_cases_per_100000` | 14-day cumulative cases per 100,000 people |
-
-> One row represents one country on one reporting date.
-
-The data are historical and are used for learning, not for describing current public-health conditions.
-
+        <p>We use the <strong>official ECDC historical worldwide COVID-19 dataset</strong>, archived through <strong>14 December 2020</strong>. ECDC provides the historical file in CSV and other formats.</p>
+        <p>Official archive page:</p>
+        <p><a href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide</a></p>
+        <p>The official CSV contains fields such as <code>dateRep</code>, <code>cases</code>, <code>deaths</code>, <code>countriesAndTerritories</code>, <code>popData2019</code>, and the 14-day case rate. During class, we rename and keep six fields so the rest of the analysis is easier to read:</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Classroom field</th>
+        <th>ECDC source field</th>
+        <th>Meaning</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code>date</code></td>
+        <td><code>dateRep</code></td>
+        <td>reporting date</td>
+        </tr>
+        <tr>
+        <td><code>country</code></td>
+        <td><code>countriesAndTerritories</code></td>
+        <td>country or territory</td>
+        </tr>
+        <tr>
+        <td><code>cases</code></td>
+        <td><code>cases</code></td>
+        <td>daily reported cases</td>
+        </tr>
+        <tr>
+        <td><code>deaths</code></td>
+        <td><code>deaths</code></td>
+        <td>daily reported deaths</td>
+        </tr>
+        <tr>
+        <td><code>pop</code></td>
+        <td><code>popData2019</code></td>
+        <td>country population</td>
+        </tr>
+        <tr>
+        <td><code>cum</code></td>
+        <td><code>Cumulative_number_for_14_days_of_COVID-19_cases_per_100000</code></td>
+        <td>14-day cumulative cases per 100,000 people</td>
+        </tr>
+        </tbody>
+        </table>
+        <blockquote>
+        <p>One row represents one country on one reporting date.</p>
+        </blockquote>
+        <p>The data are historical and are used for learning, not for describing current public-health conditions.</p>
       </div>
     </div>
 
@@ -447,28 +545,17 @@ The data are historical and are used for learning, not for describing current pu
       <span class="slide-badge">Step 04</span>
       <h2>04 — Put the Official ECDC CSV in Google Drive</h2>
       <div class="slide-text-large">
-
-
-From the ECDC archive page, choose **Download in CSV**. The direct official CSV endpoint is:
-
-<https://opendata.ecdc.europa.eu/covid19/casedistribution/csv>
-
-When you upload the downloaded file to Google Drive, rename it **exactly**:
-
-```text
-covid_2020.csv
-```
-
-Store it exactly here:
-
-```text
-My Drive/
-└── IA340/
-    └── covid_2020.csv
-```
-
-We will use this exact filename and path throughout the lecture and lab.
-
+        <p>From the ECDC archive page, choose <strong>Download in CSV</strong>. The direct official CSV endpoint is:</p>
+        <p><a href="https://opendata.ecdc.europa.eu/covid19/casedistribution/csv">https://opendata.ecdc.europa.eu/covid19/casedistribution/csv</a></p>
+        <p>When you upload the downloaded file to Google Drive, rename it <strong>exactly</strong>:</p>
+        <pre><code class="language-text">covid_2020.csv
+        </code></pre>
+        <p>Store it exactly here:</p>
+        <pre><code class="language-text">My Drive/
+        └── IA340/
+            └── covid_2020.csv
+        </code></pre>
+        <p>We will use this exact filename and path throughout the lecture and lab.</p>
       </div>
     </div>
 
@@ -477,24 +564,15 @@ We will use this exact filename and path throughout the lecture and lab.
       <span class="slide-badge">Step 05</span>
       <h2>05 — Create the Lecture Practice Notebook</h2>
       <div class="slide-text-large">
-
-
-Create a blank Colab notebook named exactly:
-
-```text
-week3_pandas_matplotlib_practice.ipynb
-```
-
-Begin with these Markdown headings:
-
-```markdown
-# IA340 Week 3: Pandas & Matplotlib Practice
-
-## Load and Inspect
-```
-
-This notebook is only for the guided classroom practice. **Lab 3 uses a separate notebook** named `lab3_covid_analysis.ipynb`. You will save the lecture notebook to GitHub once at the end of class, then save the Lab notebook separately after completing the independent analysis.
-
+        <p>Create a blank Colab notebook named exactly:</p>
+        <pre><code class="language-text">week3_pandas_matplotlib_practice.ipynb
+        </code></pre>
+        <p>Begin with these Markdown headings:</p>
+        <pre><code class="language-markdown"># IA340 Week 3: Pandas &amp; Matplotlib Practice
+        
+        ## Load and Inspect
+        </code></pre>
+        <p>This notebook is only for the guided classroom practice. <strong>Lab 3 uses a separate notebook</strong> named <code>lab3_covid_analysis.ipynb</code>. You will save the lecture notebook to GitHub once at the end of class, then save the Lab notebook separately after completing the independent analysis.</p>
       </div>
     </div>
 
@@ -503,47 +581,38 @@ This notebook is only for the guided classroom practice. **Lab 3 uses a separate
       <span class="slide-badge">Step 06</span>
       <h2>06 — Load and Standardize the Official ECDC CSV</h2>
       <div class="slide-text-large">
-
-
-```python
-from google.colab import drive
-drive.mount("/content/drive")
-
-import pandas as pd
-
-DATA_PATH = "/content/drive/MyDrive/IA340/covid_2020.csv"
-raw = pd.read_csv(DATA_PATH)
-
-covid = (
-    raw
-    .rename(columns={
-        "dateRep": "date",
-        "countriesAndTerritories": "country",
-        "popData2019": "pop",
-        "Cumulative_number_for_14_days_of_COVID-19_cases_per_100000": "cum",
-    })
-    [["date", "country", "cases", "deaths", "pop", "cum"]]
-    .copy()
-)
-
-covid["date"] = pd.to_datetime(covid["date"], dayfirst=True)
-covid.head()
-```
-
-`raw` keeps the official ECDC fields. `covid` is the simpler six-column DataFrame we use for class.
-
-### Tip: Gemini can help with the Drive path or explain the setup
-
-You may type the code manually, or ask Gemini something like:
-
-> My official ECDC CSV is at `/content/drive/MyDrive/IA340/covid_2020.csv`. Help me load it, rename `dateRep`, `countriesAndTerritories`, `popData2019`, and the long 14-day-rate field to `date`, `country`, `pop`, and `cum`, keep the six classroom columns, and parse `date` as datetime. Explain each step.
-
-Confirm the exact path in Colab's **Files** panel. The filename used in class is always `covid_2020.csv`.
-
-### Example: loading and standardizing the ECDC file
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101319.png" alt="Colab example loading the official ECDC CSV into raw and creating the standardized covid DataFrame" /></div>
-
+        <pre><code class="language-python">from google.colab import drive
+        drive.mount(&quot;/content/drive&quot;)
+        
+        import pandas as pd
+        
+        DATA_PATH = &quot;/content/drive/MyDrive/IA340/covid_2020.csv&quot;
+        raw = pd.read_csv(DATA_PATH)
+        
+        covid = (
+            raw
+            .rename(columns={
+                &quot;dateRep&quot;: &quot;date&quot;,
+                &quot;countriesAndTerritories&quot;: &quot;country&quot;,
+                &quot;popData2019&quot;: &quot;pop&quot;,
+                &quot;Cumulative_number_for_14_days_of_COVID-19_cases_per_100000&quot;: &quot;cum&quot;,
+            })
+            [[&quot;date&quot;, &quot;country&quot;, &quot;cases&quot;, &quot;deaths&quot;, &quot;pop&quot;, &quot;cum&quot;]]
+            .copy()
+        )
+        
+        covid[&quot;date&quot;] = pd.to_datetime(covid[&quot;date&quot;], dayfirst=True)
+        covid.head()
+        </code></pre>
+        <p><code>raw</code> keeps the official ECDC fields. <code>covid</code> is the simpler six-column DataFrame we use for class.</p>
+        <h3>Tip: Gemini can help with the Drive path or explain the setup</h3>
+        <p>You may type the code manually, or ask Gemini something like:</p>
+        <blockquote>
+        <p>My official ECDC CSV is at <code>/content/drive/MyDrive/IA340/covid_2020.csv</code>. Help me load it, rename <code>dateRep</code>, <code>countriesAndTerritories</code>, <code>popData2019</code>, and the long 14-day-rate field to <code>date</code>, <code>country</code>, <code>pop</code>, and <code>cum</code>, keep the six classroom columns, and parse <code>date</code> as datetime. Explain each step.</p>
+        </blockquote>
+        <p>Confirm the exact path in Colab's <strong>Files</strong> panel. The filename used in class is always <code>covid_2020.csv</code>.</p>
+        <h3>Example: loading and standardizing the ECDC file</h3>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101319.png" alt="Colab example loading the official ECDC CSV into raw and creating the standardized covid DataFrame" /></div>
       </div>
     </div>
 
@@ -552,24 +621,16 @@ Confirm the exact path in Colab's **Files** panel. The filename used in class is
       <span class="slide-badge">Step 07</span>
       <h2>07 — Interactive: DataFrame, Series, Rows, Columns, and Index</h2>
       <div class="slide-text-large">
-
-
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/dataframe-concepts.html" title="Interactive explanation of pandas DataFrame, Series, rows, columns, and index" loading="lazy"></iframe></div>
-
-[Open the DataFrame concepts interaction in a separate page]({{ site.baseurl }}/assets/week-3/dataframe-concepts.html)
-
-Use the buttons to highlight one concept at a time:
-
-```text
-DataFrame = the complete two-dimensional table
-Series    = one labeled one-dimensional column
-row       = one observation
-column    = one variable
-index     = row labels pandas uses to identify and align rows
-```
-
-The index is not the same thing as a data column. It stays attached to rows when pandas selects, filters, sorts, or aligns data. The interaction also shows the pandas expression and the type of object returned.
-
+        <div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/dataframe-concepts.html" title="Interactive explanation of pandas DataFrame, Series, rows, columns, and index" loading="lazy"></iframe></div>
+        <p><a href="{{ site.baseurl }}/assets/week-3/dataframe-concepts.html">Open the DataFrame concepts interaction in a separate page</a></p>
+        <p>Use the buttons to highlight one concept at a time:</p>
+        <pre><code class="language-text">DataFrame = the complete two-dimensional table
+        Series    = one labeled one-dimensional column
+        row       = one observation
+        column    = one variable
+        index     = row labels pandas uses to identify and align rows
+        </code></pre>
+        <p>The index is not the same thing as a data column. It stays attached to rows when pandas selects, filters, sorts, or aligns data. The interaction also shows the pandas expression and the type of object returned.</p>
       </div>
     </div>
 
@@ -578,40 +639,41 @@ The index is not the same thing as a data column. It stays attached to rows when
       <span class="slide-badge">Step 08</span>
       <h2>08 — How Colab Shows Output: Last Expression, `display()`, and `print()`</h2>
       <div class="slide-text-large">
-
-
-In a notebook, the last expression in a code cell is displayed automatically:
-
-```python
-covid.head()
-```
-
-Use a separate cell for another result:
-
-```python
-covid.shape
-```
-
-| Method | Best use |
-|---|---|
-| `covid.head()` as the last line | simplest rich table output |
-| `display(covid.head())` | rich output when you need to show several objects in one cell |
-| `print("Shape:", covid.shape)` | plain-text labels, messages, and compact values |
-
-For DataFrames, the notebook's rich display is usually easier to read than `print()`.
-
-### `head()`
-
-Shows the first five rows by default. Use `covid.head(10)` to request ten.
-
-### `shape`
-
-Returns `(number_of_rows, number_of_columns)`. It is a property, so it does not use parentheses.
-
-For the standardized `covid` DataFrame, the second number should be `6` because we kept six classroom columns. The first number tells you how many records are present.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101345.png" alt="Colab output showing covid.head() and covid.shape" /></div>
-
+        <p>In a notebook, the last expression in a code cell is displayed automatically:</p>
+        <pre><code class="language-python">covid.head()
+        </code></pre>
+        <p>Use a separate cell for another result:</p>
+        <pre><code class="language-python">covid.shape
+        </code></pre>
+        <table>
+        <thead>
+        <tr>
+        <th>Method</th>
+        <th>Best use</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code>covid.head()</code> as the last line</td>
+        <td>simplest rich table output</td>
+        </tr>
+        <tr>
+        <td><code>display(covid.head())</code></td>
+        <td>rich output when you need to show several objects in one cell</td>
+        </tr>
+        <tr>
+        <td><code>print("Shape:", covid.shape)</code></td>
+        <td>plain-text labels, messages, and compact values</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>For DataFrames, the notebook's rich display is usually easier to read than <code>print()</code>.</p>
+        <h3><code>head()</code></h3>
+        <p>Shows the first five rows by default. Use <code>covid.head(10)</code> to request ten.</p>
+        <h3><code>shape</code></h3>
+        <p>Returns <code>(number_of_rows, number_of_columns)</code>. It is a property, so it does not use parentheses.</p>
+        <p>For the standardized <code>covid</code> DataFrame, the second number should be <code>6</code> because we kept six classroom columns. The first number tells you how many records are present.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101345.png" alt="Colab output showing covid.head() and covid.shape" /></div>
       </div>
     </div>
 
@@ -620,32 +682,21 @@ For the standardized `covid` DataFrame, the second number should be `6` because 
       <span class="slide-badge">Step 09</span>
       <h2>09 — Inspect Types, Non-Null Counts, and Distributions</h2>
       <div class="slide-text-large">
-
-
-Run these in separate cells:
-
-```python
-covid.dtypes
-```
-
-```python
-covid.info()
-```
-
-```python
-covid.describe()
-```
-
-- **`dtypes`** — the type pandas assigned to each column, such as datetime, integer, floating point, or object/text;
-- **`info()`** — row count, column names, non-null counts, data types, and approximate memory use;
-- **`describe()`** — count, mean, standard deviation, minimum, quartiles, and maximum for numeric columns.
-
-Each command answers a different question about the table.
-
-Examples of the actual notebook output:
-
-<div style="display:flex; gap:1rem; justify-content:center; margin:0.5rem 0;"><div class="slide-media-box" style="flex:1;"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101509.png" alt="Colab covid.info output" style="max-height:300px;" /></div><div class="slide-media-box" style="flex:1;"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101520.png" alt="Colab covid.describe output" style="max-height:300px;" /></div></div>
-
+        <p>Run these in separate cells:</p>
+        <pre><code class="language-python">covid.dtypes
+        </code></pre>
+        <pre><code class="language-python">covid.info()
+        </code></pre>
+        <pre><code class="language-python">covid.describe()
+        </code></pre>
+        <ul>
+        <li><strong><code>dtypes</code></strong> — the type pandas assigned to each column, such as datetime, integer, floating point, or object/text;</li>
+        <li><strong><code>info()</code></strong> — row count, column names, non-null counts, data types, and approximate memory use;</li>
+        <li><strong><code>describe()</code></strong> — count, mean, standard deviation, minimum, quartiles, and maximum for numeric columns.</li>
+        </ul>
+        <p>Each command answers a different question about the table.</p>
+        <p>Examples of the actual notebook output:</p>
+        <div style="display:flex; gap:1rem; justify-content:center; margin:0.5rem 0;"><div class="slide-media-box" style="flex:1;"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101509.png" alt="Colab covid.info output" style="max-height:300px;" /></div><div class="slide-media-box" style="flex:1;"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101520.png" alt="Colab covid.describe output" style="max-height:300px;" /></div></div>
       </div>
     </div>
 
@@ -654,28 +705,18 @@ Examples of the actual notebook output:
       <span class="slide-badge">Step 10</span>
       <h2>10 — Select One Column or Several Columns</h2>
       <div class="slide-text-large">
-
-
-### One column returns a Series
-
-```python
-cases = covid["cases"]
-cases.head()
-```
-
-### Several columns return a DataFrame
-
-```python
-guided_columns = covid[
-    ["date", "country", "cases", "deaths"]
-]
-guided_columns.head()
-```
-
-Selection changes **which variables** are kept. It does not filter observations.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101559.png" alt="Colab example selecting date country cases and deaths columns" /></div>
-
+        <h3>One column returns a Series</h3>
+        <pre><code class="language-python">cases = covid[&quot;cases&quot;]
+        cases.head()
+        </code></pre>
+        <h3>Several columns return a DataFrame</h3>
+        <pre><code class="language-python">guided_columns = covid[
+            [&quot;date&quot;, &quot;country&quot;, &quot;cases&quot;, &quot;deaths&quot;]
+        ]
+        guided_columns.head()
+        </code></pre>
+        <p>Selection changes <strong>which variables</strong> are kept. It does not filter observations.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101559.png" alt="Colab example selecting date country cases and deaths columns" /></div>
       </div>
     </div>
 
@@ -684,20 +725,16 @@ Selection changes **which variables** are kept. It does not filter observations.
       <span class="slide-badge">Step 11</span>
       <h2>11 — Interactive: Selection, Slicing, Filtering, and Sorting</h2>
       <div class="slide-text-large">
-
-
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/dataframe-selection.html" title="Interactive pandas DataFrame selection, slicing, filtering, and sorting demonstration" loading="lazy"></iframe></div>
-
-[Open the DataFrame interaction in a separate page]({{ site.baseurl }}/assets/week-3/dataframe-selection.html)
-
-Use the controls to compare:
-
-- selecting columns;
-- slicing rows by position;
-- filtering rows by values;
-- combining conditions; and
-- changing row order with sorting.
-
+        <div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/dataframe-selection.html" title="Interactive pandas DataFrame selection, slicing, filtering, and sorting demonstration" loading="lazy"></iframe></div>
+        <p><a href="{{ site.baseurl }}/assets/week-3/dataframe-selection.html">Open the DataFrame interaction in a separate page</a></p>
+        <p>Use the controls to compare:</p>
+        <ul>
+        <li>selecting columns;</li>
+        <li>slicing rows by position;</li>
+        <li>filtering rows by values;</li>
+        <li>combining conditions; and</li>
+        <li>changing row order with sorting.</li>
+        </ul>
       </div>
     </div>
 
@@ -706,26 +743,16 @@ Use the controls to compare:
       <span class="slide-badge">Step 12</span>
       <h2>12 — Slice Rows by Position</h2>
       <div class="slide-text-large">
-
-
-Use `iloc` when you want rows by their integer positions.
-
-```python
-first_ten_rows = covid.iloc[0:10]
-first_ten_rows
-```
-
-Read the slice as:
-
-```text
-start at position 0
-stop before position 10
-```
-
-The result contains ten rows. Slicing does not ask whether the values meet a condition.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101632.png" alt="Colab iloc example displaying the first ten rows" /></div>
-
+        <p>Use <code>iloc</code> when you want rows by their integer positions.</p>
+        <pre><code class="language-python">first_ten_rows = covid.iloc[0:10]
+        first_ten_rows
+        </code></pre>
+        <p>Read the slice as:</p>
+        <pre><code class="language-text">start at position 0
+        stop before position 10
+        </code></pre>
+        <p>The result contains ten rows. Slicing does not ask whether the values meet a condition.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101632.png" alt="Colab iloc example displaying the first ten rows" /></div>
       </div>
     </div>
 
@@ -734,29 +761,19 @@ The result contains ten rows. Slicing does not ask whether the values meet a con
       <span class="slide-badge">Step 13</span>
       <h2>13 — Filter Rows with One Condition</h2>
       <div class="slide-text-large">
-
-
-Suppose we want records with more than 1,000 reported deaths:
-
-```python
-high_death_days = covid[
-    covid["deaths"] > 1000
-]
-
-high_death_days.head()
-```
-
-The expression inside the brackets creates a Boolean condition:
-
-```text
-True  → keep the row
-False → remove the row from this result
-```
-
-The original `covid` DataFrame is unchanged.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101654.png" alt="Colab Boolean filter example for days with more than 1000 deaths" /></div>
-
+        <p>Suppose we want records with more than 1,000 reported deaths:</p>
+        <pre><code class="language-python">high_death_days = covid[
+            covid[&quot;deaths&quot;] &gt; 1000
+        ]
+        
+        high_death_days.head()
+        </code></pre>
+        <p>The expression inside the brackets creates a Boolean condition:</p>
+        <pre><code class="language-text">True  → keep the row
+        False → remove the row from this result
+        </code></pre>
+        <p>The original <code>covid</code> DataFrame is unchanged.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101654.png" alt="Colab Boolean filter example for days with more than 1000 deaths" /></div>
       </div>
     </div>
 
@@ -765,29 +782,19 @@ The original `covid` DataFrame is unchanged.
       <span class="slide-badge">Step 14</span>
       <h2>14 — Select Columns after Filtering</h2>
       <div class="slide-text-large">
-
-
-We usually do not need every column in the filtered result.
-
-```python
-high_death_days = high_death_days[
-    ["date", "country", "cases", "deaths"]
-]
-
-high_death_days.head()
-```
-
-This is easier to read as two operations:
-
-```text
-1. filter the rows
-2. select the useful columns
-```
-
-Writing the steps separately is often clearer than putting everything into one long expression.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101726.png" alt="Colab example selecting four columns after filtering rows" /></div>
-
+        <p>We usually do not need every column in the filtered result.</p>
+        <pre><code class="language-python">high_death_days = high_death_days[
+            [&quot;date&quot;, &quot;country&quot;, &quot;cases&quot;, &quot;deaths&quot;]
+        ]
+        
+        high_death_days.head()
+        </code></pre>
+        <p>This is easier to read as two operations:</p>
+        <pre><code class="language-text">1. filter the rows
+        2. select the useful columns
+        </code></pre>
+        <p>Writing the steps separately is often clearer than putting everything into one long expression.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101726.png" alt="Colab example selecting four columns after filtering rows" /></div>
       </div>
     </div>
 
@@ -796,30 +803,23 @@ Writing the steps separately is often clearer than putting everything into one l
       <span class="slide-badge">Step 15</span>
       <h2>15 — Combine Two Conditions</h2>
       <div class="slide-text-large">
-
-
-Use `&` when **both** conditions must be true:
-
-```python
-usa_high_cases = covid[
-    (covid["country"] == "United_States_of_America")
-    & (covid["cases"] > 100000)
-]
-
-usa_high_cases.head()
-```
-
-Important syntax:
-
-- place each condition inside parentheses;
-- use `&` for AND;
-- use `|` for OR;
-- use `==` to test equality.
-
-`United_States_of_America` is the exact country label used in this historical file.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101805.png" alt="Colab example combining country and cases conditions for United States rows" /></div>
-
+        <p>Use <code>&amp;</code> when <strong>both</strong> conditions must be true:</p>
+        <pre><code class="language-python">usa_high_cases = covid[
+            (covid[&quot;country&quot;] == &quot;United_States_of_America&quot;)
+            &amp; (covid[&quot;cases&quot;] &gt; 100000)
+        ]
+        
+        usa_high_cases.head()
+        </code></pre>
+        <p>Important syntax:</p>
+        <ul>
+        <li>place each condition inside parentheses;</li>
+        <li>use <code>&amp;</code> for AND;</li>
+        <li>use <code>|</code> for OR;</li>
+        <li>use <code>==</code> to test equality.</li>
+        </ul>
+        <p><code>United_States_of_America</code> is the exact country label used in this historical file.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101805.png" alt="Colab example combining country and cases conditions for United States rows" /></div>
       </div>
     </div>
 
@@ -828,26 +828,20 @@ Important syntax:
       <span class="slide-badge">Step 16</span>
       <h2>16 — Sort the Result</h2>
       <div class="slide-text-large">
-
-
-```python
-high_death_days = high_death_days.sort_values(
-    "deaths",
-    ascending=False,
-)
-
-high_death_days.head(10)
-```
-
-`sort_values()` changes the order of the rows in the returned result.
-
-- `ascending=True` places smaller values first;
-- `ascending=False` places larger values first.
-
-Sorting is often the easiest way to find the largest or smallest observations.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101839.png" alt="Colab example sorting filtered rows by deaths in descending order" /></div>
-
+        <pre><code class="language-python">high_death_days = high_death_days.sort_values(
+            &quot;deaths&quot;,
+            ascending=False,
+        )
+        
+        high_death_days.head(10)
+        </code></pre>
+        <p><code>sort_values()</code> changes the order of the rows in the returned result.</p>
+        <ul>
+        <li><code>ascending=True</code> places smaller values first;</li>
+        <li><code>ascending=False</code> places larger values first.</li>
+        </ul>
+        <p>Sorting is often the easiest way to find the largest or smallest observations.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101839.png" alt="Colab example sorting filtered rows by deaths in descending order" /></div>
       </div>
     </div>
 
@@ -856,28 +850,19 @@ Sorting is often the easiest way to find the largest or smallest observations.
       <span class="slide-badge">Step 17</span>
       <h2>17 — Check Missing Values and Unusual Values</h2>
       <div class="slide-text-large">
-
-
-```python
-missing_counts = covid.isna().sum()
-missing_counts
-```
-
-Then inspect negative reports:
-
-```python
-negative_corrections = covid[
-    (covid["cases"] < 0)
-    | (covid["deaths"] < 0)
-]
-
-negative_corrections.head()
-```
-
-Negative daily values may represent later reporting corrections. An unusual value should be examined before it is removed or changed.
-
-<div style="display:flex; gap:1rem; justify-content:center; margin:0.5rem 0;"><div class="slide-media-box" style="flex:1;"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101901.png" alt="Colab missing-value counts for the standardized COVID DataFrame" style="max-height:300px;" /></div><div class="slide-media-box" style="flex:1;"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101930.png" alt="Colab rows containing negative cases or deaths that may represent reporting corrections" style="max-height:300px;" /></div></div>
-
+        <pre><code class="language-python">missing_counts = covid.isna().sum()
+        missing_counts
+        </code></pre>
+        <p>Then inspect negative reports:</p>
+        <pre><code class="language-python">negative_corrections = covid[
+            (covid[&quot;cases&quot;] &lt; 0)
+            | (covid[&quot;deaths&quot;] &lt; 0)
+        ]
+        
+        negative_corrections.head()
+        </code></pre>
+        <p>Negative daily values may represent later reporting corrections. An unusual value should be examined before it is removed or changed.</p>
+        <div style="display:flex; gap:1rem; justify-content:center; margin:0.5rem 0;"><div class="slide-media-box" style="flex:1;"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101901.png" alt="Colab missing-value counts for the standardized COVID DataFrame" style="max-height:300px;" /></div><div class="slide-media-box" style="flex:1;"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101930.png" alt="Colab rows containing negative cases or deaths that may represent reporting corrections" style="max-height:300px;" /></div></div>
       </div>
     </div>
 
@@ -886,24 +871,17 @@ Negative daily values may represent later reporting corrections. An unusual valu
       <span class="slide-badge">Step 18</span>
       <h2>18 — Why We Need `groupby()`</h2>
       <div class="slide-text-large">
-
-
-Suppose the question is:
-
-> How many cases were reported worldwide on each date?
-
-The original table has many rows for each date—one row for every reporting country.
-
-We need to:
-
-```text
-put rows with the same date together
-→ add the cases inside each date group
-→ return one result row for each date
-```
-
-That is the basic purpose of `groupby()` plus an aggregation function.
-
+        <p>Suppose the question is:</p>
+        <blockquote>
+        <p>How many cases were reported worldwide on each date?</p>
+        </blockquote>
+        <p>The original table has many rows for each date—one row for every reporting country.</p>
+        <p>We need to:</p>
+        <pre><code class="language-text">put rows with the same date together
+        → add the cases inside each date group
+        → return one result row for each date
+        </code></pre>
+        <p>That is the basic purpose of <code>groupby()</code> plus an aggregation function.</p>
       </div>
     </div>
 
@@ -912,16 +890,10 @@ That is the basic purpose of `groupby()` plus an aggregation function.
       <span class="slide-badge">Step 19</span>
       <h2>19 — Interactive: Split → Apply → Combine</h2>
       <div class="slide-text-large">
-
-
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/groupby-aggregation.html" title="Interactive pandas groupby and aggregation demonstration" loading="lazy"></iframe></div>
-
-[Open the GroupBy interaction in a separate page]({{ site.baseurl }}/assets/week-3/groupby-aggregation.html)
-
-Change the aggregation among `sum`, `mean`, and `count`, and toggle `as_index=True` / `as_index=False`.
-
-The groups stay the same, but the summary answers a different question when the aggregation function changes. The `as_index` setting changes **where the grouping key appears** in the result.
-
+        <div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/groupby-aggregation.html" title="Interactive pandas groupby and aggregation demonstration" loading="lazy"></iframe></div>
+        <p><a href="{{ site.baseurl }}/assets/week-3/groupby-aggregation.html">Open the GroupBy interaction in a separate page</a></p>
+        <p>Change the aggregation among <code>sum</code>, <code>mean</code>, and <code>count</code>, and toggle <code>as_index=True</code> / <code>as_index=False</code>.</p>
+        <p>The groups stay the same, but the summary answers a different question when the aggregation function changes. The <code>as_index</code> setting changes <strong>where the grouping key appears</strong> in the result.</p>
       </div>
     </div>
 
@@ -930,52 +902,35 @@ The groups stay the same, but the summary answers a different question when the 
       <span class="slide-badge">Step 20</span>
       <h2>20 — What Does `as_index=False` Mean?</h2>
       <div class="slide-text-large">
-
-
-A pandas **index** is the set of row labels. With a normal DataFrame, those labels often look like `0, 1, 2, ...`, but an index can also contain names, dates, or other labels.
-
-By default, `groupby()` uses `as_index=True`, so the grouping key becomes the result index:
-
-```python
-by_country_index = (
-    covid
-    .groupby("country")
-    .agg(total_cases=("cases", "sum"))
-)
-```
-
-Conceptually, the result looks like:
-
-```text
-index (country)        total_cases
-Argentina              ...
-Brazil                 ...
-Canada                 ...
-```
-
-For this course, we often use:
-
-```python
-by_country_columns = (
-    covid
-    .groupby("country", as_index=False)
-    .agg(total_cases=("cases", "sum"))
-)
-```
-
-Now `country` stays a **normal column**, and pandas keeps a simple row index:
-
-```text
-index   country        total_cases
-0       Argentina      ...
-1       Brazil         ...
-2       Canada         ...
-```
-
-Why use `as_index=False` here? It makes the summary easier to display, export, merge, and plot with code such as `plot(x="country", y="total_cases")`. It is a convenience choice, not a rule that the index is unimportant. If you use the default `as_index=True`, calling `.reset_index()` afterward can move the grouping key back into a normal column; `as_index=False` simply does that directly for this result.
-
-Use the `as_index` control in the interactive example above to switch between the two result shapes.
-
+        <p>A pandas <strong>index</strong> is the set of row labels. With a normal DataFrame, those labels often look like <code>0, 1, 2, ...</code>, but an index can also contain names, dates, or other labels.</p>
+        <p>By default, <code>groupby()</code> uses <code>as_index=True</code>, so the grouping key becomes the result index:</p>
+        <pre><code class="language-python">by_country_index = (
+            covid
+            .groupby(&quot;country&quot;)
+            .agg(total_cases=(&quot;cases&quot;, &quot;sum&quot;))
+        )
+        </code></pre>
+        <p>Conceptually, the result looks like:</p>
+        <pre><code class="language-text">index (country)        total_cases
+        Argentina              ...
+        Brazil                 ...
+        Canada                 ...
+        </code></pre>
+        <p>For this course, we often use:</p>
+        <pre><code class="language-python">by_country_columns = (
+            covid
+            .groupby(&quot;country&quot;, as_index=False)
+            .agg(total_cases=(&quot;cases&quot;, &quot;sum&quot;))
+        )
+        </code></pre>
+        <p>Now <code>country</code> stays a <strong>normal column</strong>, and pandas keeps a simple row index:</p>
+        <pre><code class="language-text">index   country        total_cases
+        0       Argentina      ...
+        1       Brazil         ...
+        2       Canada         ...
+        </code></pre>
+        <p>Why use <code>as_index=False</code> here? It makes the summary easier to display, export, merge, and plot with code such as <code>plot(x="country", y="total_cases")</code>. It is a convenience choice, not a rule that the index is unimportant. If you use the default <code>as_index=True</code>, calling <code>.reset_index()</code> afterward can move the grouping key back into a normal column; <code>as_index=False</code> simply does that directly for this result.</p>
+        <p>Use the <code>as_index</code> control in the interactive example above to switch between the two result shapes.</p>
       </div>
     </div>
 
@@ -984,30 +939,22 @@ Use the `as_index` control in the interactive example above to switch between th
       <span class="slide-badge">Step 21</span>
       <h2>21 — A Simple GroupBy and Sum</h2>
       <div class="slide-text-large">
-
-
-```python
-daily_cases = (
-    covid
-    .groupby("date", as_index=False)["cases"]
-    .sum()
-    .sort_values("date")
-)
-
-daily_cases.head()
-```
-
-Read it in order:
-
-```text
-group by date
-→ select cases
-→ add cases inside each date group
-→ sort the result by date
-```
-
-The original grain was one country-date row. The new grain is one row per date.
-
+        <pre><code class="language-python">daily_cases = (
+            covid
+            .groupby(&quot;date&quot;, as_index=False)[&quot;cases&quot;]
+            .sum()
+            .sort_values(&quot;date&quot;)
+        )
+        
+        daily_cases.head()
+        </code></pre>
+        <p>Read it in order:</p>
+        <pre><code class="language-text">group by date
+        → select cases
+        → add cases inside each date group
+        → sort the result by date
+        </code></pre>
+        <p>The original grain was one country-date row. The new grain is one row per date.</p>
       </div>
     </div>
 
@@ -1016,36 +963,25 @@ The original grain was one country-date row. The new grain is one row per date.
       <span class="slide-badge">Step 22</span>
       <h2>22 — Aggregate More Than One Metric</h2>
       <div class="slide-text-large">
-
-
-```python
-daily_global = (
-    covid
-    .groupby("date", as_index=False)
-    .agg(
-        total_cases=("cases", "sum"),
-        total_deaths=("deaths", "sum"),
-    )
-    .sort_values("date")
-)
-
-daily_global.head()
-```
-
-`agg()` is short for **aggregate**. It lets one `groupby()` calculate one or more summary metrics and give the output columns clear names.
-
-Each line inside `agg()` defines:
-
-```text
-new column name = (source column, aggregation function)
-```
-
-For example, `total_cases=("cases", "sum")` means: take the `cases` values inside each group, sum them, and store the result in a new column named `total_cases`. You can use functions such as `sum`, `mean`, `max`, `min`, and `count` depending on the research question.
-
-Do not sum every numeric column automatically. For example, `pop` repeats on many dates, and `cum` is already a 14-day rate.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102446.png" alt="Colab groupby and agg example producing daily total cases and deaths" /></div>
-
+        <pre><code class="language-python">daily_global = (
+            covid
+            .groupby(&quot;date&quot;, as_index=False)
+            .agg(
+                total_cases=(&quot;cases&quot;, &quot;sum&quot;),
+                total_deaths=(&quot;deaths&quot;, &quot;sum&quot;),
+            )
+            .sort_values(&quot;date&quot;)
+        )
+        
+        daily_global.head()
+        </code></pre>
+        <p><code>agg()</code> is short for <strong>aggregate</strong>. It lets one <code>groupby()</code> calculate one or more summary metrics and give the output columns clear names.</p>
+        <p>Each line inside <code>agg()</code> defines:</p>
+        <pre><code class="language-text">new column name = (source column, aggregation function)
+        </code></pre>
+        <p>For example, <code>total_cases=("cases", "sum")</code> means: take the <code>cases</code> values inside each group, sum them, and store the result in a new column named <code>total_cases</code>. You can use functions such as <code>sum</code>, <code>mean</code>, <code>max</code>, <code>min</code>, and <code>count</code> depending on the research question.</p>
+        <p>Do not sum every numeric column automatically. For example, <code>pop</code> repeats on many dates, and <code>cum</code> is already a 14-day rate.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102446.png" alt="Colab groupby and agg example producing daily total cases and deaths" /></div>
       </div>
     </div>
 
@@ -1054,30 +990,23 @@ Do not sum every numeric column automatically. For example, `pop` repeats on man
       <span class="slide-badge">Step 23</span>
       <h2>23 — Work with Dates Using `.dt`</h2>
       <div class="slide-text-large">
-
-
-Because `date` was parsed as a datetime column, pandas can extract useful time units:
-
-```python
-covid["year"] = covid["date"].dt.year
-covid["month"] = covid["date"].dt.to_period("M").astype(str)
-covid["quarter"] = covid["date"].dt.to_period("Q").astype(str)
-
-covid[["date", "year", "month", "quarter"]].head()
-```
-
-Useful choices:
-
-- `.dt.year` → year number;
-- `.dt.month` → month number from 1 to 12;
-- `.dt.month_name()` → month name;
-- `.dt.to_period("M")` → year-month unit such as `2020-04`;
-- `.dt.to_period("Q")` → quarter such as `2020Q2`.
-
-A time unit becomes a new grouping variable.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102517.png" alt="Colab example creating year month and quarter fields from date" /></div>
-
+        <p>Because <code>date</code> was parsed as a datetime column, pandas can extract useful time units:</p>
+        <pre><code class="language-python">covid[&quot;year&quot;] = covid[&quot;date&quot;].dt.year
+        covid[&quot;month&quot;] = covid[&quot;date&quot;].dt.to_period(&quot;M&quot;).astype(str)
+        covid[&quot;quarter&quot;] = covid[&quot;date&quot;].dt.to_period(&quot;Q&quot;).astype(str)
+        
+        covid[[&quot;date&quot;, &quot;year&quot;, &quot;month&quot;, &quot;quarter&quot;]].head()
+        </code></pre>
+        <p>Useful choices:</p>
+        <ul>
+        <li><code>.dt.year</code> → year number;</li>
+        <li><code>.dt.month</code> → month number from 1 to 12;</li>
+        <li><code>.dt.month_name()</code> → month name;</li>
+        <li><code>.dt.to_period("M")</code> → year-month unit such as <code>2020-04</code>;</li>
+        <li><code>.dt.to_period("Q")</code> → quarter such as <code>2020Q2</code>.</li>
+        </ul>
+        <p>A time unit becomes a new grouping variable.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102517.png" alt="Colab example creating year month and quarter fields from date" /></div>
       </div>
     </div>
 
@@ -1086,33 +1015,23 @@ A time unit becomes a new grouping variable.
       <span class="slide-badge">Step 24</span>
       <h2>24 — Group One Country by Month</h2>
       <div class="slide-text-large">
-
-
-Use the United States for the lecture demonstration:
-
-```python
-usa = covid[
-    covid["country"] == "United_States_of_America"
-]
-```
-
-Now group its rows by month:
-
-```python
-usa_monthly_cases = (
-    usa
-    .groupby("month", as_index=False)["cases"]
-    .sum()
-    .sort_values("month")
-)
-
-usa_monthly_cases
-```
-
-The daily rows are converted into one monthly total per row. The same pattern works with quarter, week, or another appropriate time unit.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102606.png" alt="Colab example filtering the United States and aggregating cases by month" /></div>
-
+        <p>Use the United States for the lecture demonstration:</p>
+        <pre><code class="language-python">usa = covid[
+            covid[&quot;country&quot;] == &quot;United_States_of_America&quot;
+        ]
+        </code></pre>
+        <p>Now group its rows by month:</p>
+        <pre><code class="language-python">usa_monthly_cases = (
+            usa
+            .groupby(&quot;month&quot;, as_index=False)[&quot;cases&quot;]
+            .sum()
+            .sort_values(&quot;month&quot;)
+        )
+        
+        usa_monthly_cases
+        </code></pre>
+        <p>The daily rows are converted into one monthly total per row. The same pattern works with quarter, week, or another appropriate time unit.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102606.png" alt="Colab example filtering the United States and aggregating cases by month" /></div>
       </div>
     </div>
 
@@ -1121,33 +1040,19 @@ The daily rows are converted into one monthly total per row. The same pattern wo
       <span class="slide-badge">Step 25</span>
       <h2>25 — Pandas Plotting Is a Simple Matplotlib Wrapper</h2>
       <div class="slide-text-large">
-
-
-Pandas provides plotting methods on a **DataFrame or Series**. The default backend is Matplotlib.
-
-Start with the simplest line chart:
-
-```python
-daily_cases.plot(x="date", y="cases")
-```
-
-A line chart is the default, so `kind="line"` is not required. This named form is equivalent:
-
-```python
-daily_cases.plot.line(x="date", y="cases")
-```
-
-For other chart types, use the readable named methods:
-
-```text
-.plot.bar()      .plot.barh()     .plot.scatter()
-.plot.hist()     .plot.box()
-```
-
-`df.plot(kind="bar")` remains valid, but there is no normal `pd.plot(...)` call. In Colab, a plot call at the end of a cell renders inline, so `plt.show()` is usually unnecessary.
-
-[Official pandas plotting reference](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html)
-
+        <p>Pandas provides plotting methods on a <strong>DataFrame or Series</strong>. The default backend is Matplotlib.</p>
+        <p>Start with the simplest line chart:</p>
+        <pre><code class="language-python">daily_cases.plot(x=&quot;date&quot;, y=&quot;cases&quot;)
+        </code></pre>
+        <p>A line chart is the default, so <code>kind="line"</code> is not required. This named form is equivalent:</p>
+        <pre><code class="language-python">daily_cases.plot.line(x=&quot;date&quot;, y=&quot;cases&quot;)
+        </code></pre>
+        <p>For other chart types, use the readable named methods:</p>
+        <pre><code class="language-text">.plot.bar()      .plot.barh()     .plot.scatter()
+        .plot.hist()     .plot.box()
+        </code></pre>
+        <p><code>df.plot(kind="bar")</code> remains valid, but there is no normal <code>pd.plot(...)</code> call. In Colab, a plot call at the end of a cell renders inline, so <code>plt.show()</code> is usually unnecessary.</p>
+        <p><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html">Official pandas plotting reference</a></p>
       </div>
     </div>
 
@@ -1156,25 +1061,21 @@ For other chart types, use the readable named methods:
       <span class="slide-badge">Step 26</span>
       <h2>26 — Line Plot: Change over Time</h2>
       <div class="slide-text-large">
-
-
-```python
-daily_cases.plot(
-    x="date",
-    y="cases",
-    title="Worldwide Daily Reported COVID-19 Cases",
-    xlabel="Date",
-    ylabel="Reported cases",
-    legend=False,
-    figsize=(10, 5),
-)
-```
-
-Use a line plot when:
-
-- the x-axis has a meaningful order, usually time; and
-- the goal is to see change, peaks, declines, or repeated patterns.
-
+        <pre><code class="language-python">daily_cases.plot(
+            x=&quot;date&quot;,
+            y=&quot;cases&quot;,
+            title=&quot;Worldwide Daily Reported COVID-19 Cases&quot;,
+            xlabel=&quot;Date&quot;,
+            ylabel=&quot;Reported cases&quot;,
+            legend=False,
+            figsize=(10, 5),
+        )
+        </code></pre>
+        <p>Use a line plot when:</p>
+        <ul>
+        <li>the x-axis has a meaningful order, usually time; and</li>
+        <li>the goal is to see change, peaks, declines, or repeated patterns.</li>
+        </ul>
       </div>
     </div>
 
@@ -1183,35 +1084,27 @@ Use a line plot when:
       <span class="slide-badge">Step 27</span>
       <h2>27 — Bar Plot: Compare Categories</h2>
       <div class="slide-text-large">
-
-
-```python
-country_deaths = (
-    covid
-    .groupby("country", as_index=False)["deaths"]
-    .sum()
-    .sort_values("deaths", ascending=False)
-)
-
-top10_country_deaths = country_deaths.head(10)
-```
-
-```python
-top10_country_deaths.sort_values("deaths").plot.barh(
-    x="country",
-    y="deaths",
-    title="Top 10 Countries by Total Reported Deaths",
-    xlabel="Total reported deaths",
-    ylabel="Country",
-    legend=False,
-    figsize=(10, 6),
-)
-```
-
-Use bars to compare values across categories.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102949.png" alt="Pandas horizontal bar chart showing countries with the highest total reported deaths" /></div>
-
+        <pre><code class="language-python">country_deaths = (
+            covid
+            .groupby(&quot;country&quot;, as_index=False)[&quot;deaths&quot;]
+            .sum()
+            .sort_values(&quot;deaths&quot;, ascending=False)
+        )
+        
+        top10_country_deaths = country_deaths.head(10)
+        </code></pre>
+        <pre><code class="language-python">top10_country_deaths.sort_values(&quot;deaths&quot;).plot.barh(
+            x=&quot;country&quot;,
+            y=&quot;deaths&quot;,
+            title=&quot;Top 10 Countries by Total Reported Deaths&quot;,
+            xlabel=&quot;Total reported deaths&quot;,
+            ylabel=&quot;Country&quot;,
+            legend=False,
+            figsize=(10, 6),
+        )
+        </code></pre>
+        <p>Use bars to compare values across categories.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102949.png" alt="Pandas horizontal bar chart showing countries with the highest total reported deaths" /></div>
       </div>
     </div>
 
@@ -1220,34 +1113,24 @@ Use bars to compare values across categories.
       <span class="slide-badge">Step 28</span>
       <h2>28 — Histogram and Box Plot: Examine a Distribution</h2>
       <div class="slide-text-large">
-
-
-### Histogram
-
-```python
-usa["cases"].plot.hist(
-    bins=25,
-    title="Distribution of Daily Reported Cases in the United States",
-    xlabel="Daily reported cases",
-    figsize=(9, 5),
-)
-```
-
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103029.png" alt="Histogram of daily reported cases in the United States" /></div>
-
-### Box plot
-
-```python
-usa["cases"].plot.box(
-    title="Daily Reported Cases in the United States",
-    ylabel="Reported cases",
-    figsize=(5, 5),
-)
-```
-
-A histogram shows the shape of a distribution. A box plot provides a compact view of the median, spread, and possible outliers.
-
+        <h3>Histogram</h3>
+        <pre><code class="language-python">usa[&quot;cases&quot;].plot.hist(
+            bins=25,
+            title=&quot;Distribution of Daily Reported Cases in the United States&quot;,
+            xlabel=&quot;Daily reported cases&quot;,
+            figsize=(9, 5),
+        )
+        </code></pre>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103029.png" alt="Histogram of daily reported cases in the United States" /></div>
+        
+        <h3>Box plot</h3>
+        <pre><code class="language-python">usa[&quot;cases&quot;].plot.box(
+            title=&quot;Daily Reported Cases in the United States&quot;,
+            ylabel=&quot;Reported cases&quot;,
+            figsize=(5, 5),
+        )
+        </code></pre>
+        <p>A histogram shows the shape of a distribution. A box plot provides a compact view of the median, spread, and possible outliers.</p>
       </div>
     </div>
 
@@ -1256,24 +1139,18 @@ A histogram shows the shape of a distribution. A box plot provides a compact vie
       <span class="slide-badge">Step 29</span>
       <h2>29 — Scatter Plot: Compare Two Numeric Variables</h2>
       <div class="slide-text-large">
-
-
-```python
-usa.plot.scatter(
-    x="cases",
-    y="deaths",
-    title="Daily Reported Cases and Deaths in the United States",
-    xlabel="Daily reported cases",
-    ylabel="Daily reported deaths",
-    alpha=0.4,
-    figsize=(7, 5),
-)
-```
-
-Use a scatter plot when the question concerns the relationship between two numeric variables.
-
-A visible pattern can suggest a relationship, but a chart by itself does not prove causation.
-
+        <pre><code class="language-python">usa.plot.scatter(
+            x=&quot;cases&quot;,
+            y=&quot;deaths&quot;,
+            title=&quot;Daily Reported Cases and Deaths in the United States&quot;,
+            xlabel=&quot;Daily reported cases&quot;,
+            ylabel=&quot;Daily reported deaths&quot;,
+            alpha=0.4,
+            figsize=(7, 5),
+        )
+        </code></pre>
+        <p>Use a scatter plot when the question concerns the relationship between two numeric variables.</p>
+        <p>A visible pattern can suggest a relationship, but a chart by itself does not prove causation.</p>
       </div>
     </div>
 
@@ -1282,24 +1159,40 @@ A visible pattern can suggest a relationship, but a chart by itself does not pro
       <span class="slide-badge">Step 30</span>
       <h2>30 — Match the Chart to the Question</h2>
       <div class="slide-text-large">
-
-
-| Analytical question | Typical plot |
-|---|---|
-| How did a value change over time? | line |
-| How do categories compare? | bar |
-| How is one numeric value distributed? | histogram or box |
-| How are two numeric variables related? | scatter |
-
-Examples:
-
-- cases by month → line or bar;
-- total deaths by country → bar;
-- distribution of daily cases for one country → histogram or box;
-- daily cases versus daily deaths → scatter.
-
-A chart is useful only when its x variable, y variable, and chart type match the question.
-
+        <table>
+        <thead>
+        <tr>
+        <th>Analytical question</th>
+        <th>Typical plot</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>How did a value change over time?</td>
+        <td>line</td>
+        </tr>
+        <tr>
+        <td>How do categories compare?</td>
+        <td>bar</td>
+        </tr>
+        <tr>
+        <td>How is one numeric value distributed?</td>
+        <td>histogram or box</td>
+        </tr>
+        <tr>
+        <td>How are two numeric variables related?</td>
+        <td>scatter</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>Examples:</p>
+        <ul>
+        <li>cases by month → line or bar;</li>
+        <li>total deaths by country → bar;</li>
+        <li>distribution of daily cases for one country → histogram or box;</li>
+        <li>daily cases versus daily deaths → scatter.</li>
+        </ul>
+        <p>A chart is useful only when its x variable, y variable, and chart type match the question.</p>
       </div>
     </div>
 
@@ -1308,43 +1201,32 @@ A chart is useful only when its x variable, y variable, and chart type match the
       <span class="slide-badge">Step 31</span>
       <h2>31 — A Concrete Research-Question Workflow</h2>
       <div class="slide-text-large">
-
-
-Example question:
-
-> Which month had the highest total reported cases in the United States?
-
-The analysis already produced `usa_monthly_cases`. Sort it to identify the answer:
-
-```python
-usa_monthly_cases.sort_values(
-    "cases",
-    ascending=False,
-).head()
-```
-
-Then visualize the same summary:
-
-```python
-usa_monthly_cases.plot.bar(
-    x="month",
-    y="cases",
-    title="Monthly Reported Cases in the United States",
-    xlabel="Month",
-    ylabel="Total reported cases",
-    legend=False,
-    figsize=(10, 5),
-)
-```
-
-The first row of the sorted table, the tallest bar, and the written answer should identify the same month and value.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103156.png" alt="Monthly reported cases bar chart for the United States" /></div>
-
-You may also ask Gemini to help interpret the already-computed table and chart, but verify the answer against the visible evidence:
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103809.png" alt="Gemini response identifying the highest month while the corresponding monthly bar chart is visible" /></div>
-
+        <p>Example question:</p>
+        <blockquote>
+        <p>Which month had the highest total reported cases in the United States?</p>
+        </blockquote>
+        <p>The analysis already produced <code>usa_monthly_cases</code>. Sort it to identify the answer:</p>
+        <pre><code class="language-python">usa_monthly_cases.sort_values(
+            &quot;cases&quot;,
+            ascending=False,
+        ).head()
+        </code></pre>
+        <p>Then visualize the same summary:</p>
+        <pre><code class="language-python">usa_monthly_cases.plot.bar(
+            x=&quot;month&quot;,
+            y=&quot;cases&quot;,
+            title=&quot;Monthly Reported Cases in the United States&quot;,
+            xlabel=&quot;Month&quot;,
+            ylabel=&quot;Total reported cases&quot;,
+            legend=False,
+            figsize=(10, 5),
+        )
+        </code></pre>
+        <p>The first row of the sorted table, the tallest bar, and the written answer should identify the same month and value.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103156.png" alt="Monthly reported cases bar chart for the United States" /></div>
+        
+        <p>You may also ask Gemini to help interpret the already-computed table and chart, but verify the answer against the visible evidence:</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103809.png" alt="Gemini response identifying the highest month while the corresponding monthly bar chart is visible" /></div>
       </div>
     </div>
 
@@ -1353,21 +1235,14 @@ You may also ask Gemini to help interpret the already-computed table and chart, 
       <span class="slide-badge">Step 32</span>
       <h2>32 — Interactive: Does the Evidence Answer the Question?</h2>
       <div class="slide-text-large">
-
-
-<div class="iframe-container"><iframe src="assets/question-to-evidence.html" title="Interactive demonstration connecting a research question to filtering, aggregation, charting, answering, and validation" loading="lazy"></iframe></div>
-
-[Open the research-question interaction in a separate page](assets/question-to-evidence.html)
-
-Use the correct and incorrect examples to check four simple matches:
-
-```text
-Canvas-assigned country matches the filtered rows
-question metric matches the aggregated metric
-chart displays the same summary table
-written answer matches the largest or smallest visible value
-```
-
+        <div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/question-to-evidence.html" title="Interactive demonstration connecting a research question to filtering, aggregation, charting, answering, and validation" loading="lazy"></iframe></div>
+        <p><a href="{{ site.baseurl }}/assets/week-3/question-to-evidence.html">Open the research-question interaction in a separate page</a></p>
+        <p>Use the correct and incorrect examples to check four simple matches:</p>
+        <pre><code class="language-text">Canvas-assigned country matches the filtered rows
+        question metric matches the aggregated metric
+        chart displays the same summary table
+        written answer matches the largest or smallest visible value
+        </code></pre>
       </div>
     </div>
 
@@ -1376,26 +1251,24 @@ written answer matches the largest or smallest visible value
       <span class="slide-badge">Step 33</span>
       <h2>33 — What Makes a Research Question Usable?</h2>
       <div class="slide-text-large">
-
-
-A usable question:
-
-- can be answered with the available columns;
-- names a country, metric, grouping, or time period;
-- leads to a result that can be calculated and displayed;
-- can be answered with specific values from the output.
-
-Good examples:
-
-- Which month had the highest total reported cases in this country?
-- During which quarter was the average 14-day rate highest?
-- How did monthly reported deaths change during 2020?
-- Which month had the greatest number of days above a stated case threshold?
-
-Too vague:
-
-> What happened with COVID-19?
-
+        <p>A usable question:</p>
+        <ul>
+        <li>can be answered with the available columns;</li>
+        <li>names a country, metric, grouping, or time period;</li>
+        <li>leads to a result that can be calculated and displayed;</li>
+        <li>can be answered with specific values from the output.</li>
+        </ul>
+        <p>Good examples:</p>
+        <ul>
+        <li>Which month had the highest total reported cases in this country?</li>
+        <li>During which quarter was the average 14-day rate highest?</li>
+        <li>How did monthly reported deaths change during 2020?</li>
+        <li>Which month had the greatest number of days above a stated case threshold?</li>
+        </ul>
+        <p>Too vague:</p>
+        <blockquote>
+        <p>What happened with COVID-19?</p>
+        </blockquote>
       </div>
     </div>
 
@@ -1404,31 +1277,24 @@ Too vague:
       <span class="slide-badge">Step 34</span>
       <h2>34 — Gemini Practice 1: Explain What the Code Does</h2>
       <div class="slide-text-large">
-
-
-Run or inspect this code:
-
-```python
-usa_high_cases = covid[
-    (covid["country"] == "United_States_of_America")
-    & (covid["cases"] > 100000)
-]
-```
-
-Ask Gemini:
-
-> Explain this code line by line. Which rows are kept? What type of pandas object is returned?
-
-Then check Gemini's explanation against:
-
-- the actual column names;
-- the two Boolean conditions; and
-- the first rows of `usa_high_cases`.
-
-Write one sentence in your notebook explaining the filter in your own words.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103249.png" alt="Gemini explaining the USA high-cases Boolean filter line by line" /></div>
-
+        <p>Run or inspect this code:</p>
+        <pre><code class="language-python">usa_high_cases = covid[
+            (covid[&quot;country&quot;] == &quot;United_States_of_America&quot;)
+            &amp; (covid[&quot;cases&quot;] &gt; 100000)
+        ]
+        </code></pre>
+        <p>Ask Gemini:</p>
+        <blockquote>
+        <p>Explain this code line by line. Which rows are kept? What type of pandas object is returned?</p>
+        </blockquote>
+        <p>Then check Gemini's explanation against:</p>
+        <ul>
+        <li>the actual column names;</li>
+        <li>the two Boolean conditions; and</li>
+        <li>the first rows of <code>usa_high_cases</code>.</li>
+        </ul>
+        <p>Write one sentence in your notebook explaining the filter in your own words.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103249.png" alt="Gemini explaining the USA high-cases Boolean filter line by line" /></div>
       </div>
     </div>
 
@@ -1437,37 +1303,24 @@ Write one sentence in your notebook explaining the filter in your own words.
       <span class="slide-badge">Step 35</span>
       <h2>35 — Gemini Practice 2: Repair and Revise Code</h2>
       <div class="slide-text-large">
-
-
-### Exercise A — Repair an error
-
-This code contains mistakes:
-
-```python
-usa = covid[covid["countries"] == "United States"]
-```
-
-Ask Gemini to help, but require it to inspect:
-
-```python
-covid.columns
-covid["country"].unique()
-```
-
-The corrected code must use a real column name and the exact stored country value.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103451.png" alt="Gemini helping repair a country-column and country-value error while actual columns and unique values are visible" /></div>
-
-### Exercise B — Revise an analysis
-
-Ask Gemini:
-
-> Using `usa` and the existing `month` column, create a monthly total-cases table and a simple pandas bar chart. Explain each operation. Do not invent results.
-
-Compare the generated table and chart. Revise the prompt or code if the month, metric, or labels do not match.
-
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103611.png" alt="Gemini proposing a monthly aggregation and bar-chart workflow for the existing USA DataFrame" /></div>
-
+        <h3>Exercise A — Repair an error</h3>
+        <p>This code contains mistakes:</p>
+        <pre><code class="language-python">usa = covid[covid[&quot;countries&quot;] == &quot;United States&quot;]
+        </code></pre>
+        <p>Ask Gemini to help, but require it to inspect:</p>
+        <pre><code class="language-python">covid.columns
+        covid[&quot;country&quot;].unique()
+        </code></pre>
+        <p>The corrected code must use a real column name and the exact stored country value.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103451.png" alt="Gemini helping repair a country-column and country-value error while actual columns and unique values are visible" /></div>
+        
+        <h3>Exercise B — Revise an analysis</h3>
+        <p>Ask Gemini:</p>
+        <blockquote>
+        <p>Using <code>usa</code> and the existing <code>month</code> column, create a monthly total-cases table and a simple pandas bar chart. Explain each operation. Do not invent results.</p>
+        </blockquote>
+        <p>Compare the generated table and chart. Revise the prompt or code if the month, metric, or labels do not match.</p>
+        <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103611.png" alt="Gemini proposing a monthly aggregation and bar-chart workflow for the existing USA DataFrame" /></div>
       </div>
     </div>
 
@@ -1476,18 +1329,15 @@ Compare the generated table and chart. Revise the prompt or code if the month, m
       <span class="slide-badge">Step 36</span>
       <h2>36 — Gemini Practice 3: Compare Two Charts</h2>
       <div class="slide-text-large">
-
-
-Use the existing `usa_monthly_cases` table and ask Gemini:
-
-> Create both a simple pandas line chart and a simple pandas bar chart from `usa_monthly_cases`. Use `month` on the x-axis and `cases` on the y-axis. Explain which chart makes the highest month easier to identify.
-
-Run both versions. Then decide which chart better supports this question:
-
-> Which month had the highest total reported cases?
-
-Check that both charts use the same table and metric. Keep one chart and write one sentence explaining your choice.
-
+        <p>Use the existing <code>usa_monthly_cases</code> table and ask Gemini:</p>
+        <blockquote>
+        <p>Create both a simple pandas line chart and a simple pandas bar chart from <code>usa_monthly_cases</code>. Use <code>month</code> on the x-axis and <code>cases</code> on the y-axis. Explain which chart makes the highest month easier to identify.</p>
+        </blockquote>
+        <p>Run both versions. Then decide which chart better supports this question:</p>
+        <blockquote>
+        <p>Which month had the highest total reported cases?</p>
+        </blockquote>
+        <p>Check that both charts use the same table and metric. Keep one chart and write one sentence explaining your choice.</p>
       </div>
     </div>
 
@@ -1496,18 +1346,11 @@ Check that both charts use the same table and metric. Keep one chart and write o
       <span class="slide-badge">Step 37</span>
       <h2>37 — Save the Lecture Notebook to GitHub — Save #1 of 2</h2>
       <div class="slide-text-large">
-
-
-When the guided classroom practice is complete, run the lecture notebook from top to bottom and fix unresolved errors. Then choose **File → Save a copy in GitHub** and save:
-
-```text
-week3_pandas_matplotlib_practice.ipynb
-```
-
-to the `main` branch of your private IA340 repository. Keep the visible outputs.
-
-**This is Save #1.** Do not overwrite it with the Lab. Lab 3 is a separate notebook named `lab3_covid_analysis.ipynb`, which you will save separately after completing the independent country analysis.
-
+        <p>When the guided classroom practice is complete, run the lecture notebook from top to bottom and fix unresolved errors. Then choose <strong>File → Save a copy in GitHub</strong> and save:</p>
+        <pre><code class="language-text">week3_pandas_matplotlib_practice.ipynb
+        </code></pre>
+        <p>to the <code>main</code> branch of your private IA340 repository. Keep the visible outputs.</p>
+        <p><strong>This is Save #1.</strong> Do not overwrite it with the Lab. Lab 3 is a separate notebook named <code>lab3_covid_analysis.ipynb</code>, which you will save separately after completing the independent country analysis.</p>
       </div>
     </div>
 
@@ -1555,13 +1398,13 @@ function updateDeck() {
     }
   });
 
-  document.getElementById('slideCounter').textContent = Slide  + currentSlide +  of  + totalSlides;
-  document.getElementById('progressBar').style.width = ((currentSlide / totalSlides) * 100) + %;
+  document.getElementById('slideCounter').textContent = `Slide ` + currentSlide + ` of ` + totalSlides;
+  document.getElementById('progressBar').style.width = ((currentSlide / totalSlides) * 100) + `%`;
   
   document.getElementById('prevBtn').disabled = (currentSlide === 1);
   document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
 
-  history.replaceState(null, null, #slide- + currentSlide);
+  history.replaceState(null, null, `#slide-` + currentSlide);
 }
 
 function changeSlide(direction) {

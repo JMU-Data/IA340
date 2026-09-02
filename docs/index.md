@@ -12,6 +12,8 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
   <a href="{{ site.baseurl }}/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
   <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
+  <a href="{{ site.baseurl }}/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
+  <a href="{{ site.baseurl }}/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
 </nav>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; color: #57606a; font-weight: 500; font-size: 0.9em; margin-bottom: 1.5rem;">
@@ -53,6 +55,16 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-2/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
     <h3 style="margin-top: 0; color: #1a7f37; display: flex; align-items: center; gap: 0.5rem;">🔬 Lab 2</h3>
     <p style="margin-bottom: 0; color: #57606a;">Google Drive → Colab + Gemini → GitHub → Canvas</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/modules/module-3/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #0969da; display: flex; align-items: center; gap: 0.5rem;">📊 Module 3</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Pandas & Matplotlib Review with Real COVID-19 Data (Slide Deck)</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/lab-3/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #1a7f37; display: flex; align-items: center; gap: 0.5rem;">📈 Lab 3</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Independent Country COVID-19 Analysis (Canvas Assigned Country)</p>
   </a>
 
 </div>

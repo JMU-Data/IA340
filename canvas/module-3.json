@@ -17,7 +17,10 @@
       ],
       "allowed_extensions": [],
       "description": null,
-      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-3/"
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-3/",
+      "group_assignment": {
+        "group_set": "Lab 3 Assigned Countries"
+      }
     }
   ],
   "rubrics": [

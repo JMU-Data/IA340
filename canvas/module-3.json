@@ -1,0 +1,144 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "lab-3",
+      "title": "Lab 3 \u2014 Independent Country COVID-19 Analysis",
+      "assignment_group": "Labs",
+      "points": 100.0,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_url"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-3/"
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "lab-3-rubric",
+      "title": "Lab 3 \u2014 Independent Country COVID-19 Analysis",
+      "assignment": "lab-3",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "classroom-practice-pandas-operations",
+          "description": "Classroom Practice: Pandas Operations",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "classroom-practice-groupby-time-and-visualization",
+          "description": "Classroom Practice: GroupBy, Time, and Visualization",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "independent-question-1",
+          "description": "Independent Question 1",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "independent-question-2",
+          "description": "Independent Question 2",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "assigned-country-compliance-report-and-submission",
+          "description": "Assigned-Country Compliance, Report, and Submission",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "module-3",
+      "title": "Module 3",
+      "published": true,
+      "items": [
+        {
+          "key": "lecture",
+          "type": "ExternalUrl",
+          "title": "Lecture \u2014 Pandas & Matplotlib Review with Real COVID-19 Data",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/modules/module-3/",
+          "assignment": null
+        },
+        {
+          "key": "lab-3",
+          "type": "Assignment",
+          "title": "Lab 3 \u2014 Independent Country COVID-19 Analysis",
+          "published": true,
+          "external_url": null,
+          "assignment": "lab-3"
+        }
+      ]
+    }
+  ]
+}

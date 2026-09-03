@@ -1,0 +1,9 @@
+{
+  "schema_version": "canvas-content-override/v1",
+  "course_key": "ia340",
+  "assignments": {
+    "lab-3": {
+      "due_at": "2026-09-11T23:59:00-04:00"
+    }
+  }
+}

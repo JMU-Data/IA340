@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="55" y="70" font-size="36" font-weight="700" fill="#1f2937">Four tools, four jobs</text>
+    <text x="55" y="108" font-size="20" fill="#6b7280">Each platform supports a different part of the same IA340 workflow.</text>
+
+    <g transform="translate(45 190)">
+      <rect width="250" height="270" rx="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+      <circle cx="125" cy="58" r="36" fill="#dbeafe"/>
+      <text x="125" y="69" text-anchor="middle" font-size="28" font-weight="700" fill="#1d4ed8">D</text>
+      <text x="125" y="132" text-anchor="middle" font-size="26" font-weight="700" fill="#111827">Google Drive</text>
+      <text x="125" y="178" text-anchor="middle" font-size="17" fill="#4b5563">persistent working data</text>
+      <text x="125" y="210" text-anchor="middle" font-size="17" fill="#4b5563">files survive runtime resets</text>
+    </g>
+
+    <g transform="translate(330 190)">
+      <rect width="250" height="270" rx="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+      <circle cx="125" cy="58" r="36" fill="#dbeafe"/>
+      <text x="125" y="69" text-anchor="middle" font-size="28" font-weight="700" fill="#1d4ed8">C</text>
+      <text x="125" y="132" text-anchor="middle" font-size="26" font-weight="700" fill="#111827">Google Colab</text>
+      <text x="125" y="178" text-anchor="middle" font-size="17" fill="#4b5563">notebook + Python runtime</text>
+      <text x="125" y="210" text-anchor="middle" font-size="17" fill="#4b5563">temporary compute session</text>
+    </g>
+
+    <g transform="translate(615 190)">
+      <rect width="250" height="270" rx="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+      <circle cx="125" cy="58" r="36" fill="#dbeafe"/>
+      <text x="125" y="69" text-anchor="middle" font-size="28" font-weight="700" fill="#1d4ed8">G</text>
+      <text x="125" y="132" text-anchor="middle" font-size="26" font-weight="700" fill="#111827">GitHub</text>
+      <text x="125" y="178" text-anchor="middle" font-size="17" fill="#4b5563">versioned project record</text>
+      <text x="125" y="210" text-anchor="middle" font-size="17" fill="#4b5563">files + history + review</text>
+    </g>
+
+    <g transform="translate(900 190)">
+      <rect width="250" height="270" rx="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+      <circle cx="125" cy="58" r="36" fill="#dbeafe"/>
+      <text x="125" y="69" text-anchor="middle" font-size="28" font-weight="700" fill="#1d4ed8">✓</text>
+      <text x="125" y="132" text-anchor="middle" font-size="26" font-weight="700" fill="#111827">Canvas</text>
+      <text x="125" y="178" text-anchor="middle" font-size="17" fill="#4b5563">official submission record</text>
+      <text x="125" y="210" text-anchor="middle" font-size="17" fill="#4b5563">feedback + grades</text>
+    </g>
+
+    <g stroke="#2563eb" stroke-width="5" fill="none" stroke-linecap="round">
+      <line x1="299" y1="325" x2="321" y2="325"/>
+      <line x1="584" y1="325" x2="606" y2="325"/>
+      <line x1="869" y1="325" x2="891" y2="325"/>
+    </g>
+    <g fill="#2563eb">
+      <path d="M321 325 l-12 -8 v16 z"/>
+      <path d="M606 325 l-12 -8 v16 z"/>
+      <path d="M891 325 l-12 -8 v16 z"/>
+    </g>
+
+    <rect x="250" y="525" width="700" height="72" rx="20" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="600" y="570" text-anchor="middle" font-size="25" font-weight="700" fill="#1d4ed8">Drive → Colab → GitHub → Canvas</text>
+  </g>
+</svg>

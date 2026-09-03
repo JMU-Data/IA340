@@ -8,6 +8,10 @@ on:
       - synchronize
       - closed
 
+concurrency:
+  group: ia340-gh-pages
+  cancel-in-progress: false
+
 jobs:
   build-and-preview:
     runs-on: ubuntu-latest

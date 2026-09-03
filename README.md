@@ -21,6 +21,8 @@
 - [Lab 1: Account Setup & AI Program Registration](docs/assignments/github-account-verification/index.md)
 - [Module 2](docs/modules/module-2/index.md)
 - [Lab 2: Building Your AI Data Analytics Workspace](docs/assignments/lab-2/index.md)
+- [Module 3: Pandas & Matplotlib Review with Real COVID-19 Data](docs/modules/module-3/index.md)
+- [Lab 3: Independent Country COVID-19 Analysis](docs/assignments/lab-3/index.md)
 
 ## Course Overview
 

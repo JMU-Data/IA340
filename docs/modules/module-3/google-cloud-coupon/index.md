@@ -185,8 +185,6 @@ This video is a **general reference** for the coupon process, but it is **not an
   <iframe src="https://www.youtube.com/embed/2AnX7BX-qew" title="Google Cloud Platform How to Redeem Coupons" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
 </div>
 
-[![Google Cloud Platform How to Redeem Coupons](https://img.youtube.com/vi/2AnX7BX-qew/hqdefault.jpg)](https://www.youtube.com/watch?v=2AnX7BX-qew)
-
 [Open the video on YouTube](https://www.youtube.com/watch?v=2AnX7BX-qew)
 
 The video is useful for seeing the overall idea — receiving a course URL, entering student information, verifying a school email, receiving a coupon, and redeeming it in Google Cloud. However, it was published in 2020, and **some screens, email messages, account prompts, button labels, and steps may differ from the current IA340 process**.

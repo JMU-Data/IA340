@@ -627,7 +627,7 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
         
         ## Load and Inspect
         </code></pre>
-        <p>This notebook is only for the guided classroom practice. <strong>Lab 3 uses a separate notebook</strong> named <code>lab3_covid_analysis.ipynb</code>. You will save the lecture notebook to GitHub once at the end of class, then save the Lab notebook separately after completing the independent analysis.</p>
+        <p>This notebook is only for guided classroom practice and is <strong>not submitted or graded for Lab 3</strong> (if you do not save it, you do not need to redo it). <strong>Lab 3 uses a separate notebook</strong> named <code>lab3_covid_analysis.ipynb</code>, which is the only notebook required and evaluated for Lab 3.</p>
       </div>
     </div>
 
@@ -1572,16 +1572,16 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 66: 37 — Save the Lecture Notebook to GitHub — Save #1 of 2 -->
+    <!-- SLIDE 66: 37 — Save the Lecture Notebook to GitHub (Optional Practice) -->
     <div class="slide" data-slide="66">
       <span class="slide-badge">Step 37</span>
-      <h2>37 — Save the Lecture Notebook to GitHub — Save #1 of 2</h2>
+      <h2>37 — Save the Lecture Notebook to GitHub (Optional Practice)</h2>
       <div class="slide-text-large">
-        <p>When the guided classroom practice is complete, run the lecture notebook from top to bottom and fix unresolved errors. Then choose <strong>File → Save a copy in GitHub</strong> and save:</p>
+        <p>When the guided classroom practice is complete, you may save your work to GitHub for your records and version control practice. Run the lecture notebook from top to bottom, then choose <strong>File → Save a copy in GitHub</strong> and save:</p>
         <pre><code class="language-text">week3_pandas_matplotlib_practice.ipynb
         </code></pre>
-        <p>to the <code>main</code> branch of your private IA340 repository. Keep the visible outputs.</p>
-        <p><strong>This is Save #1.</strong> Do not overwrite it with the Lab. Lab 3 is a separate notebook named <code>lab3_covid_analysis.ipynb</code>, which you will save separately after completing the independent country analysis.</p>
+        <p>to the <code>main</code> branch of your private IA340 repository.</p>
+        <p><strong>Note:</strong> Saving this classroom notebook is recommended for your own reference, but it is <strong>not graded</strong> for Lab 3 (if you did not save it, you do not need to redo it). Lab 3 is completed in a separate notebook named <code>lab3_covid_analysis.ipynb</code>, which is the only required deliverable for Lab 3.</p>
       </div>
     </div>
 

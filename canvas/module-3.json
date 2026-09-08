@@ -32,8 +32,8 @@
       "scoring": "ratings",
       "criteria": [
         {
-          "key": "classroom-practice-pandas-operations",
-          "description": "Classroom Practice: Pandas Operations",
+          "key": "submission-url",
+          "description": "Submission / URL",
           "points": 20.0,
           "ratings": [
             {
@@ -49,8 +49,8 @@
           ]
         },
         {
-          "key": "classroom-practice-groupby-time-and-visualization",
-          "description": "Classroom Practice: GroupBy, Time, and Visualization",
+          "key": "assigned-country-research-questions",
+          "description": "Assigned Country + Research Questions",
           "points": 20.0,
           "ratings": [
             {
@@ -66,8 +66,8 @@
           ]
         },
         {
-          "key": "independent-question-1",
-          "description": "Independent Question 1",
+          "key": "aggregation-result-tables",
+          "description": "Aggregation + Result Tables",
           "points": 20.0,
           "ratings": [
             {
@@ -83,8 +83,8 @@
           ]
         },
         {
-          "key": "independent-question-2",
-          "description": "Independent Question 2",
+          "key": "visualizations",
+          "description": "Visualizations",
           "points": 20.0,
           "ratings": [
             {
@@ -100,8 +100,8 @@
           ]
         },
         {
-          "key": "assigned-country-compliance-report-and-submission",
-          "description": "Assigned-Country Compliance, Report, and Submission",
+          "key": "findings-validation-report",
+          "description": "Findings + Validation / Report",
           "points": 20.0,
           "ratings": [
             {

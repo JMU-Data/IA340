@@ -472,6 +472,25 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
     <div class="deck-progress-fill" id="progressBar"></div>
   </div>
   <div class="deck-stage">
+    <!-- SLIDE 1: Pandas & Matplotlib Review -->
+    <div class="slide active" data-slide="1">
+<div class="slide-center-box">
+  <h1 class="slide-main-title">Pandas &amp; Matplotlib Review</h1>
+  <p class="slide-subtitle">Learn the operations with real COVID-19 data</p>
+  <div class="slide-card-lead">
+    <p style="margin-top: 0;"><strong>IA 340 — Data Mining, Modeling, and Knowledge Discovery</strong></p>
+    <p>Week 2 established the workspace:</p>
+    <div style="font-size: 1.2rem; font-weight: 700; color: #0969da; text-align: center; margin: 0.8rem 0;">
+      Google Drive → Google Colab + Gemini → GitHub → Canvas
+    </div>
+    <p style="margin-bottom: 0; color: #57606a;">This week, we use that workspace to review the core operations of data analysis.</p>
+  </div>
+  <div style="margin-top: 1.5rem;">
+    <button class="deck-btn-primary" onclick="changeSlide(1)">Start Presentation ▶</button>
+  </div>
+</div>
+    </div>
+
     <!-- SLIDE 2: 01 — The Week 3 Workflow -->
     <div class="slide" data-slide="2">
       <span class="slide-badge">Step 01</span>

@@ -22,16 +22,16 @@ title: "Lab 3: Independent Country COVID-19 Analysis - IA 340"
 
 ## Goal
 
-Week 3 produces **two separate notebooks**:
+Week 3 includes guided classroom practice and one graded Lab notebook:
 
 ```text
-week3_pandas_matplotlib_practice.ipynb   Classroom practice — 40 points
-lab3_covid_analysis.ipynb                Independent country analysis — 60 points
+week3_pandas_matplotlib_practice.ipynb   Classroom practice — not graded for Lab 3
+lab3_covid_analysis.ipynb                Lab 3 submission — 100 points
 ```
 
-The lecture notebook is created and saved during class. **Do not continue the Lab inside that notebook.** Create a separate `lab3_covid_analysis.ipynb` for the independent analysis.
+The classroom notebook is practice only. **You do not need to submit it for Lab 3 credit.** If you saved it, you may keep it for your own reference, but the Lab 3 grader will not use it.
 
-For the Lab, analyze **the country assigned to you through the Canvas group set** and answer **two different research questions**. Each question must include:
+Create a separate `lab3_covid_analysis.ipynb` for the graded independent analysis. Analyze **the country assigned to you through the Canvas group set** and answer **two different research questions**. Each question must include:
 
 ```text
 question in Markdown
@@ -48,16 +48,17 @@ You may use Gemini to help write, explain, revise, or troubleshoot code. You rem
 
 ---
 
-# Graded Deliverables
+# Graded Deliverable
 
-By the deadline, your private IA340 GitHub repository must contain **both** Week 3 notebooks on `main`:
+By the deadline, your private IA340 GitHub repository must contain this file on `main`:
 
 ```text
-week3_pandas_matplotlib_practice.ipynb
 lab3_covid_analysis.ipynb
 ```
 
-The first file is the completed classroom practice. The second file is the independent Lab. In Canvas, submit the **GitHub repository URL** for your private IA340 repository. The grading workflow will use that repository to locate and score both required notebook files on `main`.
+In Canvas, submit the **GitHub repository URL** for your private IA340 repository. The grading workflow will use that repository to locate and review `lab3_covid_analysis.ipynb` on `main`.
+
+The classroom practice notebook is **not** required for Lab 3 grading and will not be used to calculate the Lab 3 score.
 
 Use this structure in the Lab notebook:
 
@@ -270,15 +271,9 @@ Gemini assistance does not transfer responsibility for accuracy. Check the filte
 
 ---
 
-# Save #2 of 2 — Save the Lab to GitHub and Submit
+# Save Lab 3 to GitHub and Submit
 
-You should already have completed **Save #1** during the lecture:
-
-```text
-week3_pandas_matplotlib_practice.ipynb
-```
-
-Now run the separate Lab notebook from top to bottom after connecting Google Drive. Fix unresolved errors and keep the required outputs visible.
+Run `lab3_covid_analysis.ipynb` from top to bottom after connecting Google Drive. Fix unresolved errors and keep the required outputs visible.
 
 Choose **File → Save a copy in GitHub** and select:
 
@@ -286,27 +281,26 @@ Choose **File → Save a copy in GitHub** and select:
 - branch: `main`;
 - file path: `lab3_covid_analysis.ipynb`.
 
-**This is Save #2.** The two Week 3 notebooks must remain as separate files on `main`.
-
 Submit the **repository URL** in Canvas:
 
 ```text
 https://github.com/JMU-Data/<your-course-repository>
 ```
 
-The grader will locate both fixed notebook filenames in that repository. Do not submit a Colab sharing URL, PDF, screenshot, or ZIP file.
+The grader will locate `lab3_covid_analysis.ipynb` in that repository. Do not submit a Colab sharing URL, PDF, screenshot, or ZIP file.
+
+The classroom practice notebook is not a Lab 3 submission requirement.
 
 ---
 
 # Deadline Rule
 
-Your official completion time is the latest of:
+Your official completion time is the later of:
 
-1. the Canvas submission timestamp;
-2. the latest GitHub commit on `main` that changes `week3_pandas_matplotlib_practice.ipynb`; and
-3. the latest GitHub commit on `main` that changes `lab3_covid_analysis.ipynb`.
+1. the Canvas submission timestamp; and
+2. the latest GitHub commit on `main` that changes `lab3_covid_analysis.ipynb`.
 
-The two notebook saves and the Canvas submission must be completed by the Canvas deadline to count as on time. The normal course late-work policy is applied after rubric scoring.
+Both the Lab 3 notebook save and the Canvas submission must be completed by the Canvas deadline to count as on time. The normal course late-work policy is applied after rubric scoring.
 
 ---
 
@@ -314,17 +308,19 @@ The two notebook saves and the Canvas submission must be completed by the Canvas
 
 | Criterion | Points | What will be evaluated |
 |---|---:|---|
-| **Classroom Practice: Pandas Operations** | **20** | The separate `week3_pandas_matplotlib_practice.ipynb` contains the completed class work for loading/standardizing the official ECDC file, inspection, selection, slicing, filtering, sorting, and data-quality checks. Outputs are visible and sensible. |
-| **Classroom Practice: GroupBy, Time, and Visualization** | **20** | The separate lecture-practice notebook contains the completed class work for `groupby()`, aggregation, `as_index`, time fields such as month/quarter, and the basic pandas plotting examples, with no unresolved execution errors. |
-| **Independent Question 1** | **20** | The question is about the Canvas-assigned country and can be answered with the data. The notebook shows an appropriate aggregation, visible result table, matching visualization, direct finding, and validation with specific evidence. |
-| **Independent Question 2** | **20** | A second meaningfully different question is answered for the same Canvas-assigned country with an appropriate aggregation, visible result table, matching visualization, direct finding, and validation with specific evidence. |
-| **Assigned-Country Compliance, Report, and Submission** | **20** | The Lab analyzes the student's Canvas-assigned country consistently; the short report summarizes both findings and one limitation; Gemini use is recorded; both Week 3 notebooks are saved separately to `main`; and Canvas receives the GitHub repository URL so both Week 3 notebooks can be graded. |
+| **Submission and Lab Notebook** | **20** | Canvas contains the correct private IA340 GitHub repository URL; `lab3_covid_analysis.ipynb` exists on `main`, is readable, contains saved outputs, and has no unresolved execution errors that prevent review. |
+| **Research Questions and Assigned Country** | **20** | The notebook analyzes the student's Canvas-assigned country and contains two clear, meaningfully different, answerable research questions. At least one question uses an appropriate time grouping, and both questions can be verified from the notebook's visible evidence. |
+| **Aggregation and Result Tables** | **20** | Each question includes an appropriate `groupby()` and aggregation, with a visible result table that directly supports the research question. The metric and grouping used in the calculation are clear. |
+| **Visualizations** | **20** | Each question includes a visible chart that represents the same metric and aggregation shown in the corresponding result table. Titles, axes, and labels are clear enough to interpret the result. |
+| **Findings, Validation, and Report** | **20** | Each question has a direct finding supported by specific visible evidence and a validation statement; the short report summarizes both findings and one limitation; Gemini use is recorded when applicable. |
 
 ## How the Work Will Be Checked
 
-The first **40 points** are checked from `week3_pandas_matplotlib_practice.ipynb`, primarily with deterministic Python rules: required operations, stored outputs, and absence of traceback errors.
+Only `lab3_covid_analysis.ipynb` is used for Lab 3 grading. The classroom practice notebook is not graded.
 
-The **60-point independent analysis** is checked from `lab3_covid_analysis.ipynb` and is graded primarily by the instructor. Automation is intentionally limited to a pre-check: confirm the file exists and runs cleanly, confirm the notebook uses the student's Canvas-assigned country, and flag missing question/table/chart sections. These checks support grading but do not replace instructor judgment. An LLM will **not** decide whether the questions, findings, or validation are correct.
+Automation is limited to a preliminary evidence check. It may confirm the submitted repository URL, confirm the Lab 3 notebook exists and is readable, check the Canvas-assigned country, flag missing required sections, detect plausible aggregation/result-table/figure evidence for both questions, and flag unresolved saved notebook errors.
+
+The instructor makes the final grading decisions. Automation will **not** decide whether a research question is sufficiently clear, whether an aggregation is substantively appropriate, whether a finding is correct, whether a chart is the best choice, or whether the student's validation and interpretation are persuasive. Uncertain evidence is flagged for instructor review rather than automatically penalized.
 
 ---
 

@@ -14,6 +14,7 @@ title: "Lab 3: Independent Country COVID-19 Analysis - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
   <a href="{{ site.baseurl }}/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
   <a href="{{ site.baseurl }}/assignments/lab-3/" style="text-decoration: none; font-weight: 600; color: #0969da;">Lab 3</a>
+  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
 </nav>
 **Target Date:** Friday, September 11, 2026  
 *(Canvas is the authoritative source for the exact due date/time and submission status.)*  

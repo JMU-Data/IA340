@@ -14,7 +14,16 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
   <a href="{{ site.baseurl }}/modules/module-3/" style="text-decoration: none; font-weight: 600; color: #0969da;">Module 3</a>
   <a href="{{ site.baseurl }}/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
 </nav>
+
+<div style="background: #f6f8fa; border: 1px solid #d0d7de; border-left: 4px solid #0969da; border-radius: 6px; padding: 0.75rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+  <div>
+    <strong>☁️ Google Cloud Education Credit Setup:</strong>
+    <span style="color: #57606a; margin-left: 0.5rem;">Need to redeem your course Google Cloud coupon? Follow the step-by-step instructions.</span>
+  </div>
+  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="display: inline-block; background: #0969da; color: #ffffff; padding: 0.35rem 0.85rem; border-radius: 6px; font-weight: 600; font-size: 0.9em; text-decoration: none;">Google Cloud Education Credit Setup →</a>
+</div>
 
 <style>
 /* Presentation Slide Deck Styles */
@@ -1668,6 +1677,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 ---
 
-<div style="margin-top: 2rem;">
-  <a href="{{ site.baseurl }}/">← Return to Course Home</a> | <a href="{{ site.baseurl }}/assignments/lab-3/">Go to Lab 3 Instructions →</a>
+<div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+  <a href="{{ site.baseurl }}/">← Return to Course Home</a>
+  <span style="color: #d0d7de;">|</span>
+  <a href="{{ site.baseurl }}/assignments/lab-3/">Go to Lab 3 Instructions →</a>
+  <span style="color: #d0d7de;">|</span>
+  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/">Google Cloud Education Credit Setup →</a>
 </div>

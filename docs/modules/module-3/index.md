@@ -498,13 +498,12 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       <div class="slide-text-large">
         <p>We will use one common historical COVID-19 dataset.</p>
         <pre><code class="language-text">load the table
-        → inspect it
-        → select and filter rows
-        → work with dates
-        → group and aggregate
-        → visualize the result
-        → explain what the result means
-        </code></pre>
+→ inspect it
+→ select and filter rows
+→ work with dates
+→ group and aggregate
+→ visualize the result
+→ explain what the result means</code></pre>
         <p>The class works through the operations together. In the lab, each student analyzes the country randomly assigned through the Canvas country group and asks two questions that can be answered with the data.</p>
       </div>
     </div>
@@ -544,10 +543,10 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 5: 03 — The Dataset: Six Standardized Columns -->
+    <!-- SLIDE 5: 04 — The Dataset: Six Standardized Columns -->
     <div class="slide" data-slide="5">
-      <span class="slide-badge">Step 03</span>
-      <h2>03 — The Dataset: Six Standardized Columns</h2>
+      <span class="slide-badge">Step 04</span>
+      <h2>04 — The Dataset: Six Standardized Columns</h2>
       <div class="slide-text-large">
         <p>During class, we rename and keep six fields so the rest of the analysis is easier to read:</p>
         <table>
@@ -595,87 +594,81 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 6: 04 — Put the Official ECDC CSV in Google Drive -->
+    <!-- SLIDE 6: 05 — Put the Official ECDC CSV in Google Drive -->
     <div class="slide" data-slide="6">
-      <span class="slide-badge">Step 04</span>
-      <h2>04 — Put the Official ECDC CSV in Google Drive</h2>
+      <span class="slide-badge">Step 05</span>
+      <h2>05 — Put the Official ECDC CSV in Google Drive</h2>
       <div class="slide-text-large">
         <p>From the ECDC archive page, choose <strong>Download in CSV</strong>. The direct official CSV endpoint is:</p>
         <p><a href="https://opendata.ecdc.europa.eu/covid19/casedistribution/csv">https://opendata.ecdc.europa.eu/covid19/casedistribution/csv</a></p>
         <p>When you upload the downloaded file to Google Drive, rename it <strong>exactly</strong>:</p>
-        <pre><code class="language-text">covid_2020.csv
-        </code></pre>
+        <pre><code class="language-text">covid_2020.csv</code></pre>
         <p>Store it exactly here:</p>
         <pre><code class="language-text">My Drive/
-        └── IA340/
-            └── covid_2020.csv
-        </code></pre>
+└── IA340/
+    └── covid_2020.csv</code></pre>
         <p>We will use this exact filename and path throughout the lecture and lab.</p>
       </div>
     </div>
 
-    <!-- SLIDE 7: 05 — Create the Lecture Practice Notebook -->
+    <!-- SLIDE 7: 06 — Create the Lecture Practice Notebook -->
     <div class="slide" data-slide="7">
-      <span class="slide-badge">Step 05</span>
-      <h2>05 — Create the Lecture Practice Notebook</h2>
+      <span class="slide-badge">Step 06</span>
+      <h2>06 — Create the Lecture Practice Notebook</h2>
       <div class="slide-text-large">
         <p>Create a blank Colab notebook named exactly:</p>
-        <pre><code class="language-text">week3_pandas_matplotlib_practice.ipynb
-        </code></pre>
+        <pre><code class="language-text">week3_pandas_matplotlib_practice.ipynb</code></pre>
         <p>Begin with these Markdown headings:</p>
         <pre><code class="language-markdown"># IA340 Week 3: Pandas &amp; Matplotlib Practice
-        
-        ## Load and Inspect
-        </code></pre>
-        <p>This notebook is only for the guided classroom practice. <strong>Lab 3 uses a separate notebook</strong> named <code>lab3_covid_analysis.ipynb</code>. You will save the lecture notebook to GitHub once at the end of class, then save the Lab notebook separately after completing the independent analysis.</p>
+
+## Load and Inspect</code></pre>
+        <p>This notebook is only for guided classroom practice and is <strong>not submitted or graded for Lab 3</strong> (if you do not save it, you do not need to redo it). <strong>Lab 3 uses a separate notebook</strong> named <code>lab3_covid_analysis.ipynb</code>, which is the only notebook required and evaluated for Lab 3.</p>
       </div>
     </div>
 
-    <!-- SLIDE 8: 06 — Mount Drive and Load Official ECDC CSV -->
+    <!-- SLIDE 8: 07 — Mount Drive and Load Official ECDC CSV -->
     <div class="slide" data-slide="8">
-      <span class="slide-badge">Step 06</span>
-      <h2>06 — Mount Drive and Load Official ECDC CSV</h2>
+      <span class="slide-badge">Step 07</span>
+      <h2>07 — Mount Drive and Load Official ECDC CSV</h2>
       <div class="slide-text-large">
         <pre><code class="language-python">from google.colab import drive
-        drive.mount(&quot;/content/drive&quot;)
-        
-        import pandas as pd
-        
-        DATA_PATH = &quot;/content/drive/MyDrive/IA340/covid_2020.csv&quot;
-        raw = pd.read_csv(DATA_PATH)
-        </code></pre>
+drive.mount("/content/drive")
+
+import pandas as pd
+
+DATA_PATH = "/content/drive/MyDrive/IA340/covid_2020.csv"
+raw = pd.read_csv(DATA_PATH)</code></pre>
         <p><code>raw</code> keeps all original columns from the official ECDC historical file. We then standardize it in the next step.</p>
       </div>
     </div>
 
-    <!-- SLIDE 9: 06 — Standardize Columns and Parse Dates -->
+    <!-- SLIDE 9: 08 — Standardize Columns and Parse Dates -->
     <div class="slide" data-slide="9">
-      <span class="slide-badge">Step 06</span>
-      <h2>06 — Standardize Columns and Parse Dates</h2>
+      <span class="slide-badge">Step 08</span>
+      <h2>08 — Standardize Columns and Parse Dates</h2>
       <div class="slide-text-large">
         <pre><code class="language-python">covid = (
-            raw
-            .rename(columns={
-                &quot;dateRep&quot;: &quot;date&quot;,
-                &quot;countriesAndTerritories&quot;: &quot;country&quot;,
-                &quot;popData2019&quot;: &quot;pop&quot;,
-                &quot;Cumulative_number_for_14_days_of_COVID-19_cases_per_100000&quot;: &quot;cum&quot;,
-            })
-            [[&quot;date&quot;, &quot;country&quot;, &quot;cases&quot;, &quot;deaths&quot;, &quot;pop&quot;, &quot;cum&quot;]]
-            .copy()
-        )
-        
-        covid[&quot;date&quot;] = pd.to_datetime(covid[&quot;date&quot;], dayfirst=True)
-        covid.head()
-        </code></pre>
+    raw
+    .rename(columns={
+        "dateRep": "date",
+        "countriesAndTerritories": "country",
+        "popData2019": "pop",
+        "Cumulative_number_for_14_days_of_COVID-19_cases_per_100000": "cum",
+    })
+    [["date", "country", "cases", "deaths", "pop", "cum"]]
+    .copy()
+)
+
+covid["date"] = pd.to_datetime(covid["date"], dayfirst=True)
+covid.head()</code></pre>
         <p><code>covid</code> is the standardized six-column DataFrame we use throughout the lecture and lab.</p>
       </div>
     </div>
 
-    <!-- SLIDE 10: 06 — Tip: Gemini Prompt for Loading CSV -->
+    <!-- SLIDE 10: 09 — Tip: Gemini Prompt for Loading CSV -->
     <div class="slide" data-slide="10">
-      <span class="slide-badge">Step 06</span>
-      <h2>06 — Tip: Gemini Prompt for Loading CSV</h2>
+      <span class="slide-badge">Step 09</span>
+      <h2>09 — Tip: Gemini Prompt for Loading CSV</h2>
       <div class="slide-text-large">
         <h3>Tip: Gemini can help with the Drive path or explain the setup</h3>
         <p>You may type the code manually, or ask Gemini something like:</p>
@@ -686,20 +679,20 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 11: 06 — Example: Loading and Standardizing ECDC File -->
+    <!-- SLIDE 11: 10 — Example: Loading and Standardizing ECDC File -->
     <div class="slide" data-slide="11">
-      <span class="slide-badge">Step 06</span>
-      <h2>06 — Example: Loading and Standardizing ECDC File</h2>
+      <span class="slide-badge">Step 10</span>
+      <h2>10 — Example: Loading and Standardizing ECDC File</h2>
       <div class="slide-text-large">
         <p>Verify that your output matches the standardized 6-column DataFrame structure:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101319.png" alt="Colab example loading the official ECDC CSV into raw and creating the standardized covid DataFrame" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 12: 07 — Interactive: DataFrame, Series, Rows, Columns, and Index -->
+    <!-- SLIDE 12: 11 — Interactive: DataFrame, Series, Rows, Columns, and Index -->
     <div class="slide" data-slide="12">
-      <span class="slide-badge">Step 07</span>
-      <h2>07 — Interactive: DataFrame, Series, Rows, Columns, and Index</h2>
+      <span class="slide-badge">Step 11</span>
+      <h2>11 — Interactive: DataFrame, Series, Rows, Columns, and Index</h2>
       <div class="slide-text-large" style="justify-content: flex-start;">
         <div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/dataframe-concepts.html" title="07 — Interactive: DataFrame, Series, Rows, Columns, and Index" loading="lazy"></iframe></div>
         <p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
@@ -708,17 +701,15 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 13: 08 — How Colab Shows Output: Last Expression, display(), and print() -->
+    <!-- SLIDE 13: 12 — How Colab Shows Output: Last Expression, display(), and print() -->
     <div class="slide" data-slide="13">
-      <span class="slide-badge">Step 08</span>
-      <h2>08 — How Colab Shows Output: Last Expression, display(), and print()</h2>
+      <span class="slide-badge">Step 12</span>
+      <h2>12 — How Colab Shows Output: Last Expression, display(), and print()</h2>
       <div class="slide-text-large">
         <p>In a notebook, the last expression in a code cell is displayed automatically:</p>
-        <pre><code class="language-python">covid.head()
-        </code></pre>
+        <pre><code class="language-python">covid.head()</code></pre>
         <p>Use a separate cell for another result:</p>
-        <pre><code class="language-python">covid.shape
-        </code></pre>
+        <pre><code class="language-python">covid.shape</code></pre>
         <table>
         <thead>
         <tr>
@@ -745,10 +736,10 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 14: 08 — How head() and shape Work -->
+    <!-- SLIDE 14: 13 — How head() and shape Work -->
     <div class="slide" data-slide="14">
-      <span class="slide-badge">Step 08</span>
-      <h2>08 — How head() and shape Work</h2>
+      <span class="slide-badge">Step 13</span>
+      <h2>13 — How head() and shape Work</h2>
       <div class="slide-text-large">
         <ul>
         <li><strong><code>head()</code></strong> — Shows the first five rows by default. Use <code>covid.head(10)</code> to request ten.</li>
@@ -758,28 +749,25 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 15: 08 — head() and shape Colab Output -->
+    <!-- SLIDE 15: 14 — head() and shape Colab Output -->
     <div class="slide" data-slide="15">
-      <span class="slide-badge">Step 08</span>
-      <h2>08 — head() and shape Colab Output</h2>
+      <span class="slide-badge">Step 14</span>
+      <h2>14 — head() and shape Colab Output</h2>
       <div class="slide-text-large">
         <p>Rich display of rows and the shape tuple in Google Colab:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101345.png" alt="Colab output showing covid.head() and covid.shape" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 16: 09 — Inspect Types, Non-Null Counts, and Distributions -->
+    <!-- SLIDE 16: 15 — Inspect Types, Non-Null Counts, and Distributions -->
     <div class="slide" data-slide="16">
-      <span class="slide-badge">Step 09</span>
-      <h2>09 — Inspect Types, Non-Null Counts, and Distributions</h2>
+      <span class="slide-badge">Step 15</span>
+      <h2>15 — Inspect Types, Non-Null Counts, and Distributions</h2>
       <div class="slide-text-large">
         <p>Run these in separate cells:</p>
-        <pre><code class="language-python">covid.dtypes
-        </code></pre>
-        <pre><code class="language-python">covid.info()
-        </code></pre>
-        <pre><code class="language-python">covid.describe()
-        </code></pre>
+        <pre><code class="language-python">covid.dtypes</code></pre>
+        <pre><code class="language-python">covid.info()</code></pre>
+        <pre><code class="language-python">covid.describe()</code></pre>
         <ul>
         <li><strong><code>dtypes</code></strong> — the type pandas assigned to each column, such as datetime, integer, floating point, or object/text;</li>
         <li><strong><code>info()</code></strong> — row count, column names, non-null counts, data types, and approximate memory use;</li>
@@ -788,10 +776,10 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 17: 09 — info() and describe() Output Examples -->
+    <!-- SLIDE 17: 16 — info() and describe() Output Examples -->
     <div class="slide" data-slide="17">
-      <span class="slide-badge">Step 09</span>
-      <h2>09 — info() and describe() Output Examples</h2>
+      <span class="slide-badge">Step 16</span>
+      <h2>16 — info() and describe() Output Examples</h2>
       <div class="slide-text-large">
         <p>Each command answers a different question about the table:</p>
         <p>
@@ -803,39 +791,37 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 18: 10 — Select One Column or Several Columns -->
+    <!-- SLIDE 18: 17 — Select One Column or Several Columns -->
     <div class="slide" data-slide="18">
-      <span class="slide-badge">Step 10</span>
-      <h2>10 — Select One Column or Several Columns</h2>
+      <span class="slide-badge">Step 17</span>
+      <h2>17 — Select One Column or Several Columns</h2>
       <div class="slide-text-large">
         <h3>One column returns a Series</h3>
-        <pre><code class="language-python">cases = covid[&quot;cases&quot;]
-        cases.head()
-        </code></pre>
+        <pre><code class="language-python">cases = covid["cases"]
+cases.head()</code></pre>
         <h3>Several columns return a DataFrame</h3>
         <pre><code class="language-python">guided_columns = covid[
-            [&quot;date&quot;, &quot;country&quot;, &quot;cases&quot;, &quot;deaths&quot;]
-        ]
-        guided_columns.head()
-        </code></pre>
+    ["date", "country", "cases", "deaths"]
+]
+guided_columns.head()</code></pre>
         <p>Selection changes <strong>which variables</strong> are kept. It does not filter observations.</p>
       </div>
     </div>
 
-    <!-- SLIDE 19: 10 — Column Selection Colab Output -->
+    <!-- SLIDE 19: 18 — Column Selection Colab Output -->
     <div class="slide" data-slide="19">
-      <span class="slide-badge">Step 10</span>
-      <h2>10 — Column Selection Colab Output</h2>
+      <span class="slide-badge">Step 18</span>
+      <h2>18 — Column Selection Colab Output</h2>
       <div class="slide-text-large">
         <p>Selection retains only the columns you need for subsequent analysis:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101559.png" alt="Colab example selecting date country cases and deaths columns" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 20: 11 — Interactive: Selection, Slicing, Filtering, and Sorting -->
+    <!-- SLIDE 20: 19 — Interactive: Selection, Slicing, Filtering, and Sorting -->
     <div class="slide" data-slide="20">
-      <span class="slide-badge">Step 11</span>
-      <h2>11 — Interactive: Selection, Slicing, Filtering, and Sorting</h2>
+      <span class="slide-badge">Step 19</span>
+      <h2>19 — Interactive: Selection, Slicing, Filtering, and Sorting</h2>
       <div class="slide-text-large" style="justify-content: flex-start;">
         <div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/dataframe-selection.html" title="11 — Interactive: Selection, Slicing, Filtering, and Sorting" loading="lazy"></iframe></div>
         <p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
@@ -844,164 +830,157 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 21: 12 — Slice Rows by Position -->
+    <!-- SLIDE 21: 20 — Slice Rows by Position -->
     <div class="slide" data-slide="21">
-      <span class="slide-badge">Step 12</span>
-      <h2>12 — Slice Rows by Position</h2>
+      <span class="slide-badge">Step 20</span>
+      <h2>20 — Slice Rows by Position</h2>
       <div class="slide-text-large">
         <p>Use <code>iloc</code> when you want rows by their integer positions:</p>
         <pre><code class="language-python">first_ten_rows = covid.iloc[0:10]
-        first_ten_rows
-        </code></pre>
+first_ten_rows</code></pre>
         <p>Read the slice as: <code>start at position 0, stop before position 10</code>.</p>
         <p>The result contains ten rows. Slicing does not ask whether the values meet a condition.</p>
       </div>
     </div>
 
-    <!-- SLIDE 22: 12 — Slicing Rows Colab Output -->
+    <!-- SLIDE 22: 21 — Slicing Rows Colab Output -->
     <div class="slide" data-slide="22">
-      <span class="slide-badge">Step 12</span>
-      <h2>12 — Slicing Rows Colab Output</h2>
+      <span class="slide-badge">Step 21</span>
+      <h2>21 — Slicing Rows Colab Output</h2>
       <div class="slide-text-large">
         <p>Verify the slice output in Colab:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101632.png" alt="Colab iloc example displaying the first ten rows" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 23: 13 — Filter Rows with One Condition -->
+    <!-- SLIDE 23: 22 — Filter Rows with One Condition -->
     <div class="slide" data-slide="23">
-      <span class="slide-badge">Step 13</span>
-      <h2>13 — Filter Rows with One Condition</h2>
+      <span class="slide-badge">Step 22</span>
+      <h2>22 — Filter Rows with One Condition</h2>
       <div class="slide-text-large">
         <p>Suppose we want records with more than 1,000 reported deaths:</p>
         <pre><code class="language-python">high_death_days = covid[
-            covid[&quot;deaths&quot;] &gt; 1000
-        ]
-        
-        high_death_days.head()
-        </code></pre>
+    covid["deaths"] &gt; 1000
+]
+
+high_death_days.head()</code></pre>
         <p>The expression inside the brackets creates a Boolean condition: <code>True</code> keeps the row; <code>False</code> removes it. The original <code>covid</code> DataFrame is unchanged.</p>
       </div>
     </div>
 
-    <!-- SLIDE 24: 13 — Filter Rows Colab Output -->
+    <!-- SLIDE 24: 23 — Filter Rows Colab Output -->
     <div class="slide" data-slide="24">
-      <span class="slide-badge">Step 13</span>
-      <h2>13 — Filter Rows Colab Output</h2>
+      <span class="slide-badge">Step 23</span>
+      <h2>23 — Filter Rows Colab Output</h2>
       <div class="slide-text-large">
         <p>Observe that all retained rows satisfy the <code>deaths &gt; 1000</code> condition:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101654.png" alt="Colab Boolean filter example for days with more than 1000 deaths" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 25: 14 — Select Columns after Filtering -->
+    <!-- SLIDE 25: 24 — Select Columns after Filtering -->
     <div class="slide" data-slide="25">
-      <span class="slide-badge">Step 14</span>
-      <h2>14 — Select Columns after Filtering</h2>
+      <span class="slide-badge">Step 24</span>
+      <h2>24 — Select Columns after Filtering</h2>
       <div class="slide-text-large">
         <p>We usually do not need every column in the filtered result:</p>
         <pre><code class="language-python">high_death_days = high_death_days[
-            [&quot;date&quot;, &quot;country&quot;, &quot;cases&quot;, &quot;deaths&quot;]
-        ]
-        
-        high_death_days.head()
-        </code></pre>
+    ["date", "country", "cases", "deaths"]
+]
+
+high_death_days.head()</code></pre>
         <p>This is easier to read as two distinct operations:
         1. filter the rows
         2. select the useful columns</p>
       </div>
     </div>
 
-    <!-- SLIDE 26: 14 — Selected Columns Colab Output -->
+    <!-- SLIDE 26: 25 — Selected Columns Colab Output -->
     <div class="slide" data-slide="26">
-      <span class="slide-badge">Step 14</span>
-      <h2>14 — Selected Columns Colab Output</h2>
+      <span class="slide-badge">Step 25</span>
+      <h2>25 — Selected Columns Colab Output</h2>
       <div class="slide-text-large">
         <p>Writing the steps separately is clearer than putting everything into one long expression:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101726.png" alt="Colab example selecting four columns after filtering rows" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 27: 15 — Combine Two Conditions -->
+    <!-- SLIDE 27: 26 — Combine Two Conditions -->
     <div class="slide" data-slide="27">
-      <span class="slide-badge">Step 15</span>
-      <h2>15 — Combine Two Conditions</h2>
+      <span class="slide-badge">Step 26</span>
+      <h2>26 — Combine Two Conditions</h2>
       <div class="slide-text-large">
         <p>Use <code>&amp;</code> when <strong>both</strong> conditions must be true:</p>
         <pre><code class="language-python">usa_high_cases = covid[
-            (covid[&quot;country&quot;] == &quot;United_States_of_America&quot;)
-            &amp; (covid[&quot;cases&quot;] &gt; 100000)
-        ]
-        
-        usa_high_cases.head()
-        </code></pre>
+    (covid["country"] == "United_States_of_America")
+    &amp; (covid["cases"] &gt; 100000)
+]
+
+usa_high_cases.head()</code></pre>
         <p>Important syntax: place each condition inside parentheses; use <code>&amp;</code> for AND; use <code>|</code> for OR; use <code>==</code> to test equality.</p>
       </div>
     </div>
 
-    <!-- SLIDE 28: 15 — Combined Conditions Colab Output -->
+    <!-- SLIDE 28: 27 — Combined Conditions Colab Output -->
     <div class="slide" data-slide="28">
-      <span class="slide-badge">Step 15</span>
-      <h2>15 — Combined Conditions Colab Output</h2>
+      <span class="slide-badge">Step 27</span>
+      <h2>27 — Combined Conditions Colab Output</h2>
       <div class="slide-text-large">
         <p><code>United_States_of_America</code> is the exact country label used in this historical file:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101805.png" alt="Colab example combining country and cases conditions for United States rows" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 29: 16 — Sort the Result -->
+    <!-- SLIDE 29: 28 — Sort the Result -->
     <div class="slide" data-slide="29">
-      <span class="slide-badge">Step 16</span>
-      <h2>16 — Sort the Result</h2>
+      <span class="slide-badge">Step 28</span>
+      <h2>28 — Sort the Result</h2>
       <div class="slide-text-large">
         <pre><code class="language-python">high_death_days = high_death_days.sort_values(
-            &quot;deaths&quot;,
-            ascending=False,
-        )
-        
-        high_death_days.head(10)
-        </code></pre>
+    "deaths",
+    ascending=False,
+)
+
+high_death_days.head(10)</code></pre>
         <p><code>sort_values()</code> changes the order of the rows:
         - <code>ascending=True</code> places smaller values first;
         - <code>ascending=False</code> places larger values first.</p>
       </div>
     </div>
 
-    <!-- SLIDE 30: 16 — Sort Result Colab Output -->
+    <!-- SLIDE 30: 29 — Sort Result Colab Output -->
     <div class="slide" data-slide="30">
-      <span class="slide-badge">Step 16</span>
-      <h2>16 — Sort Result Colab Output</h2>
+      <span class="slide-badge">Step 29</span>
+      <h2>29 — Sort Result Colab Output</h2>
       <div class="slide-text-large">
         <p>Sorting is often the easiest way to find the largest or smallest observations:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20101839.png" alt="Colab example sorting filtered rows by deaths in descending order" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 31: 17 — Check Missing Values and Negative Corrections -->
+    <!-- SLIDE 31: 30 — Check Missing Values and Negative Corrections -->
     <div class="slide" data-slide="31">
-      <span class="slide-badge">Step 17</span>
-      <h2>17 — Check Missing Values and Negative Corrections</h2>
+      <span class="slide-badge">Step 30</span>
+      <h2>30 — Check Missing Values and Negative Corrections</h2>
       <div class="slide-text-large">
         <p>Check missing counts across all columns:</p>
         <pre><code class="language-python">missing_counts = covid.isna().sum()
-        missing_counts
-        </code></pre>
+missing_counts</code></pre>
         <p>Then inspect negative reports:</p>
         <pre><code class="language-python">negative_corrections = covid[
-            (covid[&quot;cases&quot;] &lt; 0)
-            | (covid[&quot;deaths&quot;] &lt; 0)
-        ]
-        
-        negative_corrections.head()
-        </code></pre>
+    (covid["cases"] &lt; 0)
+    | (covid["deaths"] &lt; 0)
+]
+
+negative_corrections.head()</code></pre>
         <p>Negative daily values may represent later reporting corrections. An unusual value should be examined before it is removed or changed.</p>
       </div>
     </div>
 
-    <!-- SLIDE 32: 17 — Data Quality Output Inspection -->
+    <!-- SLIDE 32: 31 — Data Quality Output Inspection -->
     <div class="slide" data-slide="32">
-      <span class="slide-badge">Step 17</span>
-      <h2>17 — Data Quality Output Inspection</h2>
+      <span class="slide-badge">Step 31</span>
+      <h2>31 — Data Quality Output Inspection</h2>
       <div class="slide-text-large">
         <p>Inspect the results of <code>isna().sum()</code> and the negative reporting entries in Colab:</p>
         <p>
@@ -1013,10 +992,10 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 33: 18 — Why We Need groupby() -->
+    <!-- SLIDE 33: 32 — Why We Need groupby() -->
     <div class="slide" data-slide="33">
-      <span class="slide-badge">Step 18</span>
-      <h2>18 — Why We Need groupby()</h2>
+      <span class="slide-badge">Step 32</span>
+      <h2>32 — Why We Need groupby()</h2>
       <div class="slide-text-large">
         <p>Suppose the question is:</p>
         <blockquote>
@@ -1025,17 +1004,16 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
         <p>The original table has many rows for each date—one row for every reporting country.</p>
         <p>We need to:</p>
         <pre><code class="language-text">put rows with the same date together
-        → add the cases inside each date group
-        → return one result row for each date
-        </code></pre>
+→ add the cases inside each date group
+→ return one result row for each date</code></pre>
         <p>That is the basic purpose of <code>groupby()</code> plus an aggregation function.</p>
       </div>
     </div>
 
-    <!-- SLIDE 34: 19 — Interactive: Split → Apply → Combine -->
+    <!-- SLIDE 34: 33 — Interactive: Split → Apply → Combine -->
     <div class="slide" data-slide="34">
-      <span class="slide-badge">Step 19</span>
-      <h2>19 — Interactive: Split → Apply → Combine</h2>
+      <span class="slide-badge">Step 33</span>
+      <h2>33 — Interactive: Split → Apply → Combine</h2>
       <div class="slide-text-large" style="justify-content: flex-start;">
         <div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/groupby-aggregation.html" title="19 — Interactive: Split → Apply → Combine" loading="lazy"></iframe></div>
         <p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
@@ -1044,101 +1022,93 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 35: 20 — Default GroupBy: as_index=True -->
+    <!-- SLIDE 35: 34 — Default GroupBy: as_index=True -->
     <div class="slide" data-slide="35">
-      <span class="slide-badge">Step 20</span>
-      <h2>20 — Default GroupBy: as_index=True</h2>
+      <span class="slide-badge">Step 34</span>
+      <h2>34 — Default GroupBy: as_index=True</h2>
       <div class="slide-text-large">
         <p>A pandas <strong>index</strong> is the set of row labels. By default, <code>groupby()</code> uses <code>as_index=True</code>, so the grouping key becomes the result index:</p>
         <pre><code class="language-python">by_country_index = (
-            covid
-            .groupby(&quot;country&quot;)
-            .agg(total_cases=(&quot;cases&quot;, &quot;sum&quot;))
-        )
-        </code></pre>
+    covid
+    .groupby("country")
+    .agg(total_cases=("cases", "sum"))
+)</code></pre>
         <p>Conceptually, the result looks like:</p>
         <pre><code class="language-text">index (country)        total_cases
-        Argentina              ...
-        Brazil                 ...
-        Canada                 ...
-        </code></pre>
+Argentina              ...
+Brazil                 ...
+Canada                 ...</code></pre>
         <p>The country labels live in the index, not in a data column.</p>
       </div>
     </div>
 
-    <!-- SLIDE 36: 20 — Keeping Columns: as_index=False -->
+    <!-- SLIDE 36: 35 — Keeping Columns: as_index=False -->
     <div class="slide" data-slide="36">
-      <span class="slide-badge">Step 20</span>
-      <h2>20 — Keeping Columns: as_index=False</h2>
+      <span class="slide-badge">Step 35</span>
+      <h2>35 — Keeping Columns: as_index=False</h2>
       <div class="slide-text-large">
         <p>For this course, we often use <code>as_index=False</code>:</p>
         <pre><code class="language-python">by_country_columns = (
-            covid
-            .groupby(&quot;country&quot;, as_index=False)
-            .agg(total_cases=(&quot;cases&quot;, &quot;sum&quot;))
-        )
-        </code></pre>
+    covid
+    .groupby("country", as_index=False)
+    .agg(total_cases=("cases", "sum"))
+)</code></pre>
         <p>Now <code>country</code> stays a <strong>normal column</strong>, and pandas keeps a simple numeric row index:</p>
         <pre><code class="language-text">index   country        total_cases
-        0       Argentina      ...
-        1       Brazil         ...
-        2       Canada         ...
-        </code></pre>
+0       Argentina      ...
+1       Brazil         ...
+2       Canada         ...</code></pre>
         <p><strong>Why use <code>as_index=False</code>?</strong> It makes the summary easier to display, export, merge, and plot with <code>plot(x="country", y="total_cases")</code>.</p>
       </div>
     </div>
 
-    <!-- SLIDE 37: 21 — A Simple GroupBy and Sum -->
+    <!-- SLIDE 37: 36 — A Simple GroupBy and Sum -->
     <div class="slide" data-slide="37">
-      <span class="slide-badge">Step 21</span>
-      <h2>21 — A Simple GroupBy and Sum</h2>
+      <span class="slide-badge">Step 36</span>
+      <h2>36 — A Simple GroupBy and Sum</h2>
       <div class="slide-text-large">
         <pre><code class="language-python">daily_cases = (
-            covid
-            .groupby(&quot;date&quot;, as_index=False)[&quot;cases&quot;]
-            .sum()
-            .sort_values(&quot;date&quot;)
-        )
-        
-        daily_cases.head()
-        </code></pre>
+    covid
+    .groupby("date", as_index=False)["cases"]
+    .sum()
+    .sort_values("date")
+)
+
+daily_cases.head()</code></pre>
         <p>Read it in order:</p>
         <pre><code class="language-text">group by date
-        → select cases
-        → add cases inside each date group
-        → sort the result by date
-        </code></pre>
+→ select cases
+→ add cases inside each date group
+→ sort the result by date</code></pre>
         <p>The original grain was one country-date row. The new grain is one row per date.</p>
       </div>
     </div>
 
-    <!-- SLIDE 38: 22 — Aggregate More Than One Metric -->
+    <!-- SLIDE 38: 37 — Aggregate More Than One Metric -->
     <div class="slide" data-slide="38">
-      <span class="slide-badge">Step 22</span>
-      <h2>22 — Aggregate More Than One Metric</h2>
+      <span class="slide-badge">Step 37</span>
+      <h2>37 — Aggregate More Than One Metric</h2>
       <div class="slide-text-large">
         <pre><code class="language-python">daily_global = (
-            covid
-            .groupby(&quot;date&quot;, as_index=False)
-            .agg(
-                total_cases=(&quot;cases&quot;, &quot;sum&quot;),
-                total_deaths=(&quot;deaths&quot;, &quot;sum&quot;),
-            )
-            .sort_values(&quot;date&quot;)
-        )
-        
-        daily_global.head()
-        </code></pre>
+    covid
+    .groupby("date", as_index=False)
+    .agg(
+        total_cases=("cases", "sum"),
+        total_deaths=("deaths", "sum"),
+    )
+    .sort_values("date")
+)
+
+daily_global.head()</code></pre>
         <p><code>agg()</code> lets one <code>groupby()</code> calculate one or more summary metrics and assign clear output column names:</p>
-        <pre><code class="language-text">new column name = (source column, aggregation function)
-        </code></pre>
+        <pre><code class="language-text">new column name = (source column, aggregation function)</code></pre>
       </div>
     </div>
 
-    <!-- SLIDE 39: 22 — agg() Rules and Colab Output -->
+    <!-- SLIDE 39: 38 — agg() Rules and Colab Output -->
     <div class="slide" data-slide="39">
-      <span class="slide-badge">Step 22</span>
-      <h2>22 — agg() Rules and Colab Output</h2>
+      <span class="slide-badge">Step 38</span>
+      <h2>38 — agg() Rules and Colab Output</h2>
       <div class="slide-text-large">
         <p>You can use functions such as <code>sum</code>, <code>mean</code>, <code>max</code>, <code>min</code>, and <code>count</code> depending on the research question.</p>
         <p>Do not sum every numeric column automatically. For example, <code>pop</code> repeats on many dates, and <code>cum</code> is already a 14-day rate.</p>
@@ -1146,18 +1116,17 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 40: 23 — Work with Dates Using .dt -->
+    <!-- SLIDE 40: 39 — Work with Dates Using .dt -->
     <div class="slide" data-slide="40">
-      <span class="slide-badge">Step 23</span>
-      <h2>23 — Work with Dates Using .dt</h2>
+      <span class="slide-badge">Step 39</span>
+      <h2>39 — Work with Dates Using .dt</h2>
       <div class="slide-text-large">
         <p>Because <code>date</code> was parsed as a datetime column, pandas can extract useful time units:</p>
-        <pre><code class="language-python">covid[&quot;year&quot;] = covid[&quot;date&quot;].dt.year
-        covid[&quot;month&quot;] = covid[&quot;date&quot;].dt.to_period(&quot;M&quot;).astype(str)
-        covid[&quot;quarter&quot;] = covid[&quot;date&quot;].dt.to_period(&quot;Q&quot;).astype(str)
-        
-        covid[[&quot;date&quot;, &quot;year&quot;, &quot;month&quot;, &quot;quarter&quot;]].head()
-        </code></pre>
+        <pre><code class="language-python">covid["year"] = covid["date"].dt.year
+covid["month"] = covid["date"].dt.to_period("M").astype(str)
+covid["quarter"] = covid["date"].dt.to_period("Q").astype(str)
+
+covid[["date", "year", "month", "quarter"]].head()</code></pre>
         <p>Useful choices:
         - <code>.dt.year</code> → year number;
         - <code>.dt.month</code> → month number from 1 to 12;
@@ -1166,162 +1135,153 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 41: 23 — Date Extraction Colab Output -->
+    <!-- SLIDE 41: 40 — Date Extraction Colab Output -->
     <div class="slide" data-slide="41">
-      <span class="slide-badge">Step 23</span>
-      <h2>23 — Date Extraction Colab Output</h2>
+      <span class="slide-badge">Step 40</span>
+      <h2>40 — Date Extraction Colab Output</h2>
       <div class="slide-text-large">
         <p>A time unit extracted with <code>.dt</code> becomes a new grouping variable for monthly or quarterly aggregation:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102517.png" alt="Colab example creating year month and quarter fields from date" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 42: 24 — Group One Country by Month -->
+    <!-- SLIDE 42: 41 — Group One Country by Month -->
     <div class="slide" data-slide="42">
-      <span class="slide-badge">Step 24</span>
-      <h2>24 — Group One Country by Month</h2>
+      <span class="slide-badge">Step 41</span>
+      <h2>41 — Group One Country by Month</h2>
       <div class="slide-text-large">
         <p>Use the United States for the lecture demonstration:</p>
         <pre><code class="language-python">usa = covid[
-            covid[&quot;country&quot;] == &quot;United_States_of_America&quot;
-        ]
-        </code></pre>
+    covid["country"] == "United_States_of_America"
+]</code></pre>
         <p>Now group its rows by month:</p>
         <pre><code class="language-python">usa_monthly_cases = (
-            usa
-            .groupby(&quot;month&quot;, as_index=False)[&quot;cases&quot;]
-            .sum()
-            .sort_values(&quot;month&quot;)
-        )
-        
-        usa_monthly_cases
-        </code></pre>
+    usa
+    .groupby("month", as_index=False)["cases"]
+    .sum()
+    .sort_values("month")
+)
+
+usa_monthly_cases</code></pre>
         <p>The daily rows are converted into one monthly total per row.</p>
       </div>
     </div>
 
-    <!-- SLIDE 43: 24 — Monthly GroupBy Output -->
+    <!-- SLIDE 43: 42 — Monthly GroupBy Output -->
     <div class="slide" data-slide="43">
-      <span class="slide-badge">Step 24</span>
-      <h2>24 — Monthly GroupBy Output</h2>
+      <span class="slide-badge">Step 42</span>
+      <h2>42 — Monthly GroupBy Output</h2>
       <div class="slide-text-large">
         <p>The same pattern works with quarter, week, or another appropriate time unit:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102606.png" alt="Colab example filtering the United States and aggregating cases by month" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 44: 25 — Pandas Plotting Is a Simple Matplotlib Wrapper -->
+    <!-- SLIDE 44: 43 — Pandas Plotting Is a Simple Matplotlib Wrapper -->
     <div class="slide" data-slide="44">
-      <span class="slide-badge">Step 25</span>
-      <h2>25 — Pandas Plotting Is a Simple Matplotlib Wrapper</h2>
+      <span class="slide-badge">Step 43</span>
+      <h2>43 — Pandas Plotting Is a Simple Matplotlib Wrapper</h2>
       <div class="slide-text-large">
         <p>Pandas provides plotting methods on a <strong>DataFrame or Series</strong>. The default backend is Matplotlib.</p>
         <p>Start with the simplest line chart:</p>
-        <pre><code class="language-python">daily_cases.plot(x=&quot;date&quot;, y=&quot;cases&quot;)
-        </code></pre>
+        <pre><code class="language-python">daily_cases.plot(x="date", y="cases")</code></pre>
         <p>A line chart is the default, so <code>kind="line"</code> is not required. This named form is equivalent:</p>
-        <pre><code class="language-python">daily_cases.plot.line(x=&quot;date&quot;, y=&quot;cases&quot;)
-        </code></pre>
+        <pre><code class="language-python">daily_cases.plot.line(x="date", y="cases")</code></pre>
         <p>For other chart types, use the readable named methods:
         <code>.plot.bar()</code>, <code>.plot.barh()</code>, <code>.plot.scatter()</code>, <code>.plot.hist()</code>, <code>.plot.box()</code>.</p>
       </div>
     </div>
 
-    <!-- SLIDE 45: 26 — Line Plot: Change over Time -->
+    <!-- SLIDE 45: 44 — Line Plot: Change over Time -->
     <div class="slide" data-slide="45">
-      <span class="slide-badge">Step 26</span>
-      <h2>26 — Line Plot: Change over Time</h2>
+      <span class="slide-badge">Step 44</span>
+      <h2>44 — Line Plot: Change over Time</h2>
       <div class="slide-text-large">
         <pre><code class="language-python">daily_cases.plot(
-            x=&quot;date&quot;,
-            y=&quot;cases&quot;,
-            title=&quot;Worldwide Daily Reported COVID-19 Cases&quot;,
-            xlabel=&quot;Date&quot;,
-            ylabel=&quot;Reported cases&quot;,
-            legend=False,
-            figsize=(10, 5),
-        )
-        </code></pre>
+    x="date",
+    y="cases",
+    title="Worldwide Daily Reported COVID-19 Cases",
+    xlabel="Date",
+    ylabel="Reported cases",
+    legend=False,
+    figsize=(10, 5),
+)</code></pre>
         <p>Use a line plot when:
         - the x-axis has a meaningful order, usually time; and
         - the goal is to see change, peaks, declines, or repeated patterns.</p>
       </div>
     </div>
 
-    <!-- SLIDE 46: 27 — Bar Plot: Compare Categories -->
+    <!-- SLIDE 46: 45 — Bar Plot: Compare Categories -->
     <div class="slide" data-slide="46">
-      <span class="slide-badge">Step 27</span>
-      <h2>27 — Bar Plot: Compare Categories</h2>
+      <span class="slide-badge">Step 45</span>
+      <h2>45 — Bar Plot: Compare Categories</h2>
       <div class="slide-text-large">
         <pre><code class="language-python">country_deaths = (
-            covid
-            .groupby(&quot;country&quot;, as_index=False)[&quot;deaths&quot;]
-            .sum()
-            .sort_values(&quot;deaths&quot;, ascending=False)
-        )
-        
-        top10_country_deaths = country_deaths.head(10)
-        </code></pre>
-        <pre><code class="language-python">top10_country_deaths.sort_values(&quot;deaths&quot;).plot.barh(
-            x=&quot;country&quot;,
-            y=&quot;deaths&quot;,
-            title=&quot;Top 10 Countries by Total Reported Deaths&quot;,
-            xlabel=&quot;Total reported deaths&quot;,
-            ylabel=&quot;Country&quot;,
-            legend=False,
-            figsize=(10, 6),
-        )
-        </code></pre>
+    covid
+    .groupby("country", as_index=False)["deaths"]
+    .sum()
+    .sort_values("deaths", ascending=False)
+)
+
+top10_country_deaths = country_deaths.head(10)</code></pre>
+        <pre><code class="language-python">top10_country_deaths.sort_values("deaths").plot.barh(
+    x="country",
+    y="deaths",
+    title="Top 10 Countries by Total Reported Deaths",
+    xlabel="Total reported deaths",
+    ylabel="Country",
+    legend=False,
+    figsize=(10, 6),
+)</code></pre>
       </div>
     </div>
 
-    <!-- SLIDE 47: 27 — Horizontal Bar Chart Output -->
+    <!-- SLIDE 47: 46 — Horizontal Bar Chart Output -->
     <div class="slide" data-slide="47">
-      <span class="slide-badge">Step 27</span>
-      <h2>27 — Horizontal Bar Chart Output</h2>
+      <span class="slide-badge">Step 46</span>
+      <h2>46 — Horizontal Bar Chart Output</h2>
       <div class="slide-text-large">
         <p>Use horizontal bars (<code>plot.barh</code>) when category names are long, making them readable along the y-axis:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20102949.png" alt="Pandas horizontal bar chart showing countries with the highest total reported deaths" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 48: 28 — Histogram: Distribution of Daily Cases -->
+    <!-- SLIDE 48: 47 — Histogram: Distribution of Daily Cases -->
     <div class="slide" data-slide="48">
-      <span class="slide-badge">Step 28</span>
-      <h2>28 — Histogram: Distribution of Daily Cases</h2>
+      <span class="slide-badge">Step 47</span>
+      <h2>47 — Histogram: Distribution of Daily Cases</h2>
       <div class="slide-text-large">
-        <pre><code class="language-python">usa[&quot;cases&quot;].plot.hist(
-            bins=25,
-            title=&quot;Distribution of Daily Reported Cases in the United States&quot;,
-            xlabel=&quot;Daily reported cases&quot;,
-            figsize=(9, 5),
-        )
-        </code></pre>
+        <pre><code class="language-python">usa["cases"].plot.hist(
+    bins=25,
+    title="Distribution of Daily Reported Cases in the United States",
+    xlabel="Daily reported cases",
+    figsize=(9, 5),
+)</code></pre>
         <p>A histogram groups numeric values into bins to show frequency, spread, and skewness.</p>
       </div>
     </div>
 
-    <!-- SLIDE 49: 28 — Histogram Output: United States -->
+    <!-- SLIDE 49: 48 — Histogram Output: United States -->
     <div class="slide" data-slide="49">
-      <span class="slide-badge">Step 28</span>
-      <h2>28 — Histogram Output: United States</h2>
+      <span class="slide-badge">Step 48</span>
+      <h2>48 — Histogram Output: United States</h2>
       <div class="slide-text-large">
         <p>Observe how the majority of days cluster at lower case counts with a long right tail:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103029.png" alt="Histogram of daily reported cases in the United States" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 50: 28 — Box Plot: Medians, Spread, and Outliers -->
+    <!-- SLIDE 50: 49 — Box Plot: Medians, Spread, and Outliers -->
     <div class="slide" data-slide="50">
-      <span class="slide-badge">Step 28</span>
-      <h2>28 — Box Plot: Medians, Spread, and Outliers</h2>
+      <span class="slide-badge">Step 49</span>
+      <h2>49 — Box Plot: Medians, Spread, and Outliers</h2>
       <div class="slide-text-large">
-        <pre><code class="language-python">usa[&quot;cases&quot;].plot.box(
-            title=&quot;Daily Reported Cases in the United States&quot;,
-            ylabel=&quot;Reported cases&quot;,
-            figsize=(5, 5),
-        )
-        </code></pre>
+        <pre><code class="language-python">usa["cases"].plot.box(
+    title="Daily Reported Cases in the United States",
+    ylabel="Reported cases",
+    figsize=(5, 5),
+)</code></pre>
         <ul>
         <li><strong>Histogram:</strong> shows shape and frequency across bins;</li>
         <li><strong>Box plot:</strong> provides a compact view of the median, interquartile range (IQR), and outliers.</li>
@@ -1329,29 +1289,28 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 51: 29 — Scatter Plot: Compare Two Numeric Variables -->
+    <!-- SLIDE 51: 50 — Scatter Plot: Compare Two Numeric Variables -->
     <div class="slide" data-slide="51">
-      <span class="slide-badge">Step 29</span>
-      <h2>29 — Scatter Plot: Compare Two Numeric Variables</h2>
+      <span class="slide-badge">Step 50</span>
+      <h2>50 — Scatter Plot: Compare Two Numeric Variables</h2>
       <div class="slide-text-large">
         <pre><code class="language-python">usa.plot.scatter(
-            x=&quot;cases&quot;,
-            y=&quot;deaths&quot;,
-            title=&quot;Daily Reported Cases and Deaths in the United States&quot;,
-            xlabel=&quot;Daily reported cases&quot;,
-            ylabel=&quot;Daily reported deaths&quot;,
-            alpha=0.4,
-            figsize=(7, 5),
-        )
-        </code></pre>
+    x="cases",
+    y="deaths",
+    title="Daily Reported Cases and Deaths in the United States",
+    xlabel="Daily reported cases",
+    ylabel="Daily reported deaths",
+    alpha=0.4,
+    figsize=(7, 5),
+)</code></pre>
         <p>Use a scatter plot when the question concerns the relationship between two numeric variables (e.g. reported cases vs reported deaths).</p>
       </div>
     </div>
 
-    <!-- SLIDE 52: 30 — Match the Chart to the Question -->
+    <!-- SLIDE 52: 51 — Match the Chart to the Question -->
     <div class="slide" data-slide="52">
-      <span class="slide-badge">Step 30</span>
-      <h2>30 — Match the Chart to the Question</h2>
+      <span class="slide-badge">Step 51</span>
+      <h2>51 — Match the Chart to the Question</h2>
       <div class="slide-text-large">
         <table>
         <thead>
@@ -1387,10 +1346,10 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 53: 31 — Research Question: Sort Values to Identify Highest Month -->
+    <!-- SLIDE 53: 52 — Research Question: Sort Values to Identify Highest Month -->
     <div class="slide" data-slide="53">
-      <span class="slide-badge">Step 31</span>
-      <h2>31 — Research Question: Sort Values to Identify Highest Month</h2>
+      <span class="slide-badge">Step 52</span>
+      <h2>52 — Research Question: Sort Values to Identify Highest Month</h2>
       <div class="slide-text-large">
         <p>Example question:</p>
         <blockquote>
@@ -1398,58 +1357,56 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
         </blockquote>
         <p>The analysis already produced <code>usa_monthly_cases</code>. Sort it in descending order to identify the top month:</p>
         <pre><code class="language-python">usa_monthly_cases.sort_values(
-            &quot;cases&quot;,
-            ascending=False,
-        ).head()
-        </code></pre>
+    "cases",
+    ascending=False,
+).head()</code></pre>
         <p>The first row reveals the month with the maximum reported cases.</p>
       </div>
     </div>
 
-    <!-- SLIDE 54: 31 — Research Question: Visualize with Bar Chart -->
+    <!-- SLIDE 54: 53 — Research Question: Visualize with Bar Chart -->
     <div class="slide" data-slide="54">
-      <span class="slide-badge">Step 31</span>
-      <h2>31 — Research Question: Visualize with Bar Chart</h2>
+      <span class="slide-badge">Step 53</span>
+      <h2>53 — Research Question: Visualize with Bar Chart</h2>
       <div class="slide-text-large">
         <p>Now plot the same monthly summary table as a bar chart:</p>
         <pre><code class="language-python">usa_monthly_cases.plot.bar(
-            x=&quot;month&quot;,
-            y=&quot;cases&quot;,
-            title=&quot;Monthly Reported Cases in the United States&quot;,
-            xlabel=&quot;Month&quot;,
-            ylabel=&quot;Total reported cases&quot;,
-            legend=False,
-            figsize=(10, 5),
-        )
-        </code></pre>
+    x="month",
+    y="cases",
+    title="Monthly Reported Cases in the United States",
+    xlabel="Month",
+    ylabel="Total reported cases",
+    legend=False,
+    figsize=(10, 5),
+)</code></pre>
         <p>The tallest bar visually corroborates the sorted table.</p>
       </div>
     </div>
 
-    <!-- SLIDE 55: 31 — Research Question: Visual Evidence -->
+    <!-- SLIDE 55: 54 — Research Question: Visual Evidence -->
     <div class="slide" data-slide="55">
-      <span class="slide-badge">Step 31</span>
-      <h2>31 — Research Question: Visual Evidence</h2>
+      <span class="slide-badge">Step 54</span>
+      <h2>54 — Research Question: Visual Evidence</h2>
       <div class="slide-text-large">
         <p>The first row of the sorted table, the tallest bar, and the written answer should identify the same month and value:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103156.png" alt="Monthly reported cases bar chart for the United States" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 56: 31 — Research Question: Gemini Verification -->
+    <!-- SLIDE 56: 55 — Research Question: Gemini Verification -->
     <div class="slide" data-slide="56">
-      <span class="slide-badge">Step 31</span>
-      <h2>31 — Research Question: Gemini Verification</h2>
+      <span class="slide-badge">Step 55</span>
+      <h2>55 — Research Question: Gemini Verification</h2>
       <div class="slide-text-large">
         <p>You may also ask Gemini to help interpret the already-computed table and chart, but verify the answer against the visible evidence:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103809.png" alt="Gemini response identifying the highest month while the corresponding monthly bar chart is visible" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 57: 32 — Interactive: Does the Evidence Answer the Question? -->
+    <!-- SLIDE 57: 56 — Interactive: Does the Evidence Answer the Question? -->
     <div class="slide" data-slide="57">
-      <span class="slide-badge">Step 32</span>
-      <h2>32 — Interactive: Does the Evidence Answer the Question?</h2>
+      <span class="slide-badge">Step 56</span>
+      <h2>56 — Interactive: Does the Evidence Answer the Question?</h2>
       <div class="slide-text-large" style="justify-content: flex-start;">
         <div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-3/question-to-evidence.html" title="32 — Interactive: Does the Evidence Answer the Question?" loading="lazy"></iframe></div>
         <p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
@@ -1458,10 +1415,10 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 58: 33 — What Makes a Research Question Usable? -->
+    <!-- SLIDE 58: 57 — What Makes a Research Question Usable? -->
     <div class="slide" data-slide="58">
-      <span class="slide-badge">Step 33</span>
-      <h2>33 — What Makes a Research Question Usable?</h2>
+      <span class="slide-badge">Step 57</span>
+      <h2>57 — What Makes a Research Question Usable?</h2>
       <div class="slide-text-large">
         <p>A usable question:
         - can be answered with the available columns;
@@ -1479,17 +1436,16 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 59: 34 — Gemini Practice 1: Explain Code -->
+    <!-- SLIDE 59: 58 — Gemini Practice 1: Explain Code -->
     <div class="slide" data-slide="59">
-      <span class="slide-badge">Step 34</span>
-      <h2>34 — Gemini Practice 1: Explain Code</h2>
+      <span class="slide-badge">Step 58</span>
+      <h2>58 — Gemini Practice 1: Explain Code</h2>
       <div class="slide-text-large">
         <p>Run or inspect this code:</p>
         <pre><code class="language-python">usa_high_cases = covid[
-            (covid[&quot;country&quot;] == &quot;United_States_of_America&quot;)
-            &amp; (covid[&quot;cases&quot;] &gt; 100000)
-        ]
-        </code></pre>
+    (covid["country"] == "United_States_of_America")
+    &amp; (covid["cases"] &gt; 100000)
+]</code></pre>
         <p>Ask Gemini:</p>
         <blockquote>
         <p>Explain this code line by line. Which rows are kept? What type of pandas object is returned?</p>
@@ -1498,43 +1454,42 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 60: 34 — Gemini Explanation Output -->
+    <!-- SLIDE 60: 59 — Gemini Explanation Output -->
     <div class="slide" data-slide="60">
-      <span class="slide-badge">Step 34</span>
-      <h2>34 — Gemini Explanation Output</h2>
+      <span class="slide-badge">Step 59</span>
+      <h2>59 — Gemini Explanation Output</h2>
       <div class="slide-text-large">
         <p>Write one sentence in your notebook explaining the filter in your own words:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103249.png" alt="Gemini explaining the USA high-cases Boolean filter line by line" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 61: 35 — Exercise A: Repair a Code Error -->
+    <!-- SLIDE 61: 60 — Exercise A: Repair a Code Error -->
     <div class="slide" data-slide="61">
-      <span class="slide-badge">Step 35</span>
-      <h2>35 — Exercise A: Repair a Code Error</h2>
+      <span class="slide-badge">Step 60</span>
+      <h2>60 — Exercise A: Repair a Code Error</h2>
       <div class="slide-text-large">
         <h3>Exercise A — Repair an error</h3>
         <p>This code contains mistakes:</p>
-        <pre><code class="language-python">usa = covid[covid[&quot;countries&quot;] == &quot;United States&quot;]
-        </code></pre>
+        <pre><code class="language-python">usa = covid[covid["countries"] == "United States"]</code></pre>
         <p>Ask Gemini to help, but require it to inspect <code>covid.columns</code> and <code>covid["country"].unique()</code>. The corrected code must use a real column name and the exact stored country value.</p>
       </div>
     </div>
 
-    <!-- SLIDE 62: 35 — Exercise A: Colab Output -->
+    <!-- SLIDE 62: 61 — Exercise A: Colab Output -->
     <div class="slide" data-slide="62">
-      <span class="slide-badge">Step 35</span>
-      <h2>35 — Exercise A: Colab Output</h2>
+      <span class="slide-badge">Step 61</span>
+      <h2>61 — Exercise A: Colab Output</h2>
       <div class="slide-text-large">
         <p>Gemini helps repair the country-column and country-value error while actual columns and unique values are visible:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103451.png" alt="Gemini helping repair a country-column and country-value error while actual columns and unique values are visible" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 63: 35 — Exercise B: Revise an Analysis -->
+    <!-- SLIDE 63: 62 — Exercise B: Revise an Analysis -->
     <div class="slide" data-slide="63">
-      <span class="slide-badge">Step 35</span>
-      <h2>35 — Exercise B: Revise an Analysis</h2>
+      <span class="slide-badge">Step 62</span>
+      <h2>62 — Exercise B: Revise an Analysis</h2>
       <div class="slide-text-large">
         <h3>Exercise B — Revise an analysis</h3>
         <p>Ask Gemini:</p>
@@ -1545,20 +1500,20 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 64: 35 — Exercise B: Colab Output -->
+    <!-- SLIDE 64: 63 — Exercise B: Colab Output -->
     <div class="slide" data-slide="64">
-      <span class="slide-badge">Step 35</span>
-      <h2>35 — Exercise B: Colab Output</h2>
+      <span class="slide-badge">Step 63</span>
+      <h2>63 — Exercise B: Colab Output</h2>
       <div class="slide-text-large">
         <p>Gemini proposes a monthly aggregation and bar-chart workflow for the existing USA DataFrame:</p>
         <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-3/screenshots/Screenshot%202026-09-02%20103611.png" alt="Gemini proposing a monthly aggregation and bar-chart workflow for the existing USA DataFrame" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 65: 36 — Gemini Practice 3: Compare Two Charts -->
+    <!-- SLIDE 65: 64 — Gemini Practice 3: Compare Two Charts -->
     <div class="slide" data-slide="65">
-      <span class="slide-badge">Step 36</span>
-      <h2>36 — Gemini Practice 3: Compare Two Charts</h2>
+      <span class="slide-badge">Step 64</span>
+      <h2>64 — Gemini Practice 3: Compare Two Charts</h2>
       <div class="slide-text-large">
         <p>Use the existing <code>usa_monthly_cases</code> table and ask Gemini:</p>
         <blockquote>
@@ -1572,16 +1527,15 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 66: 37 — Save the Lecture Notebook to GitHub — Save #1 of 2 -->
+    <!-- SLIDE 66: 65 — Save the Lecture Notebook to GitHub (Optional Practice) -->
     <div class="slide" data-slide="66">
-      <span class="slide-badge">Step 37</span>
-      <h2>37 — Save the Lecture Notebook to GitHub — Save #1 of 2</h2>
+      <span class="slide-badge">Step 65</span>
+      <h2>65 — Save the Lecture Notebook to GitHub (Optional Practice)</h2>
       <div class="slide-text-large">
-        <p>When the guided classroom practice is complete, run the lecture notebook from top to bottom and fix unresolved errors. Then choose <strong>File → Save a copy in GitHub</strong> and save:</p>
-        <pre><code class="language-text">week3_pandas_matplotlib_practice.ipynb
-        </code></pre>
-        <p>to the <code>main</code> branch of your private IA340 repository. Keep the visible outputs.</p>
-        <p><strong>This is Save #1.</strong> Do not overwrite it with the Lab. Lab 3 is a separate notebook named <code>lab3_covid_analysis.ipynb</code>, which you will save separately after completing the independent country analysis.</p>
+        <p>When the guided classroom practice is complete, you may save your work to GitHub for your records and version control practice. Run the lecture notebook from top to bottom, then choose <strong>File → Save a copy in GitHub</strong> and save:</p>
+        <pre><code class="language-text">week3_pandas_matplotlib_practice.ipynb</code></pre>
+        <p>to the <code>main</code> branch of your private IA340 repository.</p>
+        <p><strong>Note:</strong> Saving this classroom notebook is recommended for your own reference, but it is <strong>not graded</strong> for Lab 3 (if you did not save it, you do not need to redo it). Lab 3 is completed in a separate notebook named <code>lab3_covid_analysis.ipynb</code>, which is the only required deliverable for Lab 3.</p>
       </div>
     </div>
 
@@ -1592,13 +1546,12 @@ title: "Module 3: Pandas & Matplotlib Review with Real COVID-19 Data - IA 340"
       <div class="slide-text-large">
         <p>The basic analysis workflow is:</p>
         <pre><code class="language-text">understand the table
-        → select the relevant data
-        → create the needed time unit
-        → group at the correct level
-        → calculate the correct metric
-        → choose a simple matching plot
-        → explain the visible result
-        </code></pre>
+→ select the relevant data
+→ create the needed time unit
+→ group at the correct level
+→ calculate the correct metric
+→ choose a simple matching plot
+→ explain the visible result</code></pre>
         <div class="alert-takeaway" style="font-size: 1.1rem; padding: 1rem; margin-top: 1rem;">
           <strong>Core Principle:</strong> Code produces an output. Analysis connects that output to a clear question.
         </div>

@@ -14,18 +14,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
   <a href="{{ site.baseurl }}/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
   <a href="{{ site.baseurl }}/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
   <a href="{{ site.baseurl }}/modules/module-4/" style="text-decoration: none; font-weight: 600; color: #0969da;">Module 4</a>
   <a href="{{ site.baseurl }}/assignments/lab-4/" style="text-decoration: none; color: #57606a;">Lab 4</a>
-  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
 </nav>
-
-<div style="background: #f6f8fa; border: 1px solid #d0d7de; border-left: 4px solid #0969da; border-radius: 6px; padding: 0.75rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
-  <div>
-    <strong>☁️ Cloud SQL PostgreSQL &amp; Budget Alert Setup:</strong>
-    <span style="color: #57606a; margin-left: 0.5rem;">Follow the demonstrated Monday &amp; Wednesday workflows to configure Cloud SQL and submit your Public IP address in Canvas.</span>
-  </div>
-  <a href="{{ site.baseurl }}/assignments/lab-4/" style="display: inline-block; background: #0969da; color: #ffffff; padding: 0.35rem 0.85rem; border-radius: 6px; font-weight: 600; font-size: 0.9em; text-decoration: none;">Lab 4 Checkpoint Instructions →</a>
-</div>
 
 <style>
 /* Presentation Slide Deck Styles */
@@ -97,7 +89,7 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
 .deck-progress-fill {
   height: 100%;
   background: #2da44e;
-  width: 1.25%;
+  width: 1.12%;
   transition: width 0.25s ease;
 }
 
@@ -106,7 +98,8 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
   border: 1px solid #d0d7de;
   border-top: none;
   border-radius: 0 0 10px 10px;
-  height: 700px;
+  height: 780px;
+  min-height: 720px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.06);
   position: relative;
   overflow: hidden;
@@ -127,6 +120,14 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
 
 .slide.active {
   display: flex;
+}
+
+.slide.slide-interactive {
+  padding: 1rem 1.5rem;
+}
+
+.slide.slide-interactive h2 {
+  margin-bottom: 0.4rem;
 }
 
 @keyframes slideFadeIn {
@@ -283,16 +284,18 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
 .iframe-container {
   width: 100%;
   flex: 1;
-  min-height: 480px;
+  min-height: 640px;
+  height: calc(100% - 60px);
   display: flex;
   flex-direction: column;
-  margin: 0.3rem 0;
+  margin: 0.2rem 0;
 }
 
 .iframe-container iframe {
   width: 100%;
   flex: 1;
-  min-height: 460px;
+  min-height: 620px;
+  height: 100%;
   border: 1px solid #d0d7de;
   border-radius: 8px;
   background: #ffffff;
@@ -333,6 +336,7 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
 .deck-container:fullscreen .deck-stage,
 .deck-container:-webkit-full-screen .deck-stage {
   height: calc(100vh - 48px) !important;
+  min-height: calc(100vh - 48px) !important;
   flex: 1;
   border-radius: 0 !important;
   border: none !important;
@@ -345,9 +349,16 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
 .deck-container:-webkit-full-screen .slide.active {
   height: 100%;
   overflow-y: auto;
-  padding: 2rem 4.5rem;
+  padding: 1.5rem 3rem;
   font-size: 1.15rem;
   line-height: 1.6;
+}
+
+#lectureDeck:fullscreen .slide.slide-interactive,
+#lectureDeck:-webkit-full-screen .slide.slide-interactive,
+.deck-container:fullscreen .slide.slide-interactive,
+.deck-container:-webkit-full-screen .slide.slide-interactive {
+  padding: 1rem 2rem;
 }
 
 #lectureDeck:fullscreen .slide h2,
@@ -370,16 +381,16 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
 .deck-container:fullscreen .iframe-container,
 .deck-container:-webkit-full-screen .iframe-container {
   flex: 1;
-  height: calc(100vh - 170px);
-  min-height: 560px;
+  height: calc(100vh - 120px) !important;
+  min-height: 650px !important;
 }
 
 #lectureDeck:fullscreen .iframe-container iframe,
 #lectureDeck:-webkit-full-screen .iframe-container iframe,
 .deck-container:fullscreen .iframe-container iframe,
 .deck-container:-webkit-full-screen .iframe-container iframe {
-  height: 100%;
-  min-height: 540px;
+  height: 100% !important;
+  min-height: 640px !important;
 }
 
 @media (max-height: 820px) {
@@ -387,7 +398,7 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
   #lectureDeck:-webkit-full-screen .slide.active,
   .deck-container:fullscreen .slide.active,
   .deck-container:-webkit-full-screen .slide.active {
-    padding: 1.2rem 3rem !important;
+    padding: 1.2rem 2.5rem !important;
     font-size: 1.05rem !important;
     line-height: 1.45 !important;
   }
@@ -407,11 +418,12 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
 }
 
 @media (max-width: 860px) {
-  .deck-stage { height: auto; min-height: 580px; }
+  .deck-stage { height: auto; min-height: 600px; }
   .slide { height: auto; overflow-y: auto; padding: 1.2rem 1rem; }
+  .slide.slide-interactive { padding: 0.8rem 0.6rem; }
   .slide-media-box img { max-height: 250px; }
-  .iframe-container { min-height: 400px; }
-  .iframe-container iframe { min-height: 380px; }
+  .iframe-container { min-height: 560px; height: 600px; }
+  .iframe-container iframe { min-height: 540px; height: 100%; width: 100%; }
 }
 </style>
 
@@ -465,7 +477,7 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 2: 01 — Monday — Why a database, and why the cloud? -->
+    <!-- SLIDE 2: Step 01 — Monday — Why a database, and why the cloud? -->
     <div class="slide" data-slide="2">
       <span class="slide-badge">Step 01</span>
       <h2>01 — Monday — Why a database, and why the cloud?</h2>
@@ -476,7 +488,7 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 3: 02 — Why use a database? Think about a bank -->
+    <!-- SLIDE 3: Step 02 — Why use a database? Think about a bank -->
     <div class="slide" data-slide="3">
       <span class="slide-badge">Step 02</span>
       <h2>02 — Why use a database? Think about a bank</h2>
@@ -488,27 +500,36 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 4: 03 — Where does the computation happen? -->
+    <!-- SLIDE 4: Step 03 — Where does the computation happen? -->
     <div class="slide" data-slide="4">
       <span class="slide-badge">Step 03</span>
       <h2>03 — Where does the computation happen?</h2>
-      <div class="slide-text-large" style="justify-content: flex-start;">
+      <div class="slide-text-large">
 <p>Colab and BI tools can ask a database for <strong>only the records or summary they need</strong>, rather than first importing the entire dataset.</p>
+<p><strong>Left: Drive + Colab &bull; Center: The same example data &bull; Right: Database + Colab</strong></p>
+<p>The question stays the same: <strong>What is the total population for 2024?</strong> Watch which computer filters/adds and what crosses the network.</p>
+<p>Our earlier workflow calculates in Colab. The database route calculates the query on the database server and returns a small result. This separates notebook analysis from persistent data storage and management. PostgreSQL still needs its own CPU, memory, and disks.</p>
+<p><strong>Important:</strong> asking for every row can recreate the memory problem. Drive also keeps files after Colab disconnects; persistence alone is not the database advantage. <a href="https://www.postgresql.org/docs/18/queries.html" target="_blank" rel="noopener noreferrer">Queries ↗</a> &bull; <a href="https://pandas.pydata.org/docs/user_guide/scale.html" target="_blank" rel="noopener noreferrer">Working with large data ↗</a></p>
+<p style="margin-top: 1rem; color: #0969da; font-weight: 500;">Advance to the next slide to explore the interactive side-by-side workflow walkthrough.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Step 04 — Interactive: Same Data, Two Places to Compute -->
+    <div class="slide slide-interactive" data-slide="5">
+      <span class="slide-badge">Step 04</span>
+      <h2>04 — Interactive: Same Data, Two Places to Compute</h2>
+      <div class="slide-text-large">
 <div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/data-workflow.html" title="Same data. Two places to compute." loading="lazy"></iframe></div>
 <p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
   Interactive walkthrough: Same data. Two places to compute. | <a href="{{ site.baseurl }}/assets/week-4/data-workflow.html" target="_blank">Open in separate tab ↗</a>
 </p>
-<p><strong>Left: Drive + Colab. Center: the same example data. Right: Database + Colab.</strong></p>
-<p>The question stays the same: <strong>What is the total population for 2024?</strong> Watch which computer filters/adds and what crosses the network.</p>
-<p>Our earlier workflow calculates in Colab. The database route calculates the query on the database server and returns a small result. This separates notebook analysis from persistent data storage and management. PostgreSQL still needs its own CPU, memory, and disks.</p>
-<p><strong>Important:</strong> asking for every row can recreate the memory problem. Drive also keeps files after Colab disconnects; persistence alone is not the database advantage. <a href="https://www.postgresql.org/docs/18/queries.html" target="_blank" rel="noopener noreferrer">Queries ↗</a> · <a href="https://pandas.pydata.org/docs/user_guide/scale.html" target="_blank" rel="noopener noreferrer">Working with large data ↗</a></p>
       </div>
     </div>
 
-    <!-- SLIDE 5: 04 — Structured, semi-structured, and unstructured data -->
-    <div class="slide" data-slide="5">
-      <span class="slide-badge">Step 04</span>
-      <h2>04 — Structured, semi-structured, and unstructured data</h2>
+    <!-- SLIDE 6: Step 05 — Structured, semi-structured, and unstructured data -->
+    <div class="slide" data-slide="6">
+      <span class="slide-badge">Step 05</span>
+      <h2>05 — Structured, semi-structured, and unstructured data</h2>
       <div class="slide-text-large">
 <p>Data format describes <strong>how information is organized</strong>. Storage describes <strong>where and how we manage it</strong>.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/data-types.png" alt="Structured tables, semi-structured JSON or XML, and unstructured images, text, audio, and video" /></div>
@@ -527,10 +548,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 6: 05 — Choose a data system for the job -->
-    <div class="slide" data-slide="6">
-      <span class="slide-badge">Step 05</span>
-      <h2>05 — Choose a data system for the job</h2>
+    <!-- SLIDE 7: Step 06 — Choose a data system for the job -->
+    <div class="slide" data-slide="7">
+      <span class="slide-badge">Step 06</span>
+      <h2>06 — Choose a data system for the job</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/data-models.svg" alt="Data storage and database categories illustrated by their purpose" /></div>
 <table>
@@ -549,10 +570,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 7: 06 — Google Drive is not our analytical data lake -->
-    <div class="slide" data-slide="7">
-      <span class="slide-badge">Step 06</span>
-      <h2>06 — Google Drive is not our analytical data lake</h2>
+    <!-- SLIDE 8: Step 07 — Google Drive is not our analytical data lake -->
+    <div class="slide" data-slide="8">
+      <span class="slide-badge">Step 07</span>
+      <h2>07 — Google Drive is not our analytical data lake</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/data-lake.svg" alt="Cloud files contrasted with object storage supporting an analytical data lake" /></div>
 <p>Google Drive is our personal/collaborative file store. An S3 or Google Cloud Storage <strong>bucket</strong> is object storage that can be a data lake's foundation. A lake also needs organization, metadata, access controls, and tools to process the data.</p>
@@ -560,10 +581,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 8: 07 — Common relational database engines -->
-    <div class="slide" data-slide="8">
-      <span class="slide-badge">Step 07</span>
-      <h2>07 — Common relational database engines</h2>
+    <!-- SLIDE 9: Step 08 — Common relational database engines -->
+    <div class="slide" data-slide="9">
+      <span class="slide-badge">Step 08</span>
+      <h2>08 — Common relational database engines</h2>
       <div class="slide-text-large">
 <p>A <strong>database engine</strong> is the software that stores records, processes queries, and enforces database rules. These are alternatives—not the tools we use to draw a diagram or open a browser console.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/database-engines.svg" alt="PostgreSQL and MySQL compared with Microsoft SQL Server and Oracle Database" /></div>
@@ -582,10 +603,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 9: 08 — Why cloud computing? -->
-    <div class="slide" data-slide="9">
-      <span class="slide-badge">Step 08</span>
-      <h2>08 — Why cloud computing?</h2>
+    <!-- SLIDE 10: Step 09 — Why cloud computing? -->
+    <div class="slide" data-slide="10">
+      <span class="slide-badge">Step 09</span>
+      <h2>09 — Why cloud computing?</h2>
       <div class="slide-text-large">
 <p>Cloud computing makes <strong>compute, storage, networking, and managed services</strong> available over a network. Providers operate real physical servers in data centers.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/cloud-physical.svg" alt="Cloud computing relies on physical servers, networks, and data centers" /></div>
@@ -594,10 +615,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 10: 09 — Cloud benefit: accessibility -->
-    <div class="slide" data-slide="10">
-      <span class="slide-badge">Step 09</span>
-      <h2>09 — Cloud benefit: accessibility</h2>
+    <!-- SLIDE 11: Step 10 — Cloud benefit: accessibility -->
+    <div class="slide" data-slide="11">
+      <span class="slide-badge">Step 10</span>
+      <h2>10 — Cloud benefit: accessibility</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/many-users.svg" alt="Authorized users at campus, home, and another location connect to the same cloud service" /></div>
 <p>Authorized applications and users can reach the service from different locations. Your notebook does not need to run on the same physical computer as the database.</p>
@@ -605,10 +626,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 11: 10 — Cloud benefit: scalability -->
-    <div class="slide" data-slide="11">
-      <span class="slide-badge">Step 10</span>
-      <h2>10 — Cloud benefit: scalability</h2>
+    <!-- SLIDE 12: Step 11 — Cloud benefit: scalability -->
+    <div class="slide" data-slide="12">
+      <span class="slide-badge">Step 11</span>
+      <h2>11 — Cloud benefit: scalability</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/large-data.svg" alt="A small cloud allocation can be increased rather than purchasing new physical hardware" /></div>
 <p><strong>Scale up:</strong> give an instance more CPU or memory.<br>
@@ -618,10 +639,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 12: 11 — Cloud benefit: availability and redundancy -->
-    <div class="slide" data-slide="12">
-      <span class="slide-badge">Step 11</span>
-      <h2>11 — Cloud benefit: availability and redundancy</h2>
+    <!-- SLIDE 13: Step 12 — Cloud benefit: availability and redundancy -->
+    <div class="slide" data-slide="13">
+      <span class="slide-badge">Step 12</span>
+      <h2>12 — Cloud benefit: availability and redundancy</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/region-zones.svg" alt="A primary database and a configured standby are placed in different zones of one region" /></div>
 <p><strong>Availability</strong> asks whether the service can respond when needed. <strong>Redundancy</strong> adds another usable component or copy so one failure need not stop everything.</p>
@@ -629,26 +650,44 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 13: 12 — Regions, zones, and data centers -->
-    <div class="slide" data-slide="13">
-      <span class="slide-badge">Step 12</span>
-      <h2>12 — Regions, zones, and data centers</h2>
-      <div class="slide-text-large" style="justify-content: flex-start;">
-<p><strong>A provider has regions; each region contains zones (availability zones, or AZs).</strong> Zone and AZ are the same level here—not one inside the other.</p>
-<p>A region chooses geography. A zone is a deployment and failure domain backed by physical data-center infrastructure. Choosing a region near the main application can reduce request travel time; cost and available services also matter.</p>
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/cloud-regions.html" title="Region → zones → database placement" loading="lazy"></iframe></div>
-<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
-  Interactive walkthrough: Region → zones → database placement | <a href="{{ site.baseurl }}/assets/week-4/cloud-regions.html" target="_blank">Open in separate tab ↗</a>
-</p>
-<p>Use <strong>Next step</strong> to follow one story: regions → zones → a single-zone database → a separate HA example → a zone failure → reconnection. There are no location-selection menus.</p>
-<p>A region is not automatically a backup of another region. <a href="https://docs.cloud.google.com/docs/geography-and-regions" target="_blank" rel="noopener noreferrer">Cloud geography ↗</a></p>
+    <!-- SLIDE 14: Step 13 — Regions, zones, and data centers -->
+    <div class="slide" data-slide="14">
+      <span class="slide-badge">Step 13</span>
+      <h2>13 — Regions, zones, and data centers</h2>
+      <div class="slide-text-large">
+<p><strong>A provider has regions; each region contains multiple zones.</strong></p>
+<p>In our rehearsal, we choose <strong><code>us-central1 (Iowa)</code></strong> and a single zone to keep charges minimal for learning.</p>
+<p>A production deployment needing higher availability can configure automatic standby in a second zone.</p>
+<div style="background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 1rem; margin: 1rem 0;">
+  <strong>Core Cloud Infrastructure Hierarchy:</strong>
+  <ul style="margin: 0.5rem 0 0 1.2rem;">
+    <li><strong>Data Center:</strong> A physical facility housing servers, power, and networking.</li>
+    <li><strong>Availability Zone (AZ):</strong> One or more discrete data centers with independent power and cooling.</li>
+    <li><strong>Region:</strong> A geographic area with multiple isolated zones connected via low-latency networks.</li>
+    <li><strong>Standby / Failover:</strong> A redundant instance ready in an alternate zone in case the primary fails.</li>
+  </ul>
+</div>
+<p><a href="https://docs.cloud.google.com/docs/geography-and-regions" target="_blank" rel="noopener noreferrer">Cloud geography ↗</a> &bull; <a href="https://docs.cloud.google.com/sql/docs/postgres/high-availability" target="_blank" rel="noopener noreferrer">High availability ↗</a></p>
+<p style="margin-top: 1rem; color: #0969da; font-weight: 500;">Advance to the next slide to walk through the region, zone, and failover model interactively.</p>
       </div>
     </div>
 
-    <!-- SLIDE 14: 13 — Cloud benefit: lower upfront cost and pay as you go -->
-    <div class="slide" data-slide="14">
-      <span class="slide-badge">Step 13</span>
-      <h2>13 — Cloud benefit: lower upfront cost and pay as you go</h2>
+    <!-- SLIDE 15: Step 14 — Interactive: Region → Zones → Placement Walkthrough -->
+    <div class="slide slide-interactive" data-slide="15">
+      <span class="slide-badge">Step 14</span>
+      <h2>14 — Interactive: Region → Zones → Placement Walkthrough</h2>
+      <div class="slide-text-large">
+<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/cloud-regions.html" title="Region, Zones, and Database Placement" loading="lazy"></iframe></div>
+<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
+  Interactive walkthrough: Region &rarr; zones &rarr; database placement | <a href="{{ site.baseurl }}/assets/week-4/cloud-regions.html" target="_blank">Open in separate tab ↗</a>
+</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 16: Step 15 — Cloud benefit: lower upfront cost and pay as you go -->
+    <div class="slide" data-slide="16">
+      <span class="slide-badge">Step 15</span>
+      <h2>15 — Cloud benefit: lower upfront cost and pay as you go</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/cloud-cost.svg" alt="Cloud charges can include compute time, provisioned storage, and data transfer" /></div>
 <p>Instead of purchasing servers, arranging power/cooling, and maintaining everything ourselves, we rent resources. <strong>Pay as you go</strong> ties charges to the service's billing units—for example allocated machine time, storage capacity, or data transfer.</p>
@@ -657,10 +696,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 15: 14 — Three major cloud providers -->
-    <div class="slide" data-slide="15">
-      <span class="slide-badge">Step 14</span>
-      <h2>14 — Three major cloud providers</h2>
+    <!-- SLIDE 17: Step 16 — Three major cloud providers -->
+    <div class="slide" data-slide="17">
+      <span class="slide-badge">Step 16</span>
+      <h2>16 — Three major cloud providers</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/cloud-providers.svg" alt="Amazon Web Services, Microsoft Azure, and Google Cloud" /></div>
 <p><strong>Amazon Web Services (AWS), Microsoft Azure, and Google Cloud</strong> provide much more than storage: compute, networking, databases, and other managed services. They are three major examples, not the only providers.</p>
@@ -669,10 +708,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 16: 15 — Why Google Cloud for this course? -->
-    <div class="slide" data-slide="16">
-      <span class="slide-badge">Step 15</span>
-      <h2>15 — Why Google Cloud for this course?</h2>
+    <!-- SLIDE 18: Step 17 — Why Google Cloud for this course? -->
+    <div class="slide" data-slide="18">
+      <span class="slide-badge">Step 17</span>
+      <h2>17 — Why Google Cloud for this course?</h2>
       <div class="slide-text-large">
 <p>Our course already uses <strong>Google Drive and Colab</strong>, and Google integrates <strong>Gemini assistance</strong> into parts of its cloud ecosystem. This gives us a connected environment for learning data and AI tools.</p>
 <p>Google also offers free usage tiers for selected products and trial offers with eligibility/usage limits. Our course has <strong>education credits</strong>.</p>
@@ -681,10 +720,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 17: 16 — Monday hands-on — the service and tools we will use -->
-    <div class="slide" data-slide="17">
-      <span class="slide-badge">Step 16</span>
-      <h2>16 — Monday hands-on — the service and tools we will use</h2>
+    <!-- SLIDE 19: Step 18 — Monday hands-on — the service and tools we will use -->
+    <div class="slide" data-slide="19">
+      <span class="slide-badge">Step 18</span>
+      <h2>18 — Monday hands-on — the service and tools we will use</h2>
       <div class="slide-text-large">
 <p>Now apply the concepts. Keep these names separate from the list of database engines:</p>
 <table>
@@ -702,10 +741,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 18: 17 — A project organizes your cloud resources -->
-    <div class="slide" data-slide="18">
-      <span class="slide-badge">Step 17</span>
-      <h2>17 — A project organizes your cloud resources</h2>
+    <!-- SLIDE 20: Step 19 — A project organizes your cloud resources -->
+    <div class="slide" data-slide="20">
+      <span class="slide-badge">Step 19</span>
+      <h2>19 — A project organizes your cloud resources</h2>
       <div class="slide-text-large">
 <p>Before creating a database, create a <strong>Google Cloud project</strong>: a named container for cloud resources, enabled services, and their settings. The project is not the database itself.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/project-billing.svg" alt="A billing account funds a project that contains a database instance" /></div>
@@ -713,20 +752,20 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 19: 18 — Open the project selector -->
-    <div class="slide" data-slide="19">
-      <span class="slide-badge">Step 18</span>
-      <h2>18 — Open the project selector</h2>
+    <!-- SLIDE 21: Step 20 — Open the project selector -->
+    <div class="slide" data-slide="21">
+      <span class="slide-badge">Step 20</span>
+      <h2>20 — Open the project selector</h2>
       <div class="slide-text-large">
 <p>In Google Cloud Console, open the project selector and click <strong>New project</strong>. Do not create the course database inside an unrelated project.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20142710.png" alt="Google Cloud resource selector and New project button" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 20: 19 — Create the course project and link billing -->
-    <div class="slide" data-slide="20">
-      <span class="slide-badge">Step 19</span>
-      <h2>19 — Create the course project and link billing</h2>
+    <!-- SLIDE 22: Step 21 — Create the course project and link billing -->
+    <div class="slide" data-slide="22">
+      <span class="slide-badge">Step 21</span>
+      <h2>21 — Create the course project and link billing</h2>
       <div class="slide-text-large">
 <p>Enter a course project name, such as <code>ia340demo</code>, and select your existing <strong>Billing Account for Education</strong>. Use your own available, unique project ID. The name in the image is the instructor's example.</p>
 <p>The rehearsal uses <strong>No organization</strong>. Follow the course account's available setting; do not copy an unrelated organization. Click <strong>Create</strong>.</p>
@@ -734,10 +773,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 21: 20 — Select the new project -->
-    <div class="slide" data-slide="21">
-      <span class="slide-badge">Step 20</span>
-      <h2>20 — Select the new project</h2>
+    <!-- SLIDE 23: Step 22 — Select the new project -->
+    <div class="slide" data-slide="23">
+      <span class="slide-badge">Step 22</span>
+      <h2>22 — Select the new project</h2>
       <div class="slide-text-large">
 <p>When creation finishes, select the new project. Check its name in the Console's top bar before enabling services or creating resources.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20142825.png" alt="Project-created notification with Select project" /></div>
@@ -745,40 +784,40 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 22: 21 — Find Cloud SQL -->
-    <div class="slide" data-slide="22">
-      <span class="slide-badge">Step 21</span>
-      <h2>21 — Find Cloud SQL</h2>
+    <!-- SLIDE 24: Step 23 — Find Cloud SQL -->
+    <div class="slide" data-slide="24">
+      <span class="slide-badge">Step 23</span>
+      <h2>23 — Find Cloud SQL</h2>
       <div class="slide-text-large">
 <p>With the course project selected, search the Console for <strong>Cloud SQL</strong>, then open the service.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20144007.png" alt="Searching the selected Google Cloud project for Cloud SQL" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 23: 22 — Choose the custom creation path -->
-    <div class="slide" data-slide="23">
-      <span class="slide-badge">Step 22</span>
-      <h2>22 — Choose the custom creation path</h2>
+    <!-- SLIDE 25: Step 24 — Choose the custom creation path -->
+    <div class="slide" data-slide="25">
+      <span class="slide-badge">Step 24</span>
+      <h2>24 — Choose the custom creation path</h2>
       <div class="slide-text-large">
 <p>On the welcome page, use <strong>Create custom instance</strong>. Do not accept the free/trial preset or the first large configuration simply because it appears first.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20144027.png" alt="Cloud SQL welcome page showing Create custom instance" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 24: 23 — Choose the PostgreSQL engine -->
-    <div class="slide" data-slide="24">
-      <span class="slide-badge">Step 23</span>
-      <h2>23 — Choose the PostgreSQL engine</h2>
+    <!-- SLIDE 26: Step 25 — Choose the PostgreSQL engine -->
+    <div class="slide" data-slide="26">
+      <span class="slide-badge">Step 25</span>
+      <h2>25 — Choose the PostgreSQL engine</h2>
       <div class="slide-text-large">
 <p>Select <strong>PostgreSQL</strong> from the available database engines. The other engines and AlloyDB promotion are not part of this lab.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20144043.png" alt="Cloud SQL engine selection with PostgreSQL" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 25: 24 — Enable the requested APIs -->
-    <div class="slide" data-slide="25">
-      <span class="slide-badge">Step 24</span>
-      <h2>24 — Enable the requested APIs</h2>
+    <!-- SLIDE 27: Step 26 — Enable the requested APIs -->
+    <div class="slide" data-slide="27">
+      <span class="slide-badge">Step 26</span>
+      <h2>26 — Enable the requested APIs</h2>
       <div class="slide-text-large">
 <p>The rehearsal prompts for <strong>Compute Engine API</strong> and <strong>Cloud SQL Admin API</strong>. Click <strong>Enable</strong> and wait. An API here enables the service's management interface; it is not a database table or a login.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20144059.png" alt="Enable Compute Engine API and Cloud SQL Admin API prompt" /></div>
@@ -786,10 +825,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 26: 25 — Select Enterprise, not Enterprise Plus -->
-    <div class="slide" data-slide="26">
-      <span class="slide-badge">Step 25</span>
-      <h2>25 — Select Enterprise, not Enterprise Plus</h2>
+    <!-- SLIDE 28: Step 27 — Select Enterprise, not Enterprise Plus -->
+    <div class="slide" data-slide="28">
+      <span class="slide-badge">Step 27</span>
+      <h2>27 — Select Enterprise, not Enterprise Plus</h2>
       <div class="slide-text-large">
 <p>Choose <strong>Enterprise</strong>. We are selecting a small teaching configuration, not buying the larger production defaults.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20144349.png" alt="Enterprise edition selected for the Cloud SQL instance" /></div>
@@ -797,10 +836,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 27: 26 — Set the preset, version, instance name, and password -->
-    <div class="slide" data-slide="27">
-      <span class="slide-badge">Step 26</span>
-      <h2>26 — Set the preset, version, instance name, and password</h2>
+    <!-- SLIDE 29: Step 28 — Set the preset, version, instance name, and password -->
+    <div class="slide" data-slide="29">
+      <span class="slide-badge">Step 28</span>
+      <h2>28 — Set the preset, version, instance name, and password</h2>
       <div class="slide-text-large">
 <p>Choose <strong>Sandbox</strong>, <strong>PostgreSQL 18</strong>, and instance ID <strong><code>ia340</code></strong>. Keep the default database username <strong><code>postgres</code></strong>.</p>
 <p>Set the password to <strong><code>IA340-data</code></strong>: uppercase <strong>I</strong>, uppercase <strong>A</strong>, digits <strong>3 4 0</strong>, <strong>hyphen (-)</strong>, lowercase <strong>d a t a</strong>; no spaces.</p>
@@ -809,10 +848,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 28: 27 — Choose the region and single-zone deployment -->
-    <div class="slide" data-slide="28">
-      <span class="slide-badge">Step 27</span>
-      <h2>27 — Choose the region and single-zone deployment</h2>
+    <!-- SLIDE 30: Step 29 — Choose the region and single-zone deployment -->
+    <div class="slide" data-slide="30">
+      <span class="slide-badge">Step 29</span>
+      <h2>29 — Choose the region and single-zone deployment</h2>
       <div class="slide-text-large">
 <p>Select <strong><code>us-central1 (Iowa)</code></strong> and <strong>Single zone</strong>. The optional zone control chooses a zone within this region; it does not create a standby.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20144512.png" alt="Iowa region and Single zone selected" /></div>
@@ -820,10 +859,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 29: 28 — Choose the actual shared-core micro machine -->
-    <div class="slide" data-slide="29">
-      <span class="slide-badge">Step 28</span>
-      <h2>28 — Choose the actual shared-core micro machine</h2>
+    <!-- SLIDE 31: Step 30 — Choose the actual shared-core micro machine -->
+    <div class="slide" data-slide="31">
+      <span class="slide-badge">Step 30</span>
+      <h2>30 — Choose the actual shared-core micro machine</h2>
       <div class="slide-text-large">
 <p>Expand <strong>Customize your instance → Machine configuration</strong>. Select <strong>General purpose – Shared core</strong>, then the small <strong>1 vCPU, 0.614 GB</strong> option. In the final summary, verify <strong><code>db-f1-micro</code></strong>.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20144612.png" alt="General purpose Shared core and the 0.614 GB option" /></div>
@@ -832,10 +871,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 30: 29 — Before network setup: address, port, and login -->
-    <div class="slide" data-slide="30">
-      <span class="slide-badge">Step 29</span>
-      <h2>29 — Before network setup: address, port, and login</h2>
+    <!-- SLIDE 32: Step 31 — Before network setup: address, port, and login -->
+    <div class="slide" data-slide="32">
+      <span class="slide-badge">Step 31</span>
+      <h2>31 — Before network setup: address, port, and login</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/access-paths.svg" alt="Browser management access and an external PostgreSQL client connection" /></div>
 <p><strong>Public IP</strong> is the externally routable address of the database service. <strong>Port <code>5432</code></strong> is the PostgreSQL connection endpoint on that address. <strong>Username and password</strong> authenticate a database login.</p>
@@ -843,10 +882,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 31: 30 — The classroom public-access exception -->
-    <div class="slide" data-slide="31">
-      <span class="slide-badge">Step 30</span>
-      <h2>30 — The classroom public-access exception</h2>
+    <!-- SLIDE 33: Step 32 — The classroom public-access exception -->
+    <div class="slide" data-slide="33">
+      <span class="slide-badge">Step 32</span>
+      <h2>32 — The classroom public-access exception</h2>
       <div class="slide-text-large">
 <p>This exercise permits <strong><code>0.0.0.0/0</code></strong>—all IPv4 source addresses—to simplify later classroom connections. It is an allowed-source range, <strong>not your database's Public IP</strong>.</p>
 <p>Everyone uses <strong><code>postgres</code> / <code>IA340-data</code></strong> for teaching convenience. A shared administrative login and broad network access are <strong>NOT production best practice</strong>. Someone with the endpoint and credentials could read, change, or delete the data.</p>
@@ -854,10 +893,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 32: 31 — Enable the classroom public network -->
-    <div class="slide" data-slide="32">
-      <span class="slide-badge">Step 31</span>
-      <h2>31 — Enable the classroom public network</h2>
+    <!-- SLIDE 34: Step 33 — Enable the classroom public network -->
+    <div class="slide" data-slide="34">
+      <span class="slide-badge">Step 33</span>
+      <h2>33 — Enable the classroom public network</h2>
       <div class="slide-text-large">
 <p>Enable <strong>Public IP</strong>. Add an authorized network named <code>publicaccess</code>, enter <strong><code>0.0.0.0/0</code></strong>, acknowledge the warning, and save the entry.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20144729.png" alt="Public IP and the explicitly acknowledged all-IPv4 classroom network" /></div>
@@ -865,10 +904,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 33: 32 — Require encrypted connections -->
-    <div class="slide" data-slide="33">
-      <span class="slide-badge">Step 32</span>
-      <h2>32 — Require encrypted connections</h2>
+    <!-- SLIDE 35: Step 34 — Require encrypted connections -->
+    <div class="slide" data-slide="35">
+      <span class="slide-badge">Step 34</span>
+      <h2>34 — Require encrypted connections</h2>
       <div class="slide-text-large">
 <p>In <strong>Security</strong>, select <strong>Allow only SSL connections</strong>. Do not choose unencrypted traffic or the separate client-certificate requirement.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20145032.png" alt="Allow only SSL connections selected" /></div>
@@ -876,10 +915,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 34: 33 — Before backup setup: recovery is different from failover -->
-    <div class="slide" data-slide="34">
-      <span class="slide-badge">Step 33</span>
-      <h2>33 — Before backup setup: recovery is different from failover</h2>
+    <!-- SLIDE 36: Step 35 — Before backup setup: recovery is different from failover -->
+    <div class="slide" data-slide="36">
+      <span class="slide-badge">Step 35</span>
+      <h2>35 — Before backup setup: recovery is different from failover</h2>
       <div class="slide-text-large">
 <p>A <strong>backup</strong> preserves a recoverable copy from an earlier time. It can help after accidental deletion or corruption. <strong>Failover</strong> switches service to a configured standby after an outage.</p>
 <p>A standby receives ongoing changes; it can also receive an accidental deletion. It therefore does not replace a historical backup.</p>
@@ -887,10 +926,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 35: 34 — Use the demonstrated backup settings -->
-    <div class="slide" data-slide="35">
-      <span class="slide-badge">Step 34</span>
-      <h2>34 — Use the demonstrated backup settings</h2>
+    <!-- SLIDE 37: Step 36 — Use the demonstrated backup settings -->
+    <div class="slide" data-slide="37">
+      <span class="slide-badge">Step 36</span>
+      <h2>36 — Use the demonstrated backup settings</h2>
       <div class="slide-text-large">
 <p>Select <strong>Standard backups</strong>. For this disposable exercise, leave <strong>automated daily backups</strong> and <strong>point-in-time recovery</strong> unchecked. This results in manual-only backup capability, not an existing saved backup.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20145050.png" alt="Standard backups with automated daily backups and point-in-time recovery unchecked" /></div>
@@ -898,10 +937,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 36: 35 — Read the summary before creating -->
-    <div class="slide" data-slide="36">
-      <span class="slide-badge">Step 35</span>
-      <h2>35 — Read the summary before creating</h2>
+    <!-- SLIDE 38: Step 37 — Read the summary before creating -->
+    <div class="slide" data-slide="38">
+      <span class="slide-badge">Step 37</span>
+      <h2>37 — Read the summary before creating</h2>
       <div class="slide-text-large">
 <p>Verify <strong>Enterprise · PostgreSQL 18 · <code>db-f1-micro</code> · about 0.614 GB RAM · 10 GB SSD · Public IP · single zone · manual backups · PITR disabled</strong>.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20145125.png" alt="Final low-cost Cloud SQL configuration summary" /></div>
@@ -909,10 +948,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 37: 36 — Wait for the operation to finish -->
-    <div class="slide" data-slide="37">
-      <span class="slide-badge">Step 36</span>
-      <h2>36 — Wait for the operation to finish</h2>
+    <!-- SLIDE 39: Step 38 — Wait for the operation to finish -->
+    <div class="slide" data-slide="39">
+      <span class="slide-badge">Step 38</span>
+      <h2>38 — Wait for the operation to finish</h2>
       <div class="slide-text-large">
 <p>Creation can take several minutes. Use <strong>Operations</strong> to check progress. Do not click Create again and accidentally make another instance.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20145819.png" alt="Cloud SQL operation showing instance creation in progress" /></div>
@@ -920,10 +959,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 38: 37 — Understand usage cost and credit offsets -->
-    <div class="slide" data-slide="38">
-      <span class="slide-badge">Step 37</span>
-      <h2>37 — Understand usage cost and credit offsets</h2>
+    <!-- SLIDE 40: Step 39 — Understand usage cost and credit offsets -->
+    <div class="slide" data-slide="40">
+      <span class="slide-badge">Step 39</span>
+      <h2>39 — Understand usage cost and credit offsets</h2>
       <div class="slide-text-large">
 <p>Open <strong>Billing</strong> for the linked education billing account. The instructor's account-period example shows <strong>$4.79 cost − $4.79 savings = $0.00</strong>.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151503.png" alt="Billing overview displays usage cost, savings, and a zero net amount for the displayed period" /></div>
@@ -932,10 +971,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 39: 38 — Create the $20 monthly budget alert -->
-    <div class="slide" data-slide="39">
-      <span class="slide-badge">Step 38</span>
-      <h2>38 — Create the $20 monthly budget alert</h2>
+    <!-- SLIDE 41: Step 40 — Create the $20 monthly budget alert -->
+    <div class="slide" data-slide="41">
+      <span class="slide-badge">Step 40</span>
+      <h2>40 — Create the $20 monthly budget alert</h2>
       <div class="slide-text-large">
 <p>On the Billing overview's <strong>Create a budget alert</strong> card, choose a custom amount, enter <strong>20</strong>, and click <strong>Create</strong>. Then open <strong>View budgets & alerts</strong> and select the budget.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151554.png" alt="Create a monthly billing-account budget alert with custom amount 20 dollars" /></div>
@@ -943,33 +982,28 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 40: 39 — Set the thresholds and notification recipients -->
-    <div class="slide" data-slide="40">
-      <span class="slide-badge">Step 39</span>
-      <h2>39 — Set the thresholds and notification recipients</h2>
+    <!-- SLIDE 42: Step 41 — Set the thresholds and notification recipients -->
+    <div class="slide" data-slide="42">
+      <span class="slide-badge">Step 41</span>
+      <h2>41 — Set the thresholds and notification recipients</h2>
       <div class="slide-text-large">
-<p>Open the budget's <strong>Actions</strong> section. The rehearsal uses <strong>Actual</strong> spending thresholds:</p>
-<table>
-<thead>
-<tr><th>Threshold</th><th>With a $20 budget</th></tr>
-</thead>
-<tbody>
-<tr><td>50%</td><td>$10</td></tr>
-<tr><td>90%</td><td>$18</td></tr>
-<tr><td>100%</td><td>$20</td></tr>
-<tr><td>150%</td><td>$30</td></tr>
-</tbody>
-</table>
-<p>Keep email notifications to <strong>billing admins and users</strong> as demonstrated, confirm you receive those emails, and <strong>Save</strong>.</p>
+<p>Open the budget's <strong>Actions</strong> section. The rehearsal configures four <strong>Actual</strong> spending thresholds:</p>
+<ul>
+  <li><strong>50%</strong> &bull; Triggers alert at <strong>$10</strong></li>
+  <li><strong>90%</strong> &bull; Triggers alert at <strong>$18</strong></li>
+  <li><strong>100%</strong> &bull; Triggers alert at <strong>$20</strong></li>
+  <li><strong>150%</strong> &bull; Triggers alert at <strong>$30</strong></li>
+</ul>
+<p>Keep email notifications to <strong>billing admins and users</strong> as demonstrated, confirm you receive those emails, and click <strong>Save</strong>.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151730.png" alt="Budget actions with four Actual thresholds and billing-admin/user email notifications" /></div>
 <p><strong>A budget alert is a warning, NOT a $20 spending cap.</strong> It does not automatically stop the instance. Do not wait for an email before checking resources you know are running. <a href="https://docs.cloud.google.com/billing/docs/how-to/budgets" target="_blank" rel="noopener noreferrer">Budget alerts ↗</a></p>
       </div>
     </div>
 
-    <!-- SLIDE 41: 40 — Check what the budget measures before relying on it -->
-    <div class="slide" data-slide="41">
-      <span class="slide-badge">Step 40</span>
-      <h2>40 — Check what the budget measures before relying on it</h2>
+    <!-- SLIDE 43: Step 42 — Check what the budget measures before relying on it -->
+    <div class="slide" data-slide="43">
+      <span class="slide-badge">Step 42</span>
+      <h2>42 — Check what the budget measures before relying on it</h2>
       <div class="slide-text-large">
 <p>The last screenshot shows the alert thresholds, but not the budget's <strong>Savings/credits</strong> selection.</p>
 <p><strong>Additional setup check:</strong> inspect <strong>Scope → Savings</strong> in the full budget. If education credits are subtracted, net cost can stay at zero and a $20 net-spend alert may not warn you when $20 of credit has been used.</p>
@@ -977,10 +1011,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 42: 41 — Monday checkpoint: service ready -->
-    <div class="slide" data-slide="42">
-      <span class="slide-badge">Step 41</span>
-      <h2>41 — Monday checkpoint: service ready</h2>
+    <!-- SLIDE 44: Step 43 — Monday checkpoint: service ready -->
+    <div class="slide" data-slide="44">
+      <span class="slide-badge">Step 43</span>
+      <h2>43 — Monday checkpoint: service ready</h2>
       <div class="slide-text-large">
 <p>Your course project is linked to the education billing account. The <strong><code>db-f1-micro</code> instance is Running</strong>, and the <strong>$20 monthly budget alert</strong> is saved.</p>
 <p>Keep the instance running through <strong>October 12, 2026</strong>, including that day. Do not stop or delete it before then. We will use the same service for the next classes and Mini Project.</p>
@@ -988,20 +1022,20 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 43: 42 — Wednesday — Open the empty database first -->
-    <div class="slide" data-slide="43">
-      <span class="slide-badge">Step 42</span>
-      <h2>42 — Wednesday — Open the empty database first</h2>
+    <!-- SLIDE 45: Step 44 — Wednesday — Open the empty database first -->
+    <div class="slide" data-slide="45">
+      <span class="slide-badge">Step 44</span>
+      <h2>44 — Wednesday — Open the empty database first</h2>
       <div class="slide-text-large">
 <p>Return to the instance created on Monday. Open <strong>Cloud SQL Studio</strong>, log in, and look around before creating any tables.</p>
 <p><strong>Studio → empty database and public schema → rows, columns, and keys → relationships and ACID → normalization → ERD Lab design → implement the model.</strong></p>
       </div>
     </div>
 
-    <!-- SLIDE 44: 43 — Log in through Cloud SQL Studio -->
-    <div class="slide" data-slide="44">
-      <span class="slide-badge">Step 43</span>
-      <h2>43 — Log in through Cloud SQL Studio</h2>
+    <!-- SLIDE 46: Step 45 — Log in through Cloud SQL Studio -->
+    <div class="slide" data-slide="46">
+      <span class="slide-badge">Step 45</span>
+      <h2>45 — Log in through Cloud SQL Studio</h2>
       <div class="slide-text-large">
 <p>Open <strong>Cloud SQL Studio</strong>. Select database <strong><code>postgres</code></strong>, <strong>Built-in database authentication</strong>, user <strong><code>postgres</code></strong>, and password <strong><code>IA340-data</code></strong>. Click <strong>Authenticate</strong>.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20150042.png" alt="Cloud SQL Studio login using database postgres and user postgres" /></div>
@@ -1009,10 +1043,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 45: 44 — Understand the public schema and Explorer -->
-    <div class="slide" data-slide="45">
-      <span class="slide-badge">Step 44</span>
-      <h2>44 — Understand the public schema and Explorer</h2>
+    <!-- SLIDE 47: Step 46 — Understand the public schema and Explorer -->
+    <div class="slide" data-slide="47">
+      <span class="slide-badge">Step 46</span>
+      <h2>46 — Understand the public schema and Explorer</h2>
       <div class="slide-text-large">
 <p>The Explorer shows <strong>database <code>postgres</code> → schema <code>public</code> → Tables, Views, and other objects</strong>. New tables are not required yet.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20150116.png" alt="Studio Explorer with postgres database, public default schema, and empty object groups" /></div>
@@ -1020,10 +1054,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 46: 45 — Recognize the objects in Explorer -->
-    <div class="slide" data-slide="46">
-      <span class="slide-badge">Step 45</span>
-      <h2>45 — Recognize the objects in Explorer</h2>
+    <!-- SLIDE 48: Step 47 — Recognize the objects in Explorer -->
+    <div class="slide" data-slide="48">
+      <span class="slide-badge">Step 47</span>
+      <h2>47 — Recognize the objects in Explorer</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/database-tools.svg" alt="Database objects shown as stored tables, lookup structures, and automatic actions" /></div>
 <table>
@@ -1044,10 +1078,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 47: 46 — Check the default database user -->
-    <div class="slide" data-slide="47">
-      <span class="slide-badge">Step 46</span>
-      <h2>46 — Check the default database user</h2>
+    <!-- SLIDE 49: Step 48 — Check the default database user -->
+    <div class="slide" data-slide="49">
+      <span class="slide-badge">Step 48</span>
+      <h2>48 — Check the default database user</h2>
       <div class="slide-text-large">
 <p>Open <strong>Users</strong>. The rehearsal shows the built-in user <strong><code>postgres</code></strong>.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20145916.png" alt="Cloud SQL Users page showing the built-in postgres user" /></div>
@@ -1055,10 +1089,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 48: 47 — Use the existing database named postgres -->
-    <div class="slide" data-slide="48">
-      <span class="slide-badge">Step 47</span>
-      <h2>47 — Use the existing database named postgres</h2>
+    <!-- SLIDE 50: Step 49 — Use the existing database named postgres -->
+    <div class="slide" data-slide="50">
+      <span class="slide-badge">Step 49</span>
+      <h2>49 — Use the existing database named postgres</h2>
       <div class="slide-text-large">
 <p>Open <strong>Databases</strong>. The rehearsal uses the existing <strong><code>postgres</code></strong> database.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20145931.png" alt="Databases page showing the default postgres database" /></div>
@@ -1076,10 +1110,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 49: 48 — Relational tables: rows, columns, and related records -->
-    <div class="slide" data-slide="49">
-      <span class="slide-badge">Step 48</span>
-      <h2>48 — Relational tables: rows, columns, and related records</h2>
+    <!-- SLIDE 51: Step 50 — Relational tables: rows, columns, and related records -->
+    <div class="slide" data-slide="51">
+      <span class="slide-badge">Step 50</span>
+      <h2>50 — Relational tables: rows, columns, and related records</h2>
       <div class="slide-text-large">
 <p>A <strong>table</strong> stores a set of records. A <strong>row</strong> is one record; a <strong>column</strong> is one attribute with a defined data type.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/table-anatomy.svg" alt="Two related tables with row, column, primary-key and foreign-key annotations" /></div>
@@ -1088,10 +1122,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 50: 49 — Schema-on-write: define the structure before loading -->
-    <div class="slide" data-slide="50">
-      <span class="slide-badge">Step 49</span>
-      <h2>49 — Schema-on-write: define the structure before loading</h2>
+    <!-- SLIDE 52: Step 51 — Schema-on-write: define the structure before loading -->
+    <div class="slide" data-slide="52">
+      <span class="slide-badge">Step 51</span>
+      <h2>51 — Schema-on-write: define the structure before loading</h2>
       <div class="slide-text-large">
 <p><strong>Design the structure first → insert records that follow the structure.</strong> This is <strong>schema-on-write</strong>.</p>
 <p>Before loading data into our PostgreSQL tables, choose the columns, types, required values, primary keys, and foreign keys. Records must satisfy those declared rules. The design can be changed deliberately later; it is not immutable.</p>
@@ -1108,10 +1142,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 51: 50 — Primary key: identify one row -->
-    <div class="slide" data-slide="51">
-      <span class="slide-badge">Step 50</span>
-      <h2>50 — Primary key: identify one row</h2>
+    <!-- SLIDE 53: Step 52 — Primary key: identify one row -->
+    <div class="slide" data-slide="53">
+      <span class="slide-badge">Step 52</span>
+      <h2>52 — Primary key: identify one row</h2>
       <div class="slide-text-large">
 <p>A <strong>primary key (PK)</strong> identifies one row. It must be unique and not missing.</p>
 <table>
@@ -1128,10 +1162,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 52: 51 — Composite primary key: two columns, one identity -->
-    <div class="slide" data-slide="52">
-      <span class="slide-badge">Step 51</span>
-      <h2>51 — Composite primary key: two columns, one identity</h2>
+    <!-- SLIDE 54: Step 53 — Composite primary key: two columns, one identity -->
+    <div class="slide" data-slide="54">
+      <span class="slide-badge">Step 53</span>
+      <h2>53 — Composite primary key: two columns, one identity</h2>
       <div class="slide-text-large">
 <p>A locality can have a population observation for more than one year.</p>
 <table>
@@ -1150,10 +1184,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 53: 52 — Foreign key: require a valid parent record -->
-    <div class="slide" data-slide="53">
-      <span class="slide-badge">Step 52</span>
-      <h2>52 — Foreign key: require a valid parent record</h2>
+    <!-- SLIDE 55: Step 54 — Foreign key: require a valid parent record -->
+    <div class="slide" data-slide="55">
+      <span class="slide-badge">Step 54</span>
+      <h2>54 — Foreign key: require a valid parent record</h2>
       <div class="slide-text-large">
 <p>A <strong>foreign key (FK)</strong> references a key in another table.</p>
 <p>In our model, <code>population.fips</code> and <code>income.fips</code> reference the parent <strong><code>name.fips</code></strong>. A row with <code>fips = 51165</code> refers to Rockingham County, whose parent record must exist.</p>
@@ -1162,10 +1196,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 54: 53 — Three relationship types -->
-    <div class="slide" data-slide="54">
-      <span class="slide-badge">Step 53</span>
-      <h2>53 — Three relationship types</h2>
+    <!-- SLIDE 56: Step 55 — Three relationship types -->
+    <div class="slide" data-slide="56">
+      <span class="slide-badge">Step 55</span>
+      <h2>55 — Three relationship types</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/relationships.svg" alt="One-to-one, one-to-many, and many-to-many with explicit cardinality marks" /></div>
 <table>
@@ -1182,85 +1216,125 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 55: 54 — One-to-one: one university account per student -->
-    <div class="slide" data-slide="55">
-      <span class="slide-badge">Step 54</span>
-      <h2>54 — One-to-one: one university account per student</h2>
-      <div class="slide-text-large" style="justify-content: flex-start;">
+    <!-- SLIDE 57: Step 56 — One-to-one: one university account per student -->
+    <div class="slide" data-slide="57">
+      <span class="slide-badge">Step 56</span>
+      <h2>56 — One-to-one: one university account per student</h2>
+      <div class="slide-text-large">
 <p>In this <strong>simplified teaching model</strong>, every enrolled student has one active university login account, and every account belongs to one student.</p>
 <p>The account table stores a student identifier as <strong>FK + UNIQUE</strong>. The foreign key requires an existing student; Unique prevents giving that student a second account row.</p>
 <p>The constraint gives <strong>at most one</strong> matching account. Ensuring that every student actually receives an account is also an application/workflow rule.</p>
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/relational-design.html#one-to-one" title="the relationship walkthrough" loading="lazy"></iframe></div>
-<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
-  Interactive walkthrough: the relationship walkthrough | <a href="{{ site.baseurl }}/assets/week-4/relational-design.html#one-to-one" target="_blank">Open in separate tab ↗</a>
-</p>
-<p>This is a concept example, not an additional Lab 4 table. <a href="https://www.postgresql.org/docs/18/ddl-constraints.html" target="_blank" rel="noopener noreferrer">Constraints ↗</a></p>
+<p>This is a concept example to explain constraints, not an additional Lab 4 table. <a href="https://www.postgresql.org/docs/18/ddl-constraints.html" target="_blank" rel="noopener noreferrer">Constraints ↗</a></p>
+<p style="margin-top: 1rem; color: #0969da; font-weight: 500;">Advance to the next slide to inspect the 1:1 relationship walkthrough interactively.</p>
       </div>
     </div>
 
-    <!-- SLIDE 56: 55 — One-to-many: one locality, multiple years -->
-    <div class="slide" data-slide="56">
-      <span class="slide-badge">Step 55</span>
-      <h2>55 — One-to-many: one locality, multiple years</h2>
-      <div class="slide-text-large" style="justify-content: flex-start;">
-<p>Rockingham County has one parent record. Its 2010 and 2020 population measurements are two different child records.</p>
-<p><strong>Parent → children:</strong> one locality can have zero, one, or many observations.<br>
-<strong>Child → parent:</strong> every stored observation refers to exactly one locality.</p>
-<p>A foreign key can repeat. The <strong>locality–year pair</strong> must remain unique. Keeping the locality identifier in each observation preserves which locality that observation describes.</p>
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/relational-design.html#one-to-many" title="the one-to-many steps" loading="lazy"></iframe></div>
-<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
-  Interactive walkthrough: the one-to-many steps | <a href="{{ site.baseurl }}/assets/week-4/relational-design.html#one-to-many" target="_blank">Open in separate tab ↗</a>
-</p>
-<p><a href="https://www.postgresql.org/docs/18/ddl-constraints.html" target="_blank" rel="noopener noreferrer">Foreign keys ↗</a></p>
-      </div>
-    </div>
-
-    <!-- SLIDE 57: 56 — Many-to-many: students enroll in courses -->
-    <div class="slide" data-slide="57">
-      <span class="slide-badge">Step 56</span>
-      <h2>56 — Many-to-many: students enroll in courses</h2>
-      <div class="slide-text-large" style="justify-content: flex-start;">
-<p>One student can take several courses; one course can contain several students. For one fixed term, an <strong>Enrollment</strong> table records each student–course pair.</p>
-<p><strong>Students → Enrollments ← Courses</strong> gives two one-to-many relationships. The pair <code>(student_id, course_id)</code> is the Enrollment composite primary key, and each column is also a foreign key.</p>
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/relational-design.html#many-to-many" title="the enrollment steps" loading="lazy"></iframe></div>
-<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
-  Interactive walkthrough: the enrollment steps | <a href="{{ site.baseurl }}/assets/week-4/relational-design.html#many-to-many" target="_blank">Open in separate tab ↗</a>
-</p>
-<p>Watch three enrollment rows link two students and two courses; a repeated pair is rejected.</p>
-<p>For Lab 4, build only the county model. <a href="https://www.postgresql.org/docs/18/ddl-constraints.html" target="_blank" rel="noopener noreferrer">Constraints ↗</a></p>
-      </div>
-    </div>
-
-    <!-- SLIDE 58: 57 — ACID: one bank transfer -->
-    <div class="slide" data-slide="58">
+    <!-- SLIDE 58: Step 57 — Interactive: One-to-One (1:1) Walkthrough -->
+    <div class="slide slide-interactive" data-slide="58">
       <span class="slide-badge">Step 57</span>
-      <h2>57 — ACID: one bank transfer</h2>
-      <div class="slide-text-large" style="justify-content: flex-start;">
-<p><strong>ACID</strong> names four properties of reliable database transactions.</p>
-<table>
-<thead>
-<tr><th>Letter</th><th>Full name</th><th>Plain meaning</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>A</strong></td><td><strong>Atomicity</strong></td><td><strong>All or nothing:</strong> complete the transfer or save none of it</td></tr>
-<tr><td><strong>C</strong></td><td><strong>Consistency</strong></td><td><strong>Preserve the rules:</strong> the completed transaction leaves valid records</td></tr>
-<tr><td><strong>I</strong></td><td><strong>Isolation</strong></td><td><strong>Separate concurrent work:</strong> clients do not see another transaction's half-finished transfer</td></tr>
-<tr><td><strong>D</strong></td><td><strong>Durability</strong></td><td><strong>Keep committed results:</strong> a confirmed transfer survives a database process restart</td></tr>
-</tbody>
-</table>
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/acid-transactions.html" title="the bank ACID walkthrough" loading="lazy"></iframe></div>
+      <h2>57 — Interactive: One-to-One (1:1) Walkthrough</h2>
+      <div class="slide-text-large">
+<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/relational-design.html#one-to-one" title="One-to-one relationship walkthrough" loading="lazy"></iframe></div>
 <p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
-  Interactive walkthrough: the bank ACID walkthrough | <a href="{{ site.baseurl }}/assets/week-4/acid-transactions.html" target="_blank">Open in separate tab ↗</a>
+  Interactive walkthrough: One-to-one (1:1) relationship | <a href="{{ site.baseurl }}/assets/week-4/relational-design.html#one-to-one" target="_blank">Open in separate tab ↗</a>
 </p>
-<p>The four full names remain visible, and each section highlights one letter.</p>
-<p>Alice has <strong>$100</strong>, Bob <strong>$50</strong>. Transferring <strong>$20</strong> produces <strong>$80 / $70</strong>. We replay that same request to ask four different questions—not four extra transfers. <a href="https://www.postgresql.org/docs/18/tutorial-transactions.html" target="_blank" rel="noopener noreferrer">Transactions ↗</a> · <a href="https://www.postgresql.org/docs/18/transaction-iso.html" target="_blank" rel="noopener noreferrer">Isolation ↗</a></p>
       </div>
     </div>
 
-    <!-- SLIDE 59: 58 — Duplicates are not the same as redundancy -->
+    <!-- SLIDE 59: Step 58 — One-to-many: one locality, multiple years -->
     <div class="slide" data-slide="59">
       <span class="slide-badge">Step 58</span>
-      <h2>58 — Duplicates are not the same as redundancy</h2>
+      <h2>58 — One-to-many: one locality, multiple years</h2>
+      <div class="slide-text-large">
+<p>Rockingham County has one parent record. Its 2010 and 2020 population measurements are two different child records.</p>
+<p><strong>Parent &rarr; children:</strong> one locality can have zero, one, or many observations.<br>
+<strong>Child &rarr; parent:</strong> every stored observation refers to exactly one locality.</p>
+<p>A foreign key can repeat. The <strong>locality&ndash;year pair</strong> must remain unique. Keeping the locality identifier in each observation preserves which locality that observation describes.</p>
+<p><a href="https://www.postgresql.org/docs/18/ddl-constraints.html" target="_blank" rel="noopener noreferrer">Foreign keys ↗</a></p>
+<p style="margin-top: 1rem; color: #0969da; font-weight: 500;">Advance to the next slide to inspect the 1:N relationship walkthrough interactively.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 60: Step 59 — Interactive: One-to-Many (1:N) Walkthrough -->
+    <div class="slide slide-interactive" data-slide="60">
+      <span class="slide-badge">Step 59</span>
+      <h2>59 — Interactive: One-to-Many (1:N) Walkthrough</h2>
+      <div class="slide-text-large">
+<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/relational-design.html#one-to-many" title="One-to-many relationship walkthrough" loading="lazy"></iframe></div>
+<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
+  Interactive walkthrough: One-to-many (1:N) relationship | <a href="{{ site.baseurl }}/assets/week-4/relational-design.html#one-to-many" target="_blank">Open in separate tab ↗</a>
+</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 61: Step 60 — Many-to-many: students enroll in courses -->
+    <div class="slide" data-slide="61">
+      <span class="slide-badge">Step 60</span>
+      <h2>60 — Many-to-many: students enroll in courses</h2>
+      <div class="slide-text-large">
+<p>One student can take several courses; one course can contain several students. For one fixed term, an <strong>Enrollment</strong> table records each student&ndash;course pair.</p>
+<p><strong>Students &rarr; Enrollments &larr; Courses</strong> gives two one-to-many relationships. The pair <code>(student_id, course_id)</code> is the Enrollment composite primary key, and each column is also a foreign key.</p>
+<p>For Lab 4, we build the county model (one parent, two child tables). Many-to-many is an essential analytical pattern you will see throughout data mining. <a href="https://www.postgresql.org/docs/18/ddl-constraints.html" target="_blank" rel="noopener noreferrer">Constraints ↗</a></p>
+<p style="margin-top: 1rem; color: #0969da; font-weight: 500;">Advance to the next slide to watch enrollment rows link students and courses interactively.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 62: Step 61 — Interactive: Many-to-Many (M:N) Walkthrough -->
+    <div class="slide slide-interactive" data-slide="62">
+      <span class="slide-badge">Step 61</span>
+      <h2>61 — Interactive: Many-to-Many (M:N) Walkthrough</h2>
+      <div class="slide-text-large">
+<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/relational-design.html#many-to-many" title="Many-to-many relationship walkthrough" loading="lazy"></iframe></div>
+<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
+  Interactive walkthrough: Many-to-many (M:N) relationship | <a href="{{ site.baseurl }}/assets/week-4/relational-design.html#many-to-many" target="_blank">Open in separate tab ↗</a>
+</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 63: Step 62 — ACID: Four Transaction Guarantees -->
+    <div class="slide" data-slide="63">
+      <span class="slide-badge">Step 62</span>
+      <h2>62 — ACID: Four Transaction Guarantees</h2>
+      <div class="slide-text-large">
+<p><strong>ACID</strong> names four formal guarantees of reliable database transactions:</p>
+<table>
+<thead>
+<tr><th>Guarantee</th><th>Formal Name</th><th>Plain Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>A</strong></td><td><strong>Atomicity</strong></td><td><strong>All or nothing:</strong> All operations in a transaction succeed, or none do. Complete the transfer or save none of it.</td></tr>
+<tr><td><strong>C</strong></td><td><strong>Consistency</strong></td><td><strong>Preserve the rules:</strong> A completed transaction preserves the database's rules, constraints, and valid state.</td></tr>
+<tr><td><strong>I</strong></td><td><strong>Isolation</strong></td><td><strong>Separate concurrent work:</strong> Concurrent transactions are separated so clients do not observe another transaction's half-finished work.</td></tr>
+<tr><td><strong>D</strong></td><td><strong>Durability</strong></td><td><strong>Keep committed results:</strong> Once committed, the result remains stored even after a system or process failure and recovery.</td></tr>
+</tbody>
+</table>
+<p>Think of a bank transfer: debiting Alice and crediting Bob must happen as a single protected transaction. If any step fails, the system rolls back so money neither vanishes nor appears from nowhere.</p>
+<p><a href="https://www.postgresql.org/docs/18/tutorial-transactions.html" target="_blank" rel="noopener noreferrer">Transactions ↗</a> &bull; <a href="https://www.postgresql.org/docs/18/transaction-iso.html" target="_blank" rel="noopener noreferrer">Isolation ↗</a></p>
+<p style="margin-top: 1rem; color: #0969da; font-weight: 500;">Advance to the next slide to walk through the bank transfer transaction step by step.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 64: Step 63 — Interactive: Bank Transfer ACID Walkthrough -->
+    <div class="slide slide-interactive" data-slide="64">
+      <span class="slide-badge">Step 63</span>
+      <h2>63 — Interactive: Bank Transfer ACID Walkthrough</h2>
+      <div class="slide-text-large">
+<div style="background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 0.6rem 1rem; margin-bottom: 0.4rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.92rem;">
+  <div><strong>Starting Balances:</strong> Alice: $100 &bull; Bob: $50</div>
+  <div><strong>Transfer:</strong> $20</div>
+  <div><strong>Committed Result:</strong> Alice: $80 &bull; Bob: $70</div>
+</div>
+<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/acid-transactions.html" title="ACID: four guarantees, one bank transfer" loading="lazy"></iframe></div>
+<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
+  Interactive walkthrough: Bank ACID transactions | <a href="{{ site.baseurl }}/assets/week-4/acid-transactions.html" target="_blank">Open in separate tab ↗</a>
+</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 65: Step 64 — Duplicates are not the same as redundancy -->
+    <div class="slide" data-slide="65">
+      <span class="slide-badge">Step 64</span>
+      <h2>64 — Duplicates are not the same as redundancy</h2>
       <div class="slide-text-large">
 <p><strong>Equal values are not automatically redundant facts.</strong> Look at what each record means.</p>
 <table>
@@ -1277,61 +1351,88 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 60: 59 — First normal form — one value per cell -->
-    <div class="slide" data-slide="60">
-      <span class="slide-badge">Step 59</span>
-      <h2>59 — First normal form — one value per cell</h2>
-      <div class="slide-text-large" style="justify-content: flex-start;">
-<p><strong>1NF:</strong> one value in each field at the chosen level of detail; no lists of years or repeated groups of measurements.</p>
-<p>Instead of packing 2010 and 2020 into the same cell, create one row per locality–year observation. Use <code>(fips, year)</code> to identify that row.</p>
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/normalization.html#1nf" title="the first-normal-form steps" loading="lazy"></iframe></div>
-<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
-  Interactive walkthrough: the first-normal-form steps | <a href="{{ site.baseurl }}/assets/week-4/normalization.html#1nf" target="_blank">Open in separate tab ↗</a>
-</p>
+    <!-- SLIDE 66: Step 65 — First normal form — one value per cell -->
+    <div class="slide" data-slide="66">
+      <span class="slide-badge">Step 65</span>
+      <h2>65 — First normal form — one value per cell</h2>
+      <div class="slide-text-large">
+<p><strong>1NF:</strong> one value in each field at the chosen level of detail; no lists of years or repeated groups of measurements inside a single cell.</p>
+<p>Instead of packing 2010 and 2020 into the same cell, create one row per locality&ndash;year observation. Use <code>(fips, year)</code> to identify that row.</p>
 <p>Rockingham County and Harrisonburg city each become two yearly rows. All four observations are preserved.</p>
 <p>1NF makes the data tabular at the right level; it does <strong>not</strong> remove all redundancy by itself. <a href="https://support.microsoft.com/en-us/topic/database-design-basics-eb2159cf-1e30-401a-8084-bd4f9c9ca1f5" target="_blank" rel="noopener noreferrer">Normal forms ↗</a></p>
+<p style="margin-top: 1rem; color: #0969da; font-weight: 500;">Advance to the next slide to walk through the 1NF transformation interactively.</p>
       </div>
     </div>
 
-    <!-- SLIDE 61: 60 — Second normal form — depend on the whole key -->
-    <div class="slide" data-slide="61">
-      <span class="slide-badge">Step 60</span>
-      <h2>60 — Second normal form — depend on the whole key</h2>
-      <div class="slide-text-large" style="justify-content: flex-start;">
+    <!-- SLIDE 67: Step 66 — Interactive: 1NF Walkthrough -->
+    <div class="slide slide-interactive" data-slide="67">
+      <span class="slide-badge">Step 66</span>
+      <h2>66 — Interactive: 1NF Walkthrough</h2>
+      <div class="slide-text-large">
+<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/normalization.html#1nf" title="First normal form walkthrough" loading="lazy"></iframe></div>
+<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
+  Interactive walkthrough: 1NF &mdash; First normal form | <a href="{{ site.baseurl }}/assets/week-4/normalization.html#1nf" target="_blank">Open in separate tab ↗</a>
+</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 68: Step 67 — Second normal form — depend on the whole key -->
+    <div class="slide" data-slide="68">
+      <span class="slide-badge">Step 67</span>
+      <h2>67 — Second normal form — depend on the whole key</h2>
+      <div class="slide-text-large">
 <p><strong>2NF:</strong> after 1NF, non-key attributes must depend on the <strong>whole composite key</strong>, not just part of it.</p>
 <p>For key <strong><code>(fips, year)</code></strong>, the population depends on both the locality and year. The locality's name depends on <code>fips</code> alone.</p>
 <p>Store the name once in a locality table. Keep <code>fips</code>, <code>year</code>, and the population in the observation table.</p>
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/normalization.html#2nf" title="the second-normal-form steps" loading="lazy"></iframe></div>
-<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
-  Interactive walkthrough: the second-normal-form steps | <a href="{{ site.baseurl }}/assets/week-4/normalization.html#2nf" target="_blank">Open in separate tab ↗</a>
-</p>
-<p>Watch <strong>four stored locality-name labels become two</strong>, while all four population observations remain.</p>
-<p><strong>Goal: reduce redundant description; preserve the observations and their links.</strong> <a href="https://support.microsoft.com/en-us/topic/database-design-basics-eb2159cf-1e30-401a-8084-bd4f9c9ca1f5" target="_blank" rel="noopener noreferrer">Normal forms ↗</a></p>
+<p><strong>Goal:</strong> reduce redundant descriptive facts; preserve all observations and their foreign-key links without losing information. <a href="https://support.microsoft.com/en-us/topic/database-design-basics-eb2159cf-1e30-401a-8084-bd4f9c9ca1f5" target="_blank" rel="noopener noreferrer">Normal forms ↗</a></p>
+<p style="margin-top: 1rem; color: #0969da; font-weight: 500;">Advance to the next slide to see four locality-name labels become two in the 2NF interactive.</p>
       </div>
     </div>
 
-    <!-- SLIDE 62: 61 — Third normal form: put the state name with the state code -->
-    <div class="slide" data-slide="62">
-      <span class="slide-badge">Step 61</span>
-      <h2>61 — Third normal form: put the state name with the state code</h2>
-      <div class="slide-text-large" style="justify-content: flex-start;">
-<p><strong>3NF:</strong> after 2NF, remove the demonstrated dependency from one non-key attribute to another.</p>
+    <!-- SLIDE 69: Step 68 — Interactive: 2NF Walkthrough -->
+    <div class="slide slide-interactive" data-slide="69">
+      <span class="slide-badge">Step 68</span>
+      <h2>68 — Interactive: 2NF Walkthrough</h2>
+      <div class="slide-text-large">
+<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/normalization.html#2nf" title="Second normal form walkthrough" loading="lazy"></iframe></div>
+<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
+  Interactive walkthrough: 2NF &mdash; Second normal form | <a href="{{ site.baseurl }}/assets/week-4/normalization.html#2nf" target="_blank">Open in separate tab ↗</a>
+</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 70: Step 69 — Third normal form: put the state name with the state code -->
+    <div class="slide" data-slide="70">
+      <span class="slide-badge">Step 69</span>
+      <h2>69 — Third normal form: put the state name with the state code</h2>
+      <div class="slide-text-large">
+<p><strong>3NF:</strong> after 2NF, remove the demonstrated dependency from one non-key attribute to another (transitive dependency).</p>
 <p>Both Rockingham County and Harrisonburg city are in <strong>Virginia</strong>. In a locality table, the dependency is:</p>
-<p><strong>Locality identifier → state code → state name</strong></p>
-<p><code>51</code> identifies Virginia. Saving “Virginia” inside every locality row repeats the same state description. Store <strong><code>51 → Virginia</code> once in a state table</strong>; keep the state code in each locality row.</p>
-<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/normalization.html#3nf" title="the third-normal-form steps" loading="lazy"></iframe></div>
-<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
-  Interactive walkthrough: the third-normal-form steps | <a href="{{ site.baseurl }}/assets/week-4/normalization.html#3nf" target="_blank">Open in separate tab ↗</a>
-</p>
-<p><strong>Two state-name copies become one</strong>, then a join reconstructs the original rows. No place is renamed and no measurement is lost.</p>
+<div style="font-size: 1.1rem; font-weight: 600; color: #0969da; text-align: center; margin: 0.8rem 0;">
+  Locality identifier &rarr; state code &rarr; state name
+</div>
+<p><code>51</code> identifies Virginia. Saving &ldquo;Virginia&rdquo; inside every locality row repeats the same state description. Store <strong><code>51 &rarr; Virginia</code> once in a state table</strong>; keep the state code in each locality row.</p>
 <p>This extends the example to explain further redundancy reduction; a state table is not an additional Lab 4 requirement. <a href="https://support.microsoft.com/en-us/topic/database-design-basics-eb2159cf-1e30-401a-8084-bd4f9c9ca1f5" target="_blank" rel="noopener noreferrer">Normal forms ↗</a></p>
+<p style="margin-top: 1rem; color: #0969da; font-weight: 500;">Advance to the next slide to see transitive redundancy eliminated in the 3NF interactive.</p>
       </div>
     </div>
 
-    <!-- SLIDE 63: 62 — Scaling a relational database -->
-    <div class="slide" data-slide="63">
-      <span class="slide-badge">Step 62</span>
-      <h2>62 — Scaling a relational database</h2>
+    <!-- SLIDE 71: Step 70 — Interactive: 3NF Walkthrough -->
+    <div class="slide slide-interactive" data-slide="71">
+      <span class="slide-badge">Step 70</span>
+      <h2>70 — Interactive: 3NF Walkthrough</h2>
+      <div class="slide-text-large">
+<div class="iframe-container"><iframe src="{{ site.baseurl }}/assets/week-4/normalization.html#3nf" title="Third normal form walkthrough" loading="lazy"></iframe></div>
+<p style="margin: 0.3rem 0; font-size: 0.9em; color: #57606a;">
+  Interactive walkthrough: 3NF &mdash; Third normal form | <a href="{{ site.baseurl }}/assets/week-4/normalization.html#3nf" target="_blank">Open in separate tab ↗</a>
+</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 72: Step 71 — Scaling a relational database -->
+    <div class="slide" data-slide="72">
+      <span class="slide-badge">Step 71</span>
+      <h2>71 — Scaling a relational database</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/scaling.svg" alt="Vertical scaling upgrades one server; horizontal scaling spreads work across multiple servers" /></div>
 <p><strong>Vertical scaling (scale up):</strong> add CPU/RAM to one server. It is relatively simple, but a larger allocation costs more and one machine has a capacity ceiling.</p>
@@ -1341,10 +1442,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 64: 63 — From a table design to an ER diagram -->
-    <div class="slide" data-slide="64">
-      <span class="slide-badge">Step 63</span>
-      <h2>63 — From a table design to an ER diagram</h2>
+    <!-- SLIDE 73: Step 72 — From a table design to an ER diagram -->
+    <div class="slide" data-slide="73">
+      <span class="slide-badge">Step 72</span>
+      <h2>72 — From a table design to an ER diagram</h2>
       <div class="slide-text-large">
 <p>An <strong>entity–relationship diagram (ERD)</strong> is a blueprint: tables, attributes, primary keys, foreign keys, and relationship cardinalities.</p>
 <p>On a crow's-foot diagram, read <strong>both ends of each line</strong>. It is not enough to draw a line between two boxes: identify the exact <strong>FK field → PK field</strong>.</p>
@@ -1352,10 +1453,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 65: 64 — What will we store? Design for Census data -->
-    <div class="slide" data-slide="65">
-      <span class="slide-badge">Step 64</span>
-      <h2>64 — What will we store? Design for Census data</h2>
+    <!-- SLIDE 74: Step 73 — What will we store? Design for Census data -->
+    <div class="slide" data-slide="74">
+      <span class="slide-badge">Step 73</span>
+      <h2>73 — What will we store? Design for Census data</h2>
       <div class="slide-text-large">
 <p>Next week we will load Census locality names, population, and income data. For now, design the structure and create empty tables.</p>
 <table>
@@ -1373,10 +1474,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 66: 65 — Our ER model and exact names -->
-    <div class="slide" data-slide="66">
-      <span class="slide-badge">Step 65</span>
-      <h2>65 — Our ER model and exact names</h2>
+    <!-- SLIDE 75: Step 74 — Our ER model and exact names -->
+    <div class="slide" data-slide="75">
+      <span class="slide-badge">Step 74</span>
+      <h2>74 — Our ER model and exact names</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/census-erd.svg" alt="Crow’s-foot ER diagram connects each observation fips foreign key to name.fips, with 1 and 0..many cardinalities" /></div>
 <table>
@@ -1394,40 +1495,40 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 67: 66 — Wednesday hands-on — define the fields -->
-    <div class="slide" data-slide="67">
-      <span class="slide-badge">Step 66</span>
-      <h2>66 — Wednesday hands-on — define the fields</h2>
+    <!-- SLIDE 76: Step 75 — Wednesday hands-on — define the fields -->
+    <div class="slide" data-slide="76">
+      <span class="slide-badge">Step 75</span>
+      <h2>75 — Wednesday hands-on — define the fields</h2>
       <div class="slide-text-large">
 <p>Use <strong>character varying</strong> for <code>fips</code> and <code>name</code>, and <strong>integer</strong> for <code>income</code>, <code>population</code>, and <code>year</code>. <strong>Leave Size blank.</strong></p>
 <p>Keep <code>fips</code> as text so leading zeros are preserved. Match the table and column names shown below; define your own model before exporting.</p>
       </div>
     </div>
 
-    <!-- SLIDE 68: 67 — Open ERD Lab and sign in -->
-    <div class="slide" data-slide="68">
-      <span class="slide-badge">Step 67</span>
-      <h2>67 — Open ERD Lab and sign in</h2>
+    <!-- SLIDE 77: Step 76 — Open ERD Lab and sign in -->
+    <div class="slide" data-slide="77">
+      <span class="slide-badge">Step 76</span>
+      <h2>76 — Open ERD Lab and sign in</h2>
       <div class="slide-text-large">
 <p>Open <a href="https://erdlab.io/" target="_blank" rel="noopener noreferrer">ERD Lab ↗</a>. Use an available sign-in method or your existing account. No database IP or password is needed by the diagramming tool.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20150208.png" alt="ERD Lab sign-in options" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 69: 68 — Create a new visual model -->
-    <div class="slide" data-slide="69">
-      <span class="slide-badge">Step 68</span>
-      <h2>68 — Create a new visual model</h2>
+    <!-- SLIDE 78: Step 77 — Create a new visual model -->
+    <div class="slide" data-slide="78">
+      <span class="slide-badge">Step 77</span>
+      <h2>77 — Create a new visual model</h2>
       <div class="slide-text-large">
 <p>From the ERD Lab Dashboard, select <strong>New Project</strong>.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20150243.png" alt="ERD Lab Dashboard and New Project button" /></div>
       </div>
     </div>
 
-    <!-- SLIDE 70: 69 — Start from scratch with PostgreSQL -->
-    <div class="slide" data-slide="70">
-      <span class="slide-badge">Step 69</span>
-      <h2>69 — Start from scratch with PostgreSQL</h2>
+    <!-- SLIDE 79: Step 78 — Start from scratch with PostgreSQL -->
+    <div class="slide" data-slide="79">
+      <span class="slide-badge">Step 78</span>
+      <h2>78 — Start from scratch with PostgreSQL</h2>
       <div class="slide-text-large">
 <p>Choose <strong>Create from scratch</strong>, enter a model title such as <code>ia340</code>, and select <strong>POSTGRESQL</strong>. Create the schema/model. Do not choose Generate with AI.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20150311.png" alt="ERD Lab Create from scratch with PostgreSQL database type" /></div>
@@ -1435,10 +1536,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 71: 70 — Build the name table -->
-    <div class="slide" data-slide="71">
-      <span class="slide-badge">Step 70</span>
-      <h2>70 — Build the name table</h2>
+    <!-- SLIDE 80: Step 79 — Build the name table -->
+    <div class="slide" data-slide="80">
+      <span class="slide-badge">Step 79</span>
+      <h2>79 — Build the name table</h2>
       <div class="slide-text-large">
 <p>Add table <strong><code>name</code></strong>. Add <code>fips</code> as <strong>character varying</strong> and mark it <strong>Primary key</strong>. Add <code>name</code> as <strong>character varying</strong>. Leave the Size fields blank. Keep the fields required.</p>
 <p>Keep the <strong><code>name</code> field Unique setting ON</strong> as shown in the course model. We use this setting for consistency with the lab walkthrough; it is not a general rule that every real-world county-name column must be unique.</p>
@@ -1446,10 +1547,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 72: 71 — Build the income table and its composite key -->
-    <div class="slide" data-slide="72">
-      <span class="slide-badge">Step 71</span>
-      <h2>71 — Build the income table and its composite key</h2>
+    <!-- SLIDE 81: Step 80 — Build the income table and its composite key -->
+    <div class="slide" data-slide="81">
+      <span class="slide-badge">Step 80</span>
+      <h2>80 — Build the income table and its composite key</h2>
       <div class="slide-text-large">
 <p>Add <strong><code>income</code></strong> with <code>fips</code> as <strong>character varying</strong>, <code>income</code> as integer, and <code>year</code> as integer. Leave the Size field blank.</p>
 <p>Mark <strong>both <code>fips</code> and <code>year</code> as Primary key</strong>. Together they form one <strong>composite primary key</strong>. On <code>fips</code>, enable Foreign key, choose parent <strong><code>name</code></strong>, field <strong><code>fips</code></strong>, and the child-to-parent <strong>Many to One</strong> relationship. Do not add individual Unique constraints to <code>fips</code> or <code>year</code>.</p>
@@ -1457,10 +1558,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 73: 72 — Build the population table and its composite key -->
-    <div class="slide" data-slide="73">
-      <span class="slide-badge">Step 72</span>
-      <h2>72 — Build the population table and its composite key</h2>
+    <!-- SLIDE 82: Step 81 — Build the population table and its composite key -->
+    <div class="slide" data-slide="82">
+      <span class="slide-badge">Step 81</span>
+      <h2>81 — Build the population table and its composite key</h2>
       <div class="slide-text-large">
 <p>Add <strong><code>population</code></strong> with <code>fips</code> as <strong>character varying</strong>, <strong><code>population</code></strong> as integer, and <code>year</code> as integer. Leave the Size field blank.</p>
 <p>Mark <code>fips</code> and <code>year</code> as Primary key so they form one composite key. Make <code>fips</code> a foreign key to <code>name.fips</code>, <strong>Many to One</strong>.</p>
@@ -1469,10 +1570,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 74: 73 — Read both relationship lines -->
-    <div class="slide" data-slide="74">
-      <span class="slide-badge">Step 73</span>
-      <h2>73 — Read both relationship lines</h2>
+    <!-- SLIDE 83: Step 82 — Read both relationship lines -->
+    <div class="slide" data-slide="83">
+      <span class="slide-badge">Step 82</span>
+      <h2>82 — Read both relationship lines</h2>
       <div class="slide-text-large">
 <p>The diagram should have <strong>three tables and two links</strong>: <code>income.fips</code> → <code>name.fips</code>, and <code>population.fips</code> → <code>name.fips</code>.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151055.png" alt="Complete ERD Lab county, income, and population model" /></div>
@@ -1480,10 +1581,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 75: 74 — Export PostgreSQL SQL from your own model -->
-    <div class="slide" data-slide="75">
-      <span class="slide-badge">Step 74</span>
-      <h2>74 — Export PostgreSQL SQL from your own model</h2>
+    <!-- SLIDE 84: Step 83 — Export PostgreSQL SQL from your own model -->
+    <div class="slide" data-slide="84">
+      <span class="slide-badge">Step 83</span>
+      <h2>83 — Export PostgreSQL SQL from your own model</h2>
       <div class="slide-text-large">
 <p>Use <strong>Export → Export SQL</strong> and choose <strong>Postgresql</strong>. The rehearsal used <strong>Default</strong>, which produced table-creation and foreign-key statements. Inspect the resulting SQL; Create is also appropriate when it produces those same required objects. Do not choose Drop.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151124.png" alt="ERD Lab PostgreSQL SQL export dialog with Default selected in the rehearsal" /></div>
@@ -1492,10 +1593,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 76: 75 — Apply the export in Cloud SQL Studio -->
-    <div class="slide" data-slide="76">
-      <span class="slide-badge">Step 75</span>
-      <h2>75 — Apply the export in Cloud SQL Studio</h2>
+    <!-- SLIDE 85: Step 84 — Apply the export in Cloud SQL Studio -->
+    <div class="slide" data-slide="85">
+      <span class="slide-badge">Step 84</span>
+      <h2>84 — Apply the export in Cloud SQL Studio</h2>
       <div class="slide-text-large">
 <p>Return to Studio, database <strong><code>postgres</code></strong>, user <strong><code>postgres</code></strong>. Paste your reviewed export and click <strong>Run</strong> once.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151231.png" alt="Rehearsal SQL in Studio creates name, income, and population and adds two foreign keys" /></div>
@@ -1504,10 +1605,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 77: 76 — Refresh Explorer and inspect the actual tables -->
-    <div class="slide" data-slide="77">
-      <span class="slide-badge">Step 76</span>
-      <h2>76 — Refresh Explorer and inspect the actual tables</h2>
+    <!-- SLIDE 86: Step 85 — Refresh Explorer and inspect the actual tables -->
+    <div class="slide" data-slide="86">
+      <span class="slide-badge">Step 85</span>
+      <h2>85 — Refresh Explorer and inspect the actual tables</h2>
       <div class="slide-text-large">
 <p>Refresh <strong>public → Tables</strong>. Confirm <code>name</code> (2 columns), <code>income</code> (3), and <code>population</code> (3). Expand <strong>Keys</strong> to inspect each PK and the two FKs.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151310.png" alt="Studio Explorer shows the three created tables, their column counts, indexes, and keys" /></div>
@@ -1515,10 +1616,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 78: 77 — Find the Public IP and distinguish the other identifiers -->
-    <div class="slide" data-slide="78">
-      <span class="slide-badge">Step 77</span>
-      <h2>77 — Find the Public IP and distinguish the other identifiers</h2>
+    <!-- SLIDE 87: Step 86 — Find the Public IP and distinguish the other identifiers -->
+    <div class="slide" data-slide="87">
+      <span class="slide-badge">Step 86</span>
+      <h2>86 — Find the Public IP and distinguish the other identifiers</h2>
       <div class="slide-text-large">
 <p>Open <strong>Connections → Summary</strong>. The required address is the row labeled <strong>Public IP address</strong>. The connection name and outgoing IP address are different values.</p>
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20145900.png" alt="Connections summary showing where to find the Public IP address and PostgreSQL port 5432" /></div>
@@ -1526,10 +1627,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 79: 78 — What a Public IPv4 address looks like -->
-    <div class="slide" data-slide="79">
-      <span class="slide-badge">Step 78</span>
-      <h2>78 — What a Public IPv4 address looks like</h2>
+    <!-- SLIDE 88: Step 87 — What a Public IPv4 address looks like -->
+    <div class="slide" data-slide="88">
+      <span class="slide-badge">Step 87</span>
+      <h2>87 — What a Public IPv4 address looks like</h2>
       <div class="slide-text-large">
 <div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/public-ip.svg" alt="Public IPv4 address format separated from port and login details" /></div>
 <p>An IPv4 address has four numbers separated by dots, for example <strong><code>203.0.113.10</code></strong>. That example is reserved for documentation and is <strong>not</strong> a server to connect to or submit.</p>
@@ -1538,10 +1639,10 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       </div>
     </div>
 
-    <!-- SLIDE 80: 79 — Finish: verify and submit -->
-    <div class="slide" data-slide="80">
-      <span class="slide-badge">Step 79</span>
-      <h2>79 — Finish: verify and submit</h2>
+    <!-- SLIDE 89: Step 88 — Finish: verify and submit -->
+    <div class="slide" data-slide="89">
+      <span class="slide-badge">Step 88</span>
+      <h2>88 — Finish: verify and submit</h2>
       <div class="slide-text-large">
 <p>Use <a href="{{ site.baseurl }}/assignments/lab-4/">Lab 4</a> as the final checkpoint. Submit <strong>only your own Public IPv4 address privately in Canvas</strong>.</p>
 <p>The checker uses <strong>database <code>postgres</code>, username <code>postgres</code>, password <code>IA340-data</code>, port <code>5432</code></strong>. Connection is the first gate; then it checks the three tables, fields, and keys.</p>

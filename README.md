@@ -23,6 +23,7 @@
 - [Lab 2: Building Your AI Data Analytics Workspace](docs/assignments/lab-2/index.md)
 - [Module 3: Pandas & Matplotlib Review with Real COVID-19 Data](docs/modules/module-3/index.md)
 - [Lab 3: Independent Country COVID-19 Analysis](docs/assignments/lab-3/index.md)
+- [Google Cloud Education Credit Setup](docs/modules/module-3/google-cloud-coupon/index.md)
 - [Module 4: Relational Databases, Google Cloud & ER Diagram](docs/modules/module-4/index.md)
 - [Lab 4: Cloud Database Completion Check](docs/assignments/lab-4/index.md)
 

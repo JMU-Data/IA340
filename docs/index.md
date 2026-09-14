@@ -14,9 +14,9 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
   <a href="{{ site.baseurl }}/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
   <a href="{{ site.baseurl }}/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
   <a href="{{ site.baseurl }}/modules/module-4/" style="text-decoration: none; color: #57606a;">Module 4</a>
   <a href="{{ site.baseurl }}/assignments/lab-4/" style="text-decoration: none; color: #57606a;">Lab 4</a>
-  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
 </nav>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; color: #57606a; font-weight: 500; font-size: 0.9em; margin-bottom: 1.5rem;">
@@ -70,6 +70,11 @@ title: "Home - IA 340"
     <p style="margin-bottom: 0; color: #57606a;">Independent Country COVID-19 Analysis (Canvas Assigned Country)</p>
   </a>
 
+  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #0969da; display: flex; align-items: center; gap: 0.5rem;">☁️ Cloud Credit Setup</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Redeem Your Google Cloud Education Credit (Step-by-Step Guide)</p>
+  </a>
+
   <a href="{{ site.baseurl }}/modules/module-4/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
     <h3 style="margin-top: 0; color: #0969da; display: flex; align-items: center; gap: 0.5rem;">🗄️ Module 4</h3>
     <p style="margin-bottom: 0; color: #57606a;">Relational Databases, Google Cloud & ER Diagram (Slide Deck)</p>
@@ -78,11 +83,6 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-4/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
     <h3 style="margin-top: 0; color: #1a7f37; display: flex; align-items: center; gap: 0.5rem;">⚙️ Lab 4</h3>
     <p style="margin-bottom: 0; color: #57606a;">Cloud Database Completion Check (Canvas Public IP Submission)</p>
-  </a>
-
-  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
-    <h3 style="margin-top: 0; color: #0969da; display: flex; align-items: center; gap: 0.5rem;">☁️ Cloud Credit Setup</h3>
-    <p style="margin-bottom: 0; color: #57606a;">Redeem Your Google Cloud Education Credit (Step-by-Step Guide)</p>
   </a>
 
 </div>

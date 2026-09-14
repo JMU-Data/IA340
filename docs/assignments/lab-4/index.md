@@ -14,9 +14,9 @@ title: "Lab 4: Cloud Database Completion Check - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
   <a href="{{ site.baseurl }}/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
   <a href="{{ site.baseurl }}/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
   <a href="{{ site.baseurl }}/modules/module-4/" style="text-decoration: none; color: #57606a;">Module 4</a>
   <a href="{{ site.baseurl }}/assignments/lab-4/" style="text-decoration: none; font-weight: 600; color: #0969da;">Lab 4</a>
-  <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
 </nav>
 
 **Target Date:** Friday, September 18, 2026  
@@ -25,7 +25,6 @@ title: "Lab 4: Cloud Database Completion Check - IA 340"
 **Points:** 100
 
 Week 4 · September 14–18, 2026 · Dr. Xuebin Wei  
-**100 points. Follow the official Canvas deadline.**
 
 Complete the hands-on work during [the lecture]({{ site.baseurl }}/modules/module-4/). This lab is the final checkpoint—not a second project, report, or screenshot assignment.
 

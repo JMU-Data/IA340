@@ -14,6 +14,8 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
   <a href="{{ site.baseurl }}/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
   <a href="{{ site.baseurl }}/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="{{ site.baseurl }}/modules/module-4/" style="text-decoration: none; color: #57606a;">Module 4</a>
+  <a href="{{ site.baseurl }}/assignments/lab-4/" style="text-decoration: none; color: #57606a;">Lab 4</a>
   <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
 </nav>
 
@@ -66,6 +68,16 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-3/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
     <h3 style="margin-top: 0; color: #1a7f37; display: flex; align-items: center; gap: 0.5rem;">📈 Lab 3</h3>
     <p style="margin-bottom: 0; color: #57606a;">Independent Country COVID-19 Analysis (Canvas Assigned Country)</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/modules/module-4/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #0969da; display: flex; align-items: center; gap: 0.5rem;">🗄️ Module 4</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Relational Databases, Google Cloud & ER Diagram (Slide Deck)</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/lab-4/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #1a7f37; display: flex; align-items: center; gap: 0.5rem;">⚙️ Lab 4</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Cloud Database Completion Check (Canvas Public IP Submission)</p>
   </a>
 
   <a href="{{ site.baseurl }}/modules/module-3/google-cloud-coupon/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">

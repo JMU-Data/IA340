@@ -1611,7 +1611,7 @@ title: "Module 4: Relational Databases, Google Cloud & ER Diagram - IA 340"
       <h2>85 — Refresh Explorer and inspect the actual tables</h2>
       <div class="slide-text-large">
 <p>Refresh <strong>public → Tables</strong>. Confirm <code>name</code> (2 columns), <code>income</code> (3), and <code>population</code> (3). Expand <strong>Keys</strong> to inspect each PK and the two FKs.</p>
-<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151310.png" alt="Studio Explorer shows the three created tables, their column counts, indexes, and keys" /></div>
+<div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-15%20105142.png" alt="Studio Explorer shows the three created tables, their column counts, indexes, and keys" /></div>
 <p>Empty tables are normal before next week's data loading. The required design has the <code>name.fips</code> primary key, both <code>(fips, year)</code> composite primary keys, and the two foreign keys to <code>name.fips</code>; <strong><code>name.name</code> is not Unique</strong>. Do not grade completeness from a table name alone; check the columns and relationships too.</p>
       </div>
     </div>

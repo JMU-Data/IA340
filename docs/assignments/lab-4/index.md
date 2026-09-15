@@ -66,7 +66,7 @@ In ERD Lab, use **character varying** for `fips` and `name`, and integer for `in
 
 > **TIP:** Export the PostgreSQL SQL from your ERD Lab model. If the export looks wrong or you are unsure what to do next, **ask the instructor before changing it manually**.
 
-![Studio Explorer showing the three tables and their keys]({{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151310.png)
+![Studio Explorer showing the three tables and their keys]({{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-15%20105142.png)
 
 Keep the three tables ready for next week’s Census data. Keep your ERD model for reuse.
 

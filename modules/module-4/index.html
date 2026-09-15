@@ -22,7 +22,7 @@
 {"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Module 4: Relational Databases, Google Cloud &amp; ER Diagram - IA 340","url":"https://jmu-data.github.io/IA340/modules/module-4/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=1f3cd3e2669a798ae1a656d37d48c7e44bf7191a">
+    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=3c85f5ca7ec7b8b52c0119cfadb5fd61404b714f">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -1580,8 +1580,8 @@
       <h2>79 — Build the name table</h2>
       <div class="slide-text-large">
 <p>Add table <strong><code>name</code></strong>. Add <code>fips</code> as <strong>character varying</strong> and mark it <strong>Primary key</strong>. Add <code>name</code> as <strong>character varying</strong>. Leave the Size fields blank. Keep the fields required.</p>
-<p>Keep the <strong><code>name</code> field Unique setting ON</strong> as shown in the course model. We use this setting for consistency with the lab walkthrough; it is not a general rule that every real-world county-name column must be unique.</p>
-<div class="slide-media-box"><img src="/IA340/assets/week-4/screenshots/Screenshot%202026-09-13%20164741.png" alt="ERD Lab name table with fips as the primary key and name marked Unique" /></div>
+<p>Leave the <strong><code>name</code> field Unique setting OFF</strong>. The descriptive county label is required text, but it is not the identifier. The full five-character <code>fips</code> value remains the Primary key and identifies the county or county equivalent. This lets the same three-table design be reused later for additional states without treating a geographic label as a key.</p>
+<div class="slide-media-box"><img src="/IA340/assets/week-4/screenshots/Screenshot%202026-09-15%20091519.png" alt="ERD Lab name table with fips as the primary key and name not marked Unique" /></div>
       </div>
     </div>
 
@@ -1637,8 +1637,8 @@
       <h2>84 — Apply the export in Cloud SQL Studio</h2>
       <div class="slide-text-large">
 <p>Return to Studio, database <strong><code>postgres</code></strong>, user <strong><code>postgres</code></strong>. Paste your reviewed export and click <strong>Run</strong> once.</p>
-<div class="slide-media-box"><img src="/IA340/assets/week-4/screenshots/Screenshot%202026-09-13%20151231.png" alt="Rehearsal SQL in Studio creates name, income, and population and adds two foreign keys" /></div>
-<p>The export includes <strong>UNIQUE on <code>name.name</code></strong>, matching the course model used in the screenshots.</p>
+<div class="slide-media-box"><img src="/IA340/assets/week-4/screenshots/Screenshot%202026-09-15%20091721.png" alt="Rehearsal SQL in Studio creates name, income, and population and adds two foreign keys, without a UNIQUE constraint on name.name" /></div>
+<p>The <code>name</code> table keeps <code>fips</code> as its Primary key and keeps <code>name</code> required, but <strong>does not add a UNIQUE constraint to <code>name.name</code></strong>. The two observation tables keep their composite primary keys and foreign keys to <code>name.fips</code>.</p>
 <p>This screenshot is an example of what ERD Lab generated from the instructor's model—not a script to copy instead of doing the ER diagram. Review your own export. If tables already exist, ask before changing or deleting existing work. <a href="https://www.postgresql.org/docs/18/ddl-constraints.html" target="_blank" rel="noopener noreferrer">Constraints ↗</a></p>
       </div>
     </div>
@@ -1649,8 +1649,8 @@
       <h2>85 — Refresh Explorer and inspect the actual tables</h2>
       <div class="slide-text-large">
 <p>Refresh <strong>public → Tables</strong>. Confirm <code>name</code> (2 columns), <code>income</code> (3), and <code>population</code> (3). Expand <strong>Keys</strong> to inspect each PK and the two FKs.</p>
-<div class="slide-media-box"><img src="/IA340/assets/week-4/screenshots/Screenshot%202026-09-13%20151310.png" alt="Studio Explorer shows the three created tables, their column counts, indexes, and keys" /></div>
-<p>The extra index on <code>name</code> follows the course model's Unique constraint; it is not a fourth table or an extra required task. Empty tables are normal before next week's data loading. Do not grade completeness from a table name alone; check the columns and relationships too.</p>
+<div class="slide-media-box"><img src="/IA340/assets/week-4/screenshots/Screenshot%202026-09-15%20105142.png" alt="Studio Explorer shows the three created tables, their column counts, indexes, and keys" /></div>
+<p>Empty tables are normal before next week's data loading. The required design has the <code>name.fips</code> primary key, both <code>(fips, year)</code> composite primary keys, and the two foreign keys to <code>name.fips</code>; <strong><code>name.name</code> is not Unique</strong>. Do not grade completeness from a table name alone; check the columns and relationships too.</p>
       </div>
     </div>
 

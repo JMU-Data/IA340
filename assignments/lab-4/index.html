@@ -22,7 +22,7 @@
 {"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Lab 4: Cloud Database Completion Check - IA 340","url":"https://jmu-data.github.io/IA340/assignments/lab-4/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=1f3cd3e2669a798ae1a656d37d48c7e44bf7191a">
+    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=3c85f5ca7ec7b8b52c0119cfadb5fd61404b714f">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -162,13 +162,13 @@
   </tbody>
 </table>
 
-<p>In ERD Lab, use <strong>character varying</strong> for <code class="language-plaintext highlighter-rouge">fips</code> and <code class="language-plaintext highlighter-rouge">name</code>, and integer for <code class="language-plaintext highlighter-rouge">income</code>, <code class="language-plaintext highlighter-rouge">population</code>, and <code class="language-plaintext highlighter-rouge">year</code>. <strong>Leave the Size fields blank for this lab.</strong> Keep <strong>Unique enabled for <code class="language-plaintext highlighter-rouge">name</code></strong> as shown in the course model, and keep the fields required. Do not make observation <code class="language-plaintext highlighter-rouge">fips</code> or <code class="language-plaintext highlighter-rouge">year</code> independently Unique; the <strong>combination <code class="language-plaintext highlighter-rouge">(fips, year)</code></strong> identifies one observation. Keep <code class="language-plaintext highlighter-rouge">fips</code> as text so leading zeros are preserved.</p>
+<p>In ERD Lab, use <strong>character varying</strong> for <code class="language-plaintext highlighter-rouge">fips</code> and <code class="language-plaintext highlighter-rouge">name</code>, and integer for <code class="language-plaintext highlighter-rouge">income</code>, <code class="language-plaintext highlighter-rouge">population</code>, and <code class="language-plaintext highlighter-rouge">year</code>. <strong>Leave the Size fields blank for this lab.</strong> Keep the fields required. In the <code class="language-plaintext highlighter-rouge">name</code> table, keep <code class="language-plaintext highlighter-rouge">fips</code> as the Primary key and <strong>leave Unique OFF for the descriptive <code class="language-plaintext highlighter-rouge">name</code> field</strong>. Do not make observation <code class="language-plaintext highlighter-rouge">fips</code> or <code class="language-plaintext highlighter-rouge">year</code> independently Unique; the <strong>combination <code class="language-plaintext highlighter-rouge">(fips, year)</code></strong> identifies one observation. Keep <code class="language-plaintext highlighter-rouge">fips</code> as text so leading zeros are preserved.</p>
 
 <blockquote>
   <p><strong>TIP:</strong> Export the PostgreSQL SQL from your ERD Lab model. If the export looks wrong or you are unsure what to do next, <strong>ask the instructor before changing it manually</strong>.</p>
 </blockquote>
 
-<p><img src="/IA340/assets/week-4/screenshots/Screenshot%202026-09-13%20151310.png" alt="Studio Explorer showing the three tables and their keys" /></p>
+<p><img src="/IA340/assets/week-4/screenshots/Screenshot%202026-09-15%20105142.png" alt="Studio Explorer showing the three tables and their keys" /></p>
 
 <p>Keep the three tables ready for next week’s Census data. Keep your ERD model for reuse.</p>
 

@@ -62,11 +62,11 @@ Use the exact lowercase table and field names below in **database `postgres`, sc
 | `income` | `fips`; `income` integer; `year` integer | Composite PK `(fips, year)`; FK `fips` → `name.fips` |
 | `population` | `fips`; `population` integer; `year` integer | Composite PK `(fips, year)`; FK `fips` → `name.fips` |
 
-In ERD Lab, use **character varying** for `fips` and `name`, and integer for `income`, `population`, and `year`. **Leave the Size fields blank for this lab.** Keep **Unique enabled for `name`** as shown in the course model, and keep the fields required. Do not make observation `fips` or `year` independently Unique; the **combination `(fips, year)`** identifies one observation. Keep `fips` as text so leading zeros are preserved.
+In ERD Lab, use **character varying** for `fips` and `name`, and integer for `income`, `population`, and `year`. **Leave the Size fields blank for this lab.** Keep the fields required. In the `name` table, keep `fips` as the Primary key and **leave Unique OFF for the descriptive `name` field**. Do not make observation `fips` or `year` independently Unique; the **combination `(fips, year)`** identifies one observation. Keep `fips` as text so leading zeros are preserved.
 
 > **TIP:** Export the PostgreSQL SQL from your ERD Lab model. If the export looks wrong or you are unsure what to do next, **ask the instructor before changing it manually**.
 
-![Studio Explorer showing the three tables and their keys]({{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-13%20151310.png)
+![Studio Explorer showing the three tables and their keys]({{ site.baseurl }}/assets/week-4/screenshots/Screenshot%202026-09-15%20105142.png)
 
 Keep the three tables ready for next week’s Census data. Keep your ERD model for reuse.
 

@@ -26,6 +26,8 @@
 - [Google Cloud Education Credit Setup](docs/modules/module-3/google-cloud-coupon/index.md)
 - [Module 4: Relational Databases, Google Cloud & ER Diagram](docs/modules/module-4/index.md)
 - [Lab 4: Cloud Database Completion Check](docs/assignments/lab-4/index.md)
+- [Module 5: Collect Census Data and Query Your Database](docs/modules/module-5/index.md)
+- [Lab 5: Collect Census Data into Your Database](docs/assignments/lab-5/index.md)
 
 ## Course Overview
 

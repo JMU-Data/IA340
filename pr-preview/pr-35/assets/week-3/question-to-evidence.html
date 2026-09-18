@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From Research Question to Evidence</title>
+  <style>
+    :root{--bg:#f6f8fa;--panel:#fff;--text:#1f2328;--muted:#57606a;--line:#d0d7de;--accent:#0969da;--good:#1a7f37;--bad:#cf222e;--soft:#ddf4ff;--code:#0d1117}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+    .stage{width:min(1200px,100%);min-height:675px;margin:0 auto;padding:18px;display:grid;grid-template-rows:auto auto auto 1fr;gap:12px}
+    header{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+    h1{margin:0;font-size:clamp(24px,3vw,37px)}
+    .subtitle{margin:5px 0 0;color:var(--muted)}
+    .controls{display:flex;gap:8px;flex-wrap:wrap}
+    button{font:inherit;font-weight:800;border:1px solid var(--line);background:#fff;border-radius:8px;padding:9px 13px;cursor:pointer}
+    button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .question{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:10px;padding:12px 15px;font-weight:800}
+    .pipeline{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
+    .step{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;min-height:88px;transition:.2s ease}
+    .step.good{border-color:var(--good);box-shadow:0 0 0 2px rgba(26,127,55,.10)}
+    .step.bad{border-color:var(--bad);box-shadow:0 0 0 2px rgba(207,34,46,.10)}
+    .num{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--soft);color:#0550ae;font-weight:850;font-size:12px}
+    .step h2{font-size:14px;margin:7px 0 4px}.step p{font-size:12px;color:var(--muted);margin:0;line-height:1.35}
+    .workspace{display:grid;grid-template-columns:1.05fr .95fr;gap:12px;min-height:0}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .panel-title{padding:9px 12px;border-bottom:1px solid var(--line);font-weight:800}
+    .code{margin:0;padding:13px;background:var(--code);color:#e6edf3;font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;min-height:210px}
+    .right{display:grid;grid-template-rows:auto 1fr;gap:12px}
+    .table-chart{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:11px}
+    table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:7px;border-bottom:1px solid #eaeef2;text-align:left}th{background:#f6f8fa}
+    .bars{display:flex;align-items:flex-end;gap:8px;height:145px;padding:8px;border-left:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .bar-wrap{flex:1;text-align:center;font-size:11px;color:var(--muted)}
+    .bar{width:100%;background:var(--accent);border-radius:5px 5px 0 0;min-height:5px;transition:.25s ease}.badbar{background:var(--bad)}
+    .answer{padding:13px;line-height:1.45}.answer h3{margin:0 0 8px}.answer ul{margin:8px 0 0;padding-left:20px}.status{font-weight:850}.status.good{color:var(--good)}.status.bad{color:var(--bad)}
+    @media(max-width:900px){.pipeline{grid-template-columns:repeat(3,1fr)}.workspace{grid-template-columns:1fr}.stage{min-height:auto;padding:12px}} 
+  </style>
+</head>
+<body>
+<main class="stage">
+  <header>
+    <div><h1>Does the Evidence Answer the Question?</h1><p class="subtitle">The country and metric must match from the question through the written finding.</p></div>
+    <div class="controls">
+      <button data-mode="correct" aria-pressed="true">Correct chain</button>
+      <button data-mode="wrong" aria-pressed="false">Wrong metric</button>
+    </div>
+  </header>
+
+  <div class="question">Which month had the highest total reported cases in the United States?</div>
+
+  <section class="pipeline">
+    <article class="step" data-step="0"><span class="num">1</span><h2>Question</h2><p>Names country, time unit, metric, and comparison.</p></article>
+    <article class="step" data-step="1"><span class="num">2</span><h2>Filter</h2><p>Keep United States rows.</p></article>
+    <article class="step" data-step="2"><span class="num">3</span><h2>Time unit</h2><p>Create year-month from date.</p></article>
+    <article class="step" data-step="3"><span class="num">4</span><h2>Aggregate</h2><p>Group by month and sum cases.</p></article>
+    <article class="step" data-step="4"><span class="num">5</span><h2>Visualize</h2><p>Plot the same monthly totals.</p></article>
+    <article class="step" data-step="5"><span class="num">6</span><h2>Answer</h2><p>Use the largest visible month and value.</p></article>
+  </section>
+
+  <section class="workspace">
+    <article class="panel"><div class="panel-title">Pandas workflow</div><pre id="code" class="code"></pre></article>
+    <aside class="right">
+      <article class="panel"><div class="panel-title">Illustrative summary and matching chart</div><div class="table-chart"><table><thead><tr><th>month</th><th id="metricHead">cases</th></tr></thead><tbody id="tbody"></tbody></table><div id="bars" class="bars"></div></div></article>
+      <article class="panel answer"><h3 id="answer"></h3><div id="status" class="status"></div><ul id="checks"></ul></article>
+    </aside>
+  </section>
+</main>
+<script>
+  const correct=[['2020-09',1260000],['2020-10',1880000],['2020-11',4300000],['2020-12',5100000]];
+  const wrong=[['2020-09',24500],['2020-10',23700],['2020-11',36900],['2020-12',46000]];
+  const buttons=[...document.querySelectorAll('button[data-mode]')];
+  const code=document.getElementById('code'),tbody=document.getElementById('tbody'),bars=document.getElementById('bars'),metricHead=document.getElementById('metricHead'),answer=document.getElementById('answer'),status=document.getElementById('status'),checks=document.getElementById('checks');
+  const steps=[...document.querySelectorAll('.step')];
+
+  function renderRows(data,bad){
+    tbody.innerHTML='';bars.innerHTML='';const max=Math.max(...data.map(d=>d[1]));
+    data.forEach(([label,value])=>{
+      const tr=document.createElement('tr');tr.innerHTML=`<td>${label}</td><td>${value.toLocaleString()}</td>`;tbody.appendChild(tr);
+      const wrap=document.createElement('div');wrap.className='bar-wrap';
+      const bar=document.createElement('div');bar.className='bar'+(bad?' badbar':'');bar.style.height=`${Math.max(8,value/max*112)}px`;
+      const lab=document.createElement('div');lab.textContent=label.slice(5);wrap.append(bar,lab);bars.appendChild(wrap);
+    });
+  }
+
+  function setMode(mode){
+    const bad=mode==='wrong';buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));
+    steps.forEach((s,i)=>{s.classList.remove('good','bad');s.classList.add(bad && i>=3?'bad':'good')});
+    if(!bad){
+      code.textContent='covid["month"] = covid["date"].dt.to_period("M").astype(str)\n\nusa = covid[covid["country"] == "United_States_of_America"]\n\nsummary = (\n    usa\n    .groupby("month", as_index=False)["cases"]\n    .sum()\n)\n\nsummary.plot.bar(x="month", y="cases")';
+      metricHead.textContent='total cases';renderRows(correct,false);
+      answer.textContent='December has the largest illustrative total: 5,100,000 cases.';
+      status.textContent='MATCH: question → cases table → cases chart → cases answer';status.className='status good';
+      checks.innerHTML='<li>The filtered rows are the United States.</li><li>The grouping unit is month.</li><li>The metric is cases in the question, table, and chart.</li><li>The answer repeats the largest visible month and value.</li>';
+    }else{
+      code.textContent='covid["month"] = covid["date"].dt.to_period("M").astype(str)\n\nusa = covid[covid["country"] == "United_States_of_America"]\n\nsummary = (\n    usa\n    .groupby("month", as_index=False)["deaths"]\n    .sum()\n)\n\nsummary.plot.bar(x="month", y="deaths")';
+      metricHead.textContent='total deaths';renderRows(wrong,true);
+      answer.textContent='This output cannot answer the cases question.';
+      status.textContent='MISMATCH: the question asks about cases, but the table and chart show deaths';status.className='status bad';
+      checks.innerHTML='<li>The country and month grouping are correct.</li><li>The question asks about cases.</li><li>The code, table, and chart use deaths.</li><li>Fix the metric before writing a finding.</li>';
+    }
+  }
+  buttons.forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+  setMode('correct');
+</script>
+</body>
+</html>

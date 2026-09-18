@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Module 5: Collect Census Data and Query Your Database - IA 340 | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Module 5: Collect Census Data and Query Your Database - IA 340" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
+<meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-35/modules/module-5/" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-35/modules/module-5/" />
+<meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Module 5: Collect Census Data and Query Your Database - IA 340" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Module 5: Collect Census Data and Query Your Database - IA 340","url":"https://jmu-data.github.io/IA340/pr-preview/pr-35/modules/module-5/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-35/assets/css/style.css?v=0c3996ceeb91598ad7d0957b7d7bbf9e2c8dc315">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/IA340/pr-preview/pr-35/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://jmu-data.github.io/IA340/pr-preview/pr-35/">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</a></h1>
+      
+
+      <h1 id="module-5-collect-census-data-and-query-your-database">Module 5: Collect Census Data and Query Your Database</h1>
+
+<nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
+  <a href="/IA340/pr-preview/pr-35/" style="text-decoration: none; color: #57606a;">Home</a>
+  <a href="/IA340/pr-preview/pr-35/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
+  <a href="/IA340/pr-preview/pr-35/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
+  <a href="/IA340/pr-preview/pr-35/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+  <a href="/IA340/pr-preview/pr-35/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="/IA340/pr-preview/pr-35/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
+  <a href="/IA340/pr-preview/pr-35/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
+  <a href="/IA340/pr-preview/pr-35/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="/IA340/pr-preview/pr-35/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
+  <a href="/IA340/pr-preview/pr-35/modules/module-4/" style="text-decoration: none; color: #57606a;">Module 4</a>
+  <a href="/IA340/pr-preview/pr-35/assignments/lab-4/" style="text-decoration: none; color: #57606a;">Lab 4</a>
+  <a href="/IA340/pr-preview/pr-35/modules/module-5/" style="text-decoration: none; font-weight: 600; color: #0969da;">Module 5</a>
+  <a href="/IA340/pr-preview/pr-35/assignments/lab-5/" style="text-decoration: none; color: #57606a;">Lab 5</a>
+</nav>
+
+<p><strong>IA 340 · Dr. Xuebin Wei · September 21–25, 2026</strong><br />
+<strong>Teaching draft · Monday: collect multiple years · Tuesday: Lab 5 due · Wednesday: SQL in Studio</strong></p>
+
+<p><strong>No Gemini this week.</strong> Read, run, and explain the examples. Collect <strong>ACS 1-year population and income estimates for Virginia, 2015–2024</strong>. Keep a complete county-name catalogue separately from the annual observations. Use SQL to discover which years and places have no observations. The small HTML demonstrations run only in your browser; they never connect to your database.</p>
+
+<h2 id="from-census-data-to-your-database">From Census data to your database</h2>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/data-journey.svg" alt="Census datasets are exposed through an API. Colab requests data and can read or write your PostgreSQL database. Cloud SQL Studio can also read or write that same database." /></p>
+
+<p><strong>Census hosts the source data. The Census API provides access to it.</strong> Colab requests the data and sends SQL to your existing PostgreSQL database. <strong>Both Colab and Cloud SQL Studio can run SELECT and INSERT</strong> when the database login has permission. Neither is limited to one operation. Studio is the browser interface for the same Cloud SQL database, not another database.</p>
+
+<p>The diagram groups Census’s data services conceptually; it does not claim that Census runs in your Google Cloud project. Only your own Cloud SQL instance and its Studio interface are inside <strong>your Google Cloud project</strong>.</p>
+
+<p><strong>This week’s emphasis:</strong> collect and insert in Colab on Monday; query and summarize in Studio on Wednesday.</p>
+
+<p>Monday’s notebook has <strong>8 runnable code cells</strong>, numbered 1–8 below. The separate INSERT/execute/commit demonstration is for reading and offline interaction, not an extra notebook cell.</p>
+
+<hr />
+
+<h1 id="monday-september-21--collect-several-years-and-save-them">Monday, September 21 — Collect several years and save them</h1>
+
+<h2 id="01--get-a-census-api-key-before-making-a-request">01 — Get a Census API key before making a request</h2>
+
+<p>An <strong>API (application programming interface)</strong> lets software request data or a service. You need <strong>your own free Census API key</strong> for Census data queries. It is not your database password. <a href="https://www.census.gov/data/developers/guidance/api-user-guide.API_Key.html">Census instructions</a></p>
+
+<p><strong>Step 1 — Open the official registration page:</strong></p>
+
+<p><a href="https://api.census.gov/data/key_signup.html">https://api.census.gov/data/key_signup.html</a></p>
+
+<p><strong>Step 2 — Complete the request form.</strong> Provide the requested name/organization and your email, as shown on the current form.</p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-16%20101916.png" alt="Instructor screenshot of the Census API key request form." /></p>
+
+<p><em>Enter your own organization and email; the instructor details are examples, not values to copy.</em></p>
+
+<p><strong>Step 3 — Open the Census email and follow the activation link.</strong> Keep the key private. Request and activate it before Monday when possible; do not spend the entire class waiting for an email.</p>
+
+<p><strong>Step 4 — Save it in Colab Secrets as <code class="language-plaintext highlighter-rouge">CENSUS_API_KEY</code>.</strong> Enable <strong>Notebook access</strong> for this notebook. Never paste the actual key into a notebook cell or screenshot.</p>
+
+<!-- Instructor screenshot: activation email with address, key, and activation token masked. -->
+
+<p><strong>Checkpoint:</strong> A key has been requested, activated, and saved. We have not requested Census records yet.</p>
+
+<h2 id="02--connect-colab-to-the-database-you-already-built">02 — Connect Colab to the database you already built</h2>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/connection-details.svg" alt="Six connection settings: Public IP, port, database, username, password, and SSL." /></p>
+
+<p>Use the existing Week 4 Cloud SQL instance. The <strong>database</strong> is <code class="language-plaintext highlighter-rouge">postgres</code>, the <strong>schema</strong> is <code class="language-plaintext highlighter-rouge">public</code>, and the database username is not your Google email. Do not create another instance or state table.</p>
+
+<p>Create a Colab notebook named <code class="language-plaintext highlighter-rouge">lab5.ipynb</code> and keep it in your own Drive. Open the <strong>key icon / Secrets</strong> panel, add the following names, and enable <strong>Notebook access</strong>. <a href="https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Authentication_with_OAuth.ipynb">Colab Secrets</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Secret name</th>
+      <th>Value entered privately</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DB_HOST</code></td>
+      <td>Your instance’s current Public IPv4, normally the same IP submitted for Lab 4</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DB_NAME</code></td>
+      <td><code class="language-plaintext highlighter-rouge">postgres</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DB_USER</code></td>
+      <td><code class="language-plaintext highlighter-rouge">postgres</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DB_PASSWORD</code></td>
+      <td>Your existing classroom database password</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CENSUS_API_KEY</code></td>
+      <td>Your own activated Census key</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Port <code class="language-plaintext highlighter-rouge">5432</code> and <code class="language-plaintext highlighter-rouge">sslmode="require"</code> are fixed connection options. Do not print the actual IP, password, or key. Only grant Secrets access to code you trust.</p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-16%20102608.png" alt="Colab Secrets names and Notebook access switches. The instructor screenshot already masks the IP and Census API key; the shared classroom database password is intentionally visible." /></p>
+
+<p><em>Use these exact secret names and enable Notebook access. The instructor has masked the IP and API key; the classroom password is intentionally shown as the shared teaching value.</em></p>
+
+<h3 id="cell-1--install-the-three-packages-we-need">Cell 1 — Install the three packages we need</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">pip</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">census</span> <span class="n">us</span> <span class="n">psycopg2</span><span class="o">-</span><span class="n">binary</span>
+</code></pre></div></div>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20141648.png" alt="Colab installation of census, us, and psycopg2-binary." /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Its job</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">census</code></td>
+      <td>A Python wrapper that makes Census API requests</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">us</code></td>
+      <td>State metadata: state names, abbreviations, and two-digit state FIPS codes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">psycopg2</code></td>
+      <td>The driver that connects Python to PostgreSQL</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The package installed as <code class="language-plaintext highlighter-rouge">psycopg2-binary</code> is imported as <code class="language-plaintext highlighter-rouge">psycopg2</code>. It is precompiled for convenient Colab setup. The source installation <code class="language-plaintext highlighter-rouge">psycopg2</code> provides the same Python API. Install one variant, not both. <a href="https://www.psycopg.org/docs/install.html">Driver installation</a></p>
+
+<h3 id="cell-2--create-a-connection-and-a-cursor">Cell 2 — Create a connection and a cursor</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">userdata</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="n">userdata</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"DB_HOST"</span><span class="p">),</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">5432</span><span class="p">,</span>
+    <span class="n">dbname</span><span class="o">=</span><span class="n">userdata</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"DB_NAME"</span><span class="p">),</span>
+    <span class="n">user</span><span class="o">=</span><span class="n">userdata</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"DB_USER"</span><span class="p">),</span>
+    <span class="n">password</span><span class="o">=</span><span class="n">userdata</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"DB_PASSWORD"</span><span class="p">),</span>
+    <span class="n">sslmode</span><span class="o">=</span><span class="s">"require"</span><span class="p">,</span>
+    <span class="n">connect_timeout</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">cursor</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20141730.png" alt="Colab connection and cursor created using Colab Secrets." /></p>
+
+<h2 id="03--connection-cursor-execute-and-commit">03 — Connection, cursor, execute, and commit</h2>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/sql-and-storage.svg" alt="The connection owns the database session and transaction. Its cursor sends SQL through execute. The connection commits the changes." /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>What it is</th>
+      <th>What we use it for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">conn</code></td>
+      <td>A <strong>connection object</strong>: one open database session</td>
+      <td>Create cursors, commit a transaction, close this connection</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cur</code></td>
+      <td>A <strong>cursor object</strong>, created by <code class="language-plaintext highlighter-rouge">conn.cursor()</code></td>
+      <td>Send SQL with <code class="language-plaintext highlighter-rouge">cur.execute(sql)</code>; later, retrieve query results</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sql</code></td>
+      <td>A Python string containing a SQL statement</td>
+      <td>The instruction PostgreSQL will execute</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cur.execute(sql)</code></td>
+      <td>A method call on the cursor</td>
+      <td>Execute the statement through this connection</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">conn.commit()</code></td>
+      <td>A method call on the connection</td>
+      <td>Finish the transaction and keep its changes</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A cursor is <strong>not the mouse pointer</strong>, a second database, or another network login. PostgreSQL executes the SQL; the cursor is the Python object that sends it. The connection controls the transaction. <a href="https://www.psycopg.org/docs/connection.html">Connection</a> · <a href="https://www.psycopg.org/docs/cursor.html">Cursor</a></p>
+
+<h3 id="read-an-insert--demonstration-only">Read an INSERT — demonstration only</h3>
+
+<p><strong>Do not run this illustrative INSERT in Studio or copy it into a Colab code cell.</strong> Use the offline HTML below. Actual data loading starts at Cell 5 and uses only records returned by Census.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">public</span><span class="p">.</span><span class="n">name</span> <span class="p">(</span><span class="n">fips</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="k">VALUES</span> <span class="p">(</span><span class="s1">'51660'</span><span class="p">,</span> <span class="s1">'Harrisonburg city'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">INSERT INTO</code> names the destination table. <code class="language-plaintext highlighter-rouge">(fips, name)</code> names two columns. The two <code class="language-plaintext highlighter-rouge">VALUES</code> follow the same order. Text literals use single quotes. <a href="https://www.postgresql.org/docs/18/sql-insert.html">INSERT</a></p>
+
+<h3 id="execute-and-commit--demonstration-only">Execute and commit — demonstration only</h3>
+
+<p><strong>Read this example or use the offline HTML buttons; do not run this sample against your lab database.</strong> It shows the same INSERT as above. Actual Census data loading begins in Cell 5.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sql</span> <span class="o">=</span> <span class="s">"""INSERT INTO public.name (fips, name)
+         VALUES ('51660', 'Harrisonburg city');"""</span>
+<span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><strong>First, <code class="language-plaintext highlighter-rouge">cur.execute(sql)</code> executes the statement. Then, <code class="language-plaintext highlighter-rouge">conn.commit()</code> commits the changes.</strong> These are normal Python statements, shown here for explanation rather than as an extra notebook task.</p>
+
+<p><strong>Think: execute = perform the change; commit = finalize the transaction.</strong> In this Colab connection, autocommit is off. After execute, the writer can see its own change, but a new query from a separate Studio connection cannot see it until commit. Commit is <strong>not</strong> the step that sends an unexecuted SQL string out of Colab. <a href="https://www.postgresql.org/docs/18/tutorial-transactions.html">Transactions</a></p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/insert-commit.svg" alt="Execute performs the INSERT in the current transaction; commit finalizes it for other connections." /></p>
+
+<iframe src="/IA340/pr-preview/pr-35/assets/week-5/insert-row.html" title="Connection and cursor: execute then commit" loading="lazy" style="width:100%;height:820px;border:1px solid #d0d7de;border-radius:8px;"></iframe>
+
+<p><a href="/IA340/pr-preview/pr-35/assets/week-5/insert-row.html">Open the execute / commit demonstration separately</a></p>
+
+<p><strong>Offline simulation only: these buttons change this page’s example tables, not Colab or PostgreSQL.</strong> The demonstration has two main buttons: <strong>1. <code class="language-plaintext highlighter-rouge">cur.execute(sql)</code></strong> and <strong>2. <code class="language-plaintext highlighter-rouge">conn.commit()</code></strong>. Its tables show two views of one database, not two stored copies. Later we close the cursor and connection only after saving. Closing is not deleting a table or stopping the Cloud SQL instance.</p>
+
+<p>The real loading cells below use <code class="language-plaintext highlighter-rouge">ON CONFLICT ... DO NOTHING</code> to skip an already existing primary key. That clause does not update wrong data or prove a complete load.</p>
+
+<h2 id="04--read-a-census-api-request">04 — Read a Census API request</h2>
+
+<p><strong>Connect → request Census records → insert names → insert population → insert income → commit and close.</strong> Before using Python, read the HTTP request that asks Census for data. <a href="https://www.census.gov/data/developers/guidance/api-user-guide.Example_API_Queries.html">API request guide</a></p>
+
+<div class="api-request-breakdown" style="padding:18px;border:1px solid #d0d7de;border-radius:9px;background:#fafbfc;">
+<p style="margin:0 0 12px;"><strong>One URL, six parts</strong> — line breaks below are for teaching; the actual request is one continuous URL.</p>
+<div style="font:18px/1.7 ui-monospace,Consolas,monospace;overflow-wrap:anywhere;">
+<span style="color:#243b53;">https://api.census.gov/data/</span><span style="color:#8250df;font-weight:700;">2024</span><span style="color:#0969da;font-weight:700;">/acs/acs1</span><br />
+<span style="color:#116329;font-weight:700;">?get=NAME,B01003_001E,B19013_001E</span><br />
+<span style="color:#9a4d00;font-weight:700;">&amp;for=county:*</span><br />
+<span style="color:#953800;font-weight:700;">&amp;in=state:51</span><br />
+<span style="color:#57606a;">&amp;key=YOUR_CENSUS_API_KEY</span>
+</div>
+<div style="display:flex;gap:8px 18px;flex-wrap:wrap;margin-top:14px;font-size:16px;">
+<span style="color:#8250df;"><strong>1 · 2024:</strong> survey year</span>
+<span style="color:#0969da;"><strong>2 · acs/acs1:</strong> data product</span>
+<span style="color:#116329;"><strong>3 · get:</strong> requested fields</span>
+<span style="color:#9a4d00;"><strong>4 · for:</strong> county-level units</span>
+<span style="color:#953800;"><strong>5 · in:</strong> Virginia only</span>
+<span style="color:#57606a;"><strong>6 · key:</strong> your API credential</span>
+</div>
+</div>
+
+<p><code class="language-plaintext highlighter-rouge">?</code> starts the query parameters, <code class="language-plaintext highlighter-rouge">&amp;</code> separates them, and commas separate requested fields. <code class="language-plaintext highlighter-rouge">county:*</code> asks for the county-level records <strong>available in the selected annual product within <code class="language-plaintext highlighter-rouge">in=state:51</code></strong>. The wildcard does not override ACS 1-year publication coverage. <code class="language-plaintext highlighter-rouge">NAME</code> returns labels; <code class="language-plaintext highlighter-rouge">B01003_001E</code> returns population estimates; <code class="language-plaintext highlighter-rouge">B19013_001E</code> returns median household income estimates. <a href="https://api.census.gov/data/2024/acs/acs1/examples.html">Example requests</a></p>
+
+<p><strong>This is a displayed request template, not a new step to run.</strong> The key above is a placeholder. Keep the real key in Colab Secrets. An API request reads Census records into Colab; it does not insert rows into PostgreSQL.</p>
+
+<p><strong>Next:</strong> the <code class="language-plaintext highlighter-rouge">census</code> package builds this kind of request from Python arguments. It is the same API, not a second data source.</p>
+
+<h2 id="05--request-virginia-county-data-with-census">05 — Request Virginia county data with census</h2>
+
+<h3 id="county-identities-and-annual-observations-are-different">County identities and annual observations are different</h3>
+
+<p><strong>Population and income both use ACS 1-year (<code class="language-plaintext highlighter-rouge">c.acs1</code>).</strong> Each observation describes one survey year. We work through <strong>2015–2024</strong> and store the annual records that the source actually provides. A county can exist even when the annual product has no observation for it. <a href="https://www.census.gov/data/developers/data-sets/acs-1year.html">Annual product</a></p>
+
+<p>One row in either observation table represents <strong>one county/county-equivalent in one survey year</strong>, not an individual survey response.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Meaning</th>
+      <th>Unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">B01003_001E</code> → <code class="language-plaintext highlighter-rouge">population</code></td>
+      <td>Estimated total population of that area in the selected ACS 1-year survey</td>
+      <td>People</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">B19013_001E</code> → <code class="language-plaintext highlighter-rouge">income</code></td>
+      <td>Estimated median household income in the past 12 months</td>
+      <td>Dollars, expressed in the selected survey year’s dollars</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code class="language-plaintext highlighter-rouge">E</code> values are estimates, not the number of people or households interviewed. These are annual survey estimates, not five-year estimates, future forecasts, or July 1 population estimates. <a href="https://api.census.gov/data/2024/acs/acs1/groups/B01003.html">Population variable</a> · <a href="https://api.census.gov/data/2024/acs/acs1/variables/B19013_001E.html">Income definition</a> · <a href="https://www.census.gov/newsroom/blogs/random-samplings/2022/03/period-estimates-american-community-survey.html">ACS periods</a></p>
+
+<p><strong>Why not every county?</strong> Standard ACS 1-year Detailed Tables generally cover areas with a population of <strong>65,000 or more</strong>, subject to Census publication and data-quality rules. This is a publication rule, not a limit of 30 API records. The <code class="language-plaintext highlighter-rouge">county:*</code> request returns the published counties for the chosen state and year. <a href="https://www.census.gov/programs-surveys/acs/geography-acs/areas-published.html">Published areas</a></p>
+
+<p>Keep a complete county-name catalogue in <code class="language-plaintext highlighter-rouge">name</code>; keep only published observations in <code class="language-plaintext highlighter-rouge">population</code> and <code class="language-plaintext highlighter-rouge">income</code>. <strong>Do not invent missing measurements, insert zero placeholders, or manufacture a row for every county/year.</strong> We will inspect the gaps after collection.</p>
+
+<h3 id="cell-3--set-the-state-filter-and-the-years">Cell 3 — Set the state filter and the years</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">census</span> <span class="kn">import</span> <span class="n">Census</span><span class="p">,</span> <span class="n">UnsupportedYearException</span>
+<span class="kn">from</span> <span class="nn">us</span> <span class="kn">import</span> <span class="n">states</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="n">userdata</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"CENSUS_API_KEY"</span><span class="p">))</span>
+<span class="n">STATE</span> <span class="o">=</span> <span class="n">states</span><span class="p">.</span><span class="n">VA</span>  <span class="c1"># Virginia
+</span><span class="n">YEARS</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">2025</span><span class="p">)</span>  <span class="c1"># 2015 through 2024
+</span><span class="n">GEO</span> <span class="o">=</span> <span class="p">{</span><span class="s">"for"</span><span class="p">:</span> <span class="s">"county:*"</span><span class="p">,</span> <span class="s">"in"</span><span class="p">:</span> <span class="sa">f</span><span class="s">"state:</span><span class="si">{</span><span class="n">STATE</span><span class="p">.</span><span class="n">fips</span><span class="si">}</span><span class="s">"</span><span class="p">}</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">STATE</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">STATE</span><span class="p">.</span><span class="n">fips</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">YEARS</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">GEO</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20141818.png" alt="Cell 3 selects Virginia and prints its name, state FIPS, requested years, and GEO dictionary." /></p>
+
+<p><code class="language-plaintext highlighter-rouge">states.VA</code> supplies the state name and its two-digit FIPS. <code class="language-plaintext highlighter-rouge">GEO</code> becomes <code class="language-plaintext highlighter-rouge">{'for': 'county:*', 'in': 'state:51'}</code>. To choose another state, change the state object, for example to <code class="language-plaintext highlighter-rouge">states.MD</code>. This cell only prepares the client and settings; it does not read or write PostgreSQL. <a href="https://github.com/unitedstates/python-us">us documentation</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Request part</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">c.acs1</code></td>
+      <td>Annual population and income estimates</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">"B01003_001E"</code>, <code class="language-plaintext highlighter-rouge">"B19013_001E"</code></td>
+      <td>Population and median household income</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">"for": "county:*"</code></td>
+      <td>County-level records available in the selected product</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">"in": f"state:{STATE.fips}"</code></td>
+      <td>The selected state, Virginia in this lab</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">year=year</code></td>
+      <td>The current year of the loop</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/api-request.svg" alt="The API selects a product, year, variables, and geography before returning records to Colab." /></p>
+
+<p>An f-string begins with <code class="language-plaintext highlighter-rouge">f</code>; <code class="language-plaintext highlighter-rouge">{STATE.fips}</code> inserts the state’s code into the request. The Python variable name itself is not sent to Census.</p>
+
+<iframe src="/IA340/pr-preview/pr-35/assets/week-5/api-request.html" title="Census county directory and annual observations" loading="lazy" style="width:100%;height:1180px;border:1px solid #d0d7de;border-radius:8px;"></iframe>
+
+<p><a href="/IA340/pr-preview/pr-35/assets/week-5/api-request.html">Open the API request demonstration separately</a></p>
+
+<p><strong>Try the controls:</strong> compare the county directory with the annual population and income responses. Change the state or year and inspect the result. A name may remain in the directory when an annual observation is unavailable. All displayed numbers are simulated; the page never connects to Census or PostgreSQL.</p>
+
+<h3 id="cell-4--read-the-complete-county-name-catalogue">Cell 4 — Read the complete county-name catalogue</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">pl</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"NAME"</span><span class="p">,</span> <span class="n">GEO</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"County names returned:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
+<span class="n">names</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Here <code class="language-plaintext highlighter-rouge">c.pl</code> reads <strong>only names and geographic codes from the 2020 Decennial Census</strong>, independently of ACS annual publication coverage. It supplies Virginia counties and county equivalents, including small places. It does not supply our population or income values, and it is not an ACS 2020 observation. <a href="https://api.census.gov/data/2020/dec/pl/examples.html">County directory API</a></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">us</code> package selects the state; it does not include a directly callable county-name directory. We therefore use the existing <code class="language-plaintext highlighter-rouge">census</code> package to read this reference list once. <code class="language-plaintext highlighter-rouge">names</code> is a list of dictionaries containing <code class="language-plaintext highlighter-rouge">NAME</code>, <code class="language-plaintext highlighter-rouge">state</code>, and <code class="language-plaintext highlighter-rouge">county</code>; no database changes occur in Cell 4.</p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20141843.png" alt="Cell 4 reads the complete county directory; the output reports 133 county names and previews three records." /></p>
+
+<h2 id="06--insert-the-county-names-once">06 — Insert the county names once</h2>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/fips-and-keys.svg" alt="County identity uses the full five-character FIPS; a name is descriptive text, not a unique identifier." /></p>
+
+<p>Keep the existing model:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Table</th>
+      <th>Row meaning and keys</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name(fips, name)</code></td>
+      <td>One county/county-equivalent from the complete directory, whether or not ACS 1-year publishes an observation; PK <code class="language-plaintext highlighter-rouge">fips</code>; descriptive <code class="language-plaintext highlighter-rouge">name</code> is not Unique</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">population(fips, population, year)</code></td>
+      <td>One published county/year observation; PK <code class="language-plaintext highlighter-rouge">(fips, year)</code>; FK → <code class="language-plaintext highlighter-rouge">name.fips</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">income(fips, income, year)</code></td>
+      <td>One published county/year observation; PK <code class="language-plaintext highlighter-rouge">(fips, year)</code>; FK → <code class="language-plaintext highlighter-rouge">name.fips</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The full FIPS is <strong>two state digits + three county digits</strong>, kept as text. The code below converts each component to digits and pads it to the correct width. For example, <code class="language-plaintext highlighter-rouge">51</code> and <code class="language-plaintext highlighter-rouge">059</code> become <code class="language-plaintext highlighter-rouge">51059</code>; <code class="language-plaintext highlighter-rouge">01</code> and <code class="language-plaintext highlighter-rouge">001</code> become <code class="language-plaintext highlighter-rouge">01001</code>. <a href="https://www.census.gov/programs-surveys/geography/guidance/geo-identifiers.html">GEOIDs</a></p>
+
+<h3 id="cell-5--first-real-database-write-save-the-census-county-names">Cell 5 — First real database write: save the Census county names</h3>
+
+<p><strong>This is the start of the actual lab loading, not a demonstration/test.</strong> Loop over the county-directory records already fetched in Cell 4; construct FIPS, remove the trailing state label, and save those county names once. No manually invented county is added. The directory is loaded once, including counties without any annual observations.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="n">fips</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'state'</span><span class="p">])</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'county'</span><span class="p">])</span><span class="si">:</span><span class="mi">03</span><span class="n">d</span><span class="si">}</span><span class="s">"</span>
+    <span class="n">county_name</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">"NAME"</span><span class="p">].</span><span class="n">rsplit</span><span class="p">(</span><span class="s">", "</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s">"""INSERT INTO public.name (fips, name)
+           VALUES (%s, %s)
+           ON CONFLICT (fips) DO NOTHING;"""</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">fips</span><span class="p">,</span> <span class="n">county_name</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">conn</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20141953.png" alt="Instructor Colab screenshot of the county-name loading loop and commit." /></p>
+
+<p><strong>Why this one text INSERT still passes values separately:</strong> county labels are text and can contain apostrophes. Let the driver quote them correctly. This is not Python <code class="language-plaintext highlighter-rouge">%</code> formatting. The numeric population/income loops below use f-strings, after converting the values to integers and constructing a digits-only FIPS. Do not copy that numeric shortcut for arbitrary text or user input; driver parameters remain the general-purpose method. <a href="https://www.psycopg.org/docs/usage.html">Psycopg parameters</a></p>
+
+<p>For example, <code class="language-plaintext highlighter-rouge">"Fairfax County, Virginia".rsplit(", ", 1)[0]</code> produces <code class="language-plaintext highlighter-rouge">"Fairfax County"</code>. The split removes only the final state suffix; <code class="language-plaintext highlighter-rouge">County</code> and <code class="language-plaintext highlighter-rouge">city</code> remain part of the county label.</p>
+
+<p><strong>Do not store the trailing state name.</strong> <code class="language-plaintext highlighter-rouge">name</code> gets one row per FIPS, not a fresh copy for every year. No state table is added.</p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142006.png" alt="Studio preview of the county-name table." /></p>
+
+<p><em>After the real name-loading cell, Studio shows county labels without the trailing state. This is a read-only view of the instructor’s saved records.</em></p>
+
+<h3 id="why-two-observation-tables">Why two observation tables?</h3>
+
+<p>We keep the two tables already built in Week 4; they will provide a useful JOIN example next week. A single <code class="language-plaintext highlighter-rouge">(fips, year, population, income)</code> table can also be valid when both measurements share the same grain. Normalization does not require every number to have its own table. We are not redesigning the database in this lab.</p>
+
+<h2 id="07--collect-and-insert-population-one-survey-year-at-a-time">07 — Collect and insert population, one survey year at a time</h2>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/response-to-tables.svg" alt="One county name links to population and income observations across multiple release years." /></p>
+
+<h3 id="cell-6--annual-population-loop">Cell 6 — Annual population loop</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">YEARS</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Collecting population: </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">acs1</span><span class="p">.</span><span class="n">state_county</span><span class="p">(</span>
+            <span class="s">"B01003_001E"</span><span class="p">,</span> <span class="n">STATE</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span> <span class="n">Census</span><span class="p">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">year</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="n">UnsupportedYearException</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s">: this dataset/year is not supported; no rows inserted."</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+        <span class="n">fips</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'state'</span><span class="p">])</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'county'</span><span class="p">])</span><span class="si">:</span><span class="mi">03</span><span class="n">d</span><span class="si">}</span><span class="s">"</span>
+        <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">"B01003_001E"</span><span class="p">])</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""INSERT INTO public.population (fips, population, year)
+                  VALUES ('</span><span class="si">{</span><span class="n">fips</span><span class="si">}</span><span class="s">', </span><span class="si">{</span><span class="n">population</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s">)
+                  ON CONFLICT (fips, year) DO NOTHING;"""</span>
+        <span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+
+    <span class="n">conn</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Finished population year </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span><span class="si">}</span><span class="s"> source records"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">state_county(variable, STATE.fips, Census.ALL, year=year)</code> is the library’s named county-request helper. For a supported year it builds the same geography request as <code class="language-plaintext highlighter-rouge">get(variable, GEO, year=year)</code>. The helper also reports an unsupported dataset/year through <code class="language-plaintext highlighter-rouge">UnsupportedYearException</code>. <a href="https://github.com/datamade/census">Library methods</a></p>
+
+<p><strong>Every year in <code class="language-plaintext highlighter-rouge">YEARS</code> is passed to the helper.</strong> The small <code class="language-plaintext highlighter-rouge">try/except</code> handles only that specific unsupported-year result, prints a message, and continues. It does not hide network, key, database, or other API errors. There is no year-specific exclusion in the loop. Review any gap with SQL and the source documentation.</p>
+
+<p>The outer loop selects a year. The inner loop inserts that year’s counties. <code class="language-plaintext highlighter-rouge">conn.commit()</code> is outside the inner loop but inside the outer loop: it saves one year’s population batch. The column is <code class="language-plaintext highlighter-rouge">population</code>, matching your Week 4 table.</p>
+
+<p><code class="language-plaintext highlighter-rouge">len(records)</code> is the number of source rows returned, <strong>not proof that this many new rows were inserted</strong>; repeat runs may skip existing keys.</p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142231.png" alt="Instructor population loop with per-release source-record progress." /></p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142240.png" alt="Studio displays saved population observations with fips, population, and year." /></p>
+
+<p><em>The displayed rows are a preview, not a completeness test. Without ORDER BY, the returned row order is not guaranteed.</em></p>
+
+<h2 id="08--collect-and-insert-income-using-the-same-pattern">08 — Collect and insert income using the same pattern</h2>
+
+<h3 id="cell-7--annual-income-loop">Cell 7 — Annual income loop</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">YEARS</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Collecting income: </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">acs1</span><span class="p">.</span><span class="n">state_county</span><span class="p">(</span>
+            <span class="s">"B19013_001E"</span><span class="p">,</span> <span class="n">STATE</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span> <span class="n">Census</span><span class="p">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">year</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="n">UnsupportedYearException</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s">: this dataset/year is not supported; no rows inserted."</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+        <span class="n">fips</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'state'</span><span class="p">])</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'county'</span><span class="p">])</span><span class="si">:</span><span class="mi">03</span><span class="n">d</span><span class="si">}</span><span class="s">"</span>
+        <span class="n">income</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">"B19013_001E"</span><span class="p">])</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""INSERT INTO public.income (fips, income, year)
+                  VALUES ('</span><span class="si">{</span><span class="n">fips</span><span class="si">}</span><span class="s">', </span><span class="si">{</span><span class="n">income</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s">)
+                  ON CONFLICT (fips, year) DO NOTHING;"""</span>
+        <span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+
+    <span class="n">conn</span><span class="p">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Finished income year </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span><span class="si">}</span><span class="s"> source records"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">B19013_001E</code> is <strong>median household income</strong>, not salary, total income, or per-capita income. Both measurement tables use the same county-level geography, ACS 1-year product, and study-year range. <a href="https://api.census.gov/data/2024/acs/acs1/variables/B19013_001E.html">Income definition</a></p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142330.png" alt="Colab income collection and progress output." /></p>
+
+<p><em>Use the progress output to see which requests completed.</em></p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142345.png" alt="Studio displays saved income observations with fips, income, and year." /></p>
+
+<p><em>Inspect the income column and the corresponding FIPS and release year. Do not read a preview of rows as proof of full coverage.</em></p>
+
+<p>Keep the collection output for inspection. If a request or database statement fails for another reason, stop and ask for help; do not treat a failed request as proof that data does not exist. A missing or special measurement must not be changed to zero. Earlier committed batches remain saved.</p>
+
+<h2 id="09--close-the-cursor-and-connection-after-saving">09 — Close the cursor and connection after saving</h2>
+
+<h3 id="cell-8--close-this-notebooks-database-connection">Cell 8 — Close this notebook’s database connection</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cur</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142400.png" alt="Instructor Colab screenshot of closing the cursor and connection after committing." /></p>
+
+<p><code class="language-plaintext highlighter-rouge">cur.close()</code> closes the Python cursor. <code class="language-plaintext highlighter-rouge">conn.close()</code> ends this notebook’s database session. <strong>Neither deletes the database nor stops Cloud SQL.</strong> Committed rows remain available in Studio. Re-run the connection cell before using database code again.</p>
+
+<p>Closing is <strong>not</strong> a substitute for <code class="language-plaintext highlighter-rouge">conn.commit()</code>. In this autocommit-off connection, pending uncommitted changes are discarded when the connection closes. The main demo focuses on execute and commit; this final cell is simply cleanup. <a href="https://www.psycopg.org/docs/connection.html">Connection</a></p>
+
+<h2 id="10--mondays-finish-line">10 — Monday’s finish line</h2>
+
+<p><code class="language-plaintext highlighter-rouge">name</code> contains the county catalogue. <code class="language-plaintext highlighter-rouge">population</code> and <code class="language-plaintext highlighter-rouge">income</code> contain only the annual observations actually published for the requested years. <strong>No fixed county-count × year-count target is imposed.</strong> Compare the saved observations with the corresponding source responses, not with an assumed rectangular dataset.</p>
+
+<p>Allow the loops to finish and read their messages. Then use Studio to inspect the results. <strong>Lab 5 is due Tuesday, September 22.</strong> In Canvas, submit <strong>exactly two bare values</strong>: your current Public IPv4 (the same dotted-number format used in Lab 4) and the <strong>root URL of your assigned private IA340 repository under <code class="language-plaintext highlighter-rouge">JMU-Data</code></strong>. The two lines may appear in either order. Wednesday’s SQL practice is not part of Tuesday’s submission. <a href="/IA340/pr-preview/pr-35/assignments/lab-5/">Lab 5</a></p>
+
+<h3 id="save-mondays-completed-notebook-to-github">Save Monday’s completed notebook to GitHub</h3>
+
+<p>After the collection and commits finish, save the notebook in your own course GitHub repository using <strong>File → Save a copy to GitHub</strong>. Choose <strong>your assigned private IA340 repository under <code class="language-plaintext highlighter-rouge">JMU-Data</code></strong>, branch <strong><code class="language-plaintext highlighter-rouge">main</code></strong>, and file path <strong><code class="language-plaintext highlighter-rouge">lab5.ipynb</code></strong>; add a short commit message and confirm. Open the saved file in GitHub to check it is the latest version. This saves your code, not another copy of the database. <a href="https://colab.research.google.com/github/googlecolab/colabtools/blob/main/notebooks/colab-github-demo.ipynb">Colab and GitHub</a></p>
+
+<p>For Canvas, copy the <strong>repository root URL of your assigned private JMU-Data repository</strong>. Use the exact section pattern you received in Week 2:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IA340-1: https://github.com/JMU-Data/ia340-fa26-1-&lt;your-github-username&gt;
+IA340-2: https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;
+</code></pre></div></div>
+
+<p>The URL must stop at the repository name. <strong>Do not submit</strong> <code class="language-plaintext highlighter-rouge">/tree/main</code>, <code class="language-plaintext highlighter-rouge">/blob/main/lab5.ipynb</code>, the public <code class="language-plaintext highlighter-rouge">https://github.com/JMU-Data/IA340</code> course repository, a personal repository, or a Colab URL.</p>
+
+<p>Before saving, inspect code and outputs: remove any displayed IP, password, API key, activation link, or connection/API error that reveals those values. Keep only Secrets lookups and non-sensitive output. Never print <code class="language-plaintext highlighter-rouge">userdata.get(...)</code> values. Saving a notebook to GitHub does not publish the Secrets values unless your code or output has exposed them.</p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-16%20104823.png" alt="Instructor example of Copy to GitHub, with the notebook file path lab5.ipynb. Choose your own course repository, not the demonstration repository." /></p>
+
+<p><strong>Canvas requires exactly two bare values, one per line:</strong> the Public IPv4 address and the root URL of your assigned private <code class="language-plaintext highlighter-rouge">JMU-Data</code> IA340 repository. Their order does not matter. Both are required and are checked separately. No PR exercise is added.</p>
+
+<hr />
+
+<h1 id="wednesday-september-23--query-and-summarize-in-cloud-sql-studio">Wednesday, September 23 — Query and summarize in Cloud SQL Studio</h1>
+
+<p><strong>From this point onward, all query examples are SQL to run directly in Studio. No Colab, Python, cursor, or <code class="language-plaintext highlighter-rouge">fetchall()</code> is needed. Do not use Gemini.</strong></p>
+
+<h2 id="11--open-the-saved-database-and-ask-a-first-question">11 — Open the saved database and ask a first question</h2>
+
+<p>Open your Cloud SQL instance → <strong>Cloud SQL Studio</strong>. Sign in to database <code class="language-plaintext highlighter-rouge">postgres</code> with the existing database login. Use the Explorer to find <code class="language-plaintext highlighter-rouge">public.name</code>, <code class="language-plaintext highlighter-rouge">public.population</code>, and <code class="language-plaintext highlighter-rouge">public.income</code>. Type a query in the editor and click <strong>Run</strong>. <a href="https://docs.cloud.google.com/sql/docs/postgres/manage-data-using-studio">Studio instructions</a></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">LIMIT</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>This is a small preview, <strong>not</strong> the five largest populations. You are reading Monday’s saved records; you are not requesting them again from Census.</p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142607.png" alt="Instructor rehearsal of SELECT star, FROM public.population, and LIMIT 5 in Cloud SQL Studio." /></p>
+
+<h3 id="a-few-sql-writing-rules-before-we-continue">A few SQL writing rules before we continue</h3>
+
+<p>Use comments and line breaks to make SQL easy to read. A <strong>semicolon ends a statement</strong>; it is not required after every line. Studio supports multiple statements in an editor; select the statement(s) you intend to run and use Run. Do not assume a single click means that only the line under the cursor runs. <a href="https://www.postgresql.org/docs/18/sql-syntax-lexical.html">SQL structure</a> · <a href="https://docs.cloud.google.com/sql/docs/postgres/manage-data-using-studio">Studio</a></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Statement 1: preview the county labels.</span>
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">LIMIT</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="cm">/* Statement 2:
+   count population records for one release. */</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">county_count</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142642.png" alt="Two semicolon-separated SQL statements with comments; the displayed COUNT result for 2024 is 30." /></p>
+
+<p><strong>Whitespace between SQL tokens</strong>—spaces, tabs, and line breaks—can normally be varied for formatting. Do not remove required separators, change spaces inside a quoted name/value, or join SQL onto a <code class="language-plaintext highlighter-rouge">--</code> comment line: that comment lasts to the end of its line. SQL does not use Python-style indentation to define blocks.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>What you are writing</th>
+      <th>PostgreSQL rule</th>
+      <th>Class convention</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Keywords: <code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">FROM</code>, <code class="language-plaintext highlighter-rouge">WHERE</code></td>
+      <td>Not case-sensitive: <code class="language-plaintext highlighter-rouge">select</code>, <code class="language-plaintext highlighter-rouge">SELECT</code>, and <code class="language-plaintext highlighter-rouge">Select</code> all work</td>
+      <td>Write keywords in UPPERCASE for readability</td>
+    </tr>
+    <tr>
+      <td>Table/column names without quotes: <code class="language-plaintext highlighter-rouge">population</code>, <code class="language-plaintext highlighter-rouge">year</code></td>
+      <td>PostgreSQL folds unquoted identifiers to lowercase, so <code class="language-plaintext highlighter-rouge">POPULATION</code>, <code class="language-plaintext highlighter-rouge">Population</code>, and <code class="language-plaintext highlighter-rouge">population</code> resolve to the same unquoted name</td>
+      <td><strong>Always use lowercase table and column names, without double quotes</strong></td>
+    </tr>
+    <tr>
+      <td>Table/column names with double quotes: <code class="language-plaintext highlighter-rouge">"Population Total"</code></td>
+      <td>Double quotes preserve the identifier exactly, including capitalization and spaces</td>
+      <td>Avoid creating mixed-case or space-containing names. If an identifier was intentionally created that way, you must use the exact double-quoted form</td>
+    </tr>
+    <tr>
+      <td>Text values: <code class="language-plaintext highlighter-rouge">'Fairfax County'</code></td>
+      <td>Text/string literals use <strong>single quotes</strong></td>
+      <td>Use single quotes for text values and preserve the spelling, case, and spaces in the data</td>
+    </tr>
+    <tr>
+      <td>Numeric values: <code class="language-plaintext highlighter-rouge">2024</code>, <code class="language-plaintext highlighter-rouge">100000</code></td>
+      <td>Numbers do not need quotes</td>
+      <td>Write numeric values without quotes</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>SQL quotation marks are not interchangeable the way Python string quotes are.</strong></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">population</span>
+<span class="k">FROM</span> <span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">name</span>
+<span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">'Fairfax County'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">population</code>, <code class="language-plaintext highlighter-rouge">name</code>, and <code class="language-plaintext highlighter-rouge">year</code> are table/column identifiers. In this course, keep them lowercase and unquoted.</li>
+  <li><code class="language-plaintext highlighter-rouge">"Population Total"</code> would be a quoted identifier whose capitalization and space must match exactly.</li>
+  <li><code class="language-plaintext highlighter-rouge">'Fairfax County'</code> is a text value, so it uses <strong>single quotes</strong>.</li>
+  <li><code class="language-plaintext highlighter-rouge">2024</code> is numeric, so it uses no quotes.</li>
+</ul>
+
+<p>In PostgreSQL, <strong>double quotes (<code class="language-plaintext highlighter-rouge">"..."</code>) are for identifiers; single quotes (<code class="language-plaintext highlighter-rouge">'...'</code>) are for text values.</strong> <a href="https://www.postgresql.org/docs/18/sql-syntax-lexical.html">Identifiers and quotes</a></p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/query-anatomy.svg" alt="A SQL query annotated by SELECT, FROM, WHERE, ORDER BY and LIMIT." /></p>
+
+<h2 id="12--select-and-from-columns-and-a-table">12 — SELECT and FROM: columns and a table</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">SELECT</code> chooses the output columns. <code class="language-plaintext highlighter-rouge">FROM</code> names the table. <strong><code class="language-plaintext highlighter-rouge">SELECT *</code> means all columns from the table(s) named in <code class="language-plaintext highlighter-rouge">FROM</code>—NOT all tables in the database.</strong> With no <code class="language-plaintext highlighter-rouge">WHERE</code>, all source rows are eligible; <code class="language-plaintext highlighter-rouge">LIMIT 5</code> still limits the returned rows.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>This returns both <code class="language-plaintext highlighter-rouge">fips</code> and <code class="language-plaintext highlighter-rouge">name</code> from <code class="language-plaintext highlighter-rouge">public.name</code>. It does not read <code class="language-plaintext highlighter-rouge">population</code> or <code class="language-plaintext highlighter-rouge">income</code>. <a href="https://www.postgresql.org/docs/18/queries-select-lists.html">SELECT lists</a></p>
+
+<h3 id="interactive--choose-columns">Interactive — Choose columns</h3>
+
+<iframe src="/IA340/pr-preview/pr-35/assets/week-5/select-columns.html" title="SELECT: choose output columns" loading="lazy" style="width:100%;height:730px;border:1px solid #d0d7de;border-radius:8px;"></iframe>
+
+<p><a href="/IA340/pr-preview/pr-35/assets/week-5/select-columns.html">Open the SELECT demonstration separately</a></p>
+
+<p><strong>Predict:</strong> If you stop selecting <code class="language-plaintext highlighter-rouge">year</code>, does the database lose that column?</p>
+
+<h2 id="13--where-choose-rows">13 — WHERE: choose rows</h2>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/select-and-where.svg" alt="SELECT reduces output columns while WHERE filters matching rows; the source remains unchanged." /></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="nb">year</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="n">fips</span> <span class="o">=</span> <span class="s1">'51059'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Text FIPS needs quotes. Numeric values do not:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span>
+  <span class="k">AND</span> <span class="n">population</span> <span class="o">&gt;</span> <span class="mi">100000</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="interactive--watch-matching-rows-survive-the-filter">Interactive — Watch matching rows survive the filter</h3>
+
+<iframe src="/IA340/pr-preview/pr-35/assets/week-5/where-rows.html" title="WHERE comparisons and combined conditions" loading="lazy" style="width:100%;height:770px;border:1px solid #d0d7de;border-radius:8px;"></iframe>
+
+<p><a href="/IA340/pr-preview/pr-35/assets/week-5/where-rows.html">Open the WHERE demonstration separately</a></p>
+
+<h2 id="14--combine-conditions-use-an-interval-or-a-list">14 — Combine conditions; use an interval or a list</h2>
+
+<p><code class="language-plaintext highlighter-rouge">AND</code> requires both conditions. <code class="language-plaintext highlighter-rouge">OR</code> accepts either. Parentheses make the intended grouping clear.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span>
+  <span class="k">AND</span> <span class="p">(</span><span class="n">population</span> <span class="o">&lt;</span> <span class="mi">50000</span> <span class="k">OR</span> <span class="n">population</span> <span class="o">&gt;</span> <span class="mi">500000</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">BETWEEN</code> includes both endpoints:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">income</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">income</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span>
+  <span class="k">AND</span> <span class="n">income</span> <span class="k">BETWEEN</span> <span class="mi">60000</span> <span class="k">AND</span> <span class="mi">90000</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">IN</code> matches any member of a list:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="n">fips</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'51059'</span><span class="p">,</span> <span class="s1">'51107'</span><span class="p">)</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">fips</span><span class="p">,</span> <span class="nb">year</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>Try:</strong> Use the WHERE demonstration to compare <code class="language-plaintext highlighter-rouge">BETWEEN</code> with two conditions joined by <code class="language-plaintext highlighter-rouge">AND</code>.</p>
+
+<h2 id="15--order-by-and-limit-largest-versus-first">15 — ORDER BY and LIMIT: largest versus first</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">population</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">fips</span>
+<span class="k">LIMIT</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">DESC</code> means largest first; <code class="language-plaintext highlighter-rouge">ASC</code> means smallest first. The second sort column, <code class="language-plaintext highlighter-rouge">fips</code>, breaks ties. Without <code class="language-plaintext highlighter-rouge">ORDER BY</code>, SQL does not promise a row order. Sorting the result does not rearrange the stored table. <a href="https://www.postgresql.org/docs/18/queries-order.html">Sorting rows</a></p>
+
+<h3 id="interactive--sort-then-limit">Interactive — Sort, then limit</h3>
+
+<iframe src="/IA340/pr-preview/pr-35/assets/week-5/sort-limit.html" title="ORDER BY and LIMIT" loading="lazy" style="width:100%;height:760px;border:1px solid #d0d7de;border-radius:8px;"></iframe>
+
+<p><a href="/IA340/pr-preview/pr-35/assets/week-5/sort-limit.html">Open the sorting demonstration separately</a></p>
+
+<p><strong>Try:</strong> Change the query to return the five smallest income values for 2024.</p>
+
+<h2 id="16--like-find-a-name-by-a-pattern">16 — LIKE: find a name by a pattern</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">name</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">'Fairfax%'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">%</code> matches zero or more characters; <code class="language-plaintext highlighter-rouge">_</code> matches one character. For our ordinary English text examples, <code class="language-plaintext highlighter-rouge">LIKE</code> is case-sensitive. <a href="https://www.postgresql.org/docs/18/functions-matching.html">Pattern matching</a></p>
+
+<h3 id="select-one-state-by-its-fips-prefix">Select one state by its FIPS prefix</h3>
+
+<p>The stored county FIPS has <strong>five characters</strong>: the first two identify the state. Virginia is <code class="language-plaintext highlighter-rouge">51</code>, so all its county/county-equivalent codes start with <code class="language-plaintext highlighter-rouge">51</code>. <a href="https://www.census.gov/programs-surveys/geography/guidance/geo-identifiers.html">Geographic identifiers</a></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">name</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">WHERE</span> <span class="n">fips</span> <span class="k">LIKE</span> <span class="s1">'51%'</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">fips</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">'51%'</code> means <strong>starts with 51</strong>. This selects Virginia’s county records; it does not change or delete any data. Unlike matching a county-name fragment, this uses the known structure of the FIPS code. Keep FIPS as five-character text, including leading zeros.</p>
+
+<p><strong>Try:</strong> Compare the earlier <code class="language-plaintext highlighter-rouge">name LIKE 'Fairfax%'</code> query with <code class="language-plaintext highlighter-rouge">fips LIKE '51%'</code>. Which selects a name pattern, and which selects every stored Virginia county record? The same FIPS filter works in <code class="language-plaintext highlighter-rouge">population</code> and <code class="language-plaintext highlighter-rouge">income</code>; add <code class="language-plaintext highlighter-rouge">AND year = 2024</code> when you want only that release. A state prefix such as <code class="language-plaintext highlighter-rouge">'24%'</code> would select Maryland records, but returns no rows until those records have been collected.</p>
+
+<h3 id="interactive--change-the-text-pattern">Interactive — Change the text pattern</h3>
+
+<iframe src="/IA340/pr-preview/pr-35/assets/week-5/like-text.html" title="LIKE text patterns" loading="lazy" style="width:100%;height:770px;border:1px solid #d0d7de;border-radius:8px;"></iframe>
+
+<p><a href="/IA340/pr-preview/pr-35/assets/week-5/like-text.html">Open the LIKE demonstration separately</a></p>
+
+<p><strong>Try:</strong> Find names containing <code class="language-plaintext highlighter-rouge">city</code>. How is that different from a name beginning with <code class="language-plaintext highlighter-rouge">city</code>?</p>
+
+<p><strong>Check the actual labels first.</strong> County labels keep their type suffix, for example <code class="language-plaintext highlighter-rouge">Fairfax County</code>. A small county-equivalent such as Fairfax city may not be present in an ACS 1-year response; check the actual returned names. The offline LIKE demo may show a broader invented example table, not the publication list. Census <code class="language-plaintext highlighter-rouge">NAME</code> supplies the county label, and Monday’s code removes only the trailing state segment.</p>
+
+<p><strong>Pattern matching is exact about a pattern, but it does not identify a place for you.</strong> <code class="language-plaintext highlighter-rouge">LIKE 'Fairfax%'</code> matches both labels when both are present, but the annual data may include only one. Misspellings, capitalization, and different naming conventions can change matches. Use <code class="language-plaintext highlighter-rouge">WHERE fips = '51059'</code> for a precise county identifier; do not join datasets by a loose text pattern.</p>
+
+<p><strong>Performance depends on the pattern and index.</strong> A prefix such as <code class="language-plaintext highlighter-rouge">'Fairfax%'</code> can use an appropriate B-tree index in suitable conditions; a leading wildcard such as <code class="language-plaintext highlighter-rouge">'%fair%'</code> generally cannot use an ordinary B-tree prefix search. There is no reason to tune this small teaching database now. Indexes are a later topic. <a href="https://www.postgresql.org/docs/18/indexes-types.html">Pattern indexes</a></p>
+
+<h2 id="17--calculate-a-result-column-and-give-it-a-label">17 — Calculate a result column and give it a label</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">population</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">.</span><span class="mi">0</span> <span class="k">AS</span> <span class="n">population_thousands</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">population</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">fips</span>
+<span class="k">LIMIT</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">AS</code> labels the result column. <code class="language-plaintext highlighter-rouge">1000.0</code> keeps decimal division. This query does <strong>not</strong> add a column to the stored table. <a href="https://www.postgresql.org/docs/18/queries-select-lists.html">SELECT expressions</a></p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142840.png" alt="Studio calculates population_thousands for the five largest returned 2024 county-level estimates." /></p>
+
+<h2 id="18--aggregate-functions-turn-rows-into-a-summary">18 — Aggregate functions: turn rows into a summary</h2>
+
+<p><code class="language-plaintext highlighter-rouge">COUNT</code>, <code class="language-plaintext highlighter-rouge">SUM</code>, <code class="language-plaintext highlighter-rouge">AVG</code>, <code class="language-plaintext highlighter-rouge">MIN</code>, and <code class="language-plaintext highlighter-rouge">MAX</code> calculate a summary from a set of rows. They do not need <code class="language-plaintext highlighter-rouge">GROUP BY</code> to summarize the entire filtered set. <a href="https://www.postgresql.org/docs/18/tutorial-agg.html">Aggregate functions</a></p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/aggregation.svg" alt="Rows pass through WHERE, then COUNT, SUM, AVG, MIN, or MAX produces a summary." /></p>
+
+<p>Start with a count of the stored 2024 county-level observations:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">county_count</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Then summarize their populations:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="k">SUM</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="k">AS</span> <span class="n">covered_population</span><span class="p">,</span>
+    <span class="k">AVG</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="k">AS</span> <span class="n">mean_county_population</span><span class="p">,</span>
+    <span class="k">MIN</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="k">AS</span> <span class="n">smallest_population</span><span class="p">,</span>
+    <span class="k">MAX</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="k">AS</span> <span class="n">largest_population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">WHERE</code> chooses the input rows <strong>before</strong> the aggregate is calculated. On this Lab 5 database those rows are the Virginia county-level units <strong>covered by the selected annual product</strong>. <code class="language-plaintext highlighter-rouge">covered_population</code> is the sum of those covered counties, NOT total Virginia population. Do not compare changing-coverage sums as state growth; use a consistent set of counties or a separately requested state-level estimate. The result has one summary row, not one row per county. <code class="language-plaintext highlighter-rouge">COUNT(*)</code> counts rows; <code class="language-plaintext highlighter-rouge">COUNT(column)</code> counts non-NULL values. With no matching rows, <code class="language-plaintext highlighter-rouge">COUNT</code> returns 0 while these other aggregates return NULL.</p>
+
+<h3 id="interactive--filter-first-then-aggregate">Interactive — Filter first, then aggregate</h3>
+
+<iframe src="/IA340/pr-preview/pr-35/assets/week-5/aggregation.html" title="COUNT SUM AVG MIN MAX on filtered rows" loading="lazy" style="width:100%;height:860px;border:1px solid #d0d7de;border-radius:8px;"></iframe>
+
+<p><a href="/IA340/pr-preview/pr-35/assets/week-5/aggregation.html">Open the aggregation demonstration separately</a></p>
+
+<p>For income, be precise about what the values mean:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="k">MIN</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> <span class="k">AS</span> <span class="n">lowest_county_median</span><span class="p">,</span>
+    <span class="k">MAX</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> <span class="k">AS</span> <span class="n">highest_county_median</span><span class="p">,</span>
+    <span class="k">AVG</span><span class="p">(</span><span class="n">income</span><span class="p">)</span> <span class="k">AS</span> <span class="n">mean_of_county_medians</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">income</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="o">=</span> <span class="mi">2024</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>The average of county median household incomes is not Virginia’s median household income.</strong> Each stored income is already a median; averaging or summing medians does not recover the underlying household distribution. Do not label this output as the state median, and do not sum the income column as a state income total.</p>
+
+<h2 id="19--group-by-summarize-by-year-or-by-county">19 — GROUP BY: summarize by year or by county</h2>
+
+<p>We now have <strong>multiple survey years in the same table</strong>. <code class="language-plaintext highlighter-rouge">GROUP BY</code> defines the groups; the aggregate calculates one result per group. <a href="https://www.postgresql.org/docs/18/queries-table-expressions.html">Grouping</a></p>
+
+<p><strong>Question A: how many observations and how much population for each survey year?</strong></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="nb">year</span><span class="p">,</span>
+    <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">county_count</span><span class="p">,</span>
+    <span class="k">SUM</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="k">AS</span> <span class="n">covered_population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="n">fips</span> <span class="k">LIKE</span> <span class="s1">'51%'</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">year</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">year</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Compare the year groups with the requested range. Are any years missing? The count may differ by year because the published county set can change. <code class="language-plaintext highlighter-rouge">GROUP BY</code> does not create a zero row for an absent year. These sums cover only returned counties, not the whole state.</p>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20142952.png" alt="Studio example of grouping observations by year." /></p>
+
+<p><strong>Read the actual run above:</strong> the instructor’s population and income runs each returned <strong>30 county-level records in each of 2015–2019 and 2021–2024</strong>. Each observation table therefore contains <strong>270 rows across nine available years</strong>. The separate <code class="language-plaintext highlighter-rouge">name</code> table contains <strong>133 county identities</strong>. The screenshot is one observed run, not a fixed row-count rule for every state or product.</p>
+
+<p><code class="language-plaintext highlighter-rouge">COUNT(*)</code> here counts county/year rows. It does not count survey respondents. Studio’s page size (for example, 20 visible rows) and the earlier <code class="language-plaintext highlighter-rouge">LIMIT 5</code> preview do not limit the collection loop. Equal yearly counts do not by themselves prove that the county sets and values are identical.</p>
+
+<p><strong>Question B: what is each county’s average stored population estimate across the selected years?</strong></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="n">fips</span><span class="p">,</span>
+    <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">available_years</span><span class="p">,</span>
+    <span class="k">AVG</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="k">AS</span> <span class="n">mean_annual_population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="k">BETWEEN</span> <span class="mi">2015</span> <span class="k">AND</span> <span class="mi">2024</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">fips</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">mean_annual_population</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">fips</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20143023.png" alt="Studio example of grouping observations by county." /></p>
+
+<p>One output row now represents one FIPS. This is the arithmetic mean of that county’s stored <strong>annual estimates</strong>, not a new official population estimate. Check <code class="language-plaintext highlighter-rouge">available_years</code>: two counties can have different observed-year coverage. Do not assume every county has the same number of records.</p>
+
+<iframe src="/IA340/pr-preview/pr-35/assets/week-5/group-by.html" title="GROUP BY year versus GROUP BY county FIPS" loading="lazy" style="width:100%;height:860px;border:1px solid #d0d7de;border-radius:8px;"></iframe>
+
+<p><a href="/IA340/pr-preview/pr-35/assets/week-5/group-by.html">Open the GROUP BY demonstration separately</a></p>
+
+<h3 id="find-missing-years-after-collecting-the-data">Find missing years after collecting the data</h3>
+
+<p>Compare both query results with the <strong>2015–2024</strong> range you printed in Colab. <strong>Which year is absent? Is the same year absent from both tables?</strong> Do not assume that a missing group means a programming error—or that it means the population was zero.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="nb">year</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">published_county_rows</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="n">fips</span> <span class="k">LIKE</span> <span class="s1">'51%'</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">year</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">year</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="nb">year</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">published_county_rows</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">income</span>
+<span class="k">WHERE</span> <span class="n">fips</span> <span class="k">LIKE</span> <span class="s1">'51%'</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">year</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">year</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>Check a county by its FIPS.</strong> Run both statements for Harrisonburg city and compare the results:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">fips</span><span class="p">,</span> <span class="n">name</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">WHERE</span> <span class="n">fips</span> <span class="o">=</span> <span class="s1">'51660'</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="nb">year</span><span class="p">,</span> <span class="n">population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="n">fips</span> <span class="o">=</span> <span class="s1">'51660'</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">year</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>A county can be present in <code class="language-plaintext highlighter-rouge">name</code> but have no annual population records. Our name catalogue is independent of annual coverage. Next week’s <code class="language-plaintext highlighter-rouge">LEFT JOIN</code> will let us inspect all such counties together; a missing matching observation appears as <code class="language-plaintext highlighter-rouge">NULL</code> in the query result. It does <strong>not</strong> require inserting NULL placeholders or changing the existing table constraints. <a href="https://www.postgresql.org/docs/18/queries-table-expressions.html">Outer joins</a></p>
+
+<details>
+<summary>Instructor reveal — investigate the missing year and county coverage</summary>
+
+The standard **2020 ACS 1-year** product was not published because pandemic-related data-collection problems prevented it from meeting statistical quality standards. The loop encounters the library's unsupported-year result; it does not encode a special 2020 skip. This differs from a successful response with zero records. [Census explanation][acs-2020-quality]
+
+Standard ACS 1-year Detailed Tables generally cover areas with populations of 65,000 or more; Census also applies publication-continuity and data-quality rules. Use the published coverage, not a threshold applied to our stored population estimate, to decide which records should exist. [Published areas][acs-areas]
+
+**Harrisonburg city is a useful example.** It is present in the county directory but is below the standard 65,000 threshold. Census reports a 2020 Census count of **51,814** for the city. Its absence from this annual Detailed Tables collection does not mean it has zero population or that Census has no population data about it. Also, Harrisonburg city and Rockingham County are separate geographic units; a county or metropolitan-area value is not a substitute for the city value. [Harrisonburg QuickFacts][harrisonburg] · [County equivalents][acs-areas]
+
+For an unexpected absence, compare the source with the saved data before concluding it is a publication gap rather than an incomplete load.
+
+For the missing year, confirm directly in each observation table:
+
+```sql
+SELECT COUNT(*) AS rows_in_2020
+FROM public.population
+WHERE fips LIKE '51%' AND year = 2020;
+
+SELECT COUNT(*) AS rows_in_2020
+FROM public.income
+WHERE fips LIKE '51%' AND year = 2020;
+```
+
+Both should return zero for this source. That is not an estimate of zero population or zero income.
+
+</details>
+
+<h3 id="where-can-we-find-data-for-smaller-counties-or-cities">Where can we find data for smaller counties or cities?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Need</th>
+      <th>A source to consult</th>
+      <th>Important difference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Annual population for Harrisonburg or another small county/city</td>
+      <td><a href="https://www.census.gov/programs-surveys/popest/data/data-sets.html">Population Estimates Program (PEP) downloads</a></td>
+      <td>Annual population estimates, generally for July 1; use a consistent vintage and check whether you selected county or city geography.</td>
+    </tr>
+    <tr>
+      <td>Annual median household income for a small county or county-equivalent</td>
+      <td><a href="https://www.census.gov/programs-surveys/saipe/about.html">Small Area Income and Poverty Estimates (SAIPE)</a></td>
+      <td>Model-based annual estimates for counties/county equivalents, not the same product as ACS 1-year Detailed Tables. Not every ordinary incorporated city is a county equivalent.</td>
+    </tr>
+    <tr>
+      <td>Detailed survey statistics for small areas</td>
+      <td><a href="https://www.census.gov/programs-surveys/acs/guidance/estimates.html">ACS 5-year</a></td>
+      <td>Broader geographic coverage, but the estimate describes a five-year period, not one year.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>No extra collection is required for this lab.</strong> Keep our observation tables ACS 1-year only; do not fill a missing annual record with a different product. QuickFacts is also useful for looking up a place, but check each row’s source and date because one page can display multiple products and periods.</p>
+
+<h2 id="20--having-versus-where-filter-rows-then-filter-groups">20 — HAVING versus WHERE: filter rows, then filter groups</h2>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/where-having.svg" alt="WHERE filters input rows; GROUP BY and AVG summarize each county; HAVING filters the resulting county groups." /></p>
+
+<p><strong>WHERE chooses input rows before grouping. HAVING chooses groups after aggregation.</strong> <a href="https://www.postgresql.org/docs/18/queries-table-expressions.html">WHERE and HAVING</a></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="n">fips</span><span class="p">,</span>
+    <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">available_years</span><span class="p">,</span>
+    <span class="k">AVG</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="k">AS</span> <span class="n">mean_annual_population</span>
+<span class="k">FROM</span> <span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="k">BETWEEN</span> <span class="mi">2015</span> <span class="k">AND</span> <span class="mi">2024</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">fips</span>
+<span class="k">HAVING</span> <span class="k">AVG</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100000</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">mean_annual_population</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">fips</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><img src="/IA340/pr-preview/pr-35/assets/week-5/screenshots/Screenshot%202026-09-18%20143131.png" alt="Studio example of filtering county groups with HAVING." /></p>
+
+<p>Read it as: keep the selected years → group by county → compute each mean → keep counties whose mean exceeds 100,000 → sort the result. This describes the logical meaning, not PostgreSQL’s physical execution plan.</p>
+
+<p><code class="language-plaintext highlighter-rouge">WHERE population &gt; 100000</code> would mean something different: discard individual observations below the threshold <strong>before</strong> calculating the average. Do not write <code class="language-plaintext highlighter-rouge">WHERE AVG(population) &gt; 100000</code> at this query level.</p>
+
+<iframe src="/IA340/pr-preview/pr-35/assets/week-5/where-having.html" title="WHERE rows and HAVING groups: step-by-step" loading="lazy" style="width:100%;height:960px;border:1px solid #d0d7de;border-radius:8px;"></iframe>
+
+<p><a href="/IA340/pr-preview/pr-35/assets/week-5/where-having.html">Open the WHERE / HAVING demonstration separately</a></p>
+
+<p><strong>Predict:</strong> Which changes if you remove an early year with WHERE? Which changes if you increase the HAVING threshold? Does either operation delete data?</p>
+
+<h2 id="21--practice-in-studio">21 — Practice in Studio</h2>
+
+<p>Use Monday’s <strong>ACS 1-year</strong> data in Studio. Do not run the illustrated INSERT. No Gemini is needed.</p>
+
+<ol>
+  <li>Find the stored name for Fairfax County, FIPS <code class="language-plaintext highlighter-rouge">51059</code>.</li>
+  <li>Show 2024 population records below 100,000, largest first. Does this list include every small county in Virginia? Explain using publication coverage.</li>
+  <li>Show the five highest 2024 median household income estimates in the available county data.</li>
+  <li>Find names containing <code class="language-plaintext highlighter-rouge">County</code>. Then select Virginia records with <code class="language-plaintext highlighter-rouge">fips LIKE '51%'</code>.</li>
+  <li>Show 2024 income observations for Fairfax County (<code class="language-plaintext highlighter-rouge">51059</code>) and Loudoun County (<code class="language-plaintext highlighter-rouge">51107</code>).</li>
+  <li>Count the covered 2024 counties and sum their population estimates. Explain why the sum is not total Virginia population.</li>
+  <li>List the years and row counts in population and income. Which year in 2015–2024 is absent from both? Why?</li>
+  <li>Calculate each county’s mean annual population and number of available years. Do all counties have the same number of observations?</li>
+  <li>Keep counties whose mean annual population exceeds 100,000. Explain the difference between WHERE and HAVING.</li>
+  <li>Compare Harrisonburg city (<code class="language-plaintext highlighter-rouge">51660</code>) in <code class="language-plaintext highlighter-rouge">name</code> and <code class="language-plaintext highlighter-rouge">population</code>. Can a county exist in the name catalogue but have no annual observations? Explain what a grouped query over population alone cannot show.</li>
+  <li>Retrieve Fairfax County’s population in 2023 and 2024. Compute <code class="language-plaintext highlighter-rouge">(new - old) / old * 100</code> from the two returned values. Why must you not label 2019→2021 as a one-year change?</li>
+</ol>
+
+<p>For each query, predict columns and rows, run it, and explain the result. These are <strong>Wednesday classroom exercises</strong>, not extra work due Tuesday. Missing source coverage is not a failed import; compare with the source before drawing that conclusion.</p>
+
+<details>
+<summary>Instructor reveal — possible SQL answers</summary>
+
+```sql
+-- 1
+SELECT fips, name
+FROM public.name
+WHERE fips = '51059';
+
+-- 2: only the published annual subset.
+SELECT fips, population
+FROM public.population
+WHERE fips LIKE '51%' AND year = 2024 AND population &lt; 100000
+ORDER BY population DESC, fips;
+
+-- 3
+SELECT fips, income
+FROM public.income
+WHERE fips LIKE '51%' AND year = 2024
+ORDER BY income DESC, fips
+LIMIT 5;
+
+-- 4
+SELECT fips, name FROM public.name WHERE name LIKE '%County%';
+SELECT fips, name FROM public.name WHERE fips LIKE '51%' ORDER BY fips;
+
+-- 5
+SELECT fips, income, year
+FROM public.income
+WHERE year = 2024 AND fips IN ('51059', '51107')
+ORDER BY fips;
+
+-- 6: not a statewide total.
+SELECT COUNT(*) AS covered_counties, SUM(population) AS covered_population
+FROM public.population
+WHERE fips LIKE '51%' AND year = 2024;
+
+-- 7: compare both results against the requested study-year list.
+SELECT year, COUNT(*) AS county_count
+FROM public.population
+WHERE fips LIKE '51%'
+GROUP BY year ORDER BY year;
+
+SELECT year, COUNT(*) AS county_count
+FROM public.income
+WHERE fips LIKE '51%'
+GROUP BY year ORDER BY year;
+
+-- 8
+SELECT fips, COUNT(DISTINCT year) AS available_years,
+       AVG(population) AS mean_annual_population
+FROM public.population
+WHERE fips LIKE '51%' AND year BETWEEN 2015 AND 2024
+GROUP BY fips ORDER BY fips;
+
+-- 9
+SELECT fips, AVG(population) AS mean_annual_population
+FROM public.population
+WHERE fips LIKE '51%' AND year BETWEEN 2015 AND 2024
+GROUP BY fips
+HAVING AVG(population) &gt; 100000
+ORDER BY mean_annual_population DESC, fips;
+
+-- 10: a county identity and its available observations are separate.
+SELECT fips, name
+FROM public.name
+WHERE fips = '51660';
+
+SELECT year, population
+FROM public.population
+WHERE fips = '51660'
+ORDER BY year;
+
+-- 11: two available annual estimates for the SAME county.
+SELECT year, population
+FROM public.population
+WHERE fips = '51059' AND year IN (2023, 2024)
+ORDER BY year;
+```
+
+2020 is not a zero-population year; its standard annual product was not published. Other source/loaded-data gaps require checking source availability. In question 11, describe a percentage change in annual ACS estimates, not proof of a statistically significant change. For income, raw year-specific dollars give nominal change; real-income comparisons need a common price year. [Comparison guidance][acs-2024-comparison]
+
+</details>
+
+<hr />
+
+<h2 id="sources">Sources</h2>
+
+<p><a href="https://www.census.gov/data/developers/data-sets/acs-1year.html">Census ACS 1-year data</a> · <a href="https://api.census.gov/data/2024/acs/acs1/examples.html">Census API examples</a> · <a href="https://www.census.gov/library/video/2026/adrm/requesting-a-census-data-api-key.html">Census API key</a> · <a href="https://www.census.gov/programs-surveys/geography/guidance/geo-identifiers.html">Census geographic identifiers</a> · <a href="https://www.psycopg.org/docs/usage.html">Psycopg basics</a> · <a href="https://www.postgresql.org/docs/18/sql-insert.html">PostgreSQL INSERT</a> · <a href="https://www.postgresql.org/docs/18/ddl-constraints.html">PostgreSQL constraints</a> · <a href="https://docs.cloud.google.com/sql/docs/postgres/manage-data-using-studio">Cloud SQL Studio</a> · <a href="https://www.postgresql.org/docs/18/queries-select-lists.html">SELECT</a> · <a href="https://www.postgresql.org/docs/18/queries-order.html">ORDER BY</a> · <a href="https://www.postgresql.org/docs/18/functions-matching.html">LIKE</a></p>
+
+<hr />
+
+<div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+  <a href="/IA340/pr-preview/pr-35/">← Return to Course Home</a>
+  <span style="color: #d0d7de;">|</span>
+  <a href="/IA340/pr-preview/pr-35/assignments/lab-5/">Go to Lab 5 Checkpoint Instructions →</a>
+</div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

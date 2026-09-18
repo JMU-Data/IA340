@@ -22,7 +22,7 @@
 {"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Module 5: Collect Census Data and Query Your Database - IA 340","url":"https://jmu-data.github.io/IA340/pr-preview/pr-35/modules/module-5/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/IA340/pr-preview/pr-35/assets/css/style.css?v=7233a7b0531a9e26efa8d6fdda849ae9f57d471a">
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-35/assets/css/style.css?v=bd604f65e7f0868b20bffe3e0ae7f9f05ef3ef85">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -1481,58 +1481,99 @@ ORDER BY mean_annual_population DESC, fips;</code></pre>
       <div class="slide-text-large">
         <p><strong>Classroom practice only &mdash; not graded; no submission required. No Gemini.</strong></p>
         <ol style="font-size: 0.92rem; line-height: 1.5; padding-left: 1.4rem;">
-          <li>Find the stored name for Fairfax County (FIPS <code>51059</code>).</li>
-          <li>Show 2024 population records below 100,000, largest first.</li>
-          <li>Show the five highest 2024 median household income estimates.</li>
-          <li>Find names containing <code>County</code>; then find Virginia records with <code>fips LIKE '51%'</code>.</li>
-          <li>Show 2024 income for Fairfax County (<code>51059</code>) and Loudoun County (<code>51107</code>).</li>
-          <li>Count covered 2024 counties and sum their population. Explain why the sum is not total Virginia population.</li>
-          <li>List years and row counts in population and income. Which year is absent?</li>
-          <li>Calculate each county's mean annual population and number of available years.</li>
-          <li>Keep counties whose mean annual population exceeds 100,000 using <code>HAVING</code>.</li>
-          <li>Compare Harrisonburg city (<code>51660</code>) in <code>name</code> vs <code>population</code>.</li>
-          <li>Compute percentage change for Fairfax County from 2023 to 2024.</li>
+          <li>Find the stored name for Fairfax County, FIPS <code>51059</code>.</li>
+          <li>Show 2024 population records below 100,000, largest first. Does this list include every small county in Virginia? Explain using publication coverage.</li>
+          <li>Show the five highest 2024 median household income estimates in the available county data.</li>
+          <li>Find names containing <code>County</code>. Then select Virginia records with <code>fips LIKE '51%'</code>.</li>
+          <li>Show 2024 income observations for Fairfax County (<code>51059</code>) and Loudoun County (<code>51107</code>).</li>
+          <li>Count the covered 2024 counties and sum their population estimates. Explain why the sum is not total Virginia population.</li>
+          <li>List the years and row counts in population and income. Which year in 2015&ndash;2024 is absent from both? Why?</li>
+          <li>Calculate each county's mean annual population and number of available years. Do all counties have the same number of observations?</li>
+          <li>Keep counties whose mean annual population exceeds 100,000. Explain the difference between WHERE and HAVING.</li>
+          <li>Compare Harrisonburg city (<code>51660</code>) in <code>name</code> and <code>population</code>. Can a county exist in the name catalogue but have no annual observations? Explain what a grouped query over population alone cannot show.</li>
         </ol>
       </div>
     </div>
 
 
-    <!-- SLIDE 57: 21 — Practice Solutions Reveal -->
+    <!-- SLIDE 57: 21 — Practice Solutions (1–5) -->
     <div class="slide" data-slide="57">
-      <span class="slide-badge">Solutions</span>
-      <h2>21 &mdash; Practice query solutions</h2>
+      <span class="slide-badge">Solutions (1–5)</span>
+      <h2>21 &mdash; Practice query solutions (1&ndash;5)</h2>
       <div class="slide-text-large">
-        <pre><code class="language-sql">-- 1: Fairfax name
-SELECT fips, name FROM public.name WHERE fips = '51059';
+        <pre><code class="language-sql">-- 1: Stored name for Fairfax County
+SELECT fips, name
+FROM public.name
+WHERE fips = '51059';
 
--- 2: Small published counties in 2024
-SELECT fips, population FROM public.population
+-- 2: Small published counties in 2024 (only published annual subset)
+SELECT fips, population
+FROM public.population
 WHERE fips LIKE '51%' AND year = 2024 AND population &lt; 100000
 ORDER BY population DESC, fips;
 
--- 3: Top 5 income in 2024
-SELECT fips, income FROM public.income
+-- 3: Top 5 median household income in 2024
+SELECT fips, income
+FROM public.income
 WHERE fips LIKE '51%' AND year = 2024
-ORDER BY income DESC, fips LIMIT 5;
+ORDER BY income DESC, fips
+LIMIT 5;
 
--- 6: Covered population sum (not statewide total)
-SELECT COUNT(*) AS covered_counties, SUM(population) AS covered_population
-FROM public.population WHERE fips LIKE '51%' AND year = 2024;
+-- 4: Names containing 'County' and Virginia records by FIPS
+SELECT fips, name FROM public.name WHERE name LIKE '%County%';
+SELECT fips, name FROM public.name WHERE fips LIKE '51%' ORDER BY fips;
 
--- 7: Group by year
-SELECT year, COUNT(*) AS county_count FROM public.population
-WHERE fips LIKE '51%' GROUP BY year ORDER BY year;
-
--- 9: Having threshold
-SELECT fips, AVG(population) AS mean_pop FROM public.population
-WHERE fips LIKE '51%' AND year BETWEEN 2015 AND 2024
-GROUP BY fips HAVING AVG(population) &gt; 100000 ORDER BY mean_pop DESC;</code></pre>
+-- 5: 2024 income for Fairfax (51059) and Loudoun (51107)
+SELECT fips, income, year
+FROM public.income
+WHERE year = 2024 AND fips IN ('51059', '51107')
+ORDER BY fips;</code></pre>
       </div>
     </div>
 
 
-    <!-- SLIDE 58: Summary & Resources -->
+    <!-- SLIDE 58: 21 — Practice Solutions (6–10) -->
     <div class="slide" data-slide="58">
+      <span class="slide-badge">Solutions (6–10)</span>
+      <h2>21 &mdash; Practice query solutions (6&ndash;10)</h2>
+      <div class="slide-text-large">
+        <pre><code class="language-sql">-- 6: Covered population sum (published sample, not statewide total)
+SELECT COUNT(*) AS covered_counties, SUM(population) AS covered_population
+FROM public.population
+WHERE fips LIKE '51%' AND year = 2024;
+
+-- 7: Row counts by year (2020 standard product not published)
+SELECT year, COUNT(*) AS county_count FROM public.population
+WHERE fips LIKE '51%' GROUP BY year ORDER BY year;
+
+SELECT year, COUNT(*) AS county_count FROM public.income
+WHERE fips LIKE '51%' GROUP BY year ORDER BY year;
+
+-- 8: Mean annual population and available years per county
+SELECT fips, COUNT(DISTINCT year) AS available_years,
+       AVG(population) AS mean_annual_population
+FROM public.population
+WHERE fips LIKE '51%' AND year BETWEEN 2015 AND 2024
+GROUP BY fips ORDER BY fips;
+
+-- 9: Counties whose mean annual population exceeds 100,000 (HAVING)
+SELECT fips, AVG(population) AS mean_annual_population
+FROM public.population
+WHERE fips LIKE '51%' AND year BETWEEN 2015 AND 2024
+GROUP BY fips
+HAVING AVG(population) &gt; 100000
+ORDER BY mean_annual_population DESC, fips;
+
+-- 10: Harrisonburg city (51660) in name vs population (identity vs annual coverage)
+SELECT fips, name FROM public.name WHERE fips = '51660';
+SELECT year, population FROM public.population WHERE fips = '51660' ORDER BY year;</code></pre>
+        <p style="font-size: 0.9em; color: #57606a;"><em>Harrisonburg city is the final practice question. Note that percentage-change and growth-rate analysis is deferred to next week's notebook/Python work.</em></p>
+      </div>
+    </div>
+
+
+    <!-- SLIDE 59: Summary & Resources -->
+    <div class="slide" data-slide="59">
       <span class="slide-badge">Summary</span>
       <h2>Week 5 Summary &amp; Reference Sources</h2>
       <div class="slide-text-large">

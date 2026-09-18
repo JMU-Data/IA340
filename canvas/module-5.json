@@ -26,31 +26,75 @@
       "title": "Lab 5 \u2014 Collect Census Data into Your Database",
       "assignment": "lab-5",
       "use_for_grading": true,
-      "scoring": "free_form",
+      "scoring": "ratings",
       "criteria": [
         {
           "key": "database-access",
           "description": "Database access",
           "points": 20.0,
-          "ratings": []
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
         },
         {
           "key": "github-repo-collection-workflow",
           "description": "GitHub repository + Python collection workflow",
           "points": 20.0,
-          "ratings": []
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
         },
         {
           "key": "data-completeness",
           "description": "Data completeness",
           "points": 30.0,
-          "ratings": []
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
         },
         {
           "key": "data-structure-and-consistency",
           "description": "Data structure and consistency",
           "points": 30.0,
-          "ratings": []
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
         }
       ]
     }

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 5: Collect Census Data into Your Database - IA 340 | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Lab 5: Collect Census Data into Your Database - IA 340" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
+<meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-37/assignments/lab-5/" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-37/assignments/lab-5/" />
+<meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 5: Collect Census Data into Your Database - IA 340" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Lab 5: Collect Census Data into Your Database - IA 340","url":"https://jmu-data.github.io/IA340/pr-preview/pr-37/assignments/lab-5/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-37/assets/css/style.css?v=3fc0923087cc525f14d743829f001249e73ec72b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/IA340/pr-preview/pr-37/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://jmu-data.github.io/IA340/pr-preview/pr-37/">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</a></h1>
+      
+
+      <h1 id="lab-5-collect-census-data-into-your-database">Lab 5: Collect Census Data into Your Database</h1>
+
+<nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
+  <a href="/IA340/pr-preview/pr-37/" style="text-decoration: none; color: #57606a;">Home</a>
+  <a href="/IA340/pr-preview/pr-37/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-4/" style="text-decoration: none; color: #57606a;">Module 4</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/lab-4/" style="text-decoration: none; color: #57606a;">Lab 4</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-5/" style="text-decoration: none; color: #57606a;">Module 5</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/lab-5/" style="text-decoration: none; font-weight: 600; color: #0969da;">Lab 5</a>
+</nav>
+
+<p><strong>IA 340 · Dr. Xuebin Wei · 100 points</strong><br />
+<strong>Due Tuesday, September 22, 2026. See Canvas for the exact time.</strong></p>
+
+<p>Use Monday’s <a href="/IA340/pr-preview/pr-37/modules/module-5/">lecture</a> to collect Virginia county data in your existing Cloud SQL database. <strong>Do not use Gemini.</strong></p>
+
+<h2 id="complete-the-lab">Complete the lab</h2>
+
+<p>Connect from Colab using Secrets. Use <code class="language-plaintext highlighter-rouge">states.VA</code> to select Virginia, load the complete county-name catalogue, and collect <strong>ACS 1-year population and median household income for 2015–2024</strong>. Work through the entire year range and retain the source’s actual coverage; do not invent records for unpublished years or counties.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Table</th>
+      <th>Required contents</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>County names and five-character text FIPS from the designated county directory; omit the trailing state name.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">population</code></td>
+      <td>Published annual population estimates with the correct FIPS and year.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">income</code></td>
+      <td>Published annual median household income estimates with the correct FIPS and year.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Use the existing three tables and keys. Commit your data and inspect it in Studio. A county may appear in <code class="language-plaintext highlighter-rouge">name</code> without an observation in an annual table; do not insert NULL or zero placeholder rows.</p>
+
+<p>Save the completed <code class="language-plaintext highlighter-rouge">lab5.ipynb</code> on <code class="language-plaintext highlighter-rouge">main</code> in your assigned private IA340 repository under <code class="language-plaintext highlighter-rouge">JMU-Data</code>. Keep IP addresses and personal API keys out of code, screenshots, and outputs. Read passwords and keys from Colab Secrets. The illustrative INSERT is an offline demonstration, not a separate database task.</p>
+
+<h2 id="submit-exactly-two-items-in-canvas">Submit EXACTLY TWO items in Canvas</h2>
+
+<p>Your Canvas text submission must contain <strong>exactly two values, one per line</strong>:</p>
+
+<ol>
+  <li>your Cloud SQL instance’s current <strong>Public IPv4 address</strong>; and</li>
+  <li>the <strong>root URL of your assigned private IA340 repository in the <code class="language-plaintext highlighter-rouge">JMU-Data</code> organization</strong>.</li>
+</ol>
+
+<p>The two lines may appear in either order. Do not add labels or other text.</p>
+
+<h3 id="public-ipv4--exact-format">Public IPv4 — exact format</h3>
+
+<p>Paste only the four-part IPv4 address, exactly as in Lab 4. <strong>Format example only:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>203.0.113.10
+</code></pre></div></div>
+
+<p>This documentation address is only an example. Submit your own Cloud SQL <strong>Public IP address</strong>. Do <strong>not</strong> add <code class="language-plaintext highlighter-rouge">https://</code>, <code class="language-plaintext highlighter-rouge">postgresql://</code>, <code class="language-plaintext highlighter-rouge">:5432</code>, <code class="language-plaintext highlighter-rouge">/32</code>, a database name, username, password, or a Google Cloud Console URL.</p>
+
+<h3 id="github-repository--exact-format">GitHub repository — exact format</h3>
+
+<p>Submit the <strong>root URL of the private IA340 repository assigned to you under <code class="language-plaintext highlighter-rouge">JMU-Data</code></strong>. Use the format for your course section:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IA340-1: https://github.com/JMU-Data/ia340-fa26-1-&lt;your-github-username&gt;
+IA340-2: https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;
+</code></pre></div></div>
+
+<p>For example, if your GitHub username were <code class="language-plaintext highlighter-rouge">student123</code> and you were in IA340-1, the required format would be:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/JMU-Data/ia340-fa26-1-student123
+</code></pre></div></div>
+
+<p><strong>The URL must stop at the repository name.</strong> These are NOT valid submissions:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/JMU-Data/ia340-fa26-1-student123/tree/main
+https://github.com/JMU-Data/ia340-fa26-1-student123/blob/main/lab5.ipynb
+https://github.com/JMU-Data/IA340
+https://github.com/student123/some-repository
+https://colab.research.google.com/...
+</code></pre></div></div>
+
+<p>Do not submit the <code class="language-plaintext highlighter-rouge">main</code> branch URL, a notebook/file URL, the public <code class="language-plaintext highlighter-rouge">JMU-Data/IA340</code> course-materials repository, a personal GitHub repository, or a Colab URL. <strong>A URL that points to the correct work but does not use the required repository-root format is still an invalid submission.</strong></p>
+
+<p>A correct Canvas submission therefore contains two bare values, such as:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>203.0.113.10
+https://github.com/JMU-Data/ia340-fa26-1-student123
+</code></pre></div></div>
+
+<p>The instructor will use the Public IP to inspect the saved database and the assigned private repository to verify that <code class="language-plaintext highlighter-rouge">lab5.ipynb</code> and the required collection code are present. <strong>Both items are required; a missing or invalid item loses the points associated with that part of the rubric.</strong></p>
+
+<p>Keep the database available through October 12, as directed in Lab 4.</p>
+
+<h2 id="rubric">Rubric</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Criterion</th>
+      <th style="text-align: right">Points</th>
+      <th>What is checked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Database access</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td>A valid Public IPv4 was submitted and the class connection settings allow access to the <code class="language-plaintext highlighter-rouge">postgres</code> database.</td>
+    </tr>
+    <tr>
+      <td><strong>GitHub repository and collection code</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td>The submitted URL is the <strong>root URL of the student’s assigned private <code class="language-plaintext highlighter-rouge">JMU-Data</code> IA340 repository in the required section-specific format</strong>; that repository contains <code class="language-plaintext highlighter-rouge">lab5.ipynb</code> on <code class="language-plaintext highlighter-rouge">main</code>, and the notebook includes the required Census/<code class="language-plaintext highlighter-rouge">us</code>, ACS 1-year, database connection, annual collection, INSERT, and commit workflow.</td>
+    </tr>
+    <tr>
+      <td><strong>Data completeness</strong></td>
+      <td style="text-align: right"><strong>30</strong></td>
+      <td>Across the three tables, all required county identities and published population/income records for the requested years are present, without missing source records or duplicate keys.</td>
+    </tr>
+    <tr>
+      <td><strong>Data structure and consistency</strong></td>
+      <td style="text-align: right"><strong>30</strong></td>
+      <td>The database maintains the required Week 4 three-table structure (<code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">population</code>, <code class="language-plaintext highlighter-rouge">income</code>), correct columns and data types, primary and foreign key relationships, five-character text FIPS and Virginia geography convention (<code class="language-plaintext highlighter-rouge">51...</code>), requested study year range (2015–2024), and no duplicate keys or artificial NULL/zero placeholder observation rows; stored structure is consistent with the required collection workflow.</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td style="text-align: right"><strong>100</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If the GitHub repository URL is missing or invalid, the GitHub/code criterion receives no credit, but the database can still be graded. If the Public IP is missing or the database cannot be accessed after instructor rechecking, database access receives no credit and the database completeness/consistency criteria cannot be verified; the GitHub/code criterion can still be graded.</p>
+
+<p>Source publication gaps are not missing-work deductions, and there is no fixed rows-per-year target. The same data problem should not be deducted twice under completeness and consistency.</p>
+
+<p>Wednesday’s SQL exercises are classroom practice, not an additional submission. The syllabus late-work policy applies.</p>
+
+<hr />
+
+<div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+  <a href="/IA340/pr-preview/pr-37/">← Return to Course Home</a>
+  <span style="color: #d0d7de;">|</span>
+  <a href="/IA340/pr-preview/pr-37/modules/module-5/">Go to Module 5 Lecture →</a>
+</div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

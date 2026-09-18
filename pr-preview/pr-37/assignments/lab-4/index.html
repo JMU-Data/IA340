@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 4: Cloud Database Completion Check - IA 340 | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Lab 4: Cloud Database Completion Check - IA 340" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
+<meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-37/assignments/lab-4/" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-37/assignments/lab-4/" />
+<meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lab 4: Cloud Database Completion Check - IA 340" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Lab 4: Cloud Database Completion Check - IA 340","url":"https://jmu-data.github.io/IA340/pr-preview/pr-37/assignments/lab-4/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-37/assets/css/style.css?v=3fc0923087cc525f14d743829f001249e73ec72b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/IA340/pr-preview/pr-37/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://jmu-data.github.io/IA340/pr-preview/pr-37/">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</a></h1>
+      
+
+      <h1 id="lab-4-cloud-database-completion-check">Lab 4: Cloud Database Completion Check</h1>
+
+<nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
+  <a href="/IA340/pr-preview/pr-37/" style="text-decoration: none; color: #57606a;">Home</a>
+  <a href="/IA340/pr-preview/pr-37/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-4/" style="text-decoration: none; color: #57606a;">Module 4</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/lab-4/" style="text-decoration: none; font-weight: 600; color: #0969da;">Lab 4</a>
+  <a href="/IA340/pr-preview/pr-37/modules/module-5/" style="text-decoration: none; color: #57606a;">Module 5</a>
+  <a href="/IA340/pr-preview/pr-37/assignments/lab-5/" style="text-decoration: none; color: #57606a;">Lab 5</a>
+</nav>
+
+<p><strong>Target Date:</strong> Friday, September 18, 2026<br />
+<em>(Canvas is the authoritative source for the exact due date/time and submission status.)</em><br />
+<strong>Submission Location:</strong> Canvas<br />
+<strong>Points:</strong> 100</p>
+
+<p>Week 4 · September 14–18, 2026 · Dr. Xuebin Wei</p>
+
+<p>Complete the hands-on work during <a href="/IA340/pr-preview/pr-37/modules/module-4/">the lecture</a>. This lab is the final checkpoint—not a second project, report, or screenshot assignment.</p>
+
+<h2 id="fixed-class-settings">Fixed class settings</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Required value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Service / engine</td>
+      <td>Google Cloud SQL / PostgreSQL</td>
+    </tr>
+    <tr>
+      <td>Demonstrated configuration</td>
+      <td>Enterprise, PostgreSQL 18, <code class="language-plaintext highlighter-rouge">db-f1-micro</code>, 10 GB SSD, single zone</td>
+    </tr>
+    <tr>
+      <td>Instance</td>
+      <td><code class="language-plaintext highlighter-rouge">ia340</code> in the demonstration</td>
+    </tr>
+    <tr>
+      <td><strong>Database to connect to</strong></td>
+      <td><strong><code class="language-plaintext highlighter-rouge">postgres</code> — the existing default database</strong></td>
+    </tr>
+    <tr>
+      <td>Schema</td>
+      <td><code class="language-plaintext highlighter-rouge">public</code> — the namespace holding our tables, not a network setting</td>
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td><code class="language-plaintext highlighter-rouge">postgres</code> — lowercase</td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><strong><code class="language-plaintext highlighter-rouge">IA340-data</code></strong>: uppercase <strong>I</strong>, uppercase <strong>A</strong>, digits <strong>3 4 0</strong>, <strong>hyphen (-)</strong>, then lowercase <strong>d a t a</strong>; no spaces</td>
+    </tr>
+    <tr>
+      <td>Port</td>
+      <td><code class="language-plaintext highlighter-rouge">5432</code></td>
+    </tr>
+    <tr>
+      <td>Classroom network</td>
+      <td>Public IPv4; temporary authorized source range <code class="language-plaintext highlighter-rouge">0.0.0.0/0</code></td>
+    </tr>
+    <tr>
+      <td>Security option</td>
+      <td><strong>Allow only SSL connections</strong>, as demonstrated</td>
+    </tr>
+    <tr>
+      <td>Submission</td>
+      <td><strong>Only your instance’s Public IPv4 address</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For teaching convenience, everyone uses the same database username <strong><code class="language-plaintext highlighter-rouge">postgres</code></strong> and password <strong><code class="language-plaintext highlighter-rouge">IA340-data</code></strong>. This is a classroom shortcut, <strong>NOT production best practice</strong>. Because the credentials are shared, <strong>protect your Public IP address</strong>. Keeping the address private is a precaution, not a substitute for production access controls. Submit it ONLY in Canvas. Do not put it on GitHub, a public screenshot, an ERD share page, social media, or any other public location. Someone with both the address and the shared credentials could read, modify, or delete your database.</p>
+
+<h2 id="process-recap">Process recap</h2>
+
+<p><strong>Monday:</strong> understand databases and cloud services → create the project and link education billing → configure the small PostgreSQL instance → review usage/credits and create the <strong>$20 monthly budget alert</strong>.</p>
+
+<p><strong>Wednesday:</strong> open Cloud SQL Studio and inspect the empty database/public schema → learn rows, columns, keys, relationships, ACID, and normalization → build the ER diagram → export and implement it → check the actual tables and submit the Public IP.</p>
+
+<h2 id="required-structure">Required structure</h2>
+
+<p>Use the exact lowercase table and field names below in <strong>database <code class="language-plaintext highlighter-rouge">postgres</code>, schema <code class="language-plaintext highlighter-rouge">public</code></strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Table</th>
+      <th>Columns</th>
+      <th>Keys</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td><code class="language-plaintext highlighter-rouge">fips</code> text identifier; <code class="language-plaintext highlighter-rouge">name</code> county label</td>
+      <td>PK <code class="language-plaintext highlighter-rouge">fips</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">income</code></td>
+      <td><code class="language-plaintext highlighter-rouge">fips</code>; <code class="language-plaintext highlighter-rouge">income</code> integer; <code class="language-plaintext highlighter-rouge">year</code> integer</td>
+      <td>Composite PK <code class="language-plaintext highlighter-rouge">(fips, year)</code>; FK <code class="language-plaintext highlighter-rouge">fips</code> → <code class="language-plaintext highlighter-rouge">name.fips</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">population</code></td>
+      <td><code class="language-plaintext highlighter-rouge">fips</code>; <code class="language-plaintext highlighter-rouge">population</code> integer; <code class="language-plaintext highlighter-rouge">year</code> integer</td>
+      <td>Composite PK <code class="language-plaintext highlighter-rouge">(fips, year)</code>; FK <code class="language-plaintext highlighter-rouge">fips</code> → <code class="language-plaintext highlighter-rouge">name.fips</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In ERD Lab, use <strong>character varying</strong> for <code class="language-plaintext highlighter-rouge">fips</code> and <code class="language-plaintext highlighter-rouge">name</code>, and integer for <code class="language-plaintext highlighter-rouge">income</code>, <code class="language-plaintext highlighter-rouge">population</code>, and <code class="language-plaintext highlighter-rouge">year</code>. <strong>Leave the Size fields blank for this lab.</strong> Keep the fields required. In the <code class="language-plaintext highlighter-rouge">name</code> table, keep <code class="language-plaintext highlighter-rouge">fips</code> as the Primary key and <strong>leave Unique OFF for the descriptive <code class="language-plaintext highlighter-rouge">name</code> field</strong>. Do not make observation <code class="language-plaintext highlighter-rouge">fips</code> or <code class="language-plaintext highlighter-rouge">year</code> independently Unique; the <strong>combination <code class="language-plaintext highlighter-rouge">(fips, year)</code></strong> identifies one observation. Keep <code class="language-plaintext highlighter-rouge">fips</code> as text so leading zeros are preserved.</p>
+
+<blockquote>
+  <p><strong>TIP:</strong> Export the PostgreSQL SQL from your ERD Lab model. If the export looks wrong or you are unsure what to do next, <strong>ask the instructor before changing it manually</strong>.</p>
+</blockquote>
+
+<p><img src="/IA340/pr-preview/pr-37/assets/week-4/screenshots/Screenshot%202026-09-15%20105142.png" alt="Studio Explorer showing the three tables and their keys" /></p>
+
+<p>Keep the three tables ready for next week’s Census data. Keep your ERD model for reuse.</p>
+
+<h2 id="submit-one-public-ipv4-address">Submit ONE Public IPv4 address</h2>
+
+<p>Copy <strong>Public IP address</strong> from your own Cloud SQL instance’s Connections/Overview page and paste only the address into Canvas.</p>
+
+<p>An IPv4 address has four numbers separated by dots. <strong>Format example only:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>203.0.113.10
+</code></pre></div></div>
+
+<p>This is a documentation-only address, not your server. Do not submit or connect to it. Use your instance’s actual <strong>Public IP</strong>, not its outgoing IP, a private address, your laptop’s address, or the range <code class="language-plaintext highlighter-rouge">0.0.0.0/0</code>.</p>
+
+<p>Do not add <code class="language-plaintext highlighter-rouge">https://</code>, <code class="language-plaintext highlighter-rouge">postgresql://</code>, <code class="language-plaintext highlighter-rouge">:5432</code>, a database name, username, or password. Do not submit a Console link, GitHub link, ERD share link, SQL file, or screenshot package.</p>
+
+<h2 id="rubric">Rubric</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Criterion</th>
+      <th style="text-align: right">Points</th>
+      <th>Full-credit evidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Connection</strong></td>
+      <td style="text-align: right"><strong>50</strong></td>
+      <td>The instructor can connect through the submitted Public IP to database <strong><code class="language-plaintext highlighter-rouge">postgres</code></strong>, port <strong><code class="language-plaintext highlighter-rouge">5432</code></strong>, with the fixed login and encrypted connection.</td>
+    </tr>
+    <tr>
+      <td><strong>Tables and fields</strong></td>
+      <td style="text-align: right"><strong>30</strong></td>
+      <td>Three actual tables exist in <code class="language-plaintext highlighter-rouge">public</code>; exact names are <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">income</code>, and <code class="language-plaintext highlighter-rouge">population</code>; all eight expected columns and appropriate types match the model.</td>
+    </tr>
+    <tr>
+      <td><strong>Keys and relationships</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td>County PK and both composite PKs are correct; two FKs reference <code class="language-plaintext highlighter-rouge">name.fips</code>; there are no incorrect individual uniqueness restrictions.</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td style="text-align: right"><strong>100</strong></td>
+      <td><strong>Connection 50 + tables/relationships 50</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Connection is required. If the instructor cannot connect to your database using the required Public IP, database name, username, password, port, and SSL setting, the Lab 4 score is 0/100.</strong> If the connection works, the remaining 50 points are based on the required tables, fields, keys, and relationships.</p>
+
+<p>Exact table and column names matter. The required primary keys and foreign-key relationships must also be correct.</p>
+
+<h2 id="before-finishing">Before finishing</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />My Cloud SQL instance is <strong>running</strong>, and the <code class="language-plaintext highlighter-rouge">postgres</code> database/login works.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />My tables, fields, primary keys, and two foreign keys match the current model.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />I reviewed usage before credits and created the $20 budget alert; an alert is not a spending cap.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />I submitted only my <strong>Public IP in Canvas</strong> and did not publish it elsewhere.</li>
+</ul>
+
+<p><strong>Keep the Cloud SQL instance running through October 12, 2026. Do not stop or delete it before then.</strong> We will continue using the same project, database, tables, and ERD model for the upcoming work and Mini Project.</p>
+
+<p>References: <a href="https://docs.cloud.google.com/sql/docs/postgres/manage-data-using-studio">Studio</a>, <a href="https://docs.cloud.google.com/sql/docs/postgres/authorize-networks">network access</a>, <a href="https://www.postgresql.org/docs/18/ddl-schemas.html">schemas</a>, <a href="https://www.postgresql.org/docs/18/ddl-constraints.html">keys</a>, <a href="https://docs.cloud.google.com/billing/docs/how-to/budgets">budget alerts</a>, <a href="https://www.rfc-editor.org/rfc/rfc5737">documentation IPs</a>.</p>
+
+<hr />
+
+<div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+  <a href="/IA340/pr-preview/pr-37/">← Return to Course Home</a>
+  <span style="color: #d0d7de;">|</span>
+  <a href="/IA340/pr-preview/pr-37/modules/module-4/">Go to Module 4 Lecture Deck →</a>
+  <span style="color: #d0d7de;">|</span>
+  <a href="/IA340/pr-preview/pr-37/modules/module-3/google-cloud-coupon/">Google Cloud Education Credit Setup →</a>
+</div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

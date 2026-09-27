@@ -19,6 +19,8 @@ title: "Lab 4: Cloud Database Completion Check - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-4/" style="text-decoration: none; font-weight: 600; color: #0969da;">Lab 4</a>
   <a href="{{ site.baseurl }}/modules/module-5/" style="text-decoration: none; color: #57606a;">Module 5</a>
   <a href="{{ site.baseurl }}/assignments/lab-5/" style="text-decoration: none; color: #57606a;">Lab 5</a>
+  <a href="{{ site.baseurl }}/modules/module-6/" style="text-decoration: none; color: #57606a;">Module 6</a>
+  <a href="{{ site.baseurl }}/assignments/lab-6/" style="text-decoration: none; color: #57606a;">Lab 6</a>
 </nav>
 
 **Target Date:** Friday, September 18, 2026  

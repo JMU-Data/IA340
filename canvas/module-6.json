@@ -1,0 +1,130 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "lab-6",
+      "title": "Lab 6 — My County: SQL and Python Analysis",
+      "assignment_group": "Labs",
+      "points": 100.0,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_url"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-6/",
+      "group_assignment": {
+        "group_set": "Lab 6 Assigned Counties"
+      }
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "lab-6-rubric",
+      "title": "Lab 6 — My County: SQL and Python Analysis",
+      "assignment": "lab-6",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "sql-correctness-assigned-county",
+          "description": "SQL correctness and assigned county",
+          "points": 30.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "python-analysis-visualization",
+          "description": "Python analysis and visualization",
+          "points": 30.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "q3-question-supported-answer",
+          "description": "Q3 question and supported answer",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "markdown-organization-format-submission",
+          "description": "Markdown organization, format, and submission",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "module-6",
+      "title": "Module 6",
+      "published": true,
+      "items": [
+        {
+          "key": "lecture",
+          "type": "ExternalUrl",
+          "title": "Lecture — SQL Queries and County Analysis",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/modules/module-6/",
+          "assignment": null
+        },
+        {
+          "key": "lab-6",
+          "type": "Assignment",
+          "title": "Lab 6 — My County: SQL and Python Analysis",
+          "published": true,
+          "external_url": null,
+          "assignment": "lab-6"
+        }
+      ]
+    }
+  ]
+}

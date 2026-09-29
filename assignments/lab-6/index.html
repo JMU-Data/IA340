@@ -22,7 +22,7 @@
 {"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Lab 6: My County: SQL and Python Analysis - IA 340","url":"https://jmu-data.github.io/IA340/assignments/lab-6/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=52775253931f6e4b1955805e74f9b9170de68b82">
+    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=7b31d957caea9c27ef7ab4056e405fd7a126a194">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -65,19 +65,6 @@
 <strong>Deadline: see Canvas for the authoritative due date and time.</strong></p>
 
 <p>Use your instructor-assigned county or independent city for <strong>Q1, Q2, and Q3</strong>. Save two files in your assigned private GitHub repository: <strong><code class="language-plaintext highlighter-rouge">lab6.sql</code></strong> and <strong><code class="language-plaintext highlighter-rouge">lab6.ipynb</code></strong>.</p>
-
-<hr />
-
-<h2 id="starter-files">Starter Files</h2>
-
-<p>Download or inspect the official template starter files for Lab 6:</p>
-
-<ul>
-  <li><strong><a href="/IA340/assignments/lab-6/lab6.sql">lab6.sql</a></strong> — SQL starter template with comments and query placeholders.</li>
-  <li><strong><a href="/IA340/assignments/lab-6/lab6.ipynb">lab6.ipynb</a></strong> — Colab notebook template with connection setup, practice exercises, Q0 guided example, and Q1–Q3 analysis sections.</li>
-</ul>
-
-<p>These starter files provide structure and guidance, not answers. Replace all bracketed placeholders with your own work.</p>
 
 <hr />
 
@@ -128,7 +115,7 @@
 
 <h3 id="save-lab6sql">Save lab6.sql</h3>
 
-<p>The file needs your county/FIPS comments followed by <strong>Q1, Q2, Q3</strong>, each with its question comment and actual query. The starter provides a layout, not finished answer code. Replace all placeholders before submitting.</p>
+<p>The file needs your county/FIPS comments followed by <strong>Q1, Q2, Q3</strong>, each with its question comment and actual runnable query. Replace all placeholders before submitting.</p>
 
 <p>In GitHub: <strong>your assigned repository → Add file → Create new file → <code class="language-plaintext highlighter-rouge">lab6.sql</code> → Commit changes on <code class="language-plaintext highlighter-rouge">main</code></strong>. (Or edit the file if it is already present.)</p>
 
@@ -140,7 +127,7 @@
 
 <p>In the new <strong><code class="language-plaintext highlighter-rouge">lab6.ipynb</code></strong>, enable Notebook access to the four Colab Secrets: <strong><code class="language-plaintext highlighter-rouge">DB_HOST</code></strong>, <strong><code class="language-plaintext highlighter-rouge">DB_NAME</code></strong>, <strong><code class="language-plaintext highlighter-rouge">DB_USER</code></strong>, and <strong><code class="language-plaintext highlighter-rouge">DB_PASSWORD</code></strong>. We query the existing database, so a Census API key is not needed.</p>
 
-<p>Keep the guided installation/connection, fake-name <code class="language-plaintext highlighter-rouge">INSERT</code>/<code class="language-plaintext highlighter-rouge">UPDATE</code>/<code class="language-plaintext highlighter-rouge">DELETE</code>, rollback example, and complete <strong>Q0</strong>. Q0 compares the covered areas across Virginia. It is the only question that is not limited to your assigned county.</p>
+<p>Database connection/setup, required fake-name practice operations (<code class="language-plaintext highlighter-rouge">INSERT</code>, <code class="language-plaintext highlighter-rouge">UPDATE</code>, <code class="language-plaintext highlighter-rouge">DELETE</code>, rollback), and <strong>Q0</strong> are <strong>required work</strong>. Q0 compares the covered areas across Virginia. It is the only question that is not limited to your assigned county. Q0, Q1, and Q2 are required guided/assigned work; Q3 is your own question.</p>
 
 <p>Then reuse your own Q1, Q2, and Q3 SQL from <code class="language-plaintext highlighter-rouge">lab6.sql</code>. Choose the chart types yourself; Gemini can help with the Python code. Show the result table, the chart, and a <strong>1–2 sentence interpretation directly below each chart</strong>.</p>
 
@@ -153,16 +140,49 @@
 <p>For <strong>Q1</strong>, use this exact sequence:</p>
 
 <ol>
-  <li>Markdown/text cell: <code class="language-plaintext highlighter-rouge">## Q1 — Population Growth</code>, then <code class="language-plaintext highlighter-rouge">### Question</code> and the full county-specific question.</li>
-  <li>Code cell: assign your tested SQL to <code class="language-plaintext highlighter-rouge">sql_q1</code> inside triple quotes.</li>
-  <li>Code cell: execute <code class="language-plaintext highlighter-rouge">sql_q1</code>, create pandas DataFrame <code class="language-plaintext highlighter-rouge">q1</code>, and display it.</li>
-  <li>Code cell: visualize <code class="language-plaintext highlighter-rouge">q1</code>. There is <strong>no separate <code class="language-plaintext highlighter-rouge">### Visualization</code> Markdown heading</strong>.</li>
-  <li>Markdown/text cell: <code class="language-plaintext highlighter-rouge">### Interpretation</code> followed by <strong>1–2 sentences answering Q1</strong> from the table/chart.</li>
+  <li>Markdown/text:
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## Q1 — Population Growth</span>
+<span class="gu">### Question</span>
+</code></pre></div>    </div>
+    <p>followed by the full county-specific question.</p>
+  </li>
+  <li>Markdown/text:
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### SQL</span>
+</code></pre></div>    </div>
+    <p>Then a code cell containing <code class="language-plaintext highlighter-rouge">sql_q1</code>.</p>
+  </li>
+  <li>Markdown/text:
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### Python/Pandas</span>
+</code></pre></div>    </div>
+    <p>Then a code cell executing <code class="language-plaintext highlighter-rouge">sql_q1</code> and creating/displaying <code class="language-plaintext highlighter-rouge">q1</code>.</p>
+  </li>
+  <li>Markdown/text:
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### Visualization</span>
+</code></pre></div>    </div>
+    <p>Then a code cell visualizing <code class="language-plaintext highlighter-rouge">q1</code>.</p>
+  </li>
+  <li>Markdown/text:
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### Interpretation</span>
+</code></pre></div>    </div>
+    <p>Then 1–2 sentences answering the question from the table/chart.</p>
+  </li>
 </ol>
 
-<p>Repeat the same structure for <strong>Q2 — Household-Income Growth</strong> with <code class="language-plaintext highlighter-rouge">sql_q2</code> / <code class="language-plaintext highlighter-rouge">q2</code>, and <strong>Q3 — My Own Question</strong> with <code class="language-plaintext highlighter-rouge">sql_q3</code> / <code class="language-plaintext highlighter-rouge">q3</code>.</p>
+<p>Follow the exact same pattern for <strong>Q2</strong> and <strong>Q3</strong>:</p>
 
-<p>The three code cells are deliberately kept together: <strong>SQL string → Python/Pandas result → visualization</strong>. Q1, Q2, and Q3 must all use your <strong>assigned county</strong>.</p>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">## Q2 — Household-Income Growth</code></strong> with <code class="language-plaintext highlighter-rouge">### Question</code>, <code class="language-plaintext highlighter-rouge">### SQL</code> (containing <code class="language-plaintext highlighter-rouge">sql_q2</code>), <code class="language-plaintext highlighter-rouge">### Python/Pandas</code> (creating/displaying <code class="language-plaintext highlighter-rouge">q2</code>), <code class="language-plaintext highlighter-rouge">### Visualization</code> (plotting <code class="language-plaintext highlighter-rouge">q2</code>), and <code class="language-plaintext highlighter-rouge">### Interpretation</code> (1–2 sentences answering Q2).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">## Q3 — My Own Question</code></strong> with <code class="language-plaintext highlighter-rouge">### Question</code>, <code class="language-plaintext highlighter-rouge">### SQL</code> (containing <code class="language-plaintext highlighter-rouge">sql_q3</code>), <code class="language-plaintext highlighter-rouge">### Python/Pandas</code> (creating/displaying <code class="language-plaintext highlighter-rouge">q3</code>), <code class="language-plaintext highlighter-rouge">### Visualization</code> (plotting <code class="language-plaintext highlighter-rouge">q3</code>), and <code class="language-plaintext highlighter-rouge">### Interpretation</code> (1–2 sentences answering Q3).</li>
+</ul>
+
+<p>Preserve the required variable naming conventions:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sql_q1</code> / <code class="language-plaintext highlighter-rouge">q1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">sql_q2</code> / <code class="language-plaintext highlighter-rouge">q2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">sql_q3</code> / <code class="language-plaintext highlighter-rouge">q3</code></li>
+</ul>
+
+<p>Q1, Q2, and Q3 must all use your <strong>assigned county</strong>.</p>
 
 <h3 id="final-summary">Final Summary</h3>
 
@@ -188,22 +208,22 @@
     <tr>
       <td><strong>SQL correctness and assigned county</strong></td>
       <td style="text-align: right"><strong>30</strong></td>
-      <td>Q1 and Q2 use the student’s <strong>assigned county</strong>, the correct previous-calendar-year logic, and the requested database outputs (<code class="language-plaintext highlighter-rouge">fips, year, previous_value, current_value, growth_rate</code>). Questions are comments; queries are executable SQL.</td>
+      <td>Assess:<br />• Q1 uses the assigned county<br />• Q2 uses the assigned county<br />• SQL is executable<br />• Correct previous-calendar-year logic is used where required<br />• Required output fields are correct (<code class="language-plaintext highlighter-rouge">fips, year, previous_value, current_value, growth_rate</code>)<br />• Q1 population analysis is correct<br />• Q2 household-income analysis is correct<br />• Questions remain explanatory text/comments rather than being embedded incorrectly as SQL</td>
     </tr>
     <tr>
-      <td><strong>Python analysis and visualization</strong></td>
+      <td><strong>Notebook setup, Q0–Q2 analysis, and visualization</strong></td>
       <td style="text-align: right"><strong>30</strong></td>
-      <td>Setup/practice and Q0 are present. Q1 and Q2 reuse the saved SQL, display pandas results, create suitable charts, and include brief interpretations directly below charts.</td>
+      <td>Assess:<br />• Database connection/setup is present and correct<br />• Required pre-Q0 practice (<code class="language-plaintext highlighter-rouge">INSERT</code>, <code class="language-plaintext highlighter-rouge">UPDATE</code>, <code class="language-plaintext highlighter-rouge">DELETE</code>, rollback) is completed<br />• Q0 is completed according to the Lab 6 requirements with saved outputs<br />• Q1 correctly executes/reuses its SQL (<code class="language-plaintext highlighter-rouge">sql_q1</code>), creates/displays the required pandas DataFrame (<code class="language-plaintext highlighter-rouge">q1</code>), creates a suitable visualization, and includes an interpretation supported by the result<br />• Q2 correctly executes/reuses its SQL (<code class="language-plaintext highlighter-rouge">sql_q2</code>), creates/displays the required pandas DataFrame (<code class="language-plaintext highlighter-rouge">q2</code>), creates a suitable visualization, and includes an interpretation supported by the result</td>
     </tr>
     <tr>
       <td><strong>Q3: question and supported answer</strong></td>
       <td style="text-align: right"><strong>20</strong></td>
-      <td>Q3 uses the <strong>same assigned county</strong>, is reasonable and answerable with the available data, and includes SQL, result DataFrame, chart, and 1–2 sentence interpretation.</td>
+      <td>Assess:<br />• Q3 uses the same assigned county<br />• The student asks a clear, specific question that the available data can answer (different from Q1 and Q2)<br />• The question is actually answered through the complete workflow: <strong>Question → SQL → Python/Pandas → Visualization → Interpretation</strong></td>
     </tr>
     <tr>
       <td><strong>Markdown organization, format, and submission</strong></td>
       <td style="text-align: right"><strong>20</strong></td>
-      <td>Both files open from the assigned repo root on <code class="language-plaintext highlighter-rouge">main</code>; required Markdown question/interpretation cells are present; SQL/Python/visualization code cells are separate; Final Summary and Gemini Use are present.</td>
+      <td>Assess:<br />• Required explicit Markdown headings are present for Q1, Q2, and Q3: <strong>Question</strong>, <strong>SQL</strong>, <strong>Python/Pandas</strong>, <strong>Visualization</strong>, <strong>Interpretation</strong><br />• <strong>Final Summary</strong> is present<br />• <strong>Gemini Use</strong> is present<br />• Required submission files (<code class="language-plaintext highlighter-rouge">lab6.sql</code> and <code class="language-plaintext highlighter-rouge">lab6.ipynb</code>) are present at the assigned repository root on <code class="language-plaintext highlighter-rouge">main</code><br />• Submitted GitHub repository URL matches the Lab 6 submission requirements</td>
     </tr>
     <tr>
       <td><strong>Total</strong></td>

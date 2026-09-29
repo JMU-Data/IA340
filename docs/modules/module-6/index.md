@@ -453,7 +453,7 @@ title: "Module 6: SQL Queries and County Analysis - IA 340"
         <option value="60">60 · Q0: SQL string first, Python result second</option>
         <option value="61">61 · Q0 — Draw the population chart</option>
         <option value="62">62 · Q0 — Result</option>
-        <option value="63">63 · Q1–Q3: three code cells, then interpretation</option>
+        <option value="63">63 · Q1–Q3: structured notebook workflow</option>
         <option value="64">64 · Ask Gemini to visualize your query result</option>
         <option value="65">65 · Q3 — Visualize and answer your own question</option>
         <option value="66">66 · Final Summary and Gemini Use</option>
@@ -1240,7 +1240,7 @@ Name the file <strong>lab6.sql</strong>, paste your three questions and queries,
       <div class="slide-text-large">
 <span class="slide-badge">Python practice</span><h2>Colab: a guided Q0, then your Q1–Q3</h2><p>Start a notebook named <strong>lab6.ipynb</strong>. First follow the connection, fake-name operations, and Q0.
 Then reuse the three SELECTs saved in <code>lab6.sql</code>.</p>
-<p>Every question has actual <strong>Markdown headings and question text</strong>, a separate SQL-string cell, a Python results cell, a visualization, and an interpretation.</p>
+<p>Every question uses explicit <strong>Markdown headings</strong> before each part: Question, SQL, Python/Pandas, Visualization, and Interpretation.</p>
 <p>Q0 compares the class dataset. <strong>Q1–Q3 must all use your assigned county.</strong></p>
       </div>
     </div>
@@ -1416,15 +1416,15 @@ Gemini can help with labels or layout, but must use these query results rather t
     <!-- SLIDE 63 -->
     <div class="slide" data-slide="63">
       <div class="slide-text-large">
-<span class="slide-badge">Your analysis</span><h2>Q1–Q3: three code cells, then interpretation</h2><p>For each question, keep this simple sequence:</p>
+<span class="slide-badge">Your analysis</span><h2>Q1–Q3: structured notebook workflow</h2><p>For each question (Q1, Q2, and Q3), follow this explicit five-step Markdown and code sequence:</p>
 <ol>
 <li><strong>Markdown/text:</strong> <code>## Q1 — Population Growth</code>, then <code>### Question</code> and the full question.</li>
-<li><strong>Code cell 1 — SQL:</strong> assign your tested SELECT to <code>sql_q1</code> inside triple quotes.</li>
-<li><strong>Code cell 2 — Python/Pandas:</strong> execute <code>sql_q1</code>, build DataFrame <code>q1</code>, and display it.</li>
-<li><strong>Code cell 3 — Visualization:</strong> plot <code>q1</code>. No extra <code>### Visualization</code> Markdown heading is needed.</li>
-<li><strong>Markdown/text:</strong> <code>### Interpretation</code> and <strong>1–2 sentences answering the question</strong> from the chart/table.</li>
+<li><strong>Markdown/text:</strong> <code>### SQL</code>, then a code cell assigning your tested SELECT to <code>sql_q1</code> inside triple quotes.</li>
+<li><strong>Markdown/text:</strong> <code>### Python/Pandas</code>, then a code cell executing <code>sql_q1</code>, building DataFrame <code>q1</code>, and displaying it.</li>
+<li><strong>Markdown/text:</strong> <code>### Visualization</code>, then a code cell plotting <code>q1</code>.</li>
+<li><strong>Markdown/text:</strong> <code>### Interpretation</code>, followed by <strong>1–2 sentences answering the question</strong> from the chart/table.</li>
 </ol>
-<p>Repeat the same pattern for <strong>Q2</strong> (<code>sql_q2</code>, <code>q2</code>) and <strong>Q3</strong> (<code>sql_q3</code>, <code>q3</code>).</p>
+<p>Repeat the exact same pattern for <strong>Q2</strong> (<code>sql_q2</code>, <code>q2</code>) and <strong>Q3</strong> (<code>sql_q3</code>, <code>q3</code>). Each section must use an explicit Markdown/text heading before the corresponding content or code.</p>
       </div>
     </div>
 
@@ -1434,7 +1434,7 @@ Gemini can help with labels or layout, but must use these query results rather t
 <span class="slide-badge">Your analysis</span><h2>Ask Gemini to visualize your query result</h2><div class="slide-media-box"><img src="{{ site.baseurl }}/assets/week-6/screenshots/Screenshot%202026-09-27%20153116.png" alt="Example workflow: Gemini writes visualization code for a DataFrame" class="screenshot" /></div>
 <p>After your SQL has produced DataFrame <strong>q1</strong>, you can ask Gemini to write plotting code. Tell it which DataFrame to use, what the columns mean, and what units belong on the chart.</p>
 <p>This screenshot demonstrates the <strong>workflow</strong>, not a target answer: it came from an earlier draft of Q1. Use your own final table and read the generated code before <strong>Accept &amp; Run</strong>.</p>
-<p>After the chart, add <strong><code>### Interpretation</code></strong> and write <strong>1–2 sentences answering your question</strong>. Use the same approach for q2 and q3.</p>
+<p>Place the plotting code in the code cell under <strong><code>### Visualization</code></strong>. Directly after the chart, add the Markdown/text heading <strong><code>### Interpretation</code></strong> and write <strong>1–2 sentences answering the question</strong> from your table/chart. Use the same structured approach for Q2 and Q3.</p>
       </div>
     </div>
 
@@ -1442,7 +1442,14 @@ Gemini can help with labels or layout, but must use these query results rather t
     <div class="slide" data-slide="65">
       <div class="slide-text-large">
 <span class="slide-badge">Your analysis</span><h2>Q3 — Visualize and answer your own question</h2><p>Q3 uses the <strong>same assigned county</strong> but a different question that your existing data can answer.</p>
-<p>Use three code cells in sequence: <strong>SQL string → Python/Pandas result → visualization</strong>. Then add <strong><code>### Interpretation</code></strong> in a Markdown/text cell and answer Q3 in <strong>1–2 sentences</strong>.</p>
+<p>Follow the exact same organizational pattern as Q1 and Q2 under <strong><code>## Q3 — My Own Question</code></strong>:</p>
+<ol>
+<li><strong><code>### Question</code></strong> — your own specific question about your assigned county</li>
+<li><strong><code>### SQL</code></strong> — code cell with your tested query assigned to <code>sql_q3</code></li>
+<li><strong><code>### Python/Pandas</code></strong> — code cell creating and displaying DataFrame <code>q3</code></li>
+<li><strong><code>### Visualization</code></strong> — code cell creating your chart for <code>q3</code></li>
+<li><strong><code>### Interpretation</code></strong> — 1–2 sentences answering Q3 from your results</li>
+</ol>
 <p>Choose a chart that helps answer the question. For a threshold question, for example, the interpretation can name the years that meet the threshold. If none meet it, say so.</p>
 <p><strong>Correlation does not imply causation.</strong></p>
       </div>
@@ -1484,24 +1491,24 @@ IA340-2: https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;
 </thead>
 <tbody>
 <tr>
-<td>SQL correctness</td>
+<td>SQL correctness and assigned county</td>
 <td style="text-align:right">30</td>
-<td>Q1 and Q2 use the student's <strong>assigned county</strong>, the correct previous-calendar-year logic, and the requested database outputs. Questions are comments; the three queries are executable SQL.</td>
+<td>Q1 and Q2 use the student's <strong>assigned county</strong>, correct previous-calendar-year logic, and requested database outputs (<code>fips, year, previous_value, current_value, growth_rate</code>). Questions are comments/text; queries are executable SQL.</td>
 </tr>
 <tr>
-<td>Python and visualization</td>
+<td>Python/Pandas analysis and visualization</td>
 <td style="text-align:right">30</td>
-<td>Setup/practice and Q0 are present. Q1 and Q2 reuse the saved SQL, display DataFrames, create suitable charts, and include 1–2 sentence interpretations.</td>
+<td>Setup/practice and Q0 are present. Q1 and Q2 correctly reuse/execute SQL, create and display pandas DataFrames, include suitable visualizations, and answer Q1/Q2 in interpretations.</td>
 </tr>
 <tr>
-<td>Q3: question and answer</td>
+<td>Q3: question and supported answer</td>
 <td style="text-align:right">20</td>
-<td>Q3 uses the <strong>same assigned county</strong>, is reasonable and answerable with the available data, and includes SQL, a result, visualization, and brief interpretation.</td>
+<td>Q3 uses the <strong>same assigned county</strong>, asks a reasonable question answerable by available data, and answers it through the complete workflow: SQL → DataFrame → visualization → interpretation.</td>
 </tr>
 <tr>
-<td>Markdown, format, and submission</td>
+<td>Markdown organization, format, and submission</td>
 <td style="text-align:right">20</td>
-<td>Both files open from the assigned repo on main. Q1/Q2/Q3 use the required Markdown question/interpretation structure; the three code cells are separated; Final Summary and Gemini Use are present.</td>
+<td>Both files open from the assigned repo on main. Q1/Q2/Q3 use the required Markdown headings (Question, SQL, Python/Pandas, Visualization, Interpretation); Final Summary and Gemini Use are present; valid GitHub repository URL submitted.</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>

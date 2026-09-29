@@ -30,17 +30,6 @@ Use your instructor-assigned county or independent city for **Q1, Q2, and Q3**. 
 
 ---
 
-## Starter Files
-
-Download or inspect the official template starter files for Lab 6:
-
-- **[lab6.sql]({{ site.baseurl }}/assignments/lab-6/lab6.sql)** — SQL starter template with comments and query placeholders.
-- **[lab6.ipynb]({{ site.baseurl }}/assignments/lab-6/lab6.ipynb)** — Colab notebook template with connection setup, practice exercises, Q0 guided example, and Q1–Q3 analysis sections.
-
-These starter files provide structure and guidance, not answers. Replace all bracketed placeholders with your own work.
-
----
-
 ## Find your FIPS
 
 Start with your assigned official county or city name. Write a query yourself, or ask Gemini to find the matching FIPS in `public.name`. Check that the returned name is the right place. (For example, Fairfax County and Fairfax city are different places with distinct FIPS codes.)
@@ -82,7 +71,7 @@ A growth rate may be shown as a decimal or a percentage, provided the table and 
 
 ### Save lab6.sql
 
-The file needs your county/FIPS comments followed by **Q1, Q2, Q3**, each with its question comment and actual query. The starter provides a layout, not finished answer code. Replace all placeholders before submitting.
+The file needs your county/FIPS comments followed by **Q1, Q2, Q3**, each with its question comment and actual runnable query. Replace all placeholders before submitting.
 
 In GitHub: **your assigned repository &rarr; Add file &rarr; Create new file &rarr; `lab6.sql` &rarr; Commit changes on `main`**. (Or edit the file if it is already present.)
 
@@ -106,15 +95,44 @@ Use real **Markdown/text cells** for the notebook title, each question, each int
 
 For **Q1**, use this exact sequence:
 
-1. Markdown/text cell: `## Q1 — Population Growth`, then `### Question` and the full county-specific question.
-2. Code cell: assign your tested SQL to `sql_q1` inside triple quotes.
-3. Code cell: execute `sql_q1`, create pandas DataFrame `q1`, and display it.
-4. Code cell: visualize `q1`. There is **no separate `### Visualization` Markdown heading**.
-5. Markdown/text cell: `### Interpretation` followed by **1–2 sentences answering Q1** from the table/chart.
+1. Markdown/text:
+   ```markdown
+   ## Q1 — Population Growth
+   ### Question
+   ```
+   followed by the full county-specific question.
+2. Markdown/text:
+   ```markdown
+   ### SQL
+   ```
+   Then a code cell containing `sql_q1`.
+3. Markdown/text:
+   ```markdown
+   ### Python/Pandas
+   ```
+   Then a code cell executing `sql_q1` and creating/displaying `q1`.
+4. Markdown/text:
+   ```markdown
+   ### Visualization
+   ```
+   Then a code cell visualizing `q1`.
+5. Markdown/text:
+   ```markdown
+   ### Interpretation
+   ```
+   Then 1–2 sentences answering the question from the table/chart.
 
-Repeat the same structure for **Q2 — Household-Income Growth** with `sql_q2` / `q2`, and **Q3 — My Own Question** with `sql_q3` / `q3`.
+Follow the exact same pattern for **Q2** and **Q3**:
 
-The three code cells are deliberately kept together: **SQL string &rarr; Python/Pandas result &rarr; visualization**. Q1, Q2, and Q3 must all use your **assigned county**.
+- **`## Q2 — Household-Income Growth`** with `### Question`, `### SQL` (containing `sql_q2`), `### Python/Pandas` (creating/displaying `q2`), `### Visualization` (plotting `q2`), and `### Interpretation` (1–2 sentences answering Q2).
+- **`## Q3 — My Own Question`** with `### Question`, `### SQL` (containing `sql_q3`), `### Python/Pandas` (creating/displaying `q3`), `### Visualization` (plotting `q3`), and `### Interpretation` (1–2 sentences answering Q3).
+
+Preserve the required variable naming conventions:
+- `sql_q1` / `q1`
+- `sql_q2` / `q2`
+- `sql_q3` / `q3`
+
+Q1, Q2, and Q3 must all use your **assigned county**.
 
 ### Final Summary
 
@@ -130,10 +148,10 @@ Write **1–2 sentences** about whether Gemini was helpful, any issue you notice
 
 | Criterion | Points | What is assessed |
 |---|---:|---|
-| **SQL correctness and assigned county** | **30** | Q1 and Q2 use the student's **assigned county**, the correct previous-calendar-year logic, and the requested database outputs (`fips, year, previous_value, current_value, growth_rate`). Questions are comments; queries are executable SQL. |
-| **Python analysis and visualization** | **30** | Setup/practice and Q0 are present. Q1 and Q2 reuse the saved SQL, display pandas results, create suitable charts, and include brief interpretations directly below charts. |
-| **Q3: question and supported answer** | **20** | Q3 uses the **same assigned county**, is reasonable and answerable with the available data, and includes SQL, result DataFrame, chart, and 1–2 sentence interpretation. |
-| **Markdown organization, format, and submission** | **20** | Both files open from the assigned repo root on `main`; required Markdown question/interpretation cells are present; SQL/Python/visualization code cells are separate; Final Summary and Gemini Use are present. |
+| **SQL correctness and assigned county** | **30** | Assess:<br>• Correct assigned county<br>• Correct previous-calendar-year logic where required<br>• Correct requested database outputs (`fips, year, previous_value, current_value, growth_rate`)<br>• Executable SQL<br>• Questions remain explanatory text/Markdown rather than SQL |
+| **Python/Pandas analysis and visualization** | **30** | Assess:<br>• SQL is correctly reused/executed<br>• pandas DataFrames are correctly created/displayed<br>• Visualizations are suitable and technically correct<br>• Interpretations correctly answer Q1/Q2 from the produced results |
+| **Q3: question and supported answer** | **20** | Assess:<br>• Q3 uses the assigned county<br>• The student asks a reasonable question answerable by the available data<br>• The question is actually answered through the complete workflow: **SQL &rarr; DataFrame &rarr; visualization &rarr; interpretation** |
+| **Markdown organization, format, and submission** | **20** | Assess:<br>• Required Markdown/text headings are present for Q1/Q2/Q3: **Question**, **SQL**, **Python/Pandas**, **Visualization**, **Interpretation**<br>• **Final Summary** is present<br>• **Gemini Use** is present<br>• Files/repository are in the required location/branch (`lab6.sql` and `lab6.ipynb` at the assigned repo root on `main`)<br>• Submitted GitHub repository URL satisfies the Lab 6 submission requirements |
 | **Total** | **100** | |
 
 Unless specified otherwise by the instructor, each criterion has **PASS (full criterion points)** and **MISSING (0 points)** as default ratings. The instructor may enter manual intermediate criterion scores in Canvas SpeedGrader. Equivalent correct queries and suitable chart types are accepted. Q3 and interpretations receive human review.

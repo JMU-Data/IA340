@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Module 6: SQL Queries and County Analysis - IA 340 | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Module 6: SQL Queries and County Analysis - IA 340" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
+<meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-44/modules/module-6/" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-44/modules/module-6/" />
+<meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Module 6: SQL Queries and County Analysis - IA 340" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Module 6: SQL Queries and County Analysis - IA 340","url":"https://jmu-data.github.io/IA340/pr-preview/pr-44/modules/module-6/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-44/assets/css/style.css?v=97cbf1043470b04367d1e82da9b58773db2c5729">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/IA340/pr-preview/pr-44/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://jmu-data.github.io/IA340/pr-preview/pr-44/">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</a></h1>
+      
+
+      <h1 id="module-6-sql-queries-and-county-analysis">Module 6: SQL Queries and County Analysis</h1>
+
+<nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
+  <a href="/IA340/pr-preview/pr-44/" style="text-decoration: none; color: #57606a;">Home</a>
+  <a href="/IA340/pr-preview/pr-44/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
+  <a href="/IA340/pr-preview/pr-44/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
+  <a href="/IA340/pr-preview/pr-44/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+  <a href="/IA340/pr-preview/pr-44/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="/IA340/pr-preview/pr-44/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
+  <a href="/IA340/pr-preview/pr-44/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
+  <a href="/IA340/pr-preview/pr-44/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="/IA340/pr-preview/pr-44/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
+  <a href="/IA340/pr-preview/pr-44/modules/module-4/" style="text-decoration: none; color: #57606a;">Module 4</a>
+  <a href="/IA340/pr-preview/pr-44/assignments/lab-4/" style="text-decoration: none; color: #57606a;">Lab 4</a>
+  <a href="/IA340/pr-preview/pr-44/modules/module-5/" style="text-decoration: none; color: #57606a;">Module 5</a>
+  <a href="/IA340/pr-preview/pr-44/assignments/lab-5/" style="text-decoration: none; color: #57606a;">Lab 5</a>
+  <a href="/IA340/pr-preview/pr-44/modules/module-6/" style="text-decoration: none; font-weight: 600; color: #0969da;">Module 6</a>
+  <a href="/IA340/pr-preview/pr-44/assignments/lab-6/" style="text-decoration: none; color: #57606a;">Lab 6</a>
+</nav>
+
+<style>
+/* Presentation Slide Deck Styles */
+.deck-container {
+  max-width: 1280px;
+  margin: 1rem auto 2.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2328;
+}
+
+.deck-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f2328;
+  color: #f0f6fc;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  user-select: none;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.deck-title-tag {
+  font-size: 0.92rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.deck-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.deck-btn {
+  background: #32383f;
+  color: #f0f6fc;
+  border: 1px solid #444c56;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.deck-btn:hover:not(:disabled) {
+  background: #0969da;
+  border-color: #0969da;
+  color: #ffffff;
+}
+
+.deck-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.deck-select {
+  background: #2d333b;
+  color: #f0f6fc;
+  border: 1px solid #444c56;
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+  max-width: 280px;
+  cursor: pointer;
+}
+
+.deck-progress-track {
+  width: 100%;
+  height: 4px;
+  background: #2d333b;
+}
+
+.deck-progress-fill {
+  height: 100%;
+  background: #2da44e;
+  width: 1.45%;
+  transition: width 0.25s ease;
+}
+
+.deck-stage {
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  min-height: 680px;
+  max-height: 820px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide {
+  display: none;
+  height: 100%;
+  padding: 1.8rem 2.5rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  animation: slideFadeIn 0.2s ease-out;
+}
+
+.slide.active {
+  display: flex;
+}
+
+@keyframes slideFadeIn {
+  from { opacity: 0.2; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: #ddf4ff;
+  color: #0969da;
+  border: 1px solid rgba(84, 174, 255, 0.4);
+  padding: 0.2rem 0.65rem;
+  border-radius: 2em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.slide h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #1f2328;
+  font-size: 1.45rem;
+  border-bottom: 2px solid #eaeef2;
+  padding-bottom: 0.35rem;
+}
+
+.slide h3 {
+  margin-top: 0.6rem;
+  margin-bottom: 0.3rem;
+  color: #1f2328;
+  font-size: 1.15rem;
+}
+
+.slide-center-box {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.slide-main-title {
+  font-size: 2.3rem;
+  margin: 0.4rem 0 0.6rem;
+  color: #0969da;
+}
+
+.slide-subtitle {
+  font-size: 1.15rem;
+  color: #57606a;
+  margin: 0 auto 1.4rem;
+}
+
+.slide-card-lead {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.slide-text-large {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #24292f;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.slide-text-large p {
+  margin: 0.35rem 0;
+}
+
+.slide-text-large pre {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  overflow-x: auto;
+  font-size: 0.92em;
+  line-height: 1.4;
+  margin: 0.4rem 0;
+}
+
+.slide-text-large code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  background: rgba(175, 184, 193, 0.2);
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+}
+
+.slide-text-large pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+.slide-text-large table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.3rem 0;
+  font-size: 0.92rem;
+}
+
+.slide-text-large th, .slide-text-large td {
+  padding: 0.4rem 0.65rem;
+  border: 1px solid #d0d7de;
+  text-align: left;
+}
+
+.slide-text-large th {
+  background: #f6f8fa;
+  font-weight: 600;
+}
+
+.slide-media-box {
+  text-align: center;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 0.4rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  margin: 0.4rem 0;
+}
+
+.slide-media-box img {
+  max-width: 100%;
+  max-height: 440px;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.slide-media-box img.full-chart {
+  max-width: 100%;
+  max-height: 520px;
+}
+
+.iframe-container {
+  width: 100%;
+  min-height: 320px;
+  margin: 0.4rem 0 0.2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.iframe-container iframe {
+  width: 100%;
+  min-height: 320px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.deck-btn-primary {
+  background: #0969da;
+  color: #ffffff;
+  border: 1px solid #0969da;
+  border-radius: 8px;
+  padding: 0.65rem 1.6rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.deck-btn-primary:hover {
+  background: #0858b9;
+}
+
+/* Syntax highlighting classes */
+.k, .kn, .kd, .kc { color: #8250df; font-weight: 600; }
+.s, .s1, .s2 { color: #0a3069; }
+.mi, .mf { color: #0550ae; }
+.c, .c1, .cm { color: #57606a; font-style: italic; }
+.o { color: #cf222e; }
+.nn, .nf { color: #116329; }
+
+/* Fullscreen mode */
+#lectureDeck:fullscreen,
+#lectureDeck:-webkit-full-screen,
+.deck-container:fullscreen,
+.deck-container:-webkit-full-screen {
+  max-width: none !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+#lectureDeck:fullscreen .deck-stage,
+#lectureDeck:-webkit-full-screen .deck-stage,
+.deck-container:fullscreen .deck-stage,
+.deck-container:-webkit-full-screen .deck-stage {
+  height: calc(100vh - 48px) !important;
+  max-height: none !important;
+  flex: 1;
+  border-radius: 0 !important;
+  border: none !important;
+  overflow: hidden;
+}
+
+#lectureDeck:fullscreen .slide.active,
+#lectureDeck:-webkit-full-screen .slide.active,
+.deck-container:fullscreen .slide.active,
+.deck-container:-webkit-full-screen .slide.active {
+  padding: 1.2rem 2.5rem !important;
+  font-size: 1.05rem !important;
+  line-height: 1.45 !important;
+}
+
+@media (max-width: 860px) {
+  .deck-nav-bar { padding: 0.5rem 0.8rem; }
+  .deck-select { max-width: 160px; font-size: 0.8rem; }
+  .deck-stage { height: auto; max-height: none; min-height: 520px; }
+  .slide { height: auto; overflow-y: auto; padding: 1.2rem 1rem; }
+  .slide-media-box img { max-height: 280px; }
+  .iframe-container { min-height: 280px; }
+  .iframe-container iframe { min-height: 280px; }
+}
+</style>
+
+<div class="deck-container" id="lectureDeck">
+  <div class="deck-nav-bar">
+    <div class="deck-title-tag">
+      <span>📊 IA 340 Week 6 Lecture</span>
+      <span style="opacity: 0.4;">|</span>
+      <span id="slideCounter">Slide 1 of 69</span>
+    </div>
+    <div class="deck-controls">
+      <button class="deck-btn" id="prevBtn" onclick="changeSlide(-1)" title="Previous (← / PageUp)">◀ Prev</button>
+      <select id="slidePicker" class="deck-select" onchange="goToSlide(parseInt(this.value))" aria-label="Jump to slide">
+        <option value="1">01 · SQL Queries and County Analysis</option>
+        <option value="2">02 · Our three tables</option>
+        <option value="3">03 · INSERT: add one fake county name</option>
+        <option value="4">04 · UPDATE: change only that fake name</option>
+        <option value="5">05 · DELETE: remove the fake name</option>
+        <option value="6">06 · Primary key: Harrisonburg already exists</option>
+        <option value="7">07 · Foreign key: the parent county must exist first</option>
+        <option value="8">08 · Foreign key: run one rejected INSERT</option>
+        <option value="9">09 · Required key: NULL FIPS is rejected</option>
+        <option value="10">10 · Consistency: the rules still apply</option>
+        <option value="11">11 · Aggregation: see rows become groups</option>
+        <option value="12">12 · Summarize the covered 2024 areas</option>
+        <option value="13">13 · GROUP BY: one answer for each year</option>
+        <option value="14">14 · HAVING: filter the groups</option>
+        <option value="15">15 · JOIN syntax: which table, which column?</option>
+        <option value="16">16 · INNER JOIN: watch matching FIPS</option>
+        <option value="17">17 · INNER JOIN: SQL and an actual result</option>
+        <option value="18">18 · LEFT JOIN: first see the unmatched name</option>
+        <option value="19">19 · LEFT JOIN: SQL and the instructor result</option>
+        <option value="20">20 · RIGHT JOIN: the same result after swapping tables</option>
+        <option value="21">21 · FULL JOIN: keep both sides, using only two tables</option>
+        <option value="22">22 · JOIN three tables: watch the two matches</option>
+        <option value="23">23 · Join measurements using FIPS and year</option>
+        <option value="24">24 · Nested query: compute a value, then use it</option>
+        <option value="25">25 · Nested query: run one MAX example</option>
+        <option value="26">26 · Self-join: one table, two aliases</option>
+        <option value="27">27 · Self-join: only the population table</option>
+        <option value="28">28 · What is a VIEW?</option>
+        <option value="29">29 · Save the JOIN as a view</option>
+        <option value="30">30 · Query the view instead of rewriting the JOIN</option>
+        <option value="31">31 · Index: another route to the same answer</option>
+        <option value="32">32 · An existing index on FIPS</option>
+        <option value="33">33 · EXPLAIN: lookup by indexed FIPS</option>
+        <option value="34">34 · EXPLAIN: lookup by name</option>
+        <option value="35">35 · Before Gemini: discuss the questions first</option>
+        <option value="36">36 · Discussion answers: data, definition, and logic</option>
+        <option value="37">37 · What makes a good data question?</option>
+        <option value="38">38 · Computing, mathematics, and domain knowledge</option>
+        <option value="39">39 · Gemini in Studio: enable the existing feature</option>
+        <option value="40">40 · Gemini example: ask one precise question</option>
+        <option value="41">41 · Review Gemini's SQL before you insert it</option>
+        <option value="42">42 · Run the generated query and verify the result</option>
+        <option value="43">43 · Q1 example: a more detailed prompt</option>
+        <option value="44">44 · Q1 example: result</option>
+        <option value="45">45 · Find the FIPS for your assigned county</option>
+        <option value="46">46 · Q1 — Population growth</option>
+        <option value="47">47 · Q2 — Household-income growth</option>
+        <option value="48">48 · Q3 — Your own question</option>
+        <option value="49">49 · Save Q1, Q2, and Q3 in lab6.sql</option>
+        <option value="50">50 · Save the SQL file on GitHub</option>
+        <option value="51">51 · Colab: a guided Q0, then your Q1–Q3</option>
+        <option value="52">52 · New notebook: enable access to the four DB Secrets</option>
+        <option value="53">53 · Install the database driver and import the packages</option>
+        <option value="54">54 · Open a connection and create a cursor</option>
+        <option value="55">55 · Python INSERT: add the same fake county</option>
+        <option value="56">56 · Python UPDATE: change that fake county name</option>
+        <option value="57">57 · Python DELETE: remove the practice row</option>
+        <option value="58">58 · Rollback: continue using the same connection</option>
+        <option value="59">59 · Q0 — What were the covered areas’ populations in 2024?</option>
+        <option value="60">60 · Q0: SQL string first, Python result second</option>
+        <option value="61">61 · Q0 — Draw the population chart</option>
+        <option value="62">62 · Q0 — Result</option>
+        <option value="63">63 · Q1–Q3: structured notebook workflow</option>
+        <option value="64">64 · Ask Gemini to visualize your query result</option>
+        <option value="65">65 · Q3 — Visualize and answer your own question</option>
+        <option value="66">66 · Final Summary and Gemini Use</option>
+        <option value="67">67 · Submit one GitHub repository URL</option>
+        <option value="68">68 · Lab 6 rubric — 100 points</option>
+        <option value="69">69 · References</option>
+      </select>
+      <button class="deck-btn" id="nextBtn" onclick="changeSlide(1)" title="Next (→ / Space / PageDown)">Next ▶</button>
+      <button class="deck-btn" onclick="goToSlide(2)" title="Jump to SQL studio section">SQL</button>
+      <button class="deck-btn" onclick="goToSlide(51)" title="Jump to Python Colab section">Python</button>
+      <button class="deck-btn" onclick="toggleFullScreen()" title="Fullscreen Mode">⛶ Fullscreen</button>
+    </div>
+  </div>
+  <div class="deck-progress-track">
+    <div class="deck-progress-fill" id="progressBar"></div>
+  </div>
+  <div class="deck-stage">
+
+    <!-- SLIDE 1: Title Slide -->
+    <div class="slide active" data-slide="1">
+      <div class="slide-center-box">
+        <h1 class="slide-main-title">SQL Queries and County Analysis</h1>
+        <p class="slide-subtitle">SQL Queries, Cloud SQL Studio, Colab &amp; Python County Analysis</p>
+        <div class="slide-card-lead">
+          <p style="margin-top: 0;"><strong>IA 340 &mdash; Data Mining, Modeling, and Knowledge Discovery</strong></p>
+          <p>Dr. Xuebin Wei &bull; September 28&ndash;October 2, 2026</p>
+          <div style="display: flex; justify-content: space-around; margin: 1.2rem 0; gap: 1rem; flex-wrap: wrap;">
+            <div style="background: #ffffff; border: 1px solid #d0d7de; border-left: 4px solid #0969da; border-radius: 6px; padding: 0.9rem 1.2rem; flex: 1; min-width: 260px; text-align: left;">
+              <strong style="color: #0969da; font-size: 1.05rem;">Monday Focus (Cloud SQL Studio):</strong>
+              <div style="font-size: 0.92em; color: #57606a; margin-top: 0.4rem; line-height: 1.5;">
+                Data changes (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) &bull; Constraints (PK, NOT NULL, FK) &bull; Aggregations &bull; JOINs (INNER, LEFT, RIGHT, FULL, 3-table) &bull; Nested queries &bull; Self-joins &bull; Views &bull; Indexes &amp; EXPLAIN &bull; Gemini SQL assistant.
+              </div>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #d0d7de; border-left: 4px solid #1a7f37; border-radius: 6px; padding: 0.9rem 1.2rem; flex: 1; min-width: 260px; text-align: left;">
+              <strong style="color: #1a7f37; font-size: 1.05rem;">Wednesday Focus (Google Colab):</strong>
+              <div style="font-size: 0.92em; color: #57606a; margin-top: 0.4rem; line-height: 1.5;">
+                Database connection via Colab Secrets &bull; Fake-name DML practice &bull; Rollback after rejected transaction &bull; Guided Q0 covered-area analysis &bull; Q1&ndash;Q3 independent county analysis.
+              </div>
+            </div>
+          </div>
+          <div style="background: #ddf4ff; border: 1px solid rgba(84, 174, 255, 0.4); border-radius: 6px; padding: 0.6rem 1rem; font-size: 0.92rem; color: #0969da; margin-top: 0.5rem;">
+            <strong>Deliverables:</strong> Save <code>lab6.sql</code> and <code>lab6.ipynb</code> at the root of your assigned private course repository on <code>main</code>.
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <button class="deck-btn-primary" onclick="changeSlide(1)">Start Lecture ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide" data-slide="2">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Our three tables</h2><p><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/schema-grain.svg" alt="Name table connected separately to the population and income tables" class="diagram" /></div>
+<strong>Uploaded snapshot:</strong> 133 names; 270 population rows; 270 income rows.
+The same <strong>30 areas</strong> have both measurements in nine years: <strong>2015–2019, 2021–2024</strong>.</p>
+<p><code>name</code> contains labels, not population values. Match measurements using <strong>FIPS and year</strong>.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide" data-slide="3">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>INSERT: add one fake county name</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/constraints-lab.html#insert" title="Add a fake name row" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: Add a fake name row | <a href="/IA340/pr-preview/pr-44/assets/week-6/constraints-lab.html#insert" target="_blank">Open demonstration separately ↗</a>
+</p>
+<div class="codehilite"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">(</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">'51999'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Practice County'</span><span class="p">);</span>
+</pre></div>
+<p><code>51999</code> is absent from the uploaded name list. Check that it is still unused in your own database first.
+Run this once, then inspect the row in Studio. <strong>Do not add a population or income value.</strong></p>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide" data-slide="4">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>UPDATE: change only that fake name</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/constraints-lab.html#update" title="Update the fake name" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: Update the fake name | <a href="/IA340/pr-preview/pr-44/assets/week-6/constraints-lab.html#update" target="_blank">Open demonstration separately ↗</a>
+</p>
+<div class="codehilite"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Practice County - Updated'</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'51999'</span><span class="p">;</span>
+</pre></div>
+<p><code>SET</code> gives the new value. <code>WHERE</code> chooses the row.
+Before running, check that FIPS <code>51999</code> is your fake row. Without WHERE, every name would qualify.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide" data-slide="5">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>DELETE: remove the fake name</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/constraints-lab.html#delete" title="Delete the fake name" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: Delete the fake name | <a href="/IA340/pr-preview/pr-44/assets/week-6/constraints-lab.html#delete" target="_blank">Open demonstration separately ↗</a>
+</p>
+<div class="codehilite"><pre><span></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'51999'</span><span class="p">;</span>
+</pre></div>
+<p>Inspect <code>name</code> afterward: the fake row is gone. With no other edits, the name count is back to <strong>133</strong>.</p>
+<p><strong>No real county was renamed or deleted. Population and income remain unchanged.</strong></p>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide" data-slide="6">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Primary key: Harrisonburg already exists</h2><div class="codehilite"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">(</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">'51660'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Harrisonburg city'</span><span class="p">);</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20145847.png" alt="Instructor test: duplicate FIPS 51660 is rejected by name_pkey" class="screenshot" /></div>
+<p><em>Instructor screenshot — full image.</em></p>
+<p><strong>The repeated FIPS causes the error.</strong> The descriptive county name is not required to be unique.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide" data-slide="7">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Foreign key: the parent county must exist first</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/foreign-key-lab.html" title="Try an unknown FIPS, then reset" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: Try an unknown FIPS, then reset | <a href="/IA340/pr-preview/pr-44/assets/week-6/foreign-key-lab.html" target="_blank">Open demonstration separately ↗</a>
+</p>
+<p><code>population.fips</code> is a <strong>foreign key</strong>. It must match an existing <code>name.fips</code> <strong>primary key</strong>.</p>
+<p>Think of it as: <strong>first the county exists in <code>name</code>; then an observation can point to that county.</strong> If the parent FIPS is missing, PostgreSQL rejects the child row.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="slide" data-slide="8">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Foreign key: run one rejected INSERT</h2><div class="codehilite"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="p">(</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">population</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">'51998'</span><span class="p">,</span><span class="w"> </span><span class="mi">2024</span><span class="p">,</span><span class="w"> </span><span class="mi">100000</span><span class="p">);</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20165544.png" alt="Instructor run: an unknown FIPS is rejected by the population foreign key" class="screenshot" /></div>
+<p><strong>Expected error:</strong> FIPS <code>51998</code> is not in <code>name</code>, so the foreign key rejects the population row. No observation is added.</p>
+<p>This is the one intentionally rejected observation INSERT. Successful practice changes still use only the fake <code>name</code> row.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 9 -->
+    <div class="slide" data-slide="9">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Required key: NULL FIPS is rejected</h2><div class="codehilite"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">(</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="s1">'Practice County'</span><span class="p">);</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20145923.png" alt="Instructor test: NULL FIPS violates the name primary-key NOT NULL requirement" class="screenshot" /></div>
+<p><em>Instructor screenshot — full image.</em></p>
+<p>This is a <strong>primary-key / NOT NULL</strong> error, not proof of a numeric datatype rule.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 10 -->
+    <div class="slide" data-slide="10">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Consistency: the rules still apply</h2><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Try this</th>
+<th>What happens?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add an FIPS that already exists</td>
+<td>The primary key rejects the duplicate.</td>
+</tr>
+<tr>
+<td>Leave the primary-key FIPS empty (<code>NULL</code>)</td>
+<td>The primary key rejects it.</td>
+</tr>
+<tr>
+<td>Add a population for a county not in <code>name</code></td>
+<td>The foreign key rejects it.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>A text field stores text; it does not judge whether the words make sense.</strong>
+For example, <code>'123'</code> can fit in the county-name field, but it is not a useful county name. The database checks its rules; we still check the meaning of the data.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 11 -->
+    <div class="slide" data-slide="11">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Aggregation: see rows become groups</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/aggregation-lab.html" title="Group actual rows by year" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: Group actual rows by year | <a href="/IA340/pr-preview/pr-44/assets/week-6/aggregation-lab.html" target="_blank">Open demonstration separately ↗</a>
+</p>
+<p><code>COUNT</code> counts the input rows. <code>SUM</code> adds their populations. <code>AVG</code>, <code>MIN</code>, and <code>MAX</code> work on the same selected rows.</p>
+<p>Next, run the full query over our covered Virginia subset.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 12 -->
+    <div class="slide" data-slide="12">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Summarize the covered 2024 areas</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">areas</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">covered_population</span><span class="p">,</span>
+<span class="w">       </span><span class="k">MIN</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">smallest</span><span class="p">,</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">largest</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">fips</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'51%'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span><span class="p">;</span>
+</pre></div>
+<div class="table-scroll"><table><thead><tr><th>areas</th><th>covered_population</th><th>smallest</th><th>largest</th></tr></thead><tbody><tr><td>30</td><td>6,428,276</td><td>71,410</td><td>1,160,925</td></tr></tbody></table></div>
+This total is **6,428,276 people across 30 covered areas**, not the population of all Virginia.
+
+<p><code>COUNT(*)</code> counts rows; <code>COUNT(population)</code> counts non-NULL population values.
+<code>AVG(income)</code> would average area medians, not calculate a statewide household median.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 13 -->
+    <div class="slide" data-slide="13">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>GROUP BY: one answer for each year</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">areas</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">covered_population</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">fips</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'51%'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">2015</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">2024</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">year</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">year</span><span class="p">;</span>
+</pre></div>
+<div class="table-scroll"><table><thead><tr><th>year</th><th>areas</th><th>covered_population</th></tr></thead><tbody><tr><td>2015</td><td>30</td><td>6,047,933</td></tr><tr><td>2019</td><td>30</td><td>6,201,589</td></tr><tr><td>2021</td><td>30</td><td>6,293,742</td></tr><tr><td>2024</td><td>30</td><td>6,428,276</td></tr></tbody></table></div>
+Four of the nine result rows are shown. Every available year has 30 areas.
+There is **no 2020 group**, rather than a 2020 total of zero.
+      </div>
+    </div>
+
+    <!-- SLIDE 14 -->
+    <div class="slide" data-slide="14">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>HAVING: filter the groups</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">years_available</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mean_population</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">2015</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">2024</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">fips</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'51%'</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fips</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">200000</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">mean_population</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">fips</span><span class="p">;</span>
+</pre></div>
+<p><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20150235.png" alt="Instructor GROUP BY and HAVING result for mean population above 200000" class="screenshot" /></div>
+<code>WHERE</code> picks input rows. <code>GROUP BY fips</code> forms one group per area.
+<code>HAVING</code> keeps areas whose mean stored population is above 200,000.</p>
+<p>Try 300,000 instead. It changes the result, not the stored data.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 15 -->
+    <div class="slide" data-slide="15">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>JOIN syntax: which table, which column?</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">population</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">population</span><span class="p">.</span><span class="n">population</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">population</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">fips</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">population</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span><span class="p">;</span>
+</pre></div>
+<p>Both tables have a column named <code>fips</code>, so in a JOIN we often write <strong>table.column</strong> to show exactly which field we mean.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>SQL</th>
+<th>Read it as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name.name</code></td>
+<td>column <code>name</code> from table <code>name</code></td>
+</tr>
+<tr>
+<td><code>population.year</code></td>
+<td>column <code>year</code> from table <code>population</code></td>
+</tr>
+<tr>
+<td><code>population.population</code></td>
+<td>column <code>population</code> from table <code>population</code></td>
+</tr>
+<tr>
+<td><code>population.fips = name.fips</code></td>
+<td>match the observation's <strong>foreign key</strong> to the county's <strong>primary key</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>SELECT</strong> chooses the output columns. <strong>FROM</strong> gives the first table. <strong>JOIN</strong> adds the second table. <strong>ON</strong> says how the rows match.</p>
+<p>Later, aliases make the same SQL shorter: <code>population AS p</code> means <code>p.fips</code> is short for <code>population.fips</code>.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 16 -->
+    <div class="slide" data-slide="16">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>INNER JOIN: watch matching FIPS</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/join-lab.html#inner" title="INNER JOIN step by step" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: INNER JOIN step by step | <a href="/IA340/pr-preview/pr-44/assets/week-6/join-lab.html#inner" target="_blank">Open demonstration separately ↗</a>
+</p>
+<p>Only matching rows appear. This is a table operation, not a Python loop.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 17 -->
+    <div class="slide" data-slide="17">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>INNER JOIN: SQL and an actual result</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">population</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">population</span><span class="p">.</span><span class="n">population</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">population</span><span class="p">.</span><span class="n">fips</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">population</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">population</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">fips</span><span class="p">;</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20150334.png" alt="Instructor INNER JOIN result using full table and column names" class="screenshot" /></div>
+<p><code>JOIN</code> means <code>INNER JOIN</code> here. Use aliases only to shorten these same table names.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 18 -->
+    <div class="slide" data-slide="18">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>LEFT JOIN: first see the unmatched name</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/join-lab.html#left" title="LEFT JOIN preserves a name with no population" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: LEFT JOIN preserves a name with no population | <a href="/IA340/pr-preview/pr-44/assets/week-6/join-lab.html#left" target="_blank">Open demonstration separately ↗</a>
+</p>
+<p><strong>NULL means no matching observation, not zero residents.</strong> Keep all rows of the table on the left.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 19 -->
+    <div class="slide" data-slide="19">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>LEFT JOIN: SQL and the instructor result</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">population</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'51%'</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">;</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20150410.png" alt="Instructor LEFT JOIN: names remain when population is blank" class="screenshot" /></div>
+<p><em>Instructor screenshot — full image.</em></p>
+<p><strong>133 names = 30 matches + 103 unmatched names.</strong> Keep the year filter in <code>ON</code>; a <code>WHERE p.year = 2024</code> would remove unmatched rows.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 20 -->
+    <div class="slide" data-slide="20">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>RIGHT JOIN: the same result after swapping tables</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">population</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p</span>
+<span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'51%'</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">;</span>
+</pre></div>
+<p><strong>Yes: this example returns the same result as the earlier LEFT JOIN.</strong></p>
+<p><code>name LEFT JOIN population</code> keeps every name. After swapping the table positions, <code>population RIGHT JOIN name</code> still keeps every name.</p>
+<p>The result has 133 names: 30 with a 2024 population, and 103 with a missing population. LEFT and RIGHT describe the table positions in the query.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 21 -->
+    <div class="slide" data-slide="21">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>FULL JOIN: keep both sides, using only two tables</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">population</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
+<span class="k">FULL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">fips</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="p">;</span>
+</pre></div>
+<p>A FULL JOIN keeps unmatched rows from <strong>either</strong> table. A blank population means there was no matching observation.</p>
+<p>In our extract, every population row has a name parent. The result has <strong>270 matched observations + 103 names without observations = 373 rows</strong>. It therefore matches this same all-years LEFT JOIN; a different join type need not change the result on this dataset.</p>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20170007.png" alt="Instructor FULL JOIN result: names without observations remain" class="screenshot" /></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 22 -->
+    <div class="slide" data-slide="22">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>JOIN three tables: watch the two matches</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/three-table-join.html" title="Names plus population, then matching income" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: Names plus population, then matching income | <a href="/IA340/pr-preview/pr-44/assets/week-6/three-table-join.html" target="_blank">Open demonstration separately ↗</a>
+</p>
+<p>First: <strong><code>n.fips = p.fips</code></strong> adds the name. Then: <strong><code>p.fips = i.fips AND p.year = i.year</code></strong> adds the matching year's income.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 23 -->
+    <div class="slide" data-slide="23">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Join measurements using FIPS and year</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">population</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">income</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">fips</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">income</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="k">year</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'51%'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">2015</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">2024</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="p">;</span>
+</pre></div>
+<p>The full query returns <strong>270 rows</strong>, one area-year per row; the screenshot shows the beginning of the result.
+Matching only FIPS would pair different years and produce <strong>2,430 rows</strong>, not 270.</p>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20170107.png" alt="Instructor three-table JOIN result with matching FIPS and year" class="screenshot" /></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 24 -->
+    <div class="slide" data-slide="24">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Nested query: compute a value, then use it</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/subquery-lab.html" title="Nested MAX step by step" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: Nested MAX step by step | <a href="/IA340/pr-preview/pr-44/assets/week-6/subquery-lab.html" target="_blank">Open demonstration separately ↗</a>
+</p>
+<p>The inner query finds a maximum. The outer query finds every row equal to it, including any exact ties.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 25 -->
+    <div class="slide" data-slide="25">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Nested query: run one MAX example</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">income</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">income</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">income</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">income</span><span class="p">)</span>
+<span class="w">      </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">income</span>
+<span class="w">      </span><span class="k">WHERE</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fips</span><span class="p">;</span>
+</pre></div>
+<p>The inner SELECT finds <strong>177,567</strong>. The outer SELECT returns the row(s) with that value: <strong>51107 / 2024 / 177567</strong> in this export.
+The name table identifies 51107 as Loudoun County. Keep tied maxima rather than choosing an arbitrary row.</p>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20170150.png" alt="Instructor nested-query result: the maximum 2024 income" class="screenshot" /></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 26 -->
+    <div class="slide" data-slide="26">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Self-join: one table, two aliases</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/self-join-lab.html" title="Pair consecutive years from the same table" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: Pair consecutive years from the same table | <a href="/IA340/pr-preview/pr-44/assets/week-6/self-join-lab.html" target="_blank">Open demonstration separately ↗</a>
+</p>
+<p><code>prev</code> means the starting row; <code>curr</code> means the ending row.
+We are reading the same table twice, not creating another table.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 27 -->
+    <div class="slide" data-slide="27">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Self-join: only the population table</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">curr</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">curr</span><span class="p">.</span><span class="k">year</span><span class="p">,</span>
+<span class="w">       </span><span class="n">prev</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">previous_value</span><span class="p">,</span>
+<span class="w">       </span><span class="n">curr</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">current_value</span><span class="p">,</span>
+<span class="w">       </span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">curr</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prev</span><span class="p">.</span><span class="n">population</span><span class="p">)</span>
+<span class="w">             </span><span class="o">/</span><span class="w"> </span><span class="n">prev</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">growth_rate_pct</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">curr</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">prev</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">curr</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev</span><span class="p">.</span><span class="n">fips</span>
+<span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">curr</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">curr</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'51%'</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">prev</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2015</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">curr</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2024</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">prev</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">curr</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">curr</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">curr</span><span class="p">.</span><span class="k">year</span><span class="p">;</span>
+</pre></div>
+<p><strong>One table, two aliases:</strong> <code>prev</code> supplies year − 1; <code>curr</code> supplies year.
+<code>100.0 × (current − previous) / previous</code> gives a percentage, not a fraction.</p>
+<p>The query returns <strong>210 rows: seven valid one-year intervals for each of 30 areas</strong>. This class example reads all covered areas. It returns only years with an available previous year. Your own question can retain missing rates as NULL, as in the later Fairfax result.</p>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20170240.png" alt="Instructor self-join result across the covered Virginia areas" class="screenshot" /></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 28 -->
+    <div class="slide" data-slide="28">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>What is a VIEW?</h2><p><strong>A view is a saved query that you can read like a table.</strong></p>
+<p>We have just joined <code>name</code>, <code>population</code>, and <code>income</code>. Instead of rewriting that JOIN every time,
+we give its SELECT definition the name <strong>county_year</strong>.</p>
+<div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/view-lab.html" title="A saved JOIN queried like a table" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: A saved JOIN queried like a table | <a href="/IA340/pr-preview/pr-44/assets/week-6/view-lab.html" target="_blank">Open demonstration separately ↗</a>
+</p>
+<p>An ordinary view stores the query definition, <strong>not an extra copy of the population/income rows</strong>.
+Querying it uses the underlying data visible at that time. It simplifies SQL; it is not automatically a speed boost.</p>
+<p><a href="https://www.postgresql.org/docs/18/sql-createview.html">PostgreSQL views</a></p>
+      </div>
+    </div>
+
+    <!-- SLIDE 29 -->
+    <div class="slide" data-slide="29">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Save the JOIN as a view</h2><div class="codehilite"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">county_year</span><span class="w"> </span><span class="k">AS</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">population</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">income</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">fips</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">income</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="k">year</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'51%'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">2015</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">2024</span><span class="p">;</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20150851.png" alt="Instructor creates county_year and sees the saved view in Studio" class="screenshot" /></div>
+<p>A normal view saves this SELECT definition, not another copy of its result rows. Replace only this teaching view, not an unrelated object.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 30 -->
+    <div class="slide" data-slide="30">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Query the view instead of rewriting the JOIN</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">population</span><span class="p">,</span><span class="w"> </span><span class="n">income</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">county_year</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'51059'</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">year</span><span class="p">;</span>
+</pre></div>
+<div class="table-scroll"><table><thead><tr><th>year</th><th>population</th><th>income</th></tr></thead><tbody><tr><td>2022</td><td>1,138,331</td><td>145,164</td></tr><tr><td>2023</td><td>1,141,878</td><td>141,553</td></tr><tr><td>2024</td><td>1,160,925</td><td>154,545</td></tr></tbody></table></div>
+The last three rows are shown. The view uses the current source data when queried.
+
+<p>To remove only this view definition later, use <code>DROP VIEW public.county_year;</code>.
+The three source tables remain. The notebook can also reuse the original SELECT directly.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 31 -->
+    <div class="slide" data-slide="31">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Index: another route to the same answer</h2><div class="iframe-container">
+  <iframe src="/IA340/pr-preview/pr-44/assets/week-6/index-lab.html" title="Illustrate scan and index lookup" loading="lazy"></iframe>
+</div>
+<p style="margin: 0.3rem 0; font-size: 0.88em; color: #57606a;">
+  Interactive demonstration: Illustrate scan and index lookup | <a href="/IA340/pr-preview/pr-44/assets/week-6/index-lab.html" target="_blank">Open demonstration separately ↗</a>
+</p>
+<p>Indexes can help suitable searches, but take storage and maintenance work.
+An index does not change the query's intended answer.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 32 -->
+    <div class="slide" data-slide="32">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>An existing index on FIPS</h2><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20151228.png" alt="Studio shows one index and the name_pkey primary key on the name table" class="screenshot" /></div>
+<p>The required primary key on <code>name.fips</code> already has an index. An index can help a selective lookup avoid scanning every row.</p>
+<p>A table <strong>can have more than one index</strong>, but indexes use space and must be maintained during INSERT/DELETE and relevant UPDATE operations. Do not index every column. This lesson does not create or remove indexes.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 33 -->
+    <div class="slide" data-slide="33">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>EXPLAIN: lookup by indexed FIPS</h2><div class="codehilite"><pre><span></span><span class="k">EXPLAIN</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'51059'</span><span class="p">;</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20151309.png" alt="Actual FIPS EXPLAIN result uses Seq Scan on name" class="screenshot" /></div>
+<p><em>Instructor screenshot — full image.</em></p>
+<p>The instructor's actual plan is <strong>Seq Scan</strong>, even though FIPS is indexed. This table has only 133 rows. <code>cost</code> is the planner's estimate, not milliseconds.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 34 -->
+    <div class="slide" data-slide="34">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>EXPLAIN: lookup by name</h2><div class="codehilite"><pre><span></span><span class="k">EXPLAIN</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Fairfax County'</span><span class="p">;</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20151328.png" alt="Actual name lookup uses Seq Scan" class="screenshot" /></div>
+<p><strong>Both name-table tests used Seq Scan. That is normal for this small dataset.</strong>
+The name table has 133 rows and population has 270 rows. Reading a small table directly can cost less than using an index and then fetching the matching rows.</p>
+<p>An index offers another way to find rows; PostgreSQL chooses the plan. Seeing Seq Scan does not mean the index is missing or broken. We do not need to force an Index Scan for this lesson.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 35 -->
+    <div class="slide" data-slide="35">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Before Gemini: discuss the questions first</h2><h3>Can these tables answer each question as written?</h3>
+<p><strong>A.</strong> What was the population growth rate of all Virginia, 2015–2024?</p>
+<p><strong>B.</strong> What was my county's one-year growth rate in 2021? What about 2025?</p>
+<p><strong>C.</strong> Show me the trend. Did my county grow a lot?</p>
+<p><strong>D.</strong> Did Fairfax County's population increase by more than 2% in 2024, compared with 2023?</p>
+<p><strong>E.</strong> Did population growth cause household incomes to rise?</p>
+<p>Discuss aloud. <strong>The next page contains the answers.</strong></p>
+      </div>
+    </div>
+
+    <!-- SLIDE 36 -->
+    <div class="slide" data-slide="36">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Discussion answers: data, definition, and logic</h2><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Answer based on this extract</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A · All Virginia</td>
+<td>No. We have 30 covered areas, not a complete statewide series.</td>
+</tr>
+<tr>
+<td>B · 2021 / 2025</td>
+<td>No 2021 annual rate without 2020. No 2025 observations in this extract.</td>
+</tr>
+<tr>
+<td>C · Trend / a lot</td>
+<td>Specify the place, years, measure, and what “a lot” means.</td>
+</tr>
+<tr>
+<td>D · More than 2%</td>
+<td>Yes, it is answerable. 1,141,878 → 1,160,925 is about 1.668%, so the answer is no.</td>
+</tr>
+<tr>
+<td>E · Caused income</td>
+<td>Not established by these tables. <strong>Correlation does not imply causation.</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>For D, another person can read the same two rows and repeat the same formula. Same data and parameters should give the same result. Missing years are not zero values.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 37 -->
+    <div class="slide" data-slide="37">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>What makes a good data question?</h2><h3>A good question for this lab has three features</h3>
+<p><strong>1. Specific</strong> — name the <strong>county/city, years, measure, and comparison</strong>.</p>
+<p>Example: “For Fairfax County, what was the population change from 2023 to 2024?”</p>
+<p><strong>2. Answerable with our data</strong> — use fields and years that actually exist in <code>name</code>, <code>population</code>, and <code>income</code>.</p>
+<p>Bad example: “What happened in 2025?” We do not have 2025 data.</p>
+<p><strong>3. Repeatable</strong> — another person using the same county, years, data, and calculation should get the same result.</p>
+<p>And remember: <strong>correlation does not imply causation.</strong> A relationship in these tables does not prove that one variable caused another.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 38 -->
+    <div class="slide" data-slide="38">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Computing, mathematics, and domain knowledge</h2><p><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/data-science-domains.svg" alt="Three domains meet in Data Science" class="diagram" /></div>
+<strong>Computing:</strong> write and run the JOIN. <strong>Mathematics:</strong> choose the denominator.
+<strong>Domain knowledge:</strong> distinguish household income from GDP, and the covered subset from the whole state.</p>
+<p>Gemini can help write code; these checks still matter.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 39 -->
+    <div class="slide" data-slide="39">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Gemini in Studio: enable the existing feature</h2><p>Open <strong>Gemini settings</strong> in Studio. If prompted in your own lab project, enable <strong>Gemini for Google Cloud API</strong>. Confirm that <strong>Comment-to-query generation</strong> is on.</p>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20151842.png" alt="Gemini settings show Enable and Comment-to-query generation" class="screenshot" /></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20151854.png" alt="Enable Gemini for Google Cloud API dialog" class="screenshot" /></div>
+<p>These are the instructor's UI screenshots. No extra API key belongs in your SQL. If access is unavailable, use your existing Gemini chat with the public schema; do not purchase a service or add roles just to complete the lab.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 40 -->
+    <div class="slide" data-slide="40">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Gemini example: ask one precise question</h2><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20162223.png" alt="Instructor asks Gemini for the highest stored income, with county name, year, and income" class="screenshot" /></div>
+<p>This natural-language request focuses on <strong>one metric</strong> and asks Gemini to return the fields needed to verify the answer. It does not combine “highest income” and “highest population” into one ambiguous ranking.</p>
+<p>Because no specific year is requested, the query should search the available stored years and report the year of the maximum.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 41 -->
+    <div class="slide" data-slide="41">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Review Gemini&#x27;s SQL before you insert it</h2><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20162243.png" alt="Gemini generates a JOIN between income and name, sorts income descending, and limits to one row" class="screenshot" /></div>
+<p>Read the generated SQL before clicking <strong>Insert</strong>. Here Gemini joins <code>income.fips</code> to <code>name.fips</code>, orders income from highest to lowest, and keeps one row.</p>
+<p>Check that the query returns <strong>name, year, and income</strong> and that it does not modify a table.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 42 -->
+    <div class="slide" data-slide="42">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Run the generated query and verify the result</h2><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20162254.png" alt="Instructor run: Loudoun County, 2024, median household income 177567" class="screenshot" /></div>
+<p>For the supplied class data, this result is correct: <strong>Loudoun County · 2024 · $177,567</strong>.</p>
+<p>The important workflow is <strong>ask → read the SQL → run → compare the result with the stored data</strong>. A successful Run alone is not the verification.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 43 -->
+    <div class="slide" data-slide="43">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Q1 example: a more detailed prompt</h2><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20162459.png" alt="Instructor prompt specifying the county, consecutive years, missing values, and result fields" class="screenshot" /></div>
+<p>The prompt names the county, explains which years to compare, and asks to see both population values. Those details make the result easier to understand and check.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 44 -->
+    <div class="slide" data-slide="44">
+      <div class="slide-text-large">
+<span class="slide-badge">SQL practice</span><h2>Q1 example: result</h2><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/fairfax-growth-result.png" alt="Instructor Fairfax result, with the two source values beside each rate" class="screenshot" /></div>
+<p><strong>You can check this result even before you understand every line of SQL.</strong> Pick one year and calculate the change using the two population values in that row.</p>
+<p>2015 and 2021 have no previous-year value in this dataset, so their annual growth rates are blank. The displayed values can be checked with a calculator; no extra verification program is needed.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 45 -->
+    <div class="slide" data-slide="45">
+      <div class="slide-text-large">
+<span class="slide-badge">Your lab</span><h2>Find the FIPS for your assigned county</h2><p>Start with the official county or independent-city name assigned to you.
+<strong>Write the lookup yourself or ask Gemini to write it.</strong></p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Fairfax County'</span><span class="p">;</span>
+</pre></div>
+<p>Replace Fairfax County with your own assigned name. Read the result: <strong>Fairfax County is not Fairfax city</strong>.</p>
+<p>Put your county name and FIPS in comments at the top of <code>lab6.sql</code>. Keep that same county for Q1, Q2, and Q3. No area-list download is needed.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 46 -->
+    <div class="slide" data-slide="46">
+      <div class="slide-text-large">
+<span class="slide-badge">Your lab</span><h2>Q1 — Population growth</h2><p><strong>Question:</strong> For your assigned county, what was the annual population growth rate for each available year in 2015–2024, compared with the previous calendar year?</p>
+<p><strong>Database output:</strong> <code>fips</code>, <code>year</code>, <code>previous_value</code>, <code>current_value</code>, <code>growth_rate</code>, ordered by year.</p>
+<p>Keep each available current-year row. If the previous calendar year is missing, show <strong>NULL</strong> for the previous value and growth rate. Do not compare 2021 with 2019 as if they were one year apart.</p>
+<p>The <strong>output is the result returned by the database</strong>. Do <strong>not</strong> paste result rows into <code>lab6.sql</code>; that file contains only your county/FIPS comments, the three question comments, and the three runnable SQL queries.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 47 -->
+    <div class="slide" data-slide="47">
+      <div class="slide-text-large">
+<span class="slide-badge">Your lab</span><h2>Q2 — Household-income growth</h2><p><strong>Question:</strong> For your assigned county, what was the annual growth rate of nominal median household income for each available year in 2015–2024, compared with the previous calendar year?</p>
+<p><strong>Database output:</strong> <code>fips</code>, <code>year</code>, <code>previous_value</code>, <code>current_value</code>, <code>growth_rate</code>, ordered by year.</p>
+<p>Keep each available current-year row. If the previous calendar year is missing, show <strong>NULL</strong> for the previous value and growth rate.</p>
+<p>The <strong>output is the database result</strong>, not content to paste into <code>lab6.sql</code>. Use the same assigned county as Q1. Your Q3 must also use that county.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 48 -->
+    <div class="slide" data-slide="48">
+      <div class="slide-text-large">
+<span class="slide-badge">Your lab</span><h2>Q3 — Your own question</h2><p><strong>Question:</strong> Write one different question about your <strong>same assigned county</strong>, using the existing data.</p>
+<p><strong>Output:</strong> Choose the columns that directly answer your question. State the years, measure, and any comparison or threshold.</p>
+<p>Choose a question that fits the three guidelines: specific, answerable and checkable with our data, and repeatable. Do not simply repeat Q1 or Q2. You will visualize your answer in the notebook.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 49 -->
+    <div class="slide" data-slide="49">
+      <div class="slide-text-large">
+<span class="slide-badge">Your lab</span><h2>Save Q1, Q2, and Q3 in lab6.sql</h2><p>Use comments for the county information and questions. Put <strong>executable SQL</strong> below each question.</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- Assigned county: [YOUR COUNTY NAME]</span>
+<span class="c1">-- FIPS: [YOUR FIPS]</span>
+
+<span class="c1">-- Q1: [YOUR COMPLETE POPULATION-GROWTH QUESTION]</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="k">replace</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">complete</span><span class="w"> </span><span class="n">Q1</span><span class="w"> </span><span class="n">query</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">-- Q2: [YOUR COMPLETE INCOME-GROWTH QUESTION]</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="k">replace</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">complete</span><span class="w"> </span><span class="n">Q2</span><span class="w"> </span><span class="n">query</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">-- Q3: [YOUR OWN COMPLETE QUESTION]</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="k">replace</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">complete</span><span class="w"> </span><span class="n">Q3</span><span class="w"> </span><span class="n">query</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+<p>This is a layout, not runnable answer code: <strong>replace each whole SELECT placeholder</strong> with the query you ran. Do not put <code>--</code> before the actual SQL.</p>
+<p>Save three queries. No result-check notes, pasted result tables, or screenshots are required in the SQL file.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 50 -->
+    <div class="slide" data-slide="50">
+      <div class="slide-text-large">
+<span class="slide-badge">Your lab</span><h2>Save the SQL file on GitHub</h2><p>Open <strong>your assigned course repository → Add file → Create new file</strong>.
+Name the file <strong>lab6.sql</strong>, paste your three questions and queries, and select <strong>Commit changes</strong> on <strong>main</strong>.</p>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/github-save-sql.png" alt="GitHub file name, branch, and Commit changes controls from the instructor screenshot" class="screenshot" /></div>
+<p>If lab6.sql is already there, edit that file. Reopen it to confirm that the questions are comments and the SELECT statements are active SQL.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 51 -->
+    <div class="slide" data-slide="51">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>Colab: database setup, Q0, then your Q1–Q3</h2><p>Start a notebook named <strong>lab6.ipynb</strong>. First complete the required database setup/connection, fake-name practice operations, and <strong>Q0</strong>.</p>
+<p><strong>Q0, Q1, and Q2 are required work</strong>; Q3 is your own question. Q0 compares the class dataset; Q1–Q3 must all use your assigned county.</p>
+<p>Then reuse the three SELECTs saved in <code>lab6.sql</code>. For Q1, Q2, and Q3, use explicit <strong>Markdown headings</strong> before each part: Question, SQL, Python/Pandas, Visualization, and Interpretation.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 52 -->
+    <div class="slide" data-slide="52">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>New notebook: enable access to the four DB Secrets</h2><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20152602.png" alt="New Colab notebook with four database Secrets enabled and a successful connection" class="screenshot" /></div>
+<p>Open the key icon and enable <strong>Notebook access</strong> for <code>DB_HOST</code>, <code>DB_NAME</code>, <code>DB_USER</code>, and <code>DB_PASSWORD</code> in <strong>this new notebook</strong>.</p>
+<p>Reusing a Secret does not guarantee that this notebook already has permission. Its name must match the code exactly.
+The Census API key is <strong>not used this week</strong>: we read the existing database, not the Census API. Do not display or copy Secret values into prompts.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 53 -->
+    <div class="slide" data-slide="53">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>Install the database driver and import the packages</h2><div class="codehilite"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">psycopg2</span><span class="o">-</span><span class="n">binary</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">userdata</span>
+</pre></div>
+<p><code>psycopg2</code> connects Python to PostgreSQL. <code>pandas</code> organizes result rows. <code>matplotlib</code> draws charts.
+Use the existing Colab Secrets: <strong>DB_HOST, DB_NAME, DB_USER, DB_PASSWORD</strong>. Enable notebook access.
+Do not paste the secret values into code, prompts, or saved output.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 54 -->
+    <div class="slide" data-slide="54">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>Open a connection and create a cursor</h2><div class="codehilite"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"DB_HOST"</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="mi">5432</span><span class="p">,</span>
+        <span class="n">dbname</span><span class="o">=</span><span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"DB_NAME"</span><span class="p">),</span> <span class="n">user</span><span class="o">=</span><span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"DB_USER"</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"DB_PASSWORD"</span><span class="p">),</span>
+        <span class="n">sslmode</span><span class="o">=</span><span class="s2">"require"</span><span class="p">,</span> <span class="n">connect_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Check DB Secrets and database availability privately."</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Connected."</span><span class="p">)</span>
+</pre></div>
+<p><code>conn</code> is this notebook's database connection. <code>cur</code> sends SQL and retrieves results.
+After a closed/broken connection, fix the cause and rerun this cell to create a <strong>new connection and cursor</strong>.
+Rollback cannot repair a network failure. Close the old connection first if it is still open.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 55 -->
+    <div class="slide" data-slide="55">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>Python INSERT: add the same fake county</h2><div class="codehilite"><pre><span></span><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"INSERT INTO public.name (fips, name) VALUES ('51999', 'Practice County');"</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT fips, name FROM public.name WHERE fips = '51999';"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+</pre></div>
+<p>First run the notebook's short check that <strong>51999 is unused</strong>.
+The SQL is the same INSERT used in Studio; Python sends it through <code>cur.execute</code>.
+<code>conn.commit()</code> saves it. The SELECT should show <strong>51999 / Practice County</strong>.
+Only the fake name changes; do not add fake population or income observations.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 56 -->
+    <div class="slide" data-slide="56">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>Python UPDATE: change that fake county name</h2><div class="codehilite"><pre><span></span><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"UPDATE public.name SET name = 'Practice County - Updated' WHERE fips = '51999';"</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT fips, name FROM public.name WHERE fips = '51999';"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+</pre></div>
+<p>Expected result: <strong>51999 / Practice County - Updated</strong>.
+<code>WHERE fips = '51999'</code> limits the UPDATE to the practice row.
+The query syntax and the database rules have not changed just because we use Python.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 57 -->
+    <div class="slide" data-slide="57">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>Python DELETE: remove the practice row</h2><div class="codehilite"><pre><span></span><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"DELETE FROM public.name WHERE fips = '51999';"</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT fips, name FROM public.name WHERE fips = '51999';"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>  <span class="c1"># Expected: []</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+<p>Expected output: <strong>[]</strong> — the fake row is gone. The real name, population, and income rows remain.
+If a run stops earlier, inspect 51999 before retrying. Remove only your own leftover practice row;
+do not silently overwrite or delete an unfamiliar record.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 58 -->
+    <div class="slide" data-slide="58">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>Rollback: continue using the same connection</h2><div class="codehilite"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""INSERT INTO public.name (fips, name)</span>
+<span class="s2">                   VALUES (NULL, 'Practice County');"""</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">NotNullViolation</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Rejected NULL FIPS. The connection stays open."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Expected primary-key rejection. Ask the instructor."</span><span class="p">)</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT name FROM public.name WHERE fips = '51059';"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20171633.png" alt="Instructor Python run: NULL FIPS rejected, rollback called, then Fairfax queried on the same connection" class="screenshot" /></div>
+<p><strong>The INSERT failed, but the connection is still open.</strong> After <code>conn.rollback()</code>, the next SELECT works on the same connection. There is no need to connect again for this SQL error.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 59 -->
+    <div class="slide" data-slide="59">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>Q0 — What were the covered areas’ populations in 2024?</h2><div class="codehilite"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">population</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">fips</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'51%'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">population</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">fips</span><span class="p">;</span>
+</pre></div>
+<p><strong>One row = one covered county or county-equivalent city in 2024.</strong>
+<code>name.fips</code> is the parent primary key; <code>population.fips</code> is its foreign-key reference.
+The period is <strong>2024</strong>, the latest year in this provided snapshot—not the current year.</p>
+<p>Expected here: <strong>30 rows</strong>, not all 133 county-level names and not a statewide population total.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 60 -->
+    <div class="slide" data-slide="60">
+      <div class="slide-text-large">
+<span class="slide-badge">Guided Q0</span><h2>Q0: SQL string first, Python result second</h2><div class="codehilite"><pre><span></span><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_q0</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">description</span><span class="p">]</span>
+<span class="n">q0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">q0</span><span class="p">)</span>
+</pre></div>
+<div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20152839.png" alt="Instructor notebook: a separate SQL string cell and Python cell produce the Q0 table" class="screenshot" /></div>
+<p>The previous cell assigns the SELECT to <code>sql_q0</code>. This cell executes it and creates the DataFrame. The table contains 30 covered areas, not a statewide total.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 61 -->
+    <div class="slide" data-slide="61">
+      <div class="slide-text-large">
+<span class="slide-badge">Python practice</span><h2>Q0 — Draw the population chart</h2><div class="codehilite"><pre><span></span><span class="n">plot_q0</span> <span class="o">=</span> <span class="n">q0</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"population"</span><span class="p">,</span> <span class="s2">"fips"</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_q0</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"population"</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"2024 population: the 30 covered Virginia areas"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Population (people)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"County or county-equivalent city"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">"plain"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+<p>Each bar is one row of <code>q0</code>. We sort ascending for plotting so the largest bar appears at the top.
+Gemini can help with labels or layout, but must use these query results rather than inventing values.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 62 -->
+    <div class="slide" data-slide="62">
+      <div class="slide-text-large">
+<span class="slide-badge">Guided Q0</span><h2>Q0 — Result</h2><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/top-population.svg" alt="Full Q0 population chart using the instructor-supplied data" class="full-chart" /></div>
+<p><strong>Interpretation:</strong> Fairfax County has the largest population estimate among these 30 covered areas; York County has the smallest. This is a comparison of the covered areas, not a statewide total.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 63 -->
+    <div class="slide" data-slide="63">
+      <div class="slide-text-large">
+<span class="slide-badge">Your analysis</span><h2>Q1–Q3: structured notebook workflow</h2><p>For each question (Q1, Q2, and Q3), follow this explicit five-step Markdown and code sequence:</p>
+<ol>
+<li><strong>Markdown/text:</strong> <code>## Q1 — Population Growth</code>, then <code>### Question</code> and the full question.</li>
+<li><strong>Markdown/text:</strong> <code>### SQL</code>, then a code cell assigning your tested SELECT to <code>sql_q1</code> inside triple quotes.</li>
+<li><strong>Markdown/text:</strong> <code>### Python/Pandas</code>, then a code cell executing <code>sql_q1</code>, building DataFrame <code>q1</code>, and displaying it.</li>
+<li><strong>Markdown/text:</strong> <code>### Visualization</code>, then a code cell plotting <code>q1</code>.</li>
+<li><strong>Markdown/text:</strong> <code>### Interpretation</code>, followed by <strong>1–2 sentences answering the question</strong> from the chart/table.</li>
+</ol>
+<p>Repeat the exact same pattern for <strong>Q2</strong> (<code>sql_q2</code>, <code>q2</code>) and <strong>Q3</strong> (<code>sql_q3</code>, <code>q3</code>). Each section must use an explicit Markdown/text heading before the corresponding content or code.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 64 -->
+    <div class="slide" data-slide="64">
+      <div class="slide-text-large">
+<span class="slide-badge">Your analysis</span><h2>Ask Gemini to visualize your query result</h2><div class="slide-media-box"><img src="/IA340/pr-preview/pr-44/assets/week-6/screenshots/Screenshot%202026-09-27%20153116.png" alt="Example workflow: Gemini writes visualization code for a DataFrame" class="screenshot" /></div>
+<p>After your SQL has produced DataFrame <strong>q1</strong>, you can ask Gemini to write plotting code. Tell it which DataFrame to use, what the columns mean, and what units belong on the chart.</p>
+<p>This screenshot demonstrates the <strong>workflow</strong>, not a target answer: it came from an earlier draft of Q1. Use your own final table and read the generated code before <strong>Accept &amp; Run</strong>.</p>
+<p>Place the plotting code in the code cell under <strong><code>### Visualization</code></strong>. Directly after the chart, add the Markdown/text heading <strong><code>### Interpretation</code></strong> and write <strong>1–2 sentences answering the question</strong> from your table/chart. Use the same structured approach for Q2 and Q3.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 65 -->
+    <div class="slide" data-slide="65">
+      <div class="slide-text-large">
+<span class="slide-badge">Your analysis</span><h2>Q3 — Visualize and answer your own question</h2><p>Q3 uses the <strong>same assigned county</strong> but a different question that your existing data can answer.</p>
+<p>Follow the exact same organizational pattern as Q1 and Q2 under <strong><code>## Q3 — My Own Question</code></strong>:</p>
+<ol>
+<li><strong><code>### Question</code></strong> — your own specific question about your assigned county</li>
+<li><strong><code>### SQL</code></strong> — code cell with your tested query assigned to <code>sql_q3</code></li>
+<li><strong><code>### Python/Pandas</code></strong> — code cell creating and displaying DataFrame <code>q3</code></li>
+<li><strong><code>### Visualization</code></strong> — code cell creating your chart for <code>q3</code></li>
+<li><strong><code>### Interpretation</code></strong> — 1–2 sentences answering Q3 from your results</li>
+</ol>
+<p>Choose a chart that helps answer the question. For a threshold question, for example, the interpretation can name the years that meet the threshold. If none meet it, say so.</p>
+<p><strong>Correlation does not imply causation.</strong></p>
+      </div>
+    </div>
+
+    <!-- SLIDE 66 -->
+    <div class="slide" data-slide="66">
+      <div class="slide-text-large">
+<span class="slide-badge">Submission</span><h2>Final Summary and Gemini Use</h2><h3>Final Summary — 1–2 sentences</h3>
+<p>State whether you completed <strong>Q1, Q2, and Q3</strong> and produced a visualization for each. If anything is unfinished, identify it. Keep the actual findings in each question's <strong>Interpretation</strong>, not here.</p>
+<h3>Gemini Use — 1–2 sentences</h3>
+<p>Was Gemini helpful? Mention one issue you noticed, if any, and whether you checked its answer. A manual calculation is enough; no separate validation section is required. If you did not use Gemini, say so.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 67 -->
+    <div class="slide" data-slide="67">
+      <div class="slide-text-large">
+<span class="slide-badge">Submission</span><h2>Submit one GitHub repository URL</h2><p>Save <strong>lab6.sql</strong> and <strong>lab6.ipynb</strong> at the root of <strong>your assigned private course repository</strong>, on <strong>main</strong>. Keep the notebook's result tables and charts visible.</p>
+<p>For the notebook: <strong>Colab → File → Save a copy to GitHub</strong>. Reopen both files on GitHub.</p>
+<p>Submit your actual repository URL in Canvas, following your section's pattern:</p>
+<div class="codehilite"><pre><span></span>IA340-1: https://github.com/JMU-Data/ia340-fa26-1-&lt;your-github-username&gt;
+IA340-2: https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;
+</pre></div>
+<p>The URL ends at your repository name. Do not submit a <code>/blob/main/...</code> file link, Colab link, database IP, or the public IA340 course repository. No separate screenshots or report. Deadline: Canvas.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 68 -->
+    <div class="slide" data-slide="68">
+      <div class="slide-text-large">
+<span class="slide-badge">Submission</span><h2>Lab 6 rubric — 100 points</h2><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th style="text-align:right">Points</th>
+<th>What is assessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQL correctness and assigned county</td>
+<td style="text-align:right">30</td>
+<td>Q1 and Q2 use the student's <strong>assigned county</strong>, correct previous-calendar-year logic where required, and requested database outputs (<code>fips, year, previous_value, current_value, growth_rate</code>). Questions are comments/text; queries are executable SQL.</td>
+</tr>
+<tr>
+<td>Notebook setup, Q0–Q2 analysis, and visualization</td>
+<td style="text-align:right">30</td>
+<td>Database connection/setup, pre-Q0 practice, and Q0 are required and completed with saved outputs. Q1 and Q2 correctly reuse/execute SQL, create and display pandas DataFrames, include suitable visualizations, and answer Q1/Q2 in interpretations.</td>
+</tr>
+<tr>
+<td>Q3: question and supported answer</td>
+<td style="text-align:right">20</td>
+<td>Q3 uses the <strong>same assigned county</strong>, asks a clear, specific question answerable by available data, and answers it through the complete workflow: Question → SQL → Python/Pandas → Visualization → Interpretation.</td>
+</tr>
+<tr>
+<td>Markdown organization, format, and submission</td>
+<td style="text-align:right">20</td>
+<td>Both files open from the assigned repo on main. Q1/Q2/Q3 use the required explicit Markdown headings (Question, SQL, Python/Pandas, Visualization, Interpretation); Final Summary and Gemini Use are present; valid GitHub repository URL submitted.</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align:right"><strong>100</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Each criterion has PASS/full points and MISSING/zero as the default ratings; the instructor can enter intermediate points manually. Equivalent correct queries and suitable chart types are accepted.</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 69 -->
+    <div class="slide" data-slide="69">
+      <div class="slide-text-large">
+<span class="slide-badge">Reference</span><h2>References</h2><p>Course basis: Dr. Wei's SQL teaching materials and the existing Lab 4–5 database. Screenshots show the instructor's Studio and Colab runs. The full Q0 chart is rendered from the supplied data.</p>
+<p><a href="https://www.postgresql.org/docs/18/ddl-constraints.html">PostgreSQL constraints</a> · <a href="https://www.postgresql.org/docs/18/queries-table-expressions.html">JOINs</a> · <a href="https://www.postgresql.org/docs/18/sql-createview.html">Views</a> · <a href="https://www.postgresql.org/docs/18/using-explain.html">EXPLAIN</a> · <a href="https://www.postgresql.org/docs/18/indexes-intro.html">Index costs</a> · <a href="https://www.psycopg.org/docs/usage.html#transactions-control">Psycopg transactions</a> · <a href="https://docs.cloud.google.com/sql/docs/postgres/write-sql-gemini">Gemini in Studio</a> · <a href="https://www.census.gov/programs-surveys/acs/technical-documentation/user-notes/2021-02.html">2020 ACS 1-year</a>.</p>
+<p>The interactive illustrations run in the browser; they do not connect to a database.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let currentSlide = 1;
+
+function getTotalSlides() {
+  return document.querySelectorAll('.slide').length;
+}
+
+function updateDeck() {
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  
+  if (currentSlide < 1) currentSlide = 1;
+  if (currentSlide > totalSlides) currentSlide = totalSlides;
+
+  slides.forEach((slide) => {
+    const sNum = parseInt(slide.getAttribute('data-slide'));
+    if (sNum === currentSlide) {
+      slide.classList.add('active');
+    } else {
+      slide.classList.remove('active');
+    }
+  });
+
+  const counterEl = document.getElementById('slideCounter');
+  if (counterEl) {
+    counterEl.textContent = `Slide ` + currentSlide + ` of ` + totalSlides;
+  }
+  const progressEl = document.getElementById('progressBar');
+  if (progressEl && totalSlides > 0) {
+    progressEl.style.width = ((currentSlide / totalSlides) * 100) + `%`;
+  }
+  
+  const pickerEl = document.getElementById('slidePicker');
+  if (pickerEl) {
+    pickerEl.value = String(currentSlide);
+  }
+
+  const prevBtn = document.getElementById('prevBtn');
+  if (prevBtn) prevBtn.disabled = (currentSlide === 1);
+  const nextBtn = document.getElementById('nextBtn');
+  if (nextBtn) nextBtn.disabled = (currentSlide === totalSlides);
+
+  history.replaceState(null, null, `#slide-` + currentSlide);
+}
+
+function changeSlide(direction) {
+  const totalSlides = getTotalSlides();
+  const next = currentSlide + direction;
+  if (next >= 1 && next <= totalSlides) {
+    currentSlide = next;
+    updateDeck();
+  }
+}
+
+function goToSlide(slideNum) {
+  const totalSlides = getTotalSlides();
+  if (slideNum >= 1 && slideNum <= totalSlides) {
+    currentSlide = slideNum;
+    updateDeck();
+  }
+}
+
+function toggleFullScreen() {
+  const deck = document.getElementById('lectureDeck');
+  if (!document.fullscreenElement) {
+    if (deck.requestFullscreen) {
+      deck.requestFullscreen();
+    } else if (deck.webkitRequestFullscreen) {
+      deck.webkitRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' || event.target.tagName === 'SELECT') return;
+
+  if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') {
+    event.preventDefault();
+    changeSlide(1);
+  } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+    event.preventDefault();
+    changeSlide(-1);
+  } else if (event.key === 'Home') {
+    event.preventDefault();
+    goToSlide(1);
+  } else if (event.key === 'End') {
+    event.preventDefault();
+    goToSlide(getTotalSlides());
+  }
+});
+
+// Handle height messages from interactive demonstration iframes
+window.addEventListener('message', function(e) {
+  if (!e.data || e.data.type !== 'ia340-height' || !Number.isFinite(e.data.height)) return;
+  const iframes = document.querySelectorAll('iframe');
+  for (const f of iframes) {
+    if (f.contentWindow === e.source) {
+      const targetHeight = Math.max(200, Math.min(1200, Math.ceil(e.data.height) + 12));
+      f.style.height = targetHeight + 'px';
+      const container = f.closest('.iframe-container');
+      if (container) {
+        container.style.height = (targetHeight + 10) + 'px';
+        container.style.minHeight = targetHeight + 'px';
+      }
+      break;
+    }
+  }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  const totalSlides = getTotalSlides();
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#slide-')) {
+    const sNum = parseInt(hash.replace('#slide-', ''));
+    if (!isNaN(sNum) && sNum >= 1 && sNum <= totalSlides) {
+      currentSlide = sNum;
+    }
+  }
+  updateDeck();
+});
+</script>
+
+<hr />
+
+<div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+  <a href="/IA340/pr-preview/pr-44/">← Return to Course Home</a>
+  <span style="color: #d0d7de;">|</span>
+  <a href="/IA340/pr-preview/pr-44/assignments/lab-6/">Go to Lab 6 Instructions →</a>
+</div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

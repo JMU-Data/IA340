@@ -50,7 +50,7 @@
         },
         {
           "key": "python-analysis-visualization",
-          "description": "Python analysis and visualization",
+          "description": "Notebook setup, Q0–Q2 analysis, and visualization",
           "points": 30.0,
           "ratings": [
             {
@@ -67,7 +67,7 @@
         },
         {
           "key": "q3-question-supported-answer",
-          "description": "Q3 question and supported answer",
+          "description": "Q3: question and supported answer",
           "points": 20.0,
           "ratings": [
             {

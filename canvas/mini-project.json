@@ -1,0 +1,122 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "mini-project",
+      "title": "Mini Project — State Population and Income Analysis",
+      "assignment_group": "Projects",
+      "points": 100.0,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/mini-project/",
+      "group_assignment": {
+        "group_set": "Mini Project Assigned States"
+      }
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "mini-project-rubric",
+      "title": "Mini Project — State Population and Income Analysis",
+      "assignment": "mini-project",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "data-collection-database",
+          "description": "Data Collection and Database",
+          "points": 30.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "research-questions-sql-queries",
+          "description": "Research Questions and SQL Queries",
+          "points": 30.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "python-visualization-interpretation",
+          "description": "Python Visualization and Interpretation",
+          "points": 30.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "format-submission",
+          "description": "Format and Submission",
+          "points": 10.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "mini-project",
+      "title": "Mini Project",
+      "published": true,
+      "items": [
+        {
+          "key": "mini-project",
+          "type": "Assignment",
+          "title": "Mini Project — State Population and Income Analysis",
+          "published": true,
+          "external_url": null,
+          "assignment": "mini-project"
+        }
+      ]
+    }
+  ]
+}

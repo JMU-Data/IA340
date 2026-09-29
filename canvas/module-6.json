@@ -50,7 +50,7 @@
         },
         {
           "key": "python-analysis-visualization",
-          "description": "Python/Pandas analysis and visualization",
+          "description": "Notebook setup, Q0–Q2 analysis, and visualization",
           "points": 30.0,
           "ratings": [
             {

@@ -30,6 +30,7 @@
 - [Lab 5: Collect Census Data into Your Database](docs/assignments/lab-5/index.md)
 - [Module 6: SQL Queries and County Analysis](docs/modules/module-6/index.md)
 - [Lab 6: My County: SQL and Python Analysis](docs/assignments/lab-6/index.md)
+- [Mini Project: State Population and Income Analysis](docs/assignments/mini-project/index.md)
 
 ## Course Overview
 

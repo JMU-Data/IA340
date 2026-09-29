@@ -21,6 +21,7 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-5/" style="text-decoration: none; color: #57606a;">Lab 5</a>
   <a href="{{ site.baseurl }}/modules/module-6/" style="text-decoration: none; color: #57606a;">Module 6</a>
   <a href="{{ site.baseurl }}/assignments/lab-6/" style="text-decoration: none; color: #57606a;">Lab 6</a>
+  <a href="{{ site.baseurl }}/assignments/mini-project/" style="text-decoration: none; color: #57606a;">Mini Project</a>
 </nav>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; color: #57606a; font-weight: 500; font-size: 0.9em; margin-bottom: 1.5rem;">
@@ -107,6 +108,11 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-6/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
     <h3 style="margin-top: 0; color: #1a7f37; display: flex; align-items: center; gap: 0.5rem;">📈 Lab 6</h3>
     <p style="margin-bottom: 0; color: #57606a;">My County: SQL and Python Analysis (Assigned County Repo Submission)</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/mini-project/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow 0.2s;">
+    <h3 style="margin-top: 0; color: #1a7f37; display: flex; align-items: center; gap: 0.5rem;">📁 Mini Project</h3>
+    <p style="margin-bottom: 0; color: #57606a;">State Population and Income Analysis (Assigned State Colab & Cloud SQL)</p>
   </a>
 
 </div>

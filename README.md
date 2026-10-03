@@ -64,3 +64,10 @@ Email: **weixx@jmu.edu**
 ## Repository / Reuse / Privacy Boundary
 
 This repository (`JMU-Data/IA340`) contains the public course source and materials. It is designed for transparency and reuse. Private student data, grading operations, and internal Canvas details are managed securely outside of this public repository.
+
+## License
+
+Code in this repository is licensed under the [MIT License](LICENSE-CODE).  
+Course materials, documentation, slides, and other original educational content are licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0) License](LICENSE-CONTENT), unless otherwise noted.
+
+Third-party datasets, images, figures, software, and other externally sourced materials retain their original licenses or terms and are not automatically covered by these repository licenses.

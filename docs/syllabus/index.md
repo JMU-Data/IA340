@@ -5,6 +5,8 @@ title: "Syllabus - IA 340"
 
 # IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
 
+**Syllabus updated: October 7, 2026**
+
 <nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
   <a href="{{ site.baseurl }}/" style="text-decoration: none; color: #57606a;">Home</a>
   <a href="{{ site.baseurl }}/syllabus/" style="text-decoration: none; font-weight: 600; color: #0969da;">Syllabus</a>
@@ -94,10 +96,10 @@ Upon completion of this course, students are expected to:
 
 ## Required Textbook & Account Setup
 - **Textbook**: [Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press / Routledge, 2024.](https://www.routledge.com/Social-Data-Analytics-in-the-Cloud-with-AI/Wei-Ye/p/book/9781032306232) *(Note: Refer to Canvas for any specific JMU free-access instructions for required materials.)*
-- **Google Account (Required)**: You must use your **James Madison University email address** (`@dukes.jmu.edu` or `@jmu.edu`) to create or link a Google account for accessing Google Colab, Drive, and cloud datasets.
+- **Google Account (Required)**: Use your **personal Gmail account** for Google Colab, Drive, Gemini, and NotebookLM, following the account instructions given in class.
 - **GitHub Account (Required)**: Required for accessing course repositories, lab materials, and submitting technical work.
 - **Coursera JMU AI Program (Required)**: Required for completing the Google AI Professional Certificate component.
-- **Google AI Pro / Gemini Advanced (Optional — Zero Grade Impact)**: Google offers an optional 1-year free student subscription for Gemini Advanced. Because this promotion requires personal payment details and third-party document verification, students are **not required** to sign up, and opting out has **zero impact on your grade**. (If verifying, students are strongly advised not to upload sensitive documents like official academic transcripts).
+- **AI Tools and Access**: Follow the AI tools and workflows designated by the instructor for each assignment. Both free and paid versions of an approved tool (including Google AI Pro) may be used when consistent with the assignment. Students are not required to purchase additional AI subscriptions for coursework. See the AI Policy below.
 
 ## Email Communication
 - **Primary Contact**: Emailing the instructor from your **JMU student account** is the primary method of communication.
@@ -105,8 +107,12 @@ Upon completion of this course, students are expected to:
 - **Canvas Usage**: Canvas is strictly used for grades, official announcements, and basic course logistics. **Do not use Canvas messaging** to contact the instructor; it is not regularly monitored.
 
 ## AI Policy
-**AI is part of this course, and may be expected or required in specific assignments.** 
-You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist with data analysis and workflow construction as instructed. However, you are strictly responsible for the output you submit. You must **inspect, test, verify, correct, and explain** any AI-assisted work. Blindly copying and pasting AI output without understanding it is a violation of the learning objectives and academic integrity.
+
+**AI is part of this course and may be expected or required in specific assignments.** For coursework, use **only the AI tools, models, services, and features designated in course materials, taught for the relevant activity, or explicitly approved by the instructor**. Examples, when assigned, include Gemini in Cloud SQL Studio, Gemini in Colab, Gemini APIs, NotebookLM, and AI features built into course database tools. Follow the instructions for each assignment.
+
+**Do not independently introduce other AI tools, models, or services, or replace an assigned workflow with an unapproved alternative.** This rule is based on **course authorization, not whether an AI service is free or paid**. Students may use a course-approved workflow through a free or paid account (including Google AI Pro) unless an assignment specifies otherwise. Personal access to an AI service does not authorize using it outside the assigned course workflow. Ask the instructor if unsure.
+
+You remain responsible for every AI-assisted result you submit. You must **inspect, test, verify, correct, and explain** the work, including generated queries, code, analysis, and written conclusions. Blindly copying AI output without understanding or checking it violates the course's learning objectives and academic-integrity expectations.
 
 ## Grading Breakdown
 
@@ -162,13 +168,28 @@ JMU offers numerous resources to support your academic and personal success. If 
 ## Inclement Weather
 During the semester, there may be days during which the class will not meet due to inclement weather. Please check Canvas for the latest class arrangement and refer to the official JMU policy on inclement weather.
 
+## Final Project
+
+Complete a social-data investigation using the methods practiced in class: collect project-specific Twitter/X data through the course-approved workflow, store it in MongoDB, analyze it with document queries, aggregation, Python, and Gemini, and communicate the findings through a dashboard. Keep the new project data in a clearly identified project collection.
+
+**One final-project submission, with two assessment components:**
+
+1. **Project database:** Submit a working MongoDB connection string privately in Canvas so the instructor can inspect the new data collected and stored for your final project.
+2. **Dashboard and findings:** Submit a dashboard link presenting the project question, query/aggregation results, Python and Gemini analysis, and clear explanations of the findings. Include a **shared NotebookLM link** alongside the dashboard as supporting evidence, with your source materials and source-based brief available to the instructor. NotebookLM is reviewed within this component, not as a third separately graded component.
+
+Submit these links and the connection string together in **one Canvas assignment entry**. No separate code notebook, query file, GitHub README, or exported written report is required for the final-project submission. Weekly notebook and query-lab requirements remain as specified in their assignments.
+
+The four project meetings in Weeks 15–16 provide time for collection and storage; queries, Python, and Gemini analysis; dashboard development; and NotebookLM synthesis, verification, and final refinement. **There is no final presentation.** Submit during final exam week by the deadline posted in Canvas.
+
 ---
 
 ## Course Schedule (Fall 2026)
 
-*Schedule updated: August 28, 2026*
+*Schedule updated: October 7, 2026*
 
-| Week | Dates | Topic | Key Concepts & Hands-on Activities | Notes / Milestones |
+Weeks 9–12 pair Monday instruction and demonstration with Wednesday independent practice on students' own data. Week 13 provides a dashboard workshop on Monday and a NotebookLM workshop on Wednesday. Use only the AI tools and features authorized under the course AI Policy.
+
+| Week | Dates | Topic | Key Concepts & Hands-on Activities | Deliverables / Key Dates |
 |:---:|:---|:---|:---|:---|
 | **Week 1** | Aug 24–28 | Introduction & Account Setup | • Course introduction<br>• Required account and environment setup | Classes begin Wednesday, Aug 26 |
 | **Week 2** | Aug 31–Sep 4 | GitHub, Colab & Google Drive Setup | • Create and configure individual GitHub repository<br>• README and Markdown basics<br>• Demonstrate branch / Pull Request / merge workflow<br>• Set up Google Colab & connect to Google Drive<br>• Load sample diamonds dataset<br>• Save and share notebook via GitHub | |
@@ -177,19 +198,20 @@ During the semester, there may be days during which the class will not meet due 
 | **Week 5** | Sep 21–25 | Database Connection, SQL & Census API | • Connect from Colab to cloud database<br>• Basic SQL queries and `INSERT`<br>• Census API integration<br>• Load API data into the relational database | |
 | **Week 6** | Sep 28–Oct 2 | SQL Analytics & Visualization | • Advanced SQL queries (`JOIN`, `GROUP BY`, aggregation)<br>• Analyze query results with Python/Pandas<br>• Visualization of query results | |
 | **Week 7** | Oct 5–9 | [Mini Project]({{ site.baseurl }}/assignments/mini-project/) | • Analyze instructor-assigned U.S. state<br>• Collect county population and median household income data into existing Cloud SQL database<br>• Define three research questions and develop Gemini-assisted SQL queries<br>• Analyze and visualize query results with Python/Pandas in `mini_project.ipynb` | Mini Project due Oct 6<br>**Fall Break** begins Oct 7 |
-| **Week 8** | Oct 12–16 | NoSQL & MongoDB | • Relational vs. NoSQL databases<br>• Document database concepts<br>• MongoDB setup<br>• JSON / document structure<br>• Basic MongoDB operations | |
-| **Week 9** | Oct 19–23 | Social Media Data Collection & Document Queries | • Collect Twitter/X or course-provided social media data<br>• Store data in MongoDB<br>• Document queries | |
-| **Week 10** | Oct 26–30 | MongoDB Aggregation & Natural Language Queries | • MongoDB aggregation pipeline<br>• Filtering, grouping, and aggregation<br>• AI / natural-language-assisted queries | |
-| **Week 11** | Nov 2–6 | Large Language Models for Vector Database RAG for Social Media Analysis | • LLM foundations & rationale for text analysis<br>• Prompt engineering & calling LLM API from Python/Colab<br>• Process social-media text (classification, extraction, sentiment, summarization)<br>• Embeddings, vector databases, semantic search & Retrieval-Augmented Generation (RAG) | |
-| **Week 12** | Nov 9–13 | Dashboard for Natural Language Analytics | • Build analytical dashboards using MongoDB/social-media analysis results<br>• Natural-language-assisted analysis and visualization | |
-| **Week 13** | Nov 16–20 | Gemini Notebook for LLM | • Gemini and NotebookLM workflows<br>• Integrate generative AI tools with data-analysis workflows | |
+| **Week 8** | Oct 12–16 | MongoDB Design, Atlas Setup & Twitter/X Collection | **Mon Oct 12:** Relational database wrap-up; stop the course SQL instance when directed; MongoDB concepts and document design; Atlas setup.<br>**Wed Oct 14:** Collect and store Twitter/X data using the course-approved workflow; inspect JSON/document structure; verify the stored records. | One MongoDB connection string; stored Twitter/X data checked by the instructor. |
+| **Week 9** | Oct 19–23 | Document Queries & Aggregation | **Mon Oct 19:** Document queries and introductory aggregation pipelines.<br>**Wed Oct 21:** Independently answer questions using the collected data; use Gemini natural-language assistance to draft queries, then run and verify them. | GitHub query-and-answer report. |
+| **Week 10** | Oct 26–30 | MongoDB Analysis with Python | **Mon Oct 26:** In-person demonstration of PyMongo, pandas, analysis, and charts.<br>**Wed Oct 28:** Bring the student's queries into Python; analyze results, create appropriate figures, and explain findings. | Executed Python notebook in GitHub. |
+| **Week 11** | Nov 2–6 | LLM Text Analysis with Gemini | **Mon Nov 2:** Prompt engineering; topic analysis, sentiment, and translation examples; structured output; save model results to MongoDB.<br>**Wed Nov 4:** Design a new analysis of the student's Twitter/X data, check the model results, and save them back to MongoDB. | LLM-analysis notebook in GitHub. |
+| **Week 12** | Nov 9–13 | Embeddings & Retrieval-Augmented Generation (RAG) | **Mon Nov 9:** Gemini embeddings, semantic similarity, retrieval, and a complete source-grounded answer demonstration.<br>**Wed Nov 11:** Adapt the course starter into a chatbot over the student's data; test retrieved sources, supported answers, and questions the data cannot answer. | RAG/chatbot artifact with source-based tests. |
+| **Week 13** | Nov 16–20 | Dashboard & NotebookLM | **Mon Nov 16:** Build a dashboard from the checked MongoDB, Python, and Gemini analysis results.<br>**Wed Nov 18:** Use **NotebookLM** to organize sources, synthesize findings, and verify a source-based brief. | Dashboard link and shared NotebookLM notebook. |
 | **Week 14** | Nov 23–27 | Thanksgiving Holiday | *No Class* | **Thanksgiving Holiday** (No Class) |
-| **Week 15** | Nov 30–Dec 4 | Final Project (Part 1) | • Standardized social-media analytical pipeline:<br>&nbsp;&nbsp;1. Collect Twitter/X/social-media data<br>&nbsp;&nbsp;2. Store data in MongoDB<br>&nbsp;&nbsp;3. Perform database/data analysis<br>&nbsp;&nbsp;4. Apply LLM-assisted text analysis<br>&nbsp;&nbsp;5. Build a shareable analytical dashboard<br>&nbsp;&nbsp;6. Maintain project code/docs in GitHub | Final Project in progress |
-| **Week 16** | Dec 7–11 | Final Project (Part 2) | • Final project implementation & refinement<br>• Complete analytical dashboard & reproducible Colab notebook<br>• Code cleanup, documentation & GitHub repository finalization | Final Project in progress |
-| **Week 17** | Dec 12–18 | Final Exam Week — Final Project Submission | • Students submit the completed Final Project<br>• No final presentation | **Final Project Due**<br>*(No late submissions during exam week)* |
+| **Week 15** | Nov 30–Dec 4 | Final Project (Part 1) | **Mon Nov 30 — Session 1:** Define the project question, collect project data, store it in MongoDB, and check data quality.<br>**Wed Dec 2 — Session 2:** Complete queries/aggregation, Python analysis, and a focused Gemini text-analysis task; store and verify the results. | |
+| **Week 16** | Dec 7–11 | Final Project (Part 2) | **Mon Dec 7 — Session 3:** Build and verify the analytical dashboard.<br>**Wed Dec 9 — Session 4:** Use NotebookLM to synthesize the project evidence, check claims and sources, and complete project refinement. | |
+| **Week 17** | Dec 12–18 | Final Exam Week — Final Project Submission | Submit **one final-project entry**: the MongoDB connection string and dashboard link, with the shared NotebookLM link as supporting evidence. **No final presentation.** | **Final Project Due** — see Canvas.<br>*(No late submissions during exam week)* |
 
 ---
 
 <div style="margin-top: 2rem;">
   <a href="{{ site.baseurl }}/">← Return to Course Home</a> | <a href="{{ site.baseurl }}/modules/module-1/">Go to Module 1 →</a>
 </div>
+

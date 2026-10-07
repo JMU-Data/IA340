@@ -22,7 +22,7 @@
 {"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Syllabus - IA 340","url":"https://jmu-data.github.io/IA340/syllabus/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=619bde3d32912c8bd97252e9a01651c3f6c92101">
+    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=2698a17985928fdea81257fa6f213feaa0810915">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -42,6 +42,8 @@
       
 
       <h1 id="ia-340-data-mining-modeling-and-knowledge-discovery-in-databases">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</h1>
+
+<p><strong>Syllabus updated: October 7, 2026</strong></p>
 
 <nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
   <a href="/IA340/" style="text-decoration: none; color: #57606a;">Home</a>
@@ -137,10 +139,10 @@
 <h2 id="required-textbook--account-setup">Required Textbook &amp; Account Setup</h2>
 <ul>
   <li><strong>Textbook</strong>: <a href="https://www.routledge.com/Social-Data-Analytics-in-the-Cloud-with-AI/Wei-Ye/p/book/9781032306232">Wei, Xuebin, and Xinyue Ye. <em>Social Data Analytics in the Cloud with AI</em>. CRC Press / Routledge, 2024.</a> <em>(Note: Refer to Canvas for any specific JMU free-access instructions for required materials.)</em></li>
-  <li><strong>Google Account (Required)</strong>: You must use your <strong>James Madison University email address</strong> (<code class="language-plaintext highlighter-rouge">@dukes.jmu.edu</code> or <code class="language-plaintext highlighter-rouge">@jmu.edu</code>) to create or link a Google account for accessing Google Colab, Drive, and cloud datasets.</li>
+  <li><strong>Google Account (Required)</strong>: Use your <strong>personal Gmail account</strong> for Google Colab, Drive, Gemini, and NotebookLM, following the account instructions given in class.</li>
   <li><strong>GitHub Account (Required)</strong>: Required for accessing course repositories, lab materials, and submitting technical work.</li>
   <li><strong>Coursera JMU AI Program (Required)</strong>: Required for completing the Google AI Professional Certificate component.</li>
-  <li><strong>Google AI Pro / Gemini Advanced (Optional — Zero Grade Impact)</strong>: Google offers an optional 1-year free student subscription for Gemini Advanced. Because this promotion requires personal payment details and third-party document verification, students are <strong>not required</strong> to sign up, and opting out has <strong>zero impact on your grade</strong>. (If verifying, students are strongly advised not to upload sensitive documents like official academic transcripts).</li>
+  <li><strong>AI Tools and Access</strong>: Follow the AI tools and workflows designated by the instructor for each assignment. Both free and paid versions of an approved tool (including Google AI Pro) may be used when consistent with the assignment. Students are not required to purchase additional AI subscriptions for coursework. See the AI Policy below.</li>
 </ul>
 
 <h2 id="email-communication">Email Communication</h2>
@@ -151,8 +153,12 @@
 </ul>
 
 <h2 id="ai-policy">AI Policy</h2>
-<p><strong>AI is part of this course, and may be expected or required in specific assignments.</strong> 
-You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist with data analysis and workflow construction as instructed. However, you are strictly responsible for the output you submit. You must <strong>inspect, test, verify, correct, and explain</strong> any AI-assisted work. Blindly copying and pasting AI output without understanding it is a violation of the learning objectives and academic integrity.</p>
+
+<p><strong>AI is part of this course and may be expected or required in specific assignments.</strong> For coursework, use <strong>only the AI tools, models, services, and features designated in course materials, taught for the relevant activity, or explicitly approved by the instructor</strong>. Examples, when assigned, include Gemini in Cloud SQL Studio, Gemini in Colab, Gemini APIs, NotebookLM, and AI features built into course database tools. Follow the instructions for each assignment.</p>
+
+<p><strong>Do not independently introduce other AI tools, models, or services, or replace an assigned workflow with an unapproved alternative.</strong> This rule is based on <strong>course authorization, not whether an AI service is free or paid</strong>. Students may use a course-approved workflow through a free or paid account (including Google AI Pro) unless an assignment specifies otherwise. Personal access to an AI service does not authorize using it outside the assigned course workflow. Ask the instructor if unsure.</p>
+
+<p>You remain responsible for every AI-assisted result you submit. You must <strong>inspect, test, verify, correct, and explain</strong> the work, including generated queries, code, analysis, and written conclusions. Blindly copying AI output without understanding or checking it violates the course’s learning objectives and academic-integrity expectations.</p>
 
 <h2 id="grading-breakdown">Grading Breakdown</h2>
 
@@ -286,11 +292,28 @@ You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist wi
 <h2 id="inclement-weather">Inclement Weather</h2>
 <p>During the semester, there may be days during which the class will not meet due to inclement weather. Please check Canvas for the latest class arrangement and refer to the official JMU policy on inclement weather.</p>
 
+<h2 id="final-project">Final Project</h2>
+
+<p>Complete a social-data investigation using the methods practiced in class: collect project-specific Twitter/X data through the course-approved workflow, store it in MongoDB, analyze it with document queries, aggregation, Python, and Gemini, and communicate the findings through a dashboard. Keep the new project data in a clearly identified project collection.</p>
+
+<p><strong>One final-project submission, with two assessment components:</strong></p>
+
+<ol>
+  <li><strong>Project database:</strong> Submit a working MongoDB connection string privately in Canvas so the instructor can inspect the new data collected and stored for your final project.</li>
+  <li><strong>Dashboard and findings:</strong> Submit a dashboard link presenting the project question, query/aggregation results, Python and Gemini analysis, and clear explanations of the findings. Include a <strong>shared NotebookLM link</strong> alongside the dashboard as supporting evidence, with your source materials and source-based brief available to the instructor. NotebookLM is reviewed within this component, not as a third separately graded component.</li>
+</ol>
+
+<p>Submit these links and the connection string together in <strong>one Canvas assignment entry</strong>. No separate code notebook, query file, GitHub README, or exported written report is required for the final-project submission. Weekly notebook and query-lab requirements remain as specified in their assignments.</p>
+
+<p>The four project meetings in Weeks 15–16 provide time for collection and storage; queries, Python, and Gemini analysis; dashboard development; and NotebookLM synthesis, verification, and final refinement. <strong>There is no final presentation.</strong> Submit during final exam week by the deadline posted in Canvas.</p>
+
 <hr />
 
 <h2 id="course-schedule-fall-2026">Course Schedule (Fall 2026)</h2>
 
-<p><em>Schedule updated: August 28, 2026</em></p>
+<p><em>Schedule updated: October 7, 2026</em></p>
+
+<p>Weeks 9–12 pair Monday instruction and demonstration with Wednesday independent practice on students’ own data. Week 13 provides a dashboard workshop on Monday and a NotebookLM workshop on Wednesday. Use only the AI tools and features authorized under the course AI Policy.</p>
 
 <table>
   <thead>
@@ -299,7 +322,7 @@ You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist wi
       <th style="text-align: left">Dates</th>
       <th style="text-align: left">Topic</th>
       <th style="text-align: left">Key Concepts &amp; Hands-on Activities</th>
-      <th style="text-align: left">Notes / Milestones</th>
+      <th style="text-align: left">Deliverables / Key Dates</th>
     </tr>
   </thead>
   <tbody>
@@ -355,44 +378,44 @@ You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist wi
     <tr>
       <td style="text-align: center"><strong>Week 8</strong></td>
       <td style="text-align: left">Oct 12–16</td>
-      <td style="text-align: left">NoSQL &amp; MongoDB</td>
-      <td style="text-align: left">• Relational vs. NoSQL databases<br />• Document database concepts<br />• MongoDB setup<br />• JSON / document structure<br />• Basic MongoDB operations</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">MongoDB Design, Atlas Setup &amp; Twitter/X Collection</td>
+      <td style="text-align: left"><strong>Mon Oct 12:</strong> Relational database wrap-up; stop the course SQL instance when directed; MongoDB concepts and document design; Atlas setup.<br /><strong>Wed Oct 14:</strong> Collect and store Twitter/X data using the course-approved workflow; inspect JSON/document structure; verify the stored records.</td>
+      <td style="text-align: left">One MongoDB connection string; stored Twitter/X data checked by the instructor.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 9</strong></td>
       <td style="text-align: left">Oct 19–23</td>
-      <td style="text-align: left">Social Media Data Collection &amp; Document Queries</td>
-      <td style="text-align: left">• Collect Twitter/X or course-provided social media data<br />• Store data in MongoDB<br />• Document queries</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Document Queries &amp; Aggregation</td>
+      <td style="text-align: left"><strong>Mon Oct 19:</strong> Document queries and introductory aggregation pipelines.<br /><strong>Wed Oct 21:</strong> Independently answer questions using the collected data; use Gemini natural-language assistance to draft queries, then run and verify them.</td>
+      <td style="text-align: left">GitHub query-and-answer report.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 10</strong></td>
       <td style="text-align: left">Oct 26–30</td>
-      <td style="text-align: left">MongoDB Aggregation &amp; Natural Language Queries</td>
-      <td style="text-align: left">• MongoDB aggregation pipeline<br />• Filtering, grouping, and aggregation<br />• AI / natural-language-assisted queries</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">MongoDB Analysis with Python</td>
+      <td style="text-align: left"><strong>Mon Oct 26:</strong> In-person demonstration of PyMongo, pandas, analysis, and charts.<br /><strong>Wed Oct 28:</strong> Bring the student’s queries into Python; analyze results, create appropriate figures, and explain findings.</td>
+      <td style="text-align: left">Executed Python notebook in GitHub.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 11</strong></td>
       <td style="text-align: left">Nov 2–6</td>
-      <td style="text-align: left">Large Language Models for Vector Database RAG for Social Media Analysis</td>
-      <td style="text-align: left">• LLM foundations &amp; rationale for text analysis<br />• Prompt engineering &amp; calling LLM API from Python/Colab<br />• Process social-media text (classification, extraction, sentiment, summarization)<br />• Embeddings, vector databases, semantic search &amp; Retrieval-Augmented Generation (RAG)</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">LLM Text Analysis with Gemini</td>
+      <td style="text-align: left"><strong>Mon Nov 2:</strong> Prompt engineering; topic analysis, sentiment, and translation examples; structured output; save model results to MongoDB.<br /><strong>Wed Nov 4:</strong> Design a new analysis of the student’s Twitter/X data, check the model results, and save them back to MongoDB.</td>
+      <td style="text-align: left">LLM-analysis notebook in GitHub.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 12</strong></td>
       <td style="text-align: left">Nov 9–13</td>
-      <td style="text-align: left">Dashboard for Natural Language Analytics</td>
-      <td style="text-align: left">• Build analytical dashboards using MongoDB/social-media analysis results<br />• Natural-language-assisted analysis and visualization</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Embeddings &amp; Retrieval-Augmented Generation (RAG)</td>
+      <td style="text-align: left"><strong>Mon Nov 9:</strong> Gemini embeddings, semantic similarity, retrieval, and a complete source-grounded answer demonstration.<br /><strong>Wed Nov 11:</strong> Adapt the course starter into a chatbot over the student’s data; test retrieved sources, supported answers, and questions the data cannot answer.</td>
+      <td style="text-align: left">RAG/chatbot artifact with source-based tests.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 13</strong></td>
       <td style="text-align: left">Nov 16–20</td>
-      <td style="text-align: left">Gemini Notebook for LLM</td>
-      <td style="text-align: left">• Gemini and NotebookLM workflows<br />• Integrate generative AI tools with data-analysis workflows</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Dashboard &amp; NotebookLM</td>
+      <td style="text-align: left"><strong>Mon Nov 16:</strong> Build a dashboard from the checked MongoDB, Python, and Gemini analysis results.<br /><strong>Wed Nov 18:</strong> Use <strong>NotebookLM</strong> to organize sources, synthesize findings, and verify a source-based brief.</td>
+      <td style="text-align: left">Dashboard link and shared NotebookLM notebook.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 14</strong></td>
@@ -405,22 +428,22 @@ You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist wi
       <td style="text-align: center"><strong>Week 15</strong></td>
       <td style="text-align: left">Nov 30–Dec 4</td>
       <td style="text-align: left">Final Project (Part 1)</td>
-      <td style="text-align: left">• Standardized social-media analytical pipeline:<br />  1. Collect Twitter/X/social-media data<br />  2. Store data in MongoDB<br />  3. Perform database/data analysis<br />  4. Apply LLM-assisted text analysis<br />  5. Build a shareable analytical dashboard<br />  6. Maintain project code/docs in GitHub</td>
-      <td style="text-align: left">Final Project in progress</td>
+      <td style="text-align: left"><strong>Mon Nov 30 — Session 1:</strong> Define the project question, collect project data, store it in MongoDB, and check data quality.<br /><strong>Wed Dec 2 — Session 2:</strong> Complete queries/aggregation, Python analysis, and a focused Gemini text-analysis task; store and verify the results.</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 16</strong></td>
       <td style="text-align: left">Dec 7–11</td>
       <td style="text-align: left">Final Project (Part 2)</td>
-      <td style="text-align: left">• Final project implementation &amp; refinement<br />• Complete analytical dashboard &amp; reproducible Colab notebook<br />• Code cleanup, documentation &amp; GitHub repository finalization</td>
-      <td style="text-align: left">Final Project in progress</td>
+      <td style="text-align: left"><strong>Mon Dec 7 — Session 3:</strong> Build and verify the analytical dashboard.<br /><strong>Wed Dec 9 — Session 4:</strong> Use NotebookLM to synthesize the project evidence, check claims and sources, and complete project refinement.</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 17</strong></td>
       <td style="text-align: left">Dec 12–18</td>
       <td style="text-align: left">Final Exam Week — Final Project Submission</td>
-      <td style="text-align: left">• Students submit the completed Final Project<br />• No final presentation</td>
-      <td style="text-align: left"><strong>Final Project Due</strong><br /><em>(No late submissions during exam week)</em></td>
+      <td style="text-align: left">Submit <strong>one final-project entry</strong>: the MongoDB connection string and dashboard link, with the shared NotebookLM link as supporting evidence. <strong>No final presentation.</strong></td>
+      <td style="text-align: left"><strong>Final Project Due</strong> — see Canvas.<br /><em>(No late submissions during exam week)</em></td>
     </tr>
   </tbody>
 </table>
@@ -430,6 +453,7 @@ You may use Artificial Intelligence (e.g., LLMs, coding assistants) to assist wi
 <div style="margin-top: 2rem;">
   <a href="/IA340/">← Return to Course Home</a> | <a href="/IA340/modules/module-1/">Go to Module 1 →</a>
 </div>
+
 
 
       

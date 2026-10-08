@@ -5,7 +5,7 @@ title: "Syllabus - IA 340"
 
 # IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
 
-**Syllabus updated: October 7, 2026**
+**Syllabus updated: October 8, 2026**
 
 <nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
   <a href="{{ site.baseurl }}/" style="text-decoration: none; color: #57606a;">Home</a>
@@ -140,11 +140,24 @@ You remain responsible for every AI-assisted result you submit. You must **inspe
 ## Technical Assignment Support
 Technical assignments may require troubleshooting. Start assignments early and allow sufficient time to resolve technical issues. Requests for assistance made shortly before a deadline may not receive a response before the deadline and do not automatically excuse late submissions.
 
+## Assignment Evaluation and Grading Feedback
+
+*Policy clarification updated: October 8, 2026*
+
+**The instructor determines all grades; AI models are not used to grade, evaluate, or modify students' assignments.** The instructor may use **deterministic Python scripts** to check objective technical requirements in the submitted work. These rule-based checks support the instructor's **manual review**; they do not make the final grading decision.
+
+Python checks may produce **automatic comments** visible to both students and the instructor. These comments primarily identify items for the instructor to inspect. They may be incomplete and do not constitute the final grade or a definitive explanation of a deduction. **The instructor's grading comments and rubric scores** explain the points awarded and any points deducted.
+
+**Neither an automatic comment nor an instructor comment is a requirement to revise your work or permission to resubmit without a late penalty.** Comments explain the submission that was evaluated. If you choose to revise your assignment after reading feedback, the deadline and resubmission rules below still apply.
+
 ## Resubmission / Late Work / Project Policy
-- **Resubmission**: You are allowed to resubmit assignments multiple times *before* the deadline. Only the final submission made prior to the deadline will be graded.
-- **Late Work**: Late submissions will incur a **10% penalty per day**, but no more than 40% of the total amount, unless prior arrangements have been made. 
-- **Final Exam Week**: **No late submissions** will be accepted during the final exam week.
-- **Class Projects**: Late submissions/resubmissions of the class projects will **not** be accepted.
+
+- **Before the deadline:** You may revise and resubmit **lab assignments** as many times as needed without a late penalty. The Canvas submission **and the version of every linked artifact used for grading** must meet the deadline.
+- **Late labs, including revisions after grading:** Lab assignments may be submitted or resubmitted after the deadline, **even after a score or comments have been posted**. If you want an updated version evaluated, it is a late submission and is subject to the late-work penalty. Correcting an issue mentioned in automatic or instructor feedback does not waive that penalty.
+- **Which timestamp counts:** For work submitted through Canvas and evaluated in GitHub, Tableau, or another external system, the effective submission time is **whichever is later: the Canvas submission timestamp or the last-modified/published timestamp of the artifact version used for grading**. If multiple artifacts are evaluated, the latest of their relevant timestamps applies. A Canvas submission made on time does **not** make later edits to a graded GitHub file/notebook or Tableau workbook on time. If you want the version modified after the deadline graded, that version is **late**. An earlier version can be considered on time only if its pre-deadline contents and timestamp can be verified; later changes not used for grading do not make that earlier version late.
+- **Late penalty:** Late lab submissions or resubmissions incur **10% of the total assignment points per day late, up to a maximum of 40%**, unless prior arrangements have been made. A late revision may result in a **lower final score** than the original submission if the late penalty exceeds the points you would recover. Consider the penalty before requesting a reevaluation.
+- **Class projects:** Late submissions and resubmissions **after the deadline are not accepted** for the Mini Project or Final Project. You may revise project work before its deadline, but a post-deadline change cannot replace the on-time project version for grading.
+- **Final exam week:** **No late submissions** are accepted during final exam week.
 
 ## Attendance & Registered Section Policy
 Attendance is mandatory and constitutes a significant portion (20%) of your grade. Attendance will be taken at every class meeting. Absence, early leaving without permission, being late more than 20 minutes, or disrespectful/disturbing behavior will result in 0 points each time. Being late more than 5 minutes will result in a late penalty.

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Mini Project: State Population and Income Analysis - IA 340 | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Mini Project: State Population and Income Analysis - IA 340" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
+<meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-47/assignments/mini-project/" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-47/assignments/mini-project/" />
+<meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Mini Project: State Population and Income Analysis - IA 340" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Mini Project: State Population and Income Analysis - IA 340","url":"https://jmu-data.github.io/IA340/pr-preview/pr-47/assignments/mini-project/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-47/assets/css/style.css?v=e2ce713552436841e23f023d96e386141bd7c564">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/IA340/pr-preview/pr-47/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://jmu-data.github.io/IA340/pr-preview/pr-47/">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</a></h1>
+      
+
+      <h1 id="ia340-mini-project-state-population-and-income-analysis">IA340 Mini Project: State Population and Income Analysis</h1>
+
+<nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
+  <a href="/IA340/pr-preview/pr-47/" style="text-decoration: none; color: #57606a;">Home</a>
+  <a href="/IA340/pr-preview/pr-47/syllabus/" style="text-decoration: none; color: #57606a;">Syllabus</a>
+  <a href="/IA340/pr-preview/pr-47/modules/module-1/" style="text-decoration: none; color: #57606a;">Module 1</a>
+  <a href="/IA340/pr-preview/pr-47/assignments/github-account-verification/" style="text-decoration: none; color: #57606a;">Lab 1</a>
+  <a href="/IA340/pr-preview/pr-47/modules/module-2/" style="text-decoration: none; color: #57606a;">Module 2</a>
+  <a href="/IA340/pr-preview/pr-47/assignments/lab-2/" style="text-decoration: none; color: #57606a;">Lab 2</a>
+  <a href="/IA340/pr-preview/pr-47/modules/module-3/" style="text-decoration: none; color: #57606a;">Module 3</a>
+  <a href="/IA340/pr-preview/pr-47/assignments/lab-3/" style="text-decoration: none; color: #57606a;">Lab 3</a>
+  <a href="/IA340/pr-preview/pr-47/modules/module-3/google-cloud-coupon/" style="text-decoration: none; color: #57606a;">Cloud Credit Setup</a>
+  <a href="/IA340/pr-preview/pr-47/modules/module-4/" style="text-decoration: none; color: #57606a;">Module 4</a>
+  <a href="/IA340/pr-preview/pr-47/assignments/lab-4/" style="text-decoration: none; color: #57606a;">Lab 4</a>
+  <a href="/IA340/pr-preview/pr-47/modules/module-5/" style="text-decoration: none; color: #57606a;">Module 5</a>
+  <a href="/IA340/pr-preview/pr-47/assignments/lab-5/" style="text-decoration: none; color: #57606a;">Lab 5</a>
+  <a href="/IA340/pr-preview/pr-47/modules/module-6/" style="text-decoration: none; color: #57606a;">Module 6</a>
+  <a href="/IA340/pr-preview/pr-47/assignments/lab-6/" style="text-decoration: none; color: #57606a;">Lab 6</a>
+  <a href="/IA340/pr-preview/pr-47/assignments/mini-project/" style="text-decoration: none; font-weight: 600; color: #0969da;">Mini Project</a>
+</nav>
+
+<p><strong>Individual Project | 100 Points | 10% of Course Grade</strong><br />
+<strong>Due: Tuesday, October 6, 2026. See Canvas for the exact submission time.</strong></p>
+
+<p><strong>LATE SUBMISSIONS AND RESUBMISSIONS AFTER THE DEADLINE ARE NOT ACCEPTED.</strong></p>
+
+<h2 id="project-overview">Project Overview</h2>
+
+<p>You will independently complete the data collection, database querying, and Python visualization workflow practiced in Labs 4–6.</p>
+
+<p><strong>The instructor will randomly assign each student a U.S. state. You must use your assigned state.</strong> Collect its county names, population estimates, and median household income estimates, and store the data in your existing Google Cloud SQL database.</p>
+
+<p>Develop <strong>three research questions</strong>, use Gemini to help write and refine your SQL queries, visualize the results in Python, and briefly explain your findings.</p>
+
+<p>Keep all project code, results, and explanations in <strong>one notebook: <code class="language-plaintext highlighter-rouge">mini_project.ipynb</code></strong>.</p>
+
+<h2 id="1-collect-and-store-your-data">1. Collect and Store Your Data</h2>
+
+<p>Begin your notebook with your assigned state’s name and two-digit state FIPS code.</p>
+
+<p>Adapt the <strong>Lab 5 data collection workflow</strong> to your assigned state. Use the <strong>same Census clients, variables, and table structure used in Lab 5</strong>. Do not choose different Census measures for this project.</p>
+
+<p>Collect the following data:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Database table</th>
+      <th>Census source / variable</th>
+      <th>What to collect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong><code class="language-plaintext highlighter-rouge">name</code></strong></td>
+      <td>Decennial PL county directory: <code class="language-plaintext highlighter-rouge">c.pl.get("NAME", GEO, year=2020)</code></td>
+      <td>County/independent-city names and five-character county FIPS codes for your assigned state</td>
+    </tr>
+    <tr>
+      <td><strong><code class="language-plaintext highlighter-rouge">population</code></strong></td>
+      <td>ACS 1-year <strong><code class="language-plaintext highlighter-rouge">B01003_001E</code></strong></td>
+      <td>Total population for each available county-year</td>
+    </tr>
+    <tr>
+      <td><strong><code class="language-plaintext highlighter-rouge">income</code></strong></td>
+      <td>ACS 1-year <strong><code class="language-plaintext highlighter-rouge">B19013_001E</code></strong></td>
+      <td>Median household income for each available county-year</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For the two ACS measures, use the same Lab 5 <code class="language-plaintext highlighter-rouge">c.acs1.state_county(...)</code> workflow and the <strong>2015–2024</strong> study period. Collect all records that the source actually publishes for your assigned state. Do not replace the population or income variables with other Census tables.</p>
+
+<p>Use your existing Cloud SQL instance and the same three tables in database <code class="language-plaintext highlighter-rouge">postgres</code>, schema <code class="language-plaintext highlighter-rouge">public</code>: <strong><code class="language-plaintext highlighter-rouge">name</code></strong>, <strong><code class="language-plaintext highlighter-rouge">population</code></strong>, and <strong><code class="language-plaintext highlighter-rouge">income</code></strong>. Keep the required table structure, data types, primary keys, and foreign-key relationships from the earlier labs. Preserve five-character county FIPS codes as text.</p>
+
+<p>Add your assigned state’s data without deleting your earlier lab data. Your analysis queries must select the correct state or counties within that state.</p>
+
+<p>Include the collection and database-loading code in <code class="language-plaintext highlighter-rouge">mini_project.ipynb</code>. Run the code, commit the changes, and inspect the saved records in Cloud SQL Studio.</p>
+
+<p><strong>Working collection code alone is not enough. Your assigned state’s data must actually be saved in your database.</strong></p>
+
+<p>Collect all available source records for the required state and period. Do not invent observations or insert zero placeholders for unavailable data. Briefly note relevant source coverage gaps; you are not expected to create records that the source does not publish.</p>
+
+<h2 id="2-develop-and-test-three-sql-queries">2. Develop and Test Three SQL Queries</h2>
+
+<p>Define <strong>three distinct research questions</strong> that your collected data can answer. Each question must identify the relevant geography, measure, and year or period. Across the three questions, use both population and median household income.</p>
+
+<p>Your questions may examine changes over time, compare counties within your assigned state, or explore relationships between the available measures. They should not simply repeat the same analysis with a different county name.</p>
+
+<p>Use <strong>Gemini in Cloud SQL Studio</strong> to help develop your queries. Provide your actual table structure and explain what each query should return. Run, inspect, and revise the SQL until it correctly answers the question.</p>
+
+<p>Check the geographic filters, years, joins, and calculations. When matching population and income for the same county-year, join on both <strong>FIPS and year</strong>. Do not mistake a change across multiple years for a one-year growth rate.</p>
+
+<p>Copy each tested SQL query into your project notebook. <strong>You do not need a separate SQL file.</strong></p>
+
+<h2 id="3-visualize-and-interpret-your-results-in-python">3. Visualize and Interpret Your Results in Python</h2>
+
+<p>For each research question, execute your tested SQL from the notebook, load the results into a pandas DataFrame, display the result table, and create an appropriate visualization.</p>
+
+<p>Use this consistent structure for <strong>Q1, Q2, and Q3</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Markdown heading</th>
+      <th>Content immediately below it</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">## Q1 — [Short Title]</code> and <code class="language-plaintext highlighter-rouge">### Question</code></td>
+      <td>Your complete research question, written in a Markdown/text cell.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">### SQL Statement</code></td>
+      <td>A code cell containing your tested SQL as a Python string.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">### Pandas Querying</code></td>
+      <td>A separate code cell that executes the query, creates the DataFrame, and displays the results.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">### Visualization</code></td>
+      <td>A separate code cell that creates a chart from the query results.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">### Interpretation</code></td>
+      <td>A Markdown/text cell with <strong>1–2 sentences</strong> answering the question using the displayed results.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Repeat the same structure for Q2 and Q3. Use actual Markdown/text cells for headings and explanations—not Python comments.</p>
+
+<p>Each visualization must have a meaningful title, appropriate labels, and clearly identified units. It must use results queried from your database, not manually entered example values.</p>
+
+<p>Your interpretation should explain the finding, not merely describe the chart type. For example, “This is a bar chart of income” does not answer a research question.</p>
+
+<h3 id="final-summarization">Final Summarization</h3>
+
+<p>At the end of the notebook, add <strong><code class="language-plaintext highlighter-rouge">## Final Summarization</code></strong>. Write <strong>2–3 sentences</strong> summarizing your main findings and any important limitations or unfinished work.</p>
+
+<p>Also include a brief <strong><code class="language-plaintext highlighter-rouge">## Gemini Use</code></strong> section explaining how Gemini helped and how you checked its output. You do not need to submit a full Gemini conversation or a separate verification report.</p>
+
+<h2 id="4-save-and-submit-your-work">4. Save and Submit Your Work</h2>
+
+<p>Save <strong>one completed notebook, <code class="language-plaintext highlighter-rouge">mini_project.ipynb</code></strong>, at the root of your assigned private IA340 repository under <code class="language-plaintext highlighter-rouge">JMU-Data</code>, on the <strong><code class="language-plaintext highlighter-rouge">main</code></strong> branch.</p>
+
+<p>The notebook must contain your project overview, data collection and loading code, three questions with SQL and Python analysis, visible result tables and charts, interpretations, Final Summarization, and Gemini Use.</p>
+
+<p>Open the saved notebook on GitHub before submitting. Confirm that the completed code, tables, charts, and Markdown explanations are visible.</p>
+
+<p>Keep database connection information and API keys in <strong>Colab Secrets</strong>. Do not save your database IP address, passwords, or personal API keys in notebook code or outputs.</p>
+
+<h3 id="submit-exactly-two-values-in-canvas">Submit EXACTLY TWO values in Canvas</h3>
+
+<p>Submit the following, <strong>one per line, without labels or additional text</strong>:</p>
+
+<ol>
+  <li>Your Cloud SQL instance’s current <strong>Public IPv4 address</strong>.</li>
+  <li>The <strong>root URL of your assigned private IA340 GitHub repository</strong>.</li>
+</ol>
+
+<p><strong>Format example only—replace both values with your own:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>203.0.113.10
+https://github.com/JMU-Data/ia340-fa26-1-your-github-username
+</code></pre></div></div>
+
+<p>Use the repository assigned to your actual course section. The URL must stop at the repository name. Do not submit a notebook/file URL, a <code class="language-plaintext highlighter-rouge">/tree/main</code> URL, a Colab sharing link, or the public course-materials repository.</p>
+
+<p><strong>No separate SQL file, ER diagram, screenshots, ZIP file, or written report is required.</strong></p>
+
+<h2 id="grading-rubric">Grading Rubric</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Criterion</th>
+      <th style="text-align: right">Points</th>
+      <th>Requirements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Data Collection and Database</strong></td>
+      <td style="text-align: right"><strong>30</strong></td>
+      <td>Your database is accessible and contains the required available data for your <strong>randomly assigned state</strong>, using the existing three-table structure. Your notebook includes correct collection and loading code consistent with the saved data.</td>
+    </tr>
+    <tr>
+      <td><strong>Research Questions and SQL Queries</strong></td>
+      <td style="text-align: right"><strong>30</strong></td>
+      <td>Three distinct, answerable questions are stated clearly. The SQL included in the notebook correctly answers them using the appropriate geography, years, joins, and calculations.</td>
+    </tr>
+    <tr>
+      <td><strong>Python Visualization and Interpretation</strong></td>
+      <td style="text-align: right"><strong>30</strong></td>
+      <td>Each SQL query is executed in Python, its DataFrame is displayed, and an appropriate chart is created. Each visualization has a brief, evidence-based interpretation, and the notebook includes a Final Summarization.</td>
+    </tr>
+    <tr>
+      <td><strong>Format and Submission</strong></td>
+      <td style="text-align: right"><strong>10</strong></td>
+      <td>The completed <code class="language-plaintext highlighter-rouge">mini_project.ipynb</code> is saved in the correct repository on <code class="language-plaintext highlighter-rouge">main</code>, with the required Markdown structure and visible outputs. Gemini Use is included, and Canvas contains the correctly formatted Public IPv4 address and repository-root URL.</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td style="text-align: right"><strong>100</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Database records and notebook code may be checked with automated tools. Research questions, visualizations, and interpretations will also receive instructor review. Code running without an error does not necessarily mean the analysis is correct.</p>
+
+<h2 id="deadline-and-database-availability">Deadline and Database Availability</h2>
+
+<p><strong>LATE SUBMISSIONS AND RESUBMISSIONS AFTER THE DEADLINE ARE NOT ACCEPTED.</strong></p>
+
+<p>All required work must be completed and saved, and both submission values must be submitted in Canvas, by the deadline on <strong>Tuesday, October 6, 2026</strong>. Submitting links on time does not permit completing or replacing the project after the deadline.</p>
+
+<p><strong>Keep your Cloud SQL instance running and your project data accessible through at least Monday, October 12, 2026, so the instructor can verify your work after Fall Break. Do NOT stop or delete the instance or remove the project data before then.</strong></p>
+
+<p>The database availability requirement does <strong>not</strong> extend the submission deadline.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/JMU-Data/IA340/edit/gh-pages/assignments/mini-project/index.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

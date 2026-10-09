@@ -11,9 +11,9 @@ title: "Google AI Professional Certificate - IA 340"
 
 ## Your assignment
 
-Enroll in the **[Google AI Professional Certificate](https://www.coursera.org/professional-certificates/google-ai)** on Coursera through the **[JMU Google Learning Program for JMU IA Students](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)**. Complete **at least three different courses** in this eight-course certificate series for full credit.
+Enroll in the **[Google AI Professional Certificate](https://www.coursera.org/professional-certificates/google-ai)** on Coursera through the **[JMU Google Learning Program for JMU IA Students](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)**. The certificate program contains **eight separate courses**.
 
-**Important distinction:** The Professional Certificate consists of **eight courses** (sometimes called "modules" informally). Each course has its *own* internal learning modules. For this assignment, completing one entire **course** earns credit; completing three internal modules of a single course does **not** count as three courses.
+**How to earn points:** Complete **three or more different courses** to earn **100/100 Canvas points** (full credit for this assignment, worth **10% of your final course grade**). Completing **one course earns 30/100 points**, and completing **two different courses earns 60/100 points**. Each course must be fully completed and have its **own Coursera Course Certificate verification URL**. Individual lessons or learning modules within a course **do not count as separate courses**.
 
 ### Recommended learning order
 

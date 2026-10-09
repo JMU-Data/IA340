@@ -98,7 +98,7 @@ Upon completion of this course, students are expected to:
 - **Textbook**: [Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press / Routledge, 2024.](https://www.routledge.com/Social-Data-Analytics-in-the-Cloud-with-AI/Wei-Ye/p/book/9781032306232) *(Note: Refer to Canvas for any specific JMU free-access instructions for required materials.)*
 - **Google Account (Required)**: Use your **personal Gmail account** for Google Colab, Drive, Gemini, and NotebookLM, following the account instructions given in class.
 - **GitHub Account (Required)**: Required for accessing course repositories, lab materials, and submitting technical work.
-- **Coursera JMU AI Program (Required)**: Required for completing the Google AI Professional Certificate component.
+- **Google AI Learning Program for Students (Coursera, required)**: Required for completing the Google AI Professional Certificate component.
 - **AI Tools and Access**: Follow the AI tools and workflows designated by the instructor for each assignment. Both free and paid versions of an approved tool (including Google AI Pro) may be used when consistent with the assignment. Students are not required to purchase additional AI subscriptions for coursework. See the AI Policy below.
 
 ## Email Communication
@@ -125,10 +125,11 @@ You remain responsible for every AI-assisted result you submit. You must **inspe
 | - *Final Project* | *20%* |
 | Google AI Professional Certificate | 10% |
 
-*Google AI Professional Certificate Progress*:
-- Completion of 1 module/course = 3%
-- Completion of 2 modules/courses = 6%
-- Completion of 3 or more modules/courses = 10%
+*Google AI Professional Certificate Progress* — [Assignment Instructions](../assignments/google-ai-professional-certificate/):
+- **1** distinct completed course with a public Coursera verification URL = **30/100 Canvas points**.
+- **2** distinct completed courses with verification URLs = **60/100 Canvas points**.
+- **3 or more** distinct completed courses with verification URLs = **100/100 Canvas points**.
+- This **100-point Canvas assignment** belongs to the **Google AI Professional Certificate (10%)** category. Each qualifying course requires its own public course certificate verification URL; completing modules within a single course does not count as multiple courses. The **Canvas due date** governs both course completion and URL submission.
 
 ## Letter-Grade Scale
 - **A**: 94.00 – 100% | **A-**: 90.00 – 93.99%

@@ -91,11 +91,11 @@ After completing a course, you **may receive separate emails**:
 
 **For this assignment, submit ONLY your individual Coursera course certificate verification URLs (the `coursera.org/account/accomplishments/verify/...` links) to Canvas.** Do **not** submit Credly badge links, badge emails, badge screenshots, or LinkedIn posts. A Credly badge does not count as an additional completed course, and claiming or sharing it is **not required**.
 
-**Example 3 — A separate Credly badge notification (instructor example; not a Canvas submission):**
+**Example 3 — A separate Credly badge notification (personal link redacted; not a Canvas submission):**
 
-![Original instructor screenshot of a Credly notification email for a Coursera Google AI Fundamentals badge](../../assets/ai-pro-certificate/credly-badge-email.png)
+![Coursera Credly badge notification email with the instructor's personal badge link redacted](../../assets/ai-pro-certificate/credly-badge-email.png)
 
-For optional badge sharing, visit [Credly](https://www.credly.com/). Do not reuse the instructor's personal badge link shown in the example.
+For optional badge sharing, visit [Credly](https://www.credly.com/). The personalized badge link has been hidden in this public example.
 
 ### Test every URL in a private/incognito window
 

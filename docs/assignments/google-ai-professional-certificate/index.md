@@ -68,6 +68,21 @@ After each **course** is completed:
 
 **Do not submit the instructor's sample URL.** Your links must verify *your own* certificates.
 
+### Optional emails: Coursera course certificate and Credly badge
+
+After completing a course, you **may receive separate emails**:
+
+- **Coursera** may notify you that your individual **course certificate** is available. You can optionally share that credential on LinkedIn.
+- **Credly** may send a separate digital **badge** notification (for example, the Google AI Fundamentals badge issued by Coursera). You can optionally add this badge to LinkedIn as well.
+
+**For this assignment, submit ONLY your individual Coursera course certificate verification URLs (the `coursera.org/account/accomplishments/verify/...` links) to Canvas.** Do **not** submit Credly badge links, badge emails, badge screenshots, or LinkedIn posts. A Credly badge does not count as an additional completed course, and claiming or sharing it is **not required**.
+
+**Example 3 — A separate Credly badge notification (instructor example; not a Canvas submission):**
+
+![Original instructor screenshot of a Credly notification email for a Coursera Google AI Fundamentals badge](../../assets/ai-pro-certificate/credly-badge-email.png)
+
+For optional badge sharing, visit [Credly](https://www.credly.com/). Do not reuse the instructor's personal badge link shown in the example.
+
 ### Test every URL in a private/incognito window
 
 1. Copy each verification URL.
@@ -100,6 +115,6 @@ This assignment has **100 possible points in Canvas**; the **Google AI Professio
 
 ## Optional — Share your credentials
 
-You may add your verified course certificates to **LinkedIn**, your résumé, or a professional portfolio. This is **optional** and earns no additional assignment points. **You must still submit your verification URLs in Canvas.**
+You may add your verified Coursera course certificates **and/or Credly badges** to LinkedIn, your résumé, or a professional portfolio. This is **optional** and earns no additional points. **You must still submit the individual Coursera course certificate verification URLs—not Credly badge links—in Canvas.**
 
 [Return to the IA340 course home](../../)

@@ -175,7 +175,7 @@ In this course, we will utilize cloud notebooks and AI-assisted workflows for da
 
 ## Part 3: Coursera & Google AI Professional Certificate
 
-As part of the course curriculum, we will be utilizing the Google AI Professional Certificate program hosted on Coursera. You will join the JMU learning program using your JMU email to access this content.
+As part of the course curriculum, we will be utilizing the Google AI Professional Certificate program hosted on Coursera. You will use the instructor-provided Coursera learning link and your JMU email address to access this content.
 
 ## Instructions
 
@@ -194,7 +194,7 @@ Please complete the following setup steps during Week 1:
 
 ### 3. Coursera & AI Professional Certificate (Required)
 - **Register for Coursera:** Create a Coursera account using your **JMU email address**.
-- **Join the JMU Learning Program:** After creating your account, go to this specific link to enroll in the JMU program: [Google Learning Program for JMU IA Students](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)
+- **Join the Google AI Learning Program for Students:** After creating your Coursera account, use the instructor-provided [Google AI Learning Program for Students](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g) link to enroll. This link is provided for class access and does not imply a joint university–Google certificate program.
 - **Enroll in the Certificate:** Once you have joined the JMU program via the link, enroll in the **Google AI Professional Certificate**.
 
 ## What to Submit (on Canvas)
@@ -203,7 +203,7 @@ Go to the official course Canvas page, navigate to the **Assignments** section, 
 Submit the following in the text box on Canvas to verify completion:
 1. Your GitHub Username (e.g., `janedoe`)
 2. Your GitHub Profile URL (e.g., `https://github.com/janedoe`)
-3. A brief confirmation statement that you have configured your Google account using your JMU email address (`@dukes.jmu.edu` or `@jmu.edu`) and enrolled in the Coursera JMU AI Certificate Program (e.g., *"I have registered for GitHub, set up my JMU Google account, and enrolled in the Coursera AI Certificate program."*).
+3. A brief confirmation statement that you have configured your Google account using your JMU email address (`@dukes.jmu.edu` or `@jmu.edu`) and enrolled in the Google AI Learning Program for Students on Coursera (e.g., *"I have registered for GitHub, set up my JMU Google account, and enrolled in the Coursera AI Certificate program."*).
 
 *Note: You do not need to create any repositories, write any code, or submit a GitHub repo for this assignment. Further setup will be handled in subsequent weeks.*
 

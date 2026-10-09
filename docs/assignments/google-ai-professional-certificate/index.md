@@ -11,7 +11,7 @@ title: "Google AI Professional Certificate - IA 340"
 
 ## Your assignment
 
-Enroll in the **[Google AI Professional Certificate](https://www.coursera.org/professional-certificates/google-ai)** on Coursera through the **[JMU Google Learning Program for JMU IA Students](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)**. The certificate program contains **eight separate courses**.
+Enroll in the **[Google AI Professional Certificate](https://www.coursera.org/professional-certificates/google-ai)** on Coursera through the **[Google AI Learning Program for Students](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)**. The certificate program contains **eight separate courses**.
 
 **How to earn points:** Complete **three or more different courses** to earn **100/100 Canvas points** (full credit for this assignment, worth **10% of your final course grade**). Completing **one course earns 30/100 points**, and completing **two different courses earns 60/100 points**. Each course must be fully completed and have its **own Coursera Course Certificate verification URL**. Individual lessons or learning modules within a course **do not count as separate courses**.
 
@@ -40,11 +40,13 @@ You may instead choose **any three distinct courses** in the same Google AI Prof
 
 ![Original Coursera screenshot showing the eight courses in the Google AI Professional Certificate](../../assets/ai-pro-certificate/google-ai-professional-eight-courses.png)
 
-## Step 1 — Enroll through the JMU Coursera program
+## Step 1 — Enroll through the Google AI Learning Program for Students
 
-1. Sign in to Coursera with the **Coursera account registered using your JMU email address** and used for the JMU learning program.
-2. Open the **[JMU Google Learning Program](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)** and enroll in the **Google AI Professional Certificate**.
-3. If Coursera does not show your JMU program access or requests an unexpected personal payment, **contact the instructor before purchasing anything**.
+1. Sign in to Coursera with the **Coursera account registered using your JMU email address** and used for the instructor-provided Coursera learning program.
+2. Open the **[Google AI Learning Program for Students](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)** and enroll in the **Google AI Professional Certificate**.
+3. If Coursera does not show your course-provided learning program access or requests an unexpected personal payment, **contact the instructor before purchasing anything**.
+
+**Program clarification:** This is an instructor-provided Coursera enrollment link for students, not a claim of a jointly operated university–Google certificate program.
 
 **Google AI Professional Certificate ≠ Google AI Pro subscription.** The certificate program on Coursera is required for this assignment; a separate paid **Google AI Pro** subscription is **not** required.
 

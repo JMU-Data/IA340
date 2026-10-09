@@ -44,12 +44,24 @@ You may instead choose **any three distinct courses** in the same Google AI Prof
 
 1. Sign in to Coursera with the **Coursera account registered using your JMU email address** and used for the JMU learning program.
 2. Open the **[JMU Google Learning Program](https://www.coursera.org/programs/google-learning-program-for-jmu-ia-students-j6l6g)** and enroll in the **Google AI Professional Certificate**.
-3. Complete at least three **entire courses** in this specific certificate series, including all activities required for the corresponding **individual course completion certificates**.
-4. If Coursera does not show your JMU program access or requests an unexpected personal payment, **contact the instructor before purchasing anything**.
+3. If Coursera does not show your JMU program access or requests an unexpected personal payment, **contact the instructor before purchasing anything**.
 
 **Google AI Professional Certificate ≠ Google AI Pro subscription.** The certificate program on Coursera is required for this assignment; a separate paid **Google AI Pro** subscription is **not** required.
 
-## Step 2 — Find your individual course certificate URLs
+## Step 2 — Complete the required learning modules in each course
+
+Once enrolled, **open a course and work through its learning modules**. Each of the eight courses is organized into multiple modules, and the learning activities vary by course. Depending on the module, you may encounter:
+
+- **Videos** explaining concepts and demonstrating techniques.
+- **Readings** and supporting learning materials.
+- **Hands-on labs or practical exercises**, when included.
+- **Quizzes or other assessments**, when included.
+
+Complete **all required activities and assessments** for the chosen course as indicated by Coursera. Check your course progress and make sure the **entire course** is marked **Completed** and its **individual Course Certificate** has been issued. Completing a few modules inside one course is **not** the same as completing several separate courses.
+
+Repeat the process for additional **distinct courses**. **Three completed courses, each with its own Course Certificate, earn full credit**; one or two completed courses earn partial credit according to the grading table below.
+
+## Step 3 — Find your individual course certificate URLs
 
 After each **course** is completed:
 
@@ -90,7 +102,7 @@ For optional badge sharing, visit [Credly](https://www.credly.com/). Do not reus
 3. Paste the URL. Ensure the certificate is visible **without requiring a Coursera login**, and that the name, course title, and completion date match your work.
 4. If the URL does not work publicly, resolve the problem **before submitting it to Canvas**. An enrollment link, course home page, screenshot, LinkedIn post, or private Accomplishments page is **not** a substitute.
 
-## Step 3 — Submit your verification URLs in Canvas
+## Step 4 — Submit your verification URLs in Canvas
 
 Use the **Text Entry** field of this Canvas assignment. Paste **one distinct course certificate verification URL per line**. Submit **three valid URLs** for full credit.
 

@@ -98,7 +98,7 @@ Upon completion of this course, students are expected to:
 - **Textbook**: [Wei, Xuebin, and Xinyue Ye. *Social Data Analytics in the Cloud with AI*. CRC Press / Routledge, 2024.](https://www.routledge.com/Social-Data-Analytics-in-the-Cloud-with-AI/Wei-Ye/p/book/9781032306232) *(Note: Refer to Canvas for any specific JMU free-access instructions for required materials.)*
 - **Google Account (Required)**: Use your **personal Gmail account** for Google Colab, Drive, Gemini, and NotebookLM, following the account instructions given in class.
 - **GitHub Account (Required)**: Required for accessing course repositories, lab materials, and submitting technical work.
-- **Coursera JMU AI Program (Required)**: Required for completing the Google AI Professional Certificate component.
+- **Google AI Learning Program for Students (Coursera, required)**: Required for completing the Google AI Professional Certificate component.
 - **AI Tools and Access**: Follow the AI tools and workflows designated by the instructor for each assignment. Both free and paid versions of an approved tool (including Google AI Pro) may be used when consistent with the assignment. Students are not required to purchase additional AI subscriptions for coursework. See the AI Policy below.
 
 ## Email Communication

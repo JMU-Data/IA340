@@ -93,7 +93,7 @@ After completing a course, you **may receive separate emails**:
 
 **Example 3 — A separate Credly badge notification (personal link redacted; not a Canvas submission):**
 
-![Coursera Credly badge notification email with the instructor's personal badge link redacted](../../assets/ai-pro-certificate/credly-badge-email.png)
+![Coursera Credly badge notification email with the instructor's personal badge link redacted](../../assets/ai-pro-certificate/credly-badge-email-redacted.png)
 
 For optional badge sharing, visit [Credly](https://www.credly.com/). The personalized badge link has been hidden in this public example.
 

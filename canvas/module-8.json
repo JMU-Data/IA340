@@ -1,0 +1,115 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "lab-8",
+      "title": "Lab 8 \u2014 MongoDB Atlas Setup and Twitter/X Data Collection",
+      "assignment_group": "Labs",
+      "points": 100.0,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-8/"
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "lab-8-rubric",
+      "title": "Lab 8 \u2014 MongoDB Atlas Setup and Twitter/X Data Collection",
+      "assignment": "lab-8",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "connection-string",
+          "description": "Connection String",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "valid",
+              "description": "Valid",
+              "points": 20.0
+            },
+            {
+              "key": "invalid",
+              "description": "Invalid",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "twitter-x-data-collection",
+          "description": "Twitter/X Data Collection",
+          "points": 60.0,
+          "ratings": [
+            {
+              "key": "posts-50-to-200",
+              "description": "50\u2013200 posts",
+              "points": 60.0
+            },
+            {
+              "key": "posts-1-to-49-or-over-200",
+              "description": "1\u201349 or more than 200",
+              "points": 30.0
+            },
+            {
+              "key": "zero-posts",
+              "description": "0 posts",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "github-notebook",
+          "description": "GitHub Notebook",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "complete",
+              "description": "Complete",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "Missing",
+              "points": 0.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "module-8",
+      "title": "Module 8",
+      "published": true,
+      "items": [
+        {
+          "key": "lecture",
+          "type": "ExternalUrl",
+          "title": "Week 8 \u2014 NoSQL and MongoDB (Module 8)",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/modules/module-8/",
+          "assignment": null
+        },
+        {
+          "key": "lab-8",
+          "type": "Assignment",
+          "title": "Lab 8 \u2014 MongoDB Atlas Setup and Twitter/X Data Collection",
+          "published": true,
+          "external_url": null,
+          "assignment": "lab-8"
+        }
+      ]
+    }
+  ]
+}

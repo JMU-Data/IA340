@@ -30,6 +30,8 @@
 - [Lab 5: Collect Census Data into Your Database](docs/assignments/lab-5/index.md)
 - [Module 6: SQL Queries and County Analysis](docs/modules/module-6/index.md)
 - [Lab 6: My County: SQL and Python Analysis](docs/assignments/lab-6/index.md)
+- [Module 7: NoSQL, MongoDB Atlas & Twitter/X Collection](docs/modules/module-7/index.md)
+- [Lab 8: MongoDB Atlas & Twitter/X Data Collection](docs/assignments/lab-8/index.md)
 - [Mini Project: State Population and Income Analysis](docs/assignments/mini-project/index.md)
 - [Google AI Professional Certificate Assignment](docs/assignments/google-ai-professional-certificate/index.md)
 

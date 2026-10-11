@@ -6,23 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Module 7 — NoSQL, MongoDB, and Twitter/X Data Collection · IA340 | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<title>Module 8 — NoSQL, MongoDB, and Twitter/X Data Collection · IA340 | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Module 7 — NoSQL, MongoDB, and Twitter/X Data Collection · IA340" />
+<meta property="og:title" content="Module 8 — NoSQL, MongoDB, and Twitter/X Data Collection · IA340" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
 <meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
-<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-49/modules/module-7/" />
-<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-49/modules/module-7/" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-49/modules/module-8/" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-49/modules/module-8/" />
 <meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Module 7 — NoSQL, MongoDB, and Twitter/X Data Collection · IA340" />
+<meta property="twitter:title" content="Module 8 — NoSQL, MongoDB, and Twitter/X Data Collection · IA340" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Module 7 — NoSQL, MongoDB, and Twitter/X Data Collection · IA340","url":"https://jmu-data.github.io/IA340/pr-preview/pr-49/modules/module-7/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Module 8 — NoSQL, MongoDB, and Twitter/X Data Collection · IA340","url":"https://jmu-data.github.io/IA340/pr-preview/pr-49/modules/module-8/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/IA340/pr-preview/pr-49/assets/css/style.css?v=12fb3c9cb3a291dbed94ad60bde6e7b7b4ebf58c">
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-49/assets/css/style.css?v=d0484c30fdb91bc81e12af2c6131cf9c02f4c00c">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -53,7 +53,7 @@
 <link rel="stylesheet" href="/IA340/pr-preview/pr-49/assets/week-8/lecture.css" />
 
 <div id="ia340-week8" class="ia340-week8">
-<header><span class="brand">IA 340 · WEEK 8</span>
+<header class="week8-header"><span class="brand">IA 340 · WEEK 8</span>
 <button data-jump="0">Monday</button><button data-jump="39">Wednesday</button><button data-jump="23">Index concepts</button>
 <select aria-label="Choose a slide" id="selector"><option value="0">01 · Beyond tables: meet NoSQL</option><option value="1">02 · Why use NoSQL?</option><option value="2">03 · 1 · Key–value: find it by its key</option><option value="3">04 · 2 · Documents: keep related values together</option><option value="4">05 · 3 · Columns: read less data for an aggregate</option><option value="5">06 · 4 · Graph database: people live in different cities</option><option value="6">07 · SQL vs. NoSQL: what kind of workload?</option><option value="7">08 · Before we move on: stop or delete Cloud SQL?</option><option value="8">09 · Cloud SQL: STOP the old instance if you may need it</option><option value="9">10 · Cloud SQL: disable deletion protection</option><option value="10">11 · Cloud SQL: confirm the permanent delete</option><option value="11">12 · MongoDB: familiar ideas, different containers</option><option value="12">13 · Field–value pairs: three people in one collection</option><option value="13">14 · Embedded documents: put the city inside the person</option><option value="14">15 · Data types: the values have meaning</option><option value="15">16 · Optional fields: compare all three documents</option><option value="16">17 · The same information in two relational tables</option><option value="17">18 · JOIN: bring the people and cities together</option><option value="18">19 · Same information: ONE collection, THREE documents</option><option value="19">20 · Another option: keep people and cities separate</option><option value="20">21 · When is a schema defined?</option><option value="21">22 · MongoDB and relational databases: more in common</option><option value="22">23 · JSON vs. BSON: readable documents, typed storage</option><option value="23">24 · Indexes: four useful jobs, in both database families</option><option value="24">25 · Text index: find words inside documents</option><option value="25">26 · Replica set: the primary writes, secondaries copy</option><option value="26">27 · Scale up or scale out?</option><option value="27">28 · Sharding: let the collection grow</option><option value="28">29 · Monday: build the home for your database</option><option value="29">30 · Atlas step 1 · accept the course invitation</option><option value="30">31 · Atlas step 2 · create your project</option><option value="31">32 · Atlas step 3 · create a Free cluster</option><option value="32">33 · Atlas website account ≠ database user</option><option value="33">34 · Atlas step 4 · add the database user</option><option value="34">35 · Atlas step 5 · allow the class connections</option><option value="35">36 · Atlas connection wizard: choose Drivers</option><option value="36">37 · Atlas step 6 · save a complete connection string</option><option value="37">38 · Monday complete · ready for Wednesday</option><option value="38">39 · Atlas: check cluster Monitoring</option><option value="39">40 · A familiar workflow, a different API and database</option><option value="40">41 · Use the instructor-provided API token</option><option value="41">42 · Create a new Colab notebook · add two Secrets</option><option value="42">43 · What comes back from the Twitter API?</option><option value="43">44 · One stored document · the post and its author</option><option value="44">45 · Cell 1 · install Python libraries</option><option value="45">46 · Cell 2 · read credentials from Colab Secrets</option><option value="46">47 · Cell 3 · import Python libraries</option><option value="47">48 · Cell 4 · connect to MongoDB and create the unique index</option><option value="48">49 · Cell 5 · check how many tweets you already collected</option><option value="49">50 · Cell 6 · define the class query</option><option value="50">51 · Cell 7 · request one page with the Twitter/X API</option><option value="51">52 · Cell 8 · insert tweets into MongoDB</option><option value="52">53 · Notebook output: a completed collection batch</option><option value="53">54 · How does next_token get another page?</option><option value="54">55 · Cell 9 · count tweets after collection</option><option value="55">56 · OPTIONAL LAB 8 · One more page if fewer than 50 posts</option><option value="56">57 · FINAL PROJECT · Collect up to 500 posts across pages</option><option value="57">58 · Check your collection in Atlas</option><option value="58">59 · If a step fails, diagnose that step</option><option value="59">60 · Cell 10 · close the database connection</option><option value="60">61 · Your first MongoDB collection is ready</option></select><button id="full">Fullscreen</button></header>
 <main class="stage"><section class="slide cover" id="slide-1" data-session="Monday"><div class="slide-header"><h1>Beyond tables: meet NoSQL</h1></div><div class="slide-body">
@@ -871,7 +871,7 @@ collect_project_posts(project_collection, project_query)
 
       
       <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-        This site is open source. <a href="https://github.com/JMU-Data/IA340/edit/gh-pages/modules/module-7/index.md">Improve this page</a>.
+        This site is open source. <a href="https://github.com/JMU-Data/IA340/edit/gh-pages/modules/module-8/index.md">Improve this page</a>.
       </div>
       
     </div>

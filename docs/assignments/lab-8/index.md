@@ -3,13 +3,13 @@ layout: default
 title: "Lab 8 — MongoDB Atlas and Twitter/X Data Collection · IA340"
 ---
 
-[← Course Home]({{ site.baseurl }}/) · [Week 8 Lecture]({{ site.baseurl }}/modules/module-7/)
+[← Course Home]({{ site.baseurl }}/) · [Week 8 Lecture]({{ site.baseurl }}/modules/module-8/)
 
 # Lab 8 — MongoDB Atlas Setup and Twitter/X Data Collection
 
 **IA 340 · 100 points · October 12–16, 2026 · Due date: see Canvas.**
 
-Follow the [Week 8 lecture]({{ site.baseurl }}/modules/module-7/) in class. All setup steps, screenshots, and collection code are explained in the lecture. Create your own **`Lab8.ipynb`** Colab notebook as you follow along. Do not download a starter notebook or a dataset.
+Follow the [Week 8 lecture]({{ site.baseurl }}/modules/module-8/) in class. All setup steps, screenshots, and collection code are explained in the lecture. Create your own **`Lab8.ipynb`** Colab notebook as you follow along. Do not download a starter notebook or a dataset.
 
 ## Class settings
 

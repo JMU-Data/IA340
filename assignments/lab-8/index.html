@@ -22,7 +22,7 @@
 {"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Lab 8 — MongoDB Atlas and Twitter/X Data Collection · IA340","url":"https://jmu-data.github.io/IA340/assignments/lab-8/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=a05d404f3788be3c7e0c3d4c1da297bb57f998cc">
+    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=36ebbc60f5b2270a61a1384709999dc4b1190ab1">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -108,12 +108,12 @@
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />I stored <strong>50–200 unique real Twitter/X posts</strong> using <code class="language-plaintext highlighter-rouge">election</code>. If the first batch contained fewer than 50, I used the <strong>optional <code class="language-plaintext highlighter-rouge">next_token</code> example</strong> and checked the count after each page.</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Each stored record contains <code class="language-plaintext highlighter-rouge">tweet.id</code>, <code class="language-plaintext highlighter-rouge">tweet.text</code>, available post fields, the correctly matched author where available, and <code class="language-plaintext highlighter-rouge">collection_meta</code> with source, query, and retrieval time.</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />I checked the final count and inspected documents in Atlas Data Explorer.</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />I committed <strong><code class="language-plaintext highlighter-rouge">Lab8.ipynb</code></strong> to my GitHub repository, including source code and non-sensitive outputs. <strong>No API token, password, full MongoDB URI, or Colab Secret value</strong> is in GitHub.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />I committed <strong><code class="language-plaintext highlighter-rouge">Lab8.ipynb</code></strong> at the root of my assigned private IA340 GitHub repository on <strong><code class="language-plaintext highlighter-rouge">main</code></strong>, including source code and non-sensitive outputs. <strong>No Twitter/X token, API key, password, full MongoDB URI, or Colab Secret value</strong> appears in committed code or saved outputs.</li>
 </ul>
 
-<h2 id="submit-two-items-in-canvas">Submit TWO items in Canvas</h2>
+<h2 id="submit-exactly-two-values-in-canvas">Submit EXACTLY TWO values in Canvas</h2>
 
-<p>Paste these <strong>two items on separate lines</strong> in one Canvas submission:</p>
+<p>Paste the following <strong>two values on separate lines, without labels or additional text</strong>, in one Canvas submission:</p>
 
 <p><strong>1. MongoDB connection string:</strong> Your complete working MongoDB URI for <strong><code class="language-plaintext highlighter-rouge">lab8</code></strong>, including your own cluster hostname and the correct database-user password. Submit the full URI <strong>only in Canvas</strong>, never in GitHub or screenshots. The hostname <code class="language-plaintext highlighter-rouge">ia340.example.mongodb.net</code> is fictional; use your own Atlas cluster hostname. Do not include placeholder brackets in your submitted URI. <strong>Python selects <code class="language-plaintext highlighter-rouge">lab8</code></strong>; do not append <code class="language-plaintext highlighter-rouge">/lab8</code> or <code class="language-plaintext highlighter-rouge">authSource</code> to this example.</p>
 
@@ -122,7 +122,18 @@
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mongodb+srv://demo:IA340-data@ia340.example.mongodb.net/?appName=ia340
 </code></pre></div></div>
 
-<p><strong>2. GitHub notebook URL:</strong> A URL pointing to <strong><code class="language-plaintext highlighter-rouge">Lab8.ipynb</code></strong> in your GitHub repository. The committed notebook should contain the code and non-sensitive execution evidence.</p>
+<p><strong>2. GitHub repository URL:</strong> The root URL of your <strong>assigned private IA340 GitHub repository</strong> under <code class="language-plaintext highlighter-rouge">JMU-Data</code>. Keep <strong><code class="language-plaintext highlighter-rouge">Lab8.ipynb</code></strong> at the repository root on <strong><code class="language-plaintext highlighter-rouge">main</code></strong>, with the required code and non-sensitive execution evidence. <strong>Do not submit a link to the notebook file.</strong></p>
+
+<p>Use the URL for your assigned section. Replace <code class="language-plaintext highlighter-rouge">&lt;your-github-username&gt;</code> with your own GitHub username:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IA340-1:
+https://github.com/JMU-Data/ia340-fa26-1-&lt;your-github-username&gt;
+
+IA340-2:
+https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;
+</code></pre></div></div>
+
+<p>The URL must stop at the repository name. Do not submit a <code class="language-plaintext highlighter-rouge">/blob/main/...</code> notebook URL, a <code class="language-plaintext highlighter-rouge">/tree/main</code> URL, a Colab sharing URL, or the public IA340 course repository.</p>
 
 <p>Do not submit a separate data file, screenshot, or written report. The instructor checks the stored data through MongoDB and the code through GitHub.</p>
 
@@ -150,7 +161,7 @@
     <tr>
       <td><strong>GitHub notebook</strong></td>
       <td style="text-align: right"><strong>20</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">Lab8.ipynb</code> has the assigned collection code and readable, non-sensitive results.</td>
+      <td><code class="language-plaintext highlighter-rouge">Lab8.ipynb</code> is saved at the assigned repository root on <code class="language-plaintext highlighter-rouge">main</code>, with the required collection code and readable, non-sensitive outputs. <strong>Do not expose real sensitive information</strong> in committed Python code, notebooks, saved outputs, or other submitted GitHub files, including Twitter/X bearer tokens, API keys, passwords, MongoDB connection strings, or Colab Secret values. <strong>Any exposed real credential or connection string: deduct all 20 points for this criterion (0/20).</strong></td>
     </tr>
     <tr>
       <td><strong>Total</strong></td>
@@ -159,6 +170,8 @@
     </tr>
   </tbody>
 </table>
+
+<p><strong>Credential exposure:</strong> If you accidentally commit a real credential, revoke or rotate it immediately and remove it from GitHub files and notebook outputs. Removing it from the current notebook alone does not make an exposed credential safe.</p>
 
 <p><strong>Invalid connection string:</strong> If the URI does not work when graded, the Lab receives <strong>0</strong>. Resubmit the assignment with a working URI for a recheck. <strong>Late penalties apply</strong> to submissions and evaluated file changes after the deadline.</p>
 

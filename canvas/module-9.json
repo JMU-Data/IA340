@@ -1,0 +1,127 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "lab-9",
+      "title": "Lab 9 — MongoDB Query & Aggregation Pipelines",
+      "assignment_group": "Labs",
+      "points": 100.0,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-9/"
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "lab-9-rubric",
+      "title": "Lab 9 — MongoDB Query & Aggregation Pipelines",
+      "assignment": "lab-9",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "mongodb-connection-accessibility",
+          "description": "MongoDB Connection & Accessibility: Submitted URI allows instructor to read lab8.tweet_collection. (Connection failure: 0 until working connection verified, then 20-point deduction.)",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "answers-q1-q5",
+          "description": "Answers (Q1–Q5): 6 points per question. Each answer matches the data actually stored in your own collection, using the definitions in the questions.",
+          "points": 30.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "queries-q1-q5",
+          "description": "Queries (Q1–Q5): 6 points per question. Each saved Python-exported query correctly answers its question and includes required filters, fields, stages, sort, limit, and variable definitions.",
+          "points": 30.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        },
+        {
+          "key": "github-submission-format-credential-safety",
+          "description": "GitHub Submission Format & Credential Safety: lab9.py in default branch with Q1–Q5; both Canvas items present; no credentials in repo. (Credential exposure: real credential in repo gives 0/20 for this criterion.)",
+          "points": 20.0,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20.0
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "module-9",
+      "title": "Module 9",
+      "published": true,
+      "items": [
+        {
+          "key": "lecture",
+          "type": "ExternalUrl",
+          "title": "Lecture — MongoDB Query & Aggregation Pipelines",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/modules/module-9/",
+          "assignment": null
+        },
+        {
+          "key": "lab-9",
+          "type": "Assignment",
+          "title": "Lab 9 — MongoDB Query & Aggregation Pipelines",
+          "published": true,
+          "external_url": null,
+          "assignment": "lab-9"
+        }
+      ]
+    }
+  ]
+}

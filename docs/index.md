@@ -24,6 +24,8 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/mini-project/" style="text-decoration: none; color: #57606a;">Mini Project</a>
   <a href="{{ site.baseurl }}/modules/module-8/" style="text-decoration: none; color: #57606a;">Module 8</a>
   <a href="{{ site.baseurl }}/assignments/lab-8/" style="text-decoration: none; color: #57606a;">Lab 8</a>
+  <a href="{{ site.baseurl }}/modules/module-9/" style="text-decoration: none; color: #57606a;">Module 9</a>
+  <a href="{{ site.baseurl }}/assignments/lab-9/" style="text-decoration: none; color: #57606a;">Lab 9</a>
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="text-decoration: none; color: #57606a;">Google AI Certificate</a>
 </nav>
 
@@ -126,6 +128,16 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-8/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
     <h3 style="margin-top: 0; color: #1a7f37;">Lab 8 · MongoDB + Twitter/X</h3>
     <p style="margin-bottom: 0; color: #57606a;">Collect 50–200 real posts, verify the database, and submit a GitHub notebook.</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/modules/module-9/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #0969da;">Module 9 · MongoDB Queries &amp; Aggregation</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Week 9: Document queries, aggregation pipelines, and Atlas AI (Interactive Lecture)</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/lab-9/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #1a7f37;">Lab 9 · MongoDB Query &amp; Aggregation</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Answer five questions using your MongoDB data; save Python-exported queries to GitHub.</p>
   </a>
 
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow: 0.2s;">

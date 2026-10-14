@@ -34,11 +34,11 @@ Follow the [Week 8 lecture]({{ site.baseurl }}/modules/module-8/) in class. All 
 - [ ] I stored **50–200 unique real Twitter/X posts** using `election`. If the first batch contained fewer than 50, I used the **optional `next_token` example** and checked the count after each page.
 - [ ] Each stored record contains `tweet.id`, `tweet.text`, available post fields, the correctly matched author where available, and `collection_meta` with source, query, and retrieval time.
 - [ ] I checked the final count and inspected documents in Atlas Data Explorer.
-- [ ] I committed **`Lab8.ipynb`** to my GitHub repository, including source code and non-sensitive outputs. **No API token, password, full MongoDB URI, or Colab Secret value** is in GitHub.
+- [ ] I committed **`Lab8.ipynb`** at the root of my assigned private IA340 GitHub repository on **`main`**, including source code and non-sensitive outputs. **No Twitter/X token, API key, password, full MongoDB URI, or Colab Secret value** appears in committed code or saved outputs.
 
-## Submit TWO items in Canvas
+## Submit EXACTLY TWO values in Canvas
 
-Paste these **two items on separate lines** in one Canvas submission:
+Paste the following **two values on separate lines, without labels or additional text**, in one Canvas submission:
 
 **1. MongoDB connection string:** Your complete working MongoDB URI for **`lab8`**, including your own cluster hostname and the correct database-user password. Submit the full URI **only in Canvas**, never in GitHub or screenshots. The hostname `ia340.example.mongodb.net` is fictional; use your own Atlas cluster hostname. Do not include placeholder brackets in your submitted URI. **Python selects `lab8`**; do not append `/lab8` or `authSource` to this example.
 
@@ -48,7 +48,19 @@ Paste these **two items on separate lines** in one Canvas submission:
 mongodb+srv://demo:IA340-data@ia340.example.mongodb.net/?appName=ia340
 ```
 
-**2. GitHub notebook URL:** A URL pointing to **`Lab8.ipynb`** in your GitHub repository. The committed notebook should contain the code and non-sensitive execution evidence.
+**2. GitHub repository URL:** The root URL of your **assigned private IA340 GitHub repository** under `JMU-Data`. Keep **`Lab8.ipynb`** at the repository root on **`main`**, with the required code and non-sensitive execution evidence. **Do not submit a link to the notebook file.**
+
+Use the URL for your assigned section. Replace `<your-github-username>` with your own GitHub username:
+
+```text
+IA340-1:
+https://github.com/JMU-Data/ia340-fa26-1-<your-github-username>
+
+IA340-2:
+https://github.com/JMU-Data/ia340-fa26-2-<your-github-username>
+```
+
+The URL must stop at the repository name. Do not submit a `/blob/main/...` notebook URL, a `/tree/main` URL, a Colab sharing URL, or the public IA340 course repository.
 
 Do not submit a separate data file, screenshot, or written report. The instructor checks the stored data through MongoDB and the code through GitHub.
 
@@ -58,8 +70,10 @@ Do not submit a separate data file, screenshot, or written report. The instructo
 |---|---:|---|
 | **Connection string** | **20** | The instructor can connect using the URI submitted in Canvas. |
 | **Twitter/X data collection** | **60** | **50–200** verified, unique real posts = **60**; **1–49 or over 200** = **30**; **0** = **0**. |
-| **GitHub notebook** | **20** | `Lab8.ipynb` has the assigned collection code and readable, non-sensitive results. |
+| **GitHub notebook** | **20** | `Lab8.ipynb` is saved at the assigned repository root on `main`, with the required collection code and readable, non-sensitive outputs. **Do not expose real sensitive information** in committed Python code, notebooks, saved outputs, or other submitted GitHub files, including Twitter/X bearer tokens, API keys, passwords, MongoDB connection strings, or Colab Secret values. **Any exposed real credential or connection string: deduct all 20 points for this criterion (0/20).** |
 | **Total** | **100** | |
+
+**Credential exposure:** If you accidentally commit a real credential, revoke or rotate it immediately and remove it from GitHub files and notebook outputs. Removing it from the current notebook alone does not make an exposed credential safe.
 
 **Invalid connection string:** If the URI does not work when graded, the Lab receives **0**. Resubmit the assignment with a working URI for a recheck. **Late penalties apply** to submissions and evaluated file changes after the deadline.
 

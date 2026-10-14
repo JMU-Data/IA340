@@ -50,10 +50,13 @@ mongodb+srv://demo:IA340-data@ia340.example.mongodb.net/?appName=ia340
 
 **2. GitHub repository URL:** The root URL of your **assigned private IA340 GitHub repository** under `JMU-Data`. Keep **`Lab8.ipynb`** at the repository root on **`main`**, with the required code and non-sensitive execution evidence. **Do not submit a link to the notebook file.**
 
-Use your own course-section repository URL (choose **one** pattern, not both; replace `<your-github-username>`):
+Use the URL for your assigned section. Replace `<your-github-username>` with your own GitHub username:
 
 ```text
+IA340-1:
 https://github.com/JMU-Data/ia340-fa26-1-<your-github-username>
+
+IA340-2:
 https://github.com/JMU-Data/ia340-fa26-2-<your-github-username>
 ```
 
@@ -67,8 +70,7 @@ Do not submit a separate data file, screenshot, or written report. The instructo
 |---|---:|---|
 | **Connection string** | **20** | The instructor can connect using the URI submitted in Canvas. |
 | **Twitter/X data collection** | **60** | **50–200** verified, unique real posts = **60**; **1–49 or over 200** = **30**; **0** = **0**. |
-| **GitHub notebook** | **10** | `Lab8.ipynb` is saved at the repository root on `main`, with the assigned collection code and readable execution evidence. |
-| **Sensitive information protection** | **10** | No real secrets in committed notebook code, saved outputs, or other submitted GitHub files (e.g., Twitter/X bearer tokens, API keys, passwords, full MongoDB URIs, Colab Secret values). **Exposed secrets = 0/10**; a missing notebook also earns **0/10** for this criterion. |
+| **GitHub notebook** | **20** | `Lab8.ipynb` is saved at the assigned repository root on `main`, with the required collection code and readable, non-sensitive outputs. **Do not expose real sensitive information** in committed Python code, notebooks, saved outputs, or other submitted GitHub files, including Twitter/X bearer tokens, API keys, passwords, MongoDB connection strings, or Colab Secret values. **Any exposed real credential or connection string: deduct all 20 points for this criterion (0/20).** |
 | **Total** | **100** | |
 
 **Credential exposure:** If you accidentally commit a real credential, revoke or rotate it immediately and remove it from GitHub files and notebook outputs. Removing it from the current notebook alone does not make an exposed credential safe.

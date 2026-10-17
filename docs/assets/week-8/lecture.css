@@ -133,7 +133,10 @@
 #ia340-week8 .response-map article:nth-child(2){background:#f2eef9;border-color:#d5cce3}
 #ia340-week8 .response-map h3{font-size:25px}
 #ia340-week8 .response-map p{font-size:20px}
-#ia340-week8 .response-map code{display:block;font-size:18px;background:none;line-height:1.75}
+#ia340-week8 .response-map .response-fields{display:flex;flex-wrap:wrap;align-content:flex-start;gap:9px 10px}
+#ia340-week8 .response-map .response-fields code{display:inline-block;white-space:nowrap;font-size:17px;line-height:1.3;padding:5px 8px;border:1px solid #cbd8df;border-radius:6px;background:#fff}
+#ia340-week8 .response-map .response-field-note{font-size:15px;line-height:1.25;margin:8px 0 0;color:#586d7b}
+#ia340-week8 .response-map .response-field-note code{font-size:inherit;padding:0;background:none}
 #ia340-week8 #slide-5 .diagram svg{max-height:240px}
 #ia340-week8 #slide-6 .diagram svg{max-height:255px}
 #ia340-week8 .compact .slide-body{font-size:21px}

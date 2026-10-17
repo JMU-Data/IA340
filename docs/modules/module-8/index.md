@@ -577,7 +577,23 @@ JOIN city AS c ON p.city_id = c.city_id;
 <p>Add the numbered cells from the next slides. <strong>No starter notebook or data-file download is required.</strong></p>
 <figure class="teacher-shot compact-shot" data-shot="colab_secrets"><img alt="Screenshot: Store the instructor-provided X token and your full MongoDB URI as two Colab Secrets. Values have been removed from this screenshot." loading="eager" style="max-height:160px" src="{{ site.baseurl }}/assets/week-8/screenshots/colab_secrets.png"><figcaption>Store the instructor-provided X token and your full MongoDB URI as two Colab Secrets. Values have been removed from this screenshot.</figcaption></figure>
 </div><footer class="slide-foot"><span>IA 340 · Wednesday</span><span class="sources">Source: <a href="https://github.com/xbwei/data-analysis-with-generative-ai/blob/main/Collect_Twitter_Data_Colab.ipynb">Your Colab source: Secrets names</a></span><span>42 / 61</span></footer></section><section class="slide" id="slide-43" data-session="Wednesday"><div class="slide-header"><h1>What comes back from the Twitter API?</h1></div><div class="slide-body">
-<div class="response-map"><article><h3>data</h3><p>A list of posts</p><code>id · text · author_id<br>created_at · lang<br>entities · public_metrics</code></article><article><h3>includes.users</h3><p>Related author records</p><code>id · name · username<br>location · public_metrics</code></article><article><h3>meta</h3><p>Response information</p><code>result_count<br>next_token (when present)</code></article></div>
+<div class="response-map">
+<article><h3>data</h3><p>A list of posts</p>
+<div class="response-fields" aria-label="Post fields">
+<code>id</code><code>text</code><code>author_id</code><code>created_at</code>
+<code>lang</code><code>entities</code><code>public_metrics</code>
+</div></article>
+<article><h3>includes.users</h3><p>Related author records</p>
+<div class="response-fields" aria-label="User fields">
+<code>id</code><code>name</code><code>username</code><code>location</code>
+<code>public_metrics</code>
+</div></article>
+<article><h3>meta</h3><p>Response information</p>
+<div class="response-fields" aria-label="Response metadata">
+<code>result_count</code><code>next_token</code>
+</div>
+<p class="response-field-note"><code>next_token</code> when present</p>
+</article></div>
 <p><code>expansions=[&quot;author_id&quot;]</code> asks for author records; <code>tweet_fields</code> and <code>user_fields</code> request the details we need.</p>
 <p>One author may write several posts. Match <strong>post.author_id → user.id</strong>. A requested optional field can still be missing.</p>
 <p class="small">The API may also return `errors` for unavailable resources. An author's profile location is not a verified location of the post.</p>

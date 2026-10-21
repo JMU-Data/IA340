@@ -33,6 +33,10 @@
 - [Mini Project: State Population and Income Analysis](docs/assignments/mini-project/index.md)
 - [Module 8: NoSQL, MongoDB Atlas & Twitter/X Collection](docs/modules/module-8/index.md)
 - [Lab 8: MongoDB Atlas & Twitter/X Data Collection](docs/assignments/lab-8/index.md)
+- [Module 9: MongoDB Queries & Aggregation Pipelines](docs/modules/module-9/index.html)
+- [Lab 9: MongoDB Query & Aggregation Pipelines](docs/assignments/lab-9/index.html)
+- [Module 10: MongoDB Data Analysis with Python](docs/modules/module-10/index.html)
+- [Lab 10: Analyze Your Twitter/X Data with Python](docs/assignments/lab-10/index.html)
 - [Google AI Professional Certificate Assignment](docs/assignments/google-ai-professional-certificate/index.md)
 
 ## Course Overview

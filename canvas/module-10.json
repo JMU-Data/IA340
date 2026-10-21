@@ -1,0 +1,95 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "lab-10",
+      "title": "Lab 10 — Analyze Your Twitter/X Data with Python",
+      "assignment_group": "Labs",
+      "points": 100.0,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-10/"
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "lab-10-rubric",
+      "title": "Lab 10 — Analyze Your Twitter/X Data with Python",
+      "assignment": "lab-10",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "lecture-exercises",
+          "description": "Lecture Exercises — lecture10.ipynb: Executed insert/update/delete practice in lab9.demo; saved-query demonstrations; a pandas text table and an aggregation chart or supported empty result. Keep the code and executed outputs. No Summary or AI Use section is required in the lecture notebook.",
+          "points": 20.0,
+          "ratings": [
+            {"key": "pass", "description": "PASS", "points": 20.0},
+            {"key": "missing", "description": "MISSING", "points": 0.0}
+          ]
+        },
+        {
+          "key": "independent-questions",
+          "description": "Independent Questions — lab10.ipynb: Q1–Q4, 10 points each. Each question includes a Markdown heading, the actual MongoDB query in a Markdown code block, runnable Python with pandas output, and a brief Markdown explanation of the actual findings. Q1: up to ten unique most-liked tweets in a complete text/likes table. Q2: up to ten distinct most-followed users in a horizontal bar chart. Q3: common non-empty profile locations counted by distinct users in a bar chart. Q4: stored hashtag occurrences in a bar chart. Use a distinct DataFrame for each question. Correctly executed and explained empty results are acceptable; failed or unexecuted queries are not empty results. No prompt transcript or separate Summary is required.",
+          "points": 40.0,
+          "ratings": [
+            {"key": "pass", "description": "PASS", "points": 40.0},
+            {"key": "missing", "description": "MISSING", "points": 0.0}
+          ]
+        },
+        {
+          "key": "ai-use",
+          "description": "AI Use — lab10.ipynb only: Identify the approved AI tools actually used, where and how they helped, their limitations, and how their output was checked or corrected. The only approved tools are MongoDB's built-in AI and Gemini inside Colab. Identify reused code or no new AI use honestly. No prompt transcript or separate Summary is required. Confirmed unapproved AI use is governed by the assignment-wide policy, not merely a deduction from this criterion.",
+          "points": 20.0,
+          "ratings": [
+            {"key": "pass", "description": "PASS", "points": 20.0},
+            {"key": "missing", "description": "MISSING", "points": 0.0}
+          ]
+        },
+        {
+          "key": "submission-source-access",
+          "description": "Submission & Source Access: Canvas contains exactly two values on separate lines: the assigned GitHub repository root URL and a complete working MongoDB connection string for source-data verification. The repository contains lecture10.ipynb and lab10.ipynb at its root on main, saved directly from Colab with executed outputs, the Created using Colab commit message, and a working Open in Colab button. Credentials belong only in Colab Secrets and the private Canvas submission. Credential exposure is a separate one-time 20-point deduction from the otherwise earned assignment score, floored at zero; do not deduct again under this criterion for the same exposure.",
+          "points": 20.0,
+          "ratings": [
+            {"key": "pass", "description": "PASS", "points": 20.0},
+            {"key": "missing", "description": "MISSING", "points": 0.0}
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "module-10",
+      "title": "Module 10",
+      "published": true,
+      "items": [
+        {
+          "key": "lecture",
+          "type": "ExternalUrl",
+          "title": "Lecture — MongoDB Data Analysis with Python",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/modules/module-10/",
+          "assignment": null
+        },
+        {
+          "key": "lab-10",
+          "type": "Assignment",
+          "title": "Lab 10 — Analyze Your Twitter/X Data with Python",
+          "published": true,
+          "external_url": null,
+          "assignment": "lab-10"
+        }
+      ]
+    }
+  ]
+}

@@ -26,6 +26,8 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-8/" style="text-decoration: none; color: #57606a;">Lab 8</a>
   <a href="{{ site.baseurl }}/modules/module-9/" style="text-decoration: none; color: #57606a;">Module 9</a>
   <a href="{{ site.baseurl }}/assignments/lab-9/" style="text-decoration: none; color: #57606a;">Lab 9</a>
+  <a href="{{ site.baseurl }}/modules/module-10/" style="text-decoration: none; color: #57606a;">Module 10</a>
+  <a href="{{ site.baseurl }}/assignments/lab-10/" style="text-decoration: none; color: #57606a;">Lab 10</a>
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="text-decoration: none; color: #57606a;">Google AI Certificate</a>
 </nav>
 
@@ -138,6 +140,16 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-9/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
     <h3 style="margin-top: 0; color: #1a7f37;">Lab 9 · MongoDB Query &amp; Aggregation</h3>
     <p style="margin-bottom: 0; color: #57606a;">Answer five questions using your MongoDB data; save Python-exported queries to GitHub.</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/modules/module-10/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #0969da;">Module 10 · MongoDB Data Analysis with Python</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Week 10: MongoDB CRUD, saved Python queries, pandas tables and visualizations (Interactive Lecture)</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/lab-10/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #1a7f37;">Lab 10 · Analyze Your Twitter/X Data</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Query your own tweets with Python and pandas; one table, three charts, and two Colab notebooks.</p>
   </a>
 
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow: 0.2s;">

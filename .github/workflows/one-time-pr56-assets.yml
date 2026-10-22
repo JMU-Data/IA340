@@ -1,0 +1,54 @@
+name: One-time PR56 screenshot transfer
+on:
+  push:
+    branches: [update/week10-compass-driver-syntax-pandas]
+    paths: [.github/workflows/one-time-pr56-assets.yml]
+permissions:
+  contents: write
+jobs:
+  import-assets:
+    if: github.repository == 'JMU-Data/IA340'
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: update/week10-compass-driver-syntax-pandas
+      - name: Copy instructor-approved images with integrity checks
+        shell: python
+        run: |
+          from pathlib import Path
+          from urllib.request import urlopen
+          from concurrent.futures import ThreadPoolExecutor
+          import hashlib, base64
+          target = Path('docs/assets/week-10/screenshots')
+          target.mkdir(parents=True, exist_ok=True)
+          assets = [
+            ('20261022-160446.png','9de0f1b6c82ec5698c84c67e0e2953050479f9779737e131cb451afba87dad15','https://sdmntprnortheu.oaiusercontent.com/files/00000000-fc64-81f4-a04b-c46d23667acd/raw?se=2026-10-22T20%3A46%3A08Z&sp=r&sv=2026-02-06&sr=b&scid=6987fe4c-eed2-58e6-ae28-10e77938c884&skoid=434ec24f-a0f0-4e64-b0de-2e2053f69735&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-22T15%3A02%3A58Z&ske=2026-10-23T15%3A02%3A58Z&sks=b&skv=2026-02-06&sig=eEws58UTSil2%2BojMQVv2Eqbj65aPZsQYbHicWiH%2BXu4%3D'),
+            ('20261022-160536.png','53f6fbf88ae324166ed02a0d81bac4ad63fef5fe5efd331391c3ba1a0a49f8aa','https://sdmntprcentralus.oaiusercontent.com/files/00000000-e218-81f5-a747-35887fa646ab/raw?se=2026-10-22T20%3A46%3A13Z&sp=r&sv=2026-02-06&sr=b&scid=e116a819-55a2-51bf-82d8-c807191abf1a&skoid=434ec24f-a0f0-4e64-b0de-2e2053f69735&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-22T14%3A44%3A59Z&ske=2026-10-23T14%3A44%3A59Z&sks=b&skv=2026-02-06&sig=LHzFa8FlKp4FQcVbZHsTB0zRpourhEgXS714aZAtYuo%3D'),
+            ('20261022-160559.png','288ac9d714a59735ce4d50beee8123bef298726b5d64c1883323e431a6b2b4a5','https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-a940-81f7-a438-7fc5e4340189/raw?se=2026-10-22T20%3A46%3A25Z&sp=r&sv=2026-02-06&sr=b&scid=da857d3f-50b1-5af1-ae61-5c9814a495f7&skoid=434ec24f-a0f0-4e64-b0de-2e2053f69735&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-22T14%3A16%3A15Z&ske=2026-10-23T14%3A16%3A15Z&sks=b&skv=2026-02-06&sig=SZZ8b1MEb3QKW30rIXNz2X4qKYJN8DR1CQxI5xfObhs%3D'),
+            ('20261022-160802.png','b886a200ee70e286aefc4a628c0f3a734beb143737dc7e3046cd9a2670fc2754','https://sdmntprnortheu.oaiusercontent.com/files/00000000-14f0-81f4-aeef-43a1c8435f4d/raw?se=2026-10-22T20%3A46%3A55Z&sp=r&sv=2026-02-06&sr=b&scid=f3f8484b-61e0-5247-8e92-019a581236e4&skoid=434ec24f-a0f0-4e64-b0de-2e2053f69735&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-22T15%3A02%3A58Z&ske=2026-10-23T15%3A02%3A58Z&sks=b&skv=2026-02-06&sig=/GRBgd/cacVRrqfO0f7fVfnOZORTKbm1G7wPVIKOeDg%3D'),
+            ('20261022-160902.png','ba4ce67dc7113b4aa5dd50374d5364e56aa745f6bcab96b4f8668af94b59f26f','https://sdmntprwestus.oaiusercontent.com/files/00000000-5fa8-8230-958e-74bfcfd88753/raw?se=2026-10-22T20%3A47%3A02Z&sp=r&sv=2026-02-06&sr=b&scid=541d66a7-8cef-54a4-b02c-878b107f2502&skoid=434ec24f-a0f0-4e64-b0de-2e2053f69735&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-22T11%3A45%3A03Z&ske=2026-10-23T11%3A45%3A03Z&sks=b&skv=2026-02-06&sig=4a/a3YDAHgir9laxCF/XMtaQP8OZU6bwLpO6%2BZOJZfY%3D'),
+            ('20261022-160932.png','8e6d764c5b478a837a7cc536dd8999d0609baf96bc8bffd080a533414a3812ca','https://sdmntprnortheu.oaiusercontent.com/files/00000000-647c-81f4-a9f3-94f267f2aecd/raw?se=2026-10-22T20%3A47%3A12Z&sp=r&sv=2026-02-06&sr=b&scid=24d5e0db-09cf-5991-be09-97929c3b38e8&skoid=434ec24f-a0f0-4e64-b0de-2e2053f69735&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-22T13%3A38%3A02Z&ske=2026-10-23T13%3A38%3A02Z&sks=b&skv=2026-02-06&sig=6DaO6fYiN1XDt2O/wXhgzq3tP1EifZkwBYo/qThIzeM%3D'),
+            ('20261022-161007.png','4d257177abcf1e09b610ed07951d40052ec49e9a0f0a5bce1a27ac10e72e9735','https://sdmntprwestus2.oaiusercontent.com/files/00000000-1a44-81f8-9b72-64e8225ceaa9/raw?se=2026-10-22T20%3A47%3A22Z&sp=r&sv=2026-02-06&sr=b&scid=2fa49180-6b19-5693-a3f7-724bfa4a2c2a&skoid=434ec24f-a0f0-4e64-b0de-2e2053f69735&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-22T14%3A16%3A15Z&ske=2026-10-23T14%3A16%3A15Z&sks=b&skv=2026-02-06&sig=06Xef/Z0jn3lU/BvvzqEo0T5OeQITMXNGoD3Mk4b9Bg%3D'),
+            ('20261022-161101.png','2cc46602e0b05d8867706930ce4aed1fc5a93b9444c95136b43d9719ec871573','https://sdmntprwestus.oaiusercontent.com/files/00000000-8e70-8230-9fb6-97078c67b0f5/raw?se=2026-10-22T20%3A47%3A34Z&sp=r&sv=2026-02-06&sr=b&scid=36f10350-9b9b-5483-a2d5-f9ddbdbcedaf&skoid=434ec24f-a0f0-4e64-b0de-2e2053f69735&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-22T05%3A41%3A34Z&ske=2026-10-23T05%3A41%3A34Z&sks=b&skv=2026-02-06&sig=O862YKAilISKJNStGfselZU5ADSCA0/sItr49QMDO38%3D'),
+            ('20261022-161217.png','f693450be22abb6a5e2a589fa88700f1758ce2b17232d715f3a2d57325e0b46c','https://sdmntprsoutheastus3.oaiusercontent.com/files/00000000-7f88-820c-9e0a-39883b3032b1/raw?se=2026-10-22T20%3A47%3A43Z&sp=r&sv=2026-02-06&sr=b&scid=6090fcdd-97df-5e48-8bf5-0cc35b653684&skoid=434ec24f-a0f0-4e64-b0de-2e2053f69735&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-22T18%3A42%3A23Z&ske=2026-10-23T18%3A42%3A23Z&sks=b&skv=2026-02-06&sig=4fiLpMXfL8YMkwy26uu%2BgzjQ63oISVM9wjHT5p4C/5o%3D')
+          ]
+          def load(item):
+              name, expected, url = item
+              data = urlopen(url, timeout=30).read(1000000)
+              assert data.startswith(b'\x89PNG\r\n\x1a\n') and hashlib.sha256(data).hexdigest() == expected, name
+              (target / name).write_bytes(data)
+              print(name, 'verified')
+          with ThreadPoolExecutor(max_workers=6) as pool:
+              list(pool.map(load, assets))
+          cropped = base64.b64decode('UklGRgIEAABXRUJQVlA4TPYDAAAvA4IXAO/AJgCANDiUcIlD/wxczlxqsI0kqRFYWCSDhUn+gWit1defgjaSlB//2t4IM9P8xw//6s1qVZbasYcWk2yU//tGKa673WfppThfd69rlKLn5Pynoy4AvpYzAF8JwT6HhCSABcNBCaKAZBAUkGDbbtw2HIKYSYvSLUNk3v8+xQ9AdSbSHRzRfwmSJMltU8uFYqUF3A1OwLiiHxDOAu3iPxf/OUtx9f1otu9Xa96Pblvyz/fjtS3j+vh9xTkefR2ngFryyZ1WldTKSXk31UgiUuOaw6w99RxiHR9m18hdPjWlxlWDawTNiwEzi2CxsYgwgl9sahRCrCKNgDKEmcR6W0VKYJTDXGTICChWCDwcpN6IGN5UXReUAgL7oVNqgpqLYf4whOUuPVtGrP1EQ2fPsFfS/CGMR4XU1DyP1HgUmpClzkRoE/CrmBZyL2OeVkBSo71IDSpISbFc4cLyhoL57mcKpSX0RWLuJ1wMUUPF9NESfu+lRiwpByWHhFRx5E4mHPRZxagUlNgzltrQDyoM1PpWOWpXGsvbEKwFdXQPhWbsJwS9pvmDAxCrLg8HkKOqULAVk2IXEWuJ4wTHqmMHVNYzYrhSmN5I1Zhyj3KwrG1Sg/HMkruD/pLfDMfwXixvPlq3hzrlqTO42DXAIiBxBp1wsJO9A5/U1NnH3oHlzcCoexx4GDfOZhFvCpxIpibelJbgrGM3+6YgZp2UYaB09V+I5QqnW94cDPclmBBIxHOdWcTbEBSEHPSG+sHa0O8NyN2QQaz6dIHgdEJLsV2RvSEPY0PufuoZdlZZiWdVzOv0zPp9s07vrrxzzgLt4j8X/7nAx8vjg9keX9a8P7htyT+PD/c29w+PK87DjvZ+szFT44XiHWXiiYiwLaTGk6RiriaQQiCniB5xUzH3ke/yNPMcnt4fp8kecVMxZxynh+eNt8/GdIAjCkRkUqxFzSEpdl4JS7FTMUkIZPRM7QDijFxMGr64RsKoTSlTyZPqr2PwrrIxA+ZTxSpQowWORqDPzrIsbiomo6VNpWCIES5UPBLLJiv3AjU6kzyHV9UH7yobE4cQp4dsCnZkWdbopGKCYpREqmTtvCN1qkJy28tcDp62udCB95CNuWdREKParCzL3amYeHxqyUKf0qiy5am8dNHbNPrD22dj7vm1AVjJnYKbZelYBZfb3NlG/VXxHrIx/dVMNr3fNsVWluW+VMxYf2wagf2D0qnxdK72bPSH95CN6d6XsBlaSwhelqWfign/mgnMtaeoUi8Te2/qHWVjCqqwsC49/SxLMxVT3852CORsqAhq4YV9VgWrr/8z61j5DPDuCm8/zwLt4j8X//lTSgA=')
+          assert hashlib.sha256(cropped).hexdigest() == '8d41fd908e7ce72f9aa973120fd28dcc16e777c594454c32adf9447648bf2bbe'
+          (target / 'driver-options.webp').write_bytes(cropped)
+      - name: Commit only the approved image assets to the existing PR branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- docs/assets/week-10/screenshots
+          git diff --cached --quiet || git commit -m 'Add instructor screenshots for Week 10 setup and CRUD'
+          git push origin HEAD:update/week10-compass-driver-syntax-pandas

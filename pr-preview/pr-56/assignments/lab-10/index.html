@@ -1,470 +1,99 @@
 <!DOCTYPE html>
-
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>IA340 Lab 10 — Analyze Your Twitter/X Data with Python</title><style>:root{--bg:#f2f4f8;--panel:#fff;--text:#253248;--muted:#5b687b;--line:#d8dee8;--accent:#65448f;--field:#25618e;--operator:#71469c;--value:#157457;--number:#8b5a0c;--select:#e1f0fb;--keep:#e2f3e9;--drop:#f8e9e6;--code:#f6f6fb;--gold:#c2a25b}
-*{box-sizing:border-box}body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:linear-gradient(135deg,#f1f1f8 0%,#f5f7f8 65%,#edf5f3 100%);background-attachment:fixed}a{color:var(--field);text-underline-offset:3px}button,select{font:inherit;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--text);padding:7px 11px}button{cursor:pointer;font-weight:650;transition:background .15s,border-color .15s,box-shadow .15s}button:hover{border-color:var(--accent);box-shadow:0 2px 7px #39285812}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #589dc4;outline-offset:3px}button[aria-pressed=true],button.active{background:var(--accent);border-color:var(--accent);color:white;box-shadow:0 3px 8px #543b7725}button:disabled{opacity:.35;cursor:default;box-shadow:none}[hidden]{display:none!important}
-.presentation-nav{min-height:60px;display:flex;align-items:center;gap:12px;padding:10px 22px;border-bottom:1px solid var(--line);background:#ffffffed;font-size:13px}.presentation-nav>strong{color:#4d346f;border-left:4px solid var(--gold);padding-left:10px;white-space:nowrap;font-size:15px}.presentation-nav>strong span{display:block;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:1px}.chapter-nav{display:flex;gap:6px}.presentation-nav select{max-width:280px;margin-left:auto}.presentation-nav a{white-space:nowrap}.presentation-nav select{font-size:12px}
-#slides{max-width:1400px;margin:15px auto 10px;padding:0 20px}.slide{--section:#65448f;display:none;background:#fff;border:1px solid #d5dce5;border-radius:13px;min-height:580px;height:calc(100dvh - 140px);overflow:auto;flex-direction:column;box-shadow:0 8px 30px #2737470b}.slide[data-chapter=query]{--section:#2a728f}.slide[data-chapter=aggregate]{--section:#278069}.slide[data-chapter=ai]{--section:#75479b}.slide.current{display:flex}.slide-heading{padding:18px 30px 16px;border-bottom:1px solid #e4e7ee;border-top:4px solid var(--section);background:linear-gradient(105deg,#f7f5fb,#fff 80%);border-radius:12px 12px 0 0}.heading-meta{display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--section);font-size:11px;font-weight:750;letter-spacing:1.4px;margin-bottom:7px}.heading-meta span:last-child{font-variant-numeric:tabular-nums;color:#7a8493;letter-spacing:.5px}.slide-heading h1{font-size:clamp(25px,2.45vw,35px);font-weight:680;line-height:1.15;letter-spacing:-.5px;margin:0;color:#342c4d}.slide-body{padding:17px 30px;flex:1 0 auto;min-height:0;font-size:19px;line-height:1.5}.slide-body>p{margin:0 0 14px}.slide-body>ul{line-height:1.65;margin:13px 0 20px;padding-left:25px}.slide-body li+li{margin-top:10px}.slide-body li::marker{color:var(--section)}.slide-footer{font-size:11px;letter-spacing:.2px;color:var(--muted);padding:9px 30px;border-top:1px solid #e8ebf1;display:flex;justify-content:space-between;gap:15px;background:#fafbfd}.slide-body>p:last-child{margin-bottom:0}.slide-body>.source{font-size:11px;color:var(--muted);margin-top:10px}.bottom-nav{display:flex;max-width:1400px;padding:0 20px 10px;margin:auto;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted)}
-.cover{background:linear-gradient(116deg,#faf8fe 0%,#fff 53%,#f1f8f5 100%);position:relative}.cover .slide-heading{border-top:5px solid #614486;border-bottom:0;background:transparent;padding-top:clamp(30px,7vh,85px)}.cover .heading-meta{font-size:13px;margin-bottom:26px}.cover .heading-meta span:last-child{display:none}.cover .slide-heading h1{font-size:clamp(36px,4vw,58px);max-width:980px;line-height:1.12;font-weight:620;letter-spacing:-1.4px}.cover .slide-body{flex:0;color:var(--muted);padding-top:10px}.cover .slide-body>p{margin-bottom:6px}.cover .slide-footer{margin-top:auto;border-top:4px solid var(--gold);background:transparent}.cover-topics{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1020px;margin:27px 0 10px}.cover-topics article{border:1px solid #dcd6e9;border-radius:12px;padding:21px 23px;display:flex;align-items:center;gap:20px;background:#ffffffc7;box-shadow:0 5px 16px #39304706}.cover-topics article:nth-child(2){border-color:#cce2d9}.topic-symbol{display:grid;place-items:center;min-width:65px;height:64px;background:#eee7f6;border-radius:11px;font:30px ui-monospace,monospace;color:#68498d}.cover-topics article:nth-child(2) .topic-symbol{background:#e1f2e9;color:#277b61}.cover-topics h3{font-size:23px;color:#403255;margin:0 0 4px}.cover-topics p{font-size:15px;margin:0;letter-spacing:.5px;color:var(--muted)}
-h3{font-size:19px;margin:0 0 9px}pre{padding:15px 18px;border:1px solid #dce0ea;border-radius:9px;background:var(--code);font:16px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:10px 0 16px;color:#28364b}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:#eef0f7;padding:.08em .26em;border-radius:4px;color:#4b3b68}pre code{padding:0;background:none;font:inherit;color:inherit}.tk-field,.tk-path{color:var(--field)}.tk-op{color:var(--operator);font-weight:680}.tk-value{color:var(--value)}.tk-num{color:var(--number);font-weight:600}.tk-method{color:#435678}.tk-comment{color:#647083;font-style:italic}blockquote{border-left:4px solid var(--section,var(--accent));padding:14px 18px;margin:16px 0;background:linear-gradient(100deg,#f2edf8,#f9f9fb);border-radius:0 8px 8px 0;font-size:21px}blockquote p{margin:0}
-table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;border:1px solid var(--line);margin:14px 0}th,td{padding:11px 13px;text-align:left;border-bottom:1px solid #e5e9f0}th{background:#f1eff7;color:#4b3a65;font-size:.9em;font-weight:650}td{font-size:.95em}tbody tr:nth-child(even){background:#fcfcfe}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}.two-col figure{margin:0;background:#fff;border:1px solid #e1e6ed;padding:14px;border-radius:12px}.two-col figure img{border:0;max-height:300px}figure img{max-width:100%;object-fit:contain;border:1px solid #e5e7ed;border-radius:8px;display:block;margin:0 auto}figcaption{font-size:11px;color:var(--muted);margin-top:7px}figure{margin:12px 0}.wide-shot img{max-height:275px}.plan-shot img{max-height:310px}.plan-slide .slide-body{padding-top:12px}.plan-slide pre{font-size:15px;margin:7px 0}.plan-slide .slide-body>p{margin-bottom:8px}.flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin:20px 0}.flow span{background:#e8f4ef;border:1px solid #c7e0d6;padding:12px 16px;border-radius:8px;font-family:ui-monospace,monospace;color:#24694f;box-shadow:0 3px 0 #dbeae4}.flow b{color:var(--muted)}
-.interactive .slide-body{font-size:16.5px;line-height:1.45}.interactive .slide-body>p{margin-bottom:10px}.demo{margin:9px 0 11px}.demo-controls{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:11px;font-size:13px}.demo-controls button{padding:8px 12px;border-radius:7px}.demo-grid{display:grid;grid-template-columns:1.12fr 1fr;gap:15px;align-items:start}.demo-panel{border:1px solid #d6dee8;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 4px 13px #243a5506}.demo-panel-title{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:10px 12px;font-size:12px;font-weight:650;border-bottom:1px solid var(--line);background:#f1f5f8;color:#345571}.demo-code .demo-panel-title{background:#f2eef8;color:#5b437b}.demo-count{font-size:11px;line-height:1.25;font-weight:750;padding:4px 8px;border-radius:20px;white-space:nowrap;color:#246652;background:#e1f0e9}.demo-table{overflow:auto;max-height:345px}.demo-table table{border:0;margin:0}.demo-table th,.demo-table td{padding:9px 10px;font-size:13px;transition:background-color .25s,opacity .25s}.demo-table th{white-space:nowrap;position:sticky;top:0;background:#f5f7fa;color:#4b5d73;z-index:1}.demo-table td{line-height:1.35}.demo-code pre{border:0;border-radius:0;margin:0;padding:14px;font-size:14px;line-height:1.65;background:#fdfcfe;min-height:90px}.demo-note{padding:12px;margin:0;font-size:13px;line-height:1.5;border-top:1px solid var(--line);background:#f5f7fb;color:#4e6075}.demo-hint{font-size:11px;color:var(--muted);margin:8px 0 0}.kept td{background:var(--keep)}.kept td:first-child{box-shadow:inset 3px 0 #63a88a}.removed td{opacity:.3;background:var(--drop)}.selected,.demo-table .selected{background:var(--select)!important;font-weight:700}.group-0 td{background:#e0effa}.group-1 td{background:#e0f2e6}.group-2 td{background:#fff2d6}.group-3 td{background:#f0e7f7}.code-line{display:block;padding:0 5px;margin:0 -5px;border-left:3px solid transparent}.code-line.focus{background:var(--select);border-left-color:#5595bb}.pill{display:inline-block;padding:2px 6px;border-radius:5px;background:#f0f2f4;margin:1px 2px;font-size:12px}.pill.match{background:#deedf9;outline:2px solid #77a8ce}.tag-AI{background:#deedf9}.tag-Data{background:#dcf0e3}.tag-Cloud{background:#fff0d1}.tag-Python{background:#eee1f6}.tag-Teaching{background:#ffebe0}.count-result{font-size:52px;font-weight:650;color:#28755e;text-align:center;padding:35px 12px;background:linear-gradient(145deg,#f3faf5,#fff)}.count-result small{display:block;font-size:15px;font-weight:500;color:var(--muted);margin-top:10px}.mini-result{padding:10px 12px}.mini-result table{margin:0;font-size:13px}.mini-result th,.mini-result td{padding:6px 9px}.querybar-demo .demo-code pre{font-size:12.5px}.doc-demo .demo-code pre{font-size:14px}.doc-explain{padding:19px;line-height:1.6;font-size:16px}.doc-explain strong{display:block;margin-bottom:8px;color:#476686}.doc-explain pre{background:#f3f7fa;font-size:17px}.doc-demo .demo-grid{grid-template-columns:1fr 1.2fr}
-.syntax-slide .slide-body{font-size:16.5px}.syntax-pair{display:grid;grid-template-columns:1fr 1.3fr;gap:16px;margin:16px 0}.syntax-card{border:1px solid #d9dfea;border-radius:10px;padding:15px 17px;background:#fafbfe}.syntax-card h3{font-size:17px;color:#4e3c70}.syntax-card pre{font-size:15px;background:#fff;margin:9px 0}.syntax-card p{font-size:14px;margin:7px 0 0}.syntax-keys{display:grid;grid-template-columns:1.55fr 1fr 1fr;gap:12px;margin:13px 0 17px}.syntax-keys article{border:1px solid #dce2e9;border-top:3px solid var(--field);border-radius:8px;padding:11px 13px;background:#f6faff}.syntax-keys article.key-operator{border-top-color:var(--operator);background:#f8f5fc}.syntax-keys article.key-value{border-top-color:var(--value);background:#f3faf6}.syntax-keys strong{display:block;font-size:14px;margin-bottom:5px}.syntax-keys article>code{display:block;font-size:12.5px;background:transparent;padding:0;overflow-wrap:anywhere}.syntax-keys p{font-size:13px;margin:7px 0 0}.syntax-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:start;margin:14px 0 18px}.syntax-layout h3{font-size:16px;letter-spacing:.1px;color:#4c4264}.syntax-layout pre{font-size:15px}.read-steps{background:#f8f9fc;border:1px solid #e1e4ed;border-radius:11px;padding:3px 16px}.read-steps p{display:flex;gap:13px;align-items:flex-start;margin:0;padding:14px 0;font-size:15px;line-height:1.5}.read-steps p+p{border-top:1px solid #e1e6ef}.read-steps p>b{display:grid;place-items:center;background:#ece6f4;color:#684592;border-radius:8px;min-width:30px;height:30px;font:650 15px ui-monospace,monospace}.read-steps code{font-size:13px}.mini-caption{font-size:14px;color:var(--muted);margin:8px 0}.output-example{border-left:3px solid #60a887;background:#f1f8f4;padding:10px 14px;border-radius:0 7px 7px 0;font-size:13px}.output-example pre{background:transparent;padding:7px 0 0;margin:0;border:0;font-size:14px}
-.lab-nav{background:#ffffffef;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;padding:15px max(22px,calc((100vw - 970px)/2));font-size:14px}.lab-nav strong{color:#573b7b}.lab-page{max-width:1020px;margin:25px auto 45px;padding:32px 42px;border:1px solid var(--line);border-top:5px solid #68468e;border-radius:12px;background:white;font-size:16px;line-height:1.65;box-shadow:0 8px 28px #29384b0a}.lab-label{font-size:11px;letter-spacing:1.4px;font-weight:750;color:#7b6695;margin-bottom:8px}.lab-page h1{font-size:30px;line-height:1.25;margin:0 0 18px;padding-bottom:18px;border-bottom:2px solid #e5dbef;color:#493460;font-weight:680}.lab-page h2{font-size:23px;margin:28px 0 13px;padding:8px 0 8px 13px;border-left:4px solid #c4a459;background:linear-gradient(90deg,#f7f3eb,#fff);color:#513b6d}.lab-page h3{font-size:18px;margin:24px 0 10px;color:#4b4664}.lab-page p{margin:12px 0}.lab-page ol,.lab-page ul{padding-left:25px}.lab-page li{padding-left:4px;margin:8px 0}.lab-page li::marker{color:#70528c;font-weight:700}.lab-page pre{font-size:14px;line-height:1.65;border-left:3px solid #789aa9;background:#f7f8fb}.lab-page small{font-size:12px;color:var(--muted)}
-@media(min-width:1600px){.slide-body{font-size:22px}.interactive .slide-body,.syntax-slide .slide-body{font-size:19px}.demo-table th,.demo-table td{font-size:15px;padding:11px}.demo-code pre{font-size:16px}.wide-shot img{max-height:350px}.plan-shot img{max-height:380px}.syntax-layout pre{font-size:17px}.syntax-card pre{font-size:17px}.syntax-card p,.syntax-keys p{font-size:15px}.read-steps p{font-size:17px}.read-steps code{font-size:15px}}
-@media(max-width:1050px){.presentation-nav{flex-wrap:wrap;padding:8px 15px}.presentation-nav select{max-width:250px}.chapter-nav{order:3;width:100%}.slide{height:auto;min-height:650px}.slide-body{font-size:18px}.slide-heading h1{font-size:28px}.demo-grid{grid-template-columns:1.05fr 1fr}.demo-table th,.demo-table td{font-size:12px;padding:8px 7px}.demo-code pre{font-size:12px}.wide-shot img,.plan-shot img{max-height:340px}.syntax-layout{gap:16px}.syntax-layout pre{font-size:13px}}
-@media(max-width:700px){.presentation-nav select{max-width:calc(100vw - 160px);margin-left:0}.chapter-nav button{font-size:11px;padding:6px}.slide-heading{padding:17px 18px 14px}.slide-body{padding:15px 18px}.slide-footer{padding:10px 18px}#slides{padding:0 10px;margin-top:10px}.demo-grid,.doc-demo .demo-grid,.two-col,.syntax-layout,.syntax-pair,.syntax-keys,.cover-topics{grid-template-columns:1fr}.slide{min-height:580px;overflow:visible}.lab-page{margin:12px 10px;padding:23px 18px}.lab-page h1{font-size:25px}.demo-code pre{font-size:13px}.flow{gap:5px;font-size:12px}.flow span{padding:9px}.slide-body>table{font-size:12px}.slide-body>table th,.slide-body>table td{padding:7px}.cover .slide-heading{padding-top:40px}.cover .slide-heading h1{font-size:37px}.cover-topics{margin-top:20px;gap:10px}.cover-topics article{padding:15px}.cover-topics h3{font-size:20px}.topic-symbol{min-width:50px;height:50px;font-size:26px}.syntax-keys article>code{font-size:13px}.heading-meta{font-size:10px}.read-steps p{font-size:14px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-.group-demo .extra-output{background:#fff;border-top:1px solid var(--line)}
-
-/* Classroom readability: no short-viewport font shrinking. */
-.presentation-nav {font-size:15px;gap:10px}
-.presentation-nav select {font-size:14px;max-width:285px}
-.presentation-nav>strong {font-size:17px}
-.presentation-nav>strong span {font-size:13px}
-#slides {max-width:1480px}
-.slide {height:calc(100dvh - 150px);min-height:660px;scrollbar-gutter:stable}
-.slide-heading {padding:20px 30px 17px}
-.slide-heading h1 {font-size:clamp(30px,2.6vw,39px);line-height:1.2}
-.heading-meta {font-size:14px}
-.slide-body,.syntax-slide .slide-body {font-size:22px;line-height:1.5;padding:20px 30px}
-.interactive .slide-body {font-size:21px;line-height:1.5}
-.slide-body>p {margin-bottom:17px}
-.slide-body li+li {margin-top:10px}
-.slide-body pre,.syntax-slide pre,.plan-slide pre {font-size:20px;line-height:1.5}
-.slide-body h3 {font-size:23px}
-.syntax-card p,.read-steps p {font-size:20px;line-height:1.45}
-.syntax-keys article {min-width:0}
-.syntax-keys article>code {font-size:18px;overflow-wrap:anywhere}
-.syntax-keys p {font-size:19px;line-height:1.45}
-.syntax-keys article>strong {font-size:20px}
-.output-example {font-size:19px}
-.mini-caption {font-size:18px!important}
-.slide-body table {font-size:21px}
-.slide-body table th,.slide-body table td {overflow-wrap:anywhere;padding:10px 13px}
-.slide-body .sources,.slide-body>p.sources,.slide-body>p:has(a[href^='https:']) {font-size:15px;line-height:1.4}
-.slide-footer {font-size:14px}
-.bottom-nav {font-size:16px}
-.cover .slide-body {font-size:25px}
-.cover .cover-topics p {font-size:21px}
-.demo-controls {font-size:17px;gap:8px}
-.demo-controls button {padding:8px 12px}
-.demo-panel-title {font-size:17px;padding:11px 13px}
-.demo-table {max-height:430px}
-.demo-table table {font-size:18px}
-.demo-table th,.demo-table td {font-size:18px;line-height:1.4;padding:10px 11px;white-space:normal}
-.demo-code pre,.doc-demo .demo-code pre,.querybar-demo .demo-code pre,.group-demo .demo-code pre {font-size:18px;line-height:1.6;padding:16px}
-.demo-note {font-size:18px;line-height:1.5;padding:13px}
-.demo-hint {font-size:15px}
-.demo-count {font-size:16px}
-.pill {font-size:17px}
-.doc-explain {font-size:21px}
-.doc-explain pre {font-size:20px}
-.mini-result {padding:10px}
-.mini-result th,.mini-result td,.group-demo .mini-result th,.group-demo .mini-result td {font-size:18px;padding:7px 11px}
-.stage-instructions {display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:22px 0}
-.stage-instructions article {border:1px solid #beded3;background:#f3faf7;border-radius:12px;padding:20px;min-width:0}
-.stage-instructions article h3 {font-size:23px;color:#1c6958;margin:0 0 15px}
-.stage-instructions p {font-size:19px;margin-bottom:0}
-.teacher-shot {margin:18px 0}
-.teacher-shot a {display:block;text-align:center;cursor:zoom-in}
-.teacher-shot img {display:block;width:auto;max-width:100%;max-height:440px;object-fit:contain;border:1px solid #cfd8e3;border-radius:9px;box-shadow:0 3px 14px #25324812}
-.teacher-shot figcaption {font-size:16px;line-height:1.4;margin:9px 0 0}
-.teacher-shot .image-hint {font-size:14px;color:#526278}
-.shot-gallery {margin:17px 0 8px}
-.view-controls,.shot-controls {display:flex;gap:9px;flex-wrap:wrap;margin:0 0 17px;font-size:17px}
-.view-controls {border-bottom:1px solid var(--line);padding-bottom:14px}
-[data-view-panel='atlas'] .teacher-shot img {max-height:calc(100dvh - 330px);min-height:0}
-.lesson-views {min-width:0}
-.lab-page {font-size:18px;max-width:1080px;line-height:1.65}
-.lab-page h1 {font-size:34px}
-.lab-page h2 {font-size:28px}
-.lab-page h3 {font-size:23px;margin-top:26px}
-.lab-page pre {font-size:18px;line-height:1.65}
-.lab-page .teacher-shot img {max-height:410px}
-.lab-page figcaption {font-size:16px}
-.lab-page small {font-size:14px}
-@media(min-width:1600px){
- .slide-body,.syntax-slide .slide-body {font-size:25px}
- .interactive .slide-body {font-size:23px}
- .slide-body pre,.syntax-slide pre {font-size:22px}
- .demo-code pre,.doc-demo .demo-code pre,.querybar-demo .demo-code pre {font-size:20px}
- .demo-table th,.demo-table td {font-size:20px}
- .teacher-shot img {max-height:510px}
-}
-@media(max-width:1100px){
- .presentation-nav {flex-wrap:wrap}
- .chapter-nav {order:3;width:100%}
- .slide {height:auto;min-height:650px}
- .slide-body,.syntax-slide .slide-body,.interactive .slide-body {font-size:21px}
- .syntax-layout,.syntax-pair,.two-col,.stage-instructions {grid-template-columns:1fr}
- .demo-grid,.doc-demo .demo-grid {grid-template-columns:1fr 1fr}
- .demo-code pre,.doc-demo .demo-code pre,.querybar-demo .demo-code pre {font-size:18px}
- .demo-table th,.demo-table td {font-size:17px}
- .teacher-shot img,[data-view-panel='atlas'] .teacher-shot img {max-height:520px}
-}
-@media(max-width:760px){
- .demo-grid,.doc-demo .demo-grid,.syntax-keys {grid-template-columns:1fr}
- .presentation-nav {font-size:14px}
- .chapter-nav button {font-size:14px}
- .slide-heading {padding:18px}
- .slide-heading h1 {font-size:30px}
- .slide-body,.syntax-slide .slide-body,.interactive .slide-body {font-size:20px;padding:18px}
- .slide-body pre,.syntax-slide pre,.plan-slide pre {font-size:18px}
- .slide-body table {font-size:18px}
- .slide-body table th,.slide-body table td {padding:9px 8px}
- .read-steps p,.syntax-card p {font-size:19px}
- .heading-meta {font-size:12px;letter-spacing:.4px}
- .teacher-shot img {max-height:none}
- .lab-page {padding:22px;font-size:18px}
- .lab-page h1 {font-size:30px}
- .cover-topics {grid-template-columns:1fr}
-}
-.slide-body code,.lab-page code {overflow-wrap:anywhere}
-.read-steps span {min-width:0}
-
-/* In-page screenshot enlargement; no new tab, new window, or route. */
-.image-zoom-trigger{display:block;width:100%;margin:0;padding:0;border:0;border-radius:8px;background:transparent;cursor:zoom-in;box-shadow:none;line-height:0}
-.image-zoom-trigger:hover{box-shadow:0 0 0 2px #9bb8d5;border:0;transform:none;background:transparent}
-.image-zoom-trigger img{width:auto;max-width:100%;margin:auto}
-.image-lightbox{width:96vw;height:94dvh;max-width:none;max-height:none;padding:0;border:1px solid #7c879a;border-radius:14px;background:#f6f7fa;box-shadow:0 24px 100px #0006;color:#253248;overflow:hidden}
-.image-lightbox::backdrop{background:#172133d9}
-.image-lightbox-shell{height:100%;display:flex;flex-direction:column;min-height:0}
-.image-lightbox-header{padding:12px 16px;border-bottom:1px solid #d6dce6;background:white;display:flex;gap:14px;align-items:center;justify-content:space-between;flex:0 0 auto;font-size:17px}
-.image-lightbox-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:15px}
-.image-lightbox-tools button{padding:7px 12px;font-size:16px}
-.image-lightbox-tools #image-zoom-level{min-width:51px;text-align:center;font-variant-numeric:tabular-nums}
-.image-lightbox-close{background:#594476;color:#fff;border-color:#594476}
-.image-lightbox-viewport{flex:1 1 auto;min-height:0;min-width:0;overflow:auto;overscroll-behavior:contain;background:#e8ecf2;padding:12px;display:flex;align-items:flex-start}
-.image-lightbox-viewport>img{display:block;max-width:none;max-height:none;object-fit:contain;flex:none;margin:auto;border:0;border-radius:0;box-shadow:0 2px 12px #192c481a}
-.image-lightbox-caption{font-size:14px;line-height:1.4;margin:0;padding:9px 16px;border-top:1px solid #d6dce6;max-height:70px;overflow:auto;background:white;flex:0 0 auto}
-
-/* Export: one query block, visibly separated from connection initialization. */
-.export-exclude{border:2px solid #b83b38;border-radius:9px;background:#fff0ee;padding:12px 16px;margin:0 0 15px;color:#8f211e}
-.export-exclude>strong{display:block;font-size:21px;line-height:1.35}
-.export-exclude pre{border:0;background:transparent;margin:6px 0 0;padding:0;color:#8f211e;text-decoration:line-through;text-decoration-thickness:2px}
-.export-keep{border:1px solid #8ec3aa;border-left:5px solid #2c8265;border-radius:9px;background:#f4faf6;padding:12px 16px;margin:0 0 14px}
-.export-keep>strong{display:block;font-size:21px;color:#24694f;margin-bottom:8px}
-.export-keep pre{margin:0;border:0;padding:0;background:transparent;line-height:1.45}
-.export-safety-slide .slide-body{padding-top:17px;font-size:21px}
-.export-safety-slide .slide-body pre{font-size:20px;line-height:1.45}
-.credential-warning{border-left:4px solid #b83b38;border-radius:0 7px 7px 0;padding:10px 14px;background:#fff4f2;font-size:19px;line-height:1.45}
-.export-safety-slide .slide-body>p{margin:10px 0}
-@media(max-width:900px){.image-lightbox-header{align-items:flex-start;flex-wrap:wrap}.image-lightbox-tools{gap:5px}.image-lightbox-tools button{padding:7px 9px}.image-lightbox{width:98vw;height:96dvh}}
-@media(max-width:700px){.image-lightbox-header>strong{display:none}.image-lightbox-tools{width:100%;justify-content:space-between}.image-lightbox-caption{font-size:12px}.export-safety-slide .slide-body pre{font-size:18px}.export-exclude,.export-keep{padding:12px}.credential-warning{font-size:18px}}
-
-
-.slide[data-chapter=crud]{--section:#2a728f}.slide[data-chapter=pandas]{--section:#278069}.chart-example{grid-template-columns:1fr 1.5fr}.chart-example svg{width:100%;height:auto;max-height:320px}
-.policy-box{border:2px solid #906440;border-left:7px solid #906440;border-radius:10px;background:#fff7e9;padding:17px 22px;margin:20px 0}.policy-box h3{color:#71491f;margin:0 0 8px}.policy-box p{margin:8px 0}.policy-box strong{color:#593810}.static-chart{display:flex;justify-content:center}.static-chart svg{width:auto;max-width:100%;height:auto;max-height:340px}.lab-example svg{width:100%;height:auto;max-width:900px;display:block;margin:auto}.lab-example figcaption{font-size:15px;line-height:1.5}.lab-page table{overflow-wrap:anywhere}.lab-page table th:nth-child(2),.lab-page table td:nth-child(2){white-space:normal}
-.slide[data-chapter=save]{--section:#75479b}.slide-body{font-size:20px;line-height:1.5}.save-route{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:26px 0}.save-route span{padding:15px 18px;border:1px solid #d8dfea;border-radius:9px;background:#f4f7fb;font-size:19px}.save-route b{color:#70548b}
-.slide-body pre{font-size:18px;line-height:1.48;padding:15px 18px;margin:10px 0 15px}
-.slide-body table{font-size:18px}.slide-body li+li{margin-top:8px}
-.pathway{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;margin:28px 0}
-.pathway span{border:1px solid #cfd9e6;border-radius:12px;padding:18px;background:#f7f8fd;font-weight:650}
-.pathway b{color:#65448f}.boundary{align-items:stretch;margin:18px 0 22px}.boundary article{border:1px solid #d7dfea;border-top:4px solid #65448f;border-radius:10px;padding:22px;background:#faf9fd}.boundary article+article{border-top-color:#278069;background:#f6faf8}
-.boundary article p{margin:8px 0}.boundary h3{font-size:23px}
-.finish-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:15px 0 25px}.finish-grid article{border:1px solid #d8dce7;border-radius:10px;padding:20px;background:#faf9fd}.finish-grid p{margin:10px 0;font-size:19px}.finish-grid strong{color:#65448f;font-size:23px}
-.crud-demo,.grain-demo{border:1px solid #d8dfea;border-radius:12px;overflow:hidden;margin:12px 0 20px;background:#fcfdff}.example-controls{padding:12px 18px;display:flex;gap:10px;flex-wrap:wrap;background:#f3f1f8;border-bottom:1px solid #d8dfea}.example-controls button{font-size:17px}.example-content{padding:14px 20px;min-height:230px}.example-content table{margin:0 0 12px}.example-note{font-size:16px;margin:8px 0;color:#4d5d73}.example-meta{display:flex;gap:20px;align-items:center}.count-chip{display:inline-flex;padding:7px 13px;border-radius:7px;color:#226650;background:#e4f2eb;font-weight:700}.empty-state{min-height:170px;display:grid;place-content:center;text-align:center;color:#647084}.empty-state b{font-size:54px;display:block;color:#65448f}.changed{background:#e0f3e9!important}.fiction{font-size:12px;margin:0;padding:8px 20px;background:#f4f6fa;color:#5c687b;border-top:1px solid #e3e6ef}.codebox{position:relative}.copy-code{position:absolute;right:10px;top:8px;font-size:11px;padding:4px 8px;opacity:.45}.codebox:hover .copy-code,.copy-code:focus{opacity:1}
-.draft-tag{font-size:10px;color:#705118;background:#fbf1d8;border-radius:3px;padding:2px 4px;margin-left:4px}.presentation-nav select{max-width:255px}.source a{overflow-wrap:anywhere}.lab-page .cell-structure th:nth-child(2),.lab-page .cell-structure td:nth-child(2){white-space:nowrap;min-width:110px;overflow-wrap:normal}
-.lab-page{max-width:1000px;margin:36px auto 70px;padding:42px 54px;background:white;border:1px solid #d9dfe8;border-radius:14px;box-shadow:0 10px 30px #2737470b;font-size:17px;line-height:1.65}.lab-page h1{font-size:36px;color:#3f2e59;line-height:1.18;margin:0 0 16px;letter-spacing:-.6px}.lab-page h2{font-size:26px;color:#513875;margin:36px 0 14px;padding-top:13px;border-top:2px solid #e9e3ef}.lab-page h3{font-size:22px;color:#2b5c6b;margin-top:26px}.lab-page p{margin:12px 0}.lab-page li{margin-bottom:8px}.lab-page code{overflow-wrap:anywhere}.lab-page pre{font-size:14px;overflow-wrap:anywhere}.lab-page td,.lab-page th{vertical-align:top;padding:12px}.lab-page th:nth-child(2),.lab-page td:nth-child(2){white-space:nowrap}.lab-page h3[id^=q]{border-left:4px solid #b9a5cf;padding-left:13px}.lab-top{max-width:1000px;margin:20px auto -16px;font-size:14px;display:flex;gap:20px}.lab-page blockquote{font-size:18px}
-.lab-page{max-width:1200px;padding:40px 44px}.lab-top{max-width:1200px}.lab-page table{overflow-wrap:normal}.lab-page .cell-structure th:first-child,.lab-page .cell-structure td:first-child{min-width:70px;overflow-wrap:normal}.lab-page .rubric-table{width:100%;table-layout:fixed;font-size:17px}.rubric-table col.criterion-col{width:27%}.rubric-table col.points-col{width:88px}.lab-page .rubric-table th,.lab-page .rubric-table td{word-break:normal;overflow-wrap:normal;padding:15px 16px;line-height:1.55}.lab-page .rubric-table th:nth-child(2),.lab-page .rubric-table td:nth-child(2){white-space:nowrap;text-align:center;font-variant-numeric:tabular-nums;min-width:88px}.lab-page .rubric-table tbody tr:last-child{background:#eee8f5;border-top:2px solid #9a84b5}.lab-page .rubric-table td:first-child strong{font-weight:650}
-@media(max-width:900px){.presentation-nav{flex-wrap:wrap;gap:7px}.chapter-nav{order:2;width:100%;justify-content:center}.presentation-nav select{max-width:42vw}.slide-body{font-size:18px;padding:18px}.slide-body pre{font-size:15px}.slide-body table{font-size:16px}.slide-heading{padding:18px}.two-col,.finish-grid{grid-template-columns:1fr}.pathway{gap:5px;margin:14px 0}.pathway span{padding:10px}.lab-page{margin:20px 12px;padding:26px 22px}.lab-top{padding:0 16px}.lab-page h1{font-size:29px}.lab-page .rubric-table th,.lab-page .rubric-table td{padding:13px 12px}.rubric-table col.criterion-col{width:29%}}
-@media(max-width:640px){.lab-page .rubric-table{display:block;border:0;background:transparent}.rubric-table colgroup{display:none}.rubric-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.rubric-table tbody{display:block}.lab-page .rubric-table tbody tr{display:grid;grid-template-columns:minmax(0,1fr) 90px;border:1px solid #d8dee8;border-radius:8px;margin:12px 0;overflow:hidden;background:white}.lab-page .rubric-table tbody td{display:block;padding:12px;border:0;min-width:0}.lab-page .rubric-table td:first-child{background:#f3f0f8}.lab-page .rubric-table td:nth-child(2){background:#f3f0f8;text-align:right;min-width:0;white-space:nowrap}.lab-page .rubric-table td:nth-child(2)::after{content:' pts';font-size:13px;color:#5b687b}.lab-page .rubric-table td:nth-child(3){grid-column:1/-1;border-top:1px solid #e5e9f0}.lab-page .rubric-table td:nth-child(3):empty{display:none}.lab-page .rubric-table tbody tr:last-child td{background:#eee8f5}.save-route{gap:7px}.save-route span{font-size:15px;padding:10px}}
-@media print{body{background:white}.presentation-nav,.bottom-nav,.copy-code,.lab-top{display:none!important}#slides{max-width:none;margin:0;padding:0}.slide{display:flex!important;border:0;box-shadow:none;border-radius:0;min-height:0;height:auto;page-break-after:always;break-after:page;overflow:visible}.slide-body{font-size:18px}.slide-body pre{font-size:15px}.example-controls{display:none}.cover .slide-heading{padding-top:50px}.lab-page{box-shadow:none;border:0;margin:0;max-width:none;padding:10px;font-size:12px}.lab-page h1{font-size:25px}.lab-page h2{font-size:19px}.lab-page h3{font-size:16px}.lab-page table{font-size:11px}a{color:inherit}}
-
-/* Week 10 revision: prose wraps; the points column never splits digits. */
-.lab-page table th,.lab-page table td{white-space:normal;word-break:normal;overflow-wrap:break-word}
-.lab-page .rubric-table th:nth-child(2),.lab-page .rubric-table td:nth-child(2){white-space:nowrap;overflow-wrap:normal;width:88px;text-align:center}
-.lab-page .rubric-table p{margin:0 0 12px}.lab-page .rubric-table p:last-child{margin-bottom:0}
-.lab-page .rubric-table td:first-child code{font-size:13px;overflow-wrap:anywhere}
-.lab-page .rubric-table col.criterion-col{width:25%}
-@media(max-width:640px){.lab-page .rubric-table td:nth-child(2){width:auto;text-align:right}}
-</style><style>
-/* Separate rubric criteria, wide text columns, and unbroken scores. */
-.lab-page{max-width:1240px}
-.rubric-scroll{width:100%;overflow-x:auto;margin:18px 0;overscroll-behavior-x:contain}
-.rubric-table{width:100%;min-width:760px;table-layout:fixed;margin:0}
-.rubric-table .criterion-col{width:25%}.rubric-table .points-col{width:90px}.rubric-table .details-col{width:auto}
-.rubric-table th,.rubric-table td{vertical-align:top;padding:15px 17px;overflow-wrap:break-word;word-break:normal}
-.rubric-table th:nth-child(2),.rubric-table td:nth-child(2){width:90px;min-width:90px;white-space:nowrap!important;word-break:normal!important;overflow-wrap:normal!important;text-align:center}
-.rubric-table td:first-child code{font-size:.85em}.rubric-table td:nth-child(3){line-height:1.6}
-@media(max-width:760px){.lab-page{padding:20px 16px}.rubric-table{font-size:16px}.rubric-table th,.rubric-table td{padding:12px}.rubric-scroll{margin-right:0}}
-</style><style>
-/* Four-step lab workflow: fixed label widths; readable narrow-screen cards. */
-.lab-page .cell-structure{table-layout:fixed;width:100%}
-.lab-page .cell-structure th:first-child,.lab-page .cell-structure td:first-child{width:170px;min-width:0}
-.lab-page .cell-structure th:nth-child(2),.lab-page .cell-structure td:nth-child(2){width:115px;min-width:0;white-space:nowrap}
-.lab-page .cell-structure th,.lab-page .cell-structure td{overflow-wrap:break-word}
-@media(max-width:640px){
- .lab-page .cell-structure{display:block;border:0}.cell-structure thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
- .cell-structure tbody{display:block}.cell-structure tbody tr{display:grid;grid-template-columns:minmax(0,1fr) 110px;border:1px solid #d8dee8;border-radius:8px;margin:12px 0;overflow:hidden}
- .lab-page .cell-structure tbody td{display:block;width:auto!important;min-width:0;padding:12px;border:0}
- .cell-structure td:first-child,.cell-structure td:nth-child(2){background:#f3f0f8}.cell-structure td:nth-child(3){grid-column:1/-1;border-top:1px solid #e5e9f0!important}
-}
-</style></head><body><nav class="lab-top"><strong>IA 340 · Week 10 · Lab 10</strong><a href="../../modules/module-10/">Lecture</a><a href="../../">Course Home</a></nav><main class="lab-page"><h1 id="lab-10-analyze-your-twitterx-data-with-python">Lab 10 — Analyze Your Twitter/X Data with Python</h1>
-<p><strong>IA 340 · 100 points · October 26–30, 2026 · Independent lab: Wednesday, October 28 · Due date: see Canvas.</strong></p>
-<p><a href="../../modules/module-10/">Week 10 lecture</a> · <a href="../../modules/module-9/">Week 9 lecture</a> · <a href="../../syllabus/">Course syllabus</a></p>
-<h2 id="goal">Goal</h2>
-<p>Complete the guided lecture exercises, then use your MongoDB queries to bring Twitter/X data into pandas. Your independent notebook answers <strong>four questions</strong> with <strong>one table and three bar charts</strong>, followed by short Markdown explanations. Reuse your Lab 9 queries and the connection and pandas code from the lecture.</p>
-<p><strong>Both the classroom exercises and the independent analysis are graded.</strong> Submit them as two Colab notebooks in your assigned GitHub repository.</p>
-<h2 id="1-prepare-two-colab-notebooks">1. Prepare two Colab notebooks</h2>
-<p>Create each notebook in <strong>Google Colab</strong>. Your assigned GitHub repository must contain both files at its root on <strong><code>main</code></strong>:</p>
-<table>
-<thead>
-<tr>
-<th>Notebook</th>
-<th>What it contains</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong><code>lecture10.ipynb</code></strong></td>
-<td>Your executed lecture exercises: insert, update, and delete in <strong><code>lab9.demo</code></strong>; a document query displayed as a pandas table; and an aggregation query displayed as a table and chart, or an explained empty result. <strong>No Summary or AI Use section is required.</strong></td>
-</tr>
-<tr>
-<td><strong><code>lab10.ipynb</code></strong></td>
-<td>Your independent answers to <strong>Q1–Q4</strong> using your own collected Twitter/X data. For each question, include the question, actual MongoDB query, executed Python output, and result explanation. End with <strong>AI Use</strong>; <strong>no separate Summary is required.</strong></td>
-</tr>
-</tbody>
-</table>
-<p>For <code>lab10.ipynb</code>, reuse your lecture connection and pandas code and your saved <code>lab9.py</code> queries. Follow the independent-lab workflow in Section 3.</p>
-<p>The independent lab only reads the Twitter collection. Do not insert, update, delete, drop, or change indexes in that collection, and do not use <code>$out</code> or <code>$merge</code>. The lecture's data changes belong in <strong><code>lab9.demo</code></strong>. You do not need to collect more tweets or rerun Lab 8's collection and insertion cells.</p>
-<h2>2. Complete the lecture exercises — 20 points</h2>
-<p>Use <strong><code>lecture10.ipynb</code></strong> for your classroom work. Include headings, the demonstrated code, and visible execution results.</p>
-<h3>A. Insert, update, and delete</h3>
-<p>Connect to <strong><code>lab9.demo</code></strong>. Insert three fictional documents with a <code>for</code> loop calling <code>insert_one()</code>. Use two separate <code>update_one()</code> calls to change an existing value and add a new field. Use <code>delete_one()</code> to remove one document. Display the changes and the two remaining documents.</p>
-<p>Run the insert cell once. Do not rerun it merely to save the notebook; the fixed document IDs will already exist.</p>
-<h3>B. Reuse saved queries and display their results</h3>
-<p><strong>Export check:</strong> select <strong>Include Driver Syntax</strong> so the complete query assigns <code>result</code>. After each saved count, document, or aggregation query, use <code>records = list(result)</code>, <code>df = pd.json_normalize(records)</code>, and <code>display(df)</code>. Keep the existing connection code.</p>
-<p>Continue with the <strong>same <code>client</code></strong>. Copy one complete query at a time from your own <code>lab9.py</code>, retaining <code>result = client['lab8']['tweet_collection']...</code> and any supporting variables. Run and display each result before starting the next query.</p>
-<p>Practice with the saved count queries demonstrated in class, then complete both examples: <strong>document query → pandas text table</strong> and <strong>aggregation pipeline → pandas bar chart</strong>. A successful empty result should be displayed with a short note; do not invent data.</p>
-<h3>C. Keep the completed exercise</h3>
-<p>Keep the executed outputs and save <code>lecture10.ipynb</code> from Colab. <strong>No Summary or AI Use section is required in the lecture notebook.</strong> Only the independent lab requires an AI Use section.</p>
-<p>The optional table-formatting step and the Gemini chart-editing demonstration are not additional required lecture outputs. Practice writes remain in <code>lab9.demo</code>; the Twitter collection is read-only. See the <a href="../../modules/module-10/">Week 10 lecture</a> for the demonstrations.</p>
-<h2 id="independent-lab-workflow">3. Complete the independent lab in Colab</h2>
-<h3>Start with the lecture setup</h3>
-<p>In <code>lab10.ipynb</code>, reuse the lecture code to connect with your <strong><code>MONGODB_CONNECTION_STRING</code> Colab Secret</strong> and create <code>client</code>. Import <strong>pandas</strong> and the plotting libraries used in the lecture. Your queries read your existing <strong><code>lab8.tweet_collection</code></strong>; do not rerun the Twitter collection or insertion code.</p>
-<p>Use <strong>MongoDB's built-in AI</strong> to develop and check each query, or adapt an appropriate query from your own <code>lab9.py</code>. Then follow these four steps for <strong>each</strong> question:</p>
-<table class="cell-structure"><thead><tr><th>Step</th><th>Cell type</th><th>What to include</th></tr></thead><tbody>
-<tr><td><strong>1. Question</strong></td><td>Markdown</td><td>Label the question with its number and heading, such as <code>## Q1. Tweets with the most likes</code>.</td></tr>
-<tr><td><strong>2. MongoDB query</strong></td><td>Markdown</td><td>Show the <strong>actual query or aggregation pipeline</strong> you used, in a fenced code block. Use the query produced by MongoDB AI after checking or correcting it, or identify the Lab 9 query you reused. <strong>Do not submit the natural-language prompt or chat history.</strong></td></tr>
-<tr><td><strong>3. Python and output</strong></td><td>Code</td><td>Run the Python-exported query with your existing <code>client</code>. Read its returned data into pandas and display the required table or chart. Keep the executed output visible. Use more than one code cell when helpful.</td></tr>
-<tr><td><strong>4. Findings</strong></td><td>Markdown</td><td>Briefly <strong>describe or explain your actual output</strong> and answer the question. For example, describe the leading posts, users, locations, or hashtags. If the query succeeds but finds no qualifying data, say so; do not invent an answer or chart.</td></tr>
-</tbody></table>
-<p><strong>The query shown in Markdown is documentation, not executable code.</strong> Put its runnable Python version in the next code cell. No additional prompt cell, separate report, or new <code>.py</code> file is required.</p>
-<h3>Bring the query into Python — Include Driver Syntax is required</h3>
-<div class="learning-note"><strong>Before copying a query, check Include Driver Syntax.</strong> The Python export must include <code>result = client[...].find(...)</code> or <code>result = client[...].aggregate(...)</code>, together with its supporting filter, projection, sort, limit, and other variables. Query parameters or pipeline stages alone do not create <code>result</code>.</div>
-<p>For a new, revised, or incomplete Lab 9 export, choose <strong>Export Code → Python → Include Driver Syntax</strong> in MongoDB. Re-export when needed. Use the <code>client</code> already created from your Colab Secret; omit a second connection initialization and never paste a real connection string into the notebook. This Lab 10 clarification does not change Lab 9 grading.</p>
-<p>After running each complete query, use the same three lines for both document-query and aggregation results:</p>
-<pre><code>records = list(result)
-df = pd.json_normalize(records)
-display(df)</code></pre>
-<p><code>list(result)</code> reads the returned documents. <code>pd.json_normalize(records)</code> makes a DataFrame from flat or nested document fields. <code>display(df)</code> shows the table without assuming its columns. The variable is <code>result</code>, not <code>results</code>; write <code>display(df)</code>, not <code>df.display()</code>. The saved count pipelines also work with this block.</p>
-<p><strong>Display first; adapt second.</strong> Do not require, rename, or reindex fixed columns before the initial display. Inspect the actual column headings, or run <code>df.columns.tolist()</code>. Then Gemini inside Colab may help select the columns, show complete tweet text, format the table, or create the required chart using this actual DataFrame. An initial full table is a useful check; it does not replace a question's required final table or chart.</p>
-<h3>Run each question in order and keep its outputs together</h3>
-<p>You may use the shared names <code>result</code>, <code>records</code>, and <code>df</code> throughout, as in the lecture. For each question, run <strong>its query → the three-line conversion → its display/chart</strong>, and keep the executed output and findings in that question's section. Each later assignment replaces what <code>df</code> holds. Distinct names such as <code>tweets_df</code> or <code>users_df</code> are optional, not required; use them consistently when chosen.</p>
-<p><strong>Rerunning:</strong> <code>list(result)</code> consumes the cursor. To run the conversion again, first rerun that question's query. To redisplay the loaded table, run only <code>display(df)</code>; to rebuild from the saved list, use <code>pd.json_normalize(records)</code>. Before explaining an empty result, check that the query ran successfully against the right collection and that the cursor was not already consumed.</p>
-<p>A missing field, failed query, or wrong/stale DataFrame must not be concealed by a fallback that displays unrelated data or invents values. Give Gemini the current <code>df</code> and the required output, and check its columns, values, labels, and ordering. <strong>Q1–Q4 and their output requirements remain unchanged.</strong> In particular, Q2 needs a horizontal bar chart and Q2–Q4 need bar charts. Colab's optional interactive viewer does not replace the saved analysis.</p>
-<h2 id="4-answer-all-four-questions-40-points">4. Answer all four questions — 40 points</h2>
-<h3 id="q1-which-ten-collected-tweets-have-the-most-likes-10-points">Q1. Which ten collected tweets have the most likes? — 10 points</h3>
-<p>Create a <strong>pandas table</strong> with <strong>Tweet text</strong> on the left and <strong>Likes</strong> on the right. Display up to <strong>10 unique tweets</strong>, ordered from highest to lowest <strong><code>tweet.public_metrics.like_count</code></strong>.</p>
-<ul>
-<li>Show the complete <strong><code>tweet.text</code></strong>, without truncating it.</li>
-<li>Count each <strong><code>tweet.id</code></strong> once. If a tweet appears more than once, use its highest stored numeric like count.</li>
-<li>Use a consistent order for tied counts, such as sorting by <code>tweet.id</code>.</li>
-</ul>
-<p><strong>Example format — fictional teaching data, not tweets to use in your submission:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Tweet text</th>
-<th style="text-align: right;">Likes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Our class compared three ways to visualize the same dataset today.</td>
-<td style="text-align: right;">120</td>
-</tr>
-<tr>
-<td>A clear chart title makes the main comparison easier to understand.</td>
-<td style="text-align: right;">85</td>
-</tr>
-<tr>
-<td>I used Python to turn my query results into a table.</td>
-<td style="text-align: right;">44</td>
-</tr>
-</tbody>
-</table>
-<p>Your table should contain your own results, with up to ten rows. In the Markdown answer, describe what the most-liked posts discuss. These likes are stored values from collection time, not live counts.</p>
-<h3 id="q2-which-ten-users-in-your-collection-have-the-most-followers-10-points">Q2. Which ten users in your collection have the most followers? — 10 points</h3>
-<p>Create a <strong>horizontal bar chart</strong> for up to <strong>10 distinct users</strong>, ranked by <strong><code>user.public_metrics.followers_count</code></strong>.</p>
-<ul>
-<li>Label the bars with <strong><code>user.username</code></strong> and the numeric axis <strong>Followers</strong>.</li>
-<li>Count each <strong><code>user.id</code></strong> once, even when the user wrote several collected tweets. If stored follower counts differ for that user, use the highest numeric count.</li>
-<li>Use <strong><code>followers_count</code></strong>: the number of accounts following this user. Do not rank by <code>following_count</code> or by how many tweets the user wrote.</li>
-<li>Put the largest value at the top and use a descriptive chart title. An additional table is optional.</li>
-</ul>
-<figure class="lab-example">
-<svg aria-labelledby="chart-title chart-desc" height="450" role="img" viewbox="0 0 900 450" width="900" xmlns="http://www.w3.org/2000/svg">
-<title id="chart-title">Users with the most followers — fictional example</title>
-<desc id="chart-desc">Horizontal bar chart with five fictional accounts. sample_anna has 12,000 followers; sample_ben 8,500; sample_cleo 6,000; sample_diego 3,500; and sample_ella 1,500. This illustrates the expected format, not student data.</desc>
-<rect fill="#f8fafc" height="450" rx="14" width="900"></rect>
-<text fill="#3f2e59" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" x="28" y="36">Users with the most followers</text>
-<text fill="#586578" font-family="Arial, Helvetica, sans-serif" font-size="15" x="28" y="62">FICTIONAL EXAMPLE · Use your own query results in your chart.</text>
-<g stroke="#dfe5ed" stroke-width="1">
-<path d="M175 90V376 M270.833 90V376 M366.667 90V376 M462.5 90V376 M558.333 90V376 M654.167 90V376 M750 90V376"></path>
-</g>
-<g fill="#65448f">
-<rect height="34" rx="3" width="575" x="175" y="100"></rect>
-<rect height="34" rx="3" width="407.292" x="175" y="154"></rect>
-<rect height="34" rx="3" width="287.5" x="175" y="208"></rect>
-<rect height="34" rx="3" width="167.708" x="175" y="262"></rect>
-<rect height="34" rx="3" width="71.875" x="175" y="316"></rect>
-</g>
-<g fill="#283747" font-family="Arial, Helvetica, sans-serif" font-size="16" text-anchor="end">
-<text x="161" y="122">@sample_anna</text>
-<text x="161" y="176">@sample_ben</text>
-<text x="161" y="230">@sample_cleo</text>
-<text x="161" y="284">@sample_diego</text>
-<text x="161" y="338">@sample_ella</text>
-</g>
-<g fill="#3f2e59" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">
-<text x="761" y="122">12,000</text>
-<text x="593" y="176">8,500</text>
-<text x="474" y="230">6,000</text>
-<text x="354" y="284">3,500</text>
-<text x="258" y="338">1,500</text>
-</g>
-<path d="M175 90V376H750" fill="none" stroke="#8d9aaa" stroke-width="1.3"></path>
-<g fill="#586578" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle">
-<text x="175" y="398">0</text>
-<text x="270.833" y="398">2,000</text>
-<text x="366.667" y="398">4,000</text>
-<text x="462.5" y="398">6,000</text>
-<text x="558.333" y="398">8,000</text>
-<text x="654.167" y="398">10,000</text>
-<text x="750" y="398">12,000</text>
-<text fill="#283747" font-size="17" font-weight="700" x="462.5" y="431">Followers</text>
-</g>
-</svg>
-<figcaption><strong>Example format only:</strong> these five usernames and follower counts are fictional. Plot your own results, with up to ten users.</figcaption>
-</figure>
-<p>In the Markdown answer, identify the leading user and describe how their follower count compares with the others in your chart.</p>
-<h3 id="q3-which-profile-locations-occur-among-the-most-users-10-points">Q3. Which profile locations occur among the most users? — 10 points</h3>
-<p>Write or adapt a query for the <strong>10 most common non-empty profile locations</strong>, then use pandas to create a <strong>bar chart</strong>. Design your own title, labels, colors, and bar orientation.</p>
-<ul>
-<li>Use <strong><code>user.location</code></strong> and count <strong>distinct <code>user.id</code> values</strong>, so a user with several tweets is counted once.</li>
-<li>Exclude missing, null, empty, and whitespace-only locations. Trim surrounding spaces; keep the remaining spelling and capitalization as stored.</li>
-<li>If a user has different non-empty location values, choose one consistently and explain your rule.</li>
-<li>Label the count axis <strong>Distinct users</strong>. A table is optional.</li>
-</ul>
-<p>In the Markdown answer, identify the leading location labels and explain that profile locations are self-reported text. For this lab, labels such as <code>NYC</code> and <code>New York</code> remain separate. If no usable locations exist, display the empty query result and explain why there is no chart.</p>
-<h3 id="q4-which-hashtags-occur-most-often-10-points">Q4. Which hashtags occur most often? — 10 points</h3>
-<p>Reuse or revise your Lab 9 hashtag query to find up to <strong>10 hashtags</strong> from <strong><code>tweet.entities.hashtags.tag</code></strong>. Bring the result into pandas and create a <strong>bar chart</strong>. Choose your own title, labels, colors, and bar orientation.</p>
-<ul>
-<li>Count each tag's <strong>occurrences in the stored hashtag arrays</strong>. A tweet with two different hashtags contributes one occurrence to each.</li>
-<li>Preserve stored spelling and capitalization, so <code>Election</code> and <code>election</code> remain separate.</li>
-<li>Label the count axis <strong>Hashtag occurrences</strong>. A table is optional when you have hashtags to plot.</li>
-<li>If only one or two hashtags occur, plot those one or two. If there are none, display the executed empty result and write <strong>“No hashtags found; hashtag occurrences: 0.”</strong> No chart is required for that empty result.</li>
-</ul>
-<p>In the Markdown answer, describe the leading hashtags and what the counts measure. Do not invent hashtags, extract substitutes from tweet text, or add rows to make a fuller chart.</p>
-<h3 id="small-or-incomplete-results">Small or incomplete results</h3>
-<p>Show all available qualifying results when there are fewer than ten. A missing or nonnumeric like/follower count is <strong>unknown, not zero</strong>; exclude it from the ranking and report how many were excluded. A correctly executed empty location or hashtag result can receive full credit. A connection error, failed query, or unexecuted cell does not establish an empty result.</p>
-<h2 id="ai-use">5. AI Use — 20 points; lab10.ipynb only</h2>
-<p>After Q4, add one Markdown section titled <strong><code>AI Use</code></strong>. Write a short, specific account of your own use of the approved tools:</p>
-<ul>
-<li><strong>Tools and tasks:</strong> which tools you used and where they helped—for example, MongoDB's built-in AI for queries and Gemini inside Colab for Python, pandas, charts, or debugging. Identify the relevant questions or notebook sections.</li>
-<li><strong>Limitations and checks:</strong> explain limitations you noticed, and how you checked or corrected the output. For example, describe a wrong field name, a query that counted tweets instead of users, or chart labels that needed correction. Describe only what actually happened in your work.</li>
-</ul>
-<p>If you did not use one of the approved tools, say so. If you only reused lecture or Lab 9 code without new AI assistance, explain that honestly and identify the source. <strong>No prompt transcript or separate notebook Summary is required.</strong> The Markdown findings under Q1–Q4 already explain your results.</p>
-<p><strong>This section is required only in <code>lab10.ipynb</code>, not <code>lecture10.ipynb</code>.</strong> Do not include credentials.</p>
-<h2 id="5-ai-policy-for-this-assignment">6. AI policy for this assignment</h2>
-<p>You may use AI in <strong>only two places</strong>:</p>
-<ul>
-<li><strong>MongoDB's built-in AI query tools</strong> to develop, explain, and revise queries and aggregation pipelines.</li>
-<li><strong>Gemini inside Google Colab</strong> to write, explain, debug, and visualize Python code.</li>
-</ul>
-<p>You are responsible for understanding and verifying the queries, code, tables, charts, and Markdown answers you submit. If an approved AI feature is unavailable, contact the instructor before using another tool. Do not put connection strings, passwords, or API keys into AI prompts.</p>
-<p><strong>Other AI websites, coding agents, extensions, and AI APIs are not permitted.</strong> Having an external AI tool complete a notebook and then copying or uploading it into Colab is not permitted. Saving that notebook through Colab does not make the outside AI use acceptable.</p>
-<p><strong>Confirmed use of an unapproved AI tool results in 0 points for the entire lab. Repeated violations will be reported to the JMU Honor Council.</strong> This policy applies to both notebooks.</p>
-<h2 id="save-both-notebooks">7. Save both notebooks directly from Colab to GitHub</h2>
-<p><strong>Required for both <code>lecture10.ipynb</code> and <code>lab10.ipynb</code>.</strong> See the final two lecture slides for the instructor screenshots.</p>
-<ol>
-<li>Keep the completed lecture code and outputs. Do not rerun the insert cell merely to save the notebook. Run the independent, read-only <code>lab10.ipynb</code> from beginning to end and inspect its outputs.</li>
-<li>Check code, Markdown, and outputs for credentials. Keep the real connection string in Colab Secrets and the private Canvas submission only.</li>
-<li>In Colab, choose <strong>File → Save a copy in GitHub</strong> (the menu may say <strong>“to GitHub”</strong>). Select your assigned IA340 repository, branch <strong><code>main</code></strong>, and the correct filename at the repository root.</li>
-<li>In the <strong>Copy to GitHub</strong> dialog, keep the commit message <strong><code>Created using Colab</code></strong> and leave <strong>Include a link to Colab</strong> checked. Click <strong>OK</strong>. Repeat for the other notebook.</li>
-<li>Open each notebook on GitHub. Check the <strong>Created using Colab</strong> commit message, the <strong>Open in Colab</strong> button, and the saved code and executed outputs. For <code>lab10.ipynb</code>, also check all four question/query/output/findings sections and <strong>AI Use</strong>. The button must open that notebook in Colab.</li>
-</ol>
-<p><strong>No manual GitHub upload and no notebook completed elsewhere and uploaded into Colab.</strong> Save later revisions from Colab again. Saving only to Google Drive is not submission.</p>
-<p>The commit message and button are submission checks; they do not replace completing the work through the required Colab workflow. Keep your working notebooks until grading is complete and be ready to explain or rerun your work.</p>
-<h2 id="7-submit-exactly-two-values-in-canvas">8. Submit exactly two values in Canvas</h2>
-<p>In <strong>Canvas → Lab 10</strong>, paste these <strong>two values on separate lines, without labels or additional text</strong>:</p>
-<p><strong>Line 1: Your assigned GitHub repository root URL.</strong> Use your section's format and replace <code>&lt;your-github-username&gt;</code>:</p>
-<pre><code class="language-text">IA340-1: https://github.com/JMU-Data/ia340-fa26-1-&lt;your-github-username&gt;
-IA340-2: https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;
-</code></pre>
-<p>Submit only your section's URL, without the section label. Stop at the repository name. Do not submit a link to an individual notebook or a Colab sharing link. The repository must contain <strong>both <code>lecture10.ipynb</code> and <code>lab10.ipynb</code> at the root on <code>main</code></strong>.</p>
-<p><strong>Line 2: Your complete working MongoDB connection string</strong>, including the password, so the instructor can verify your source data. Submit it <strong>only in Canvas</strong>, never in GitHub. Use your own working Atlas connection string, not a placeholder.</p>
-<p><strong>Connection-string format example — placeholders only:</strong></p>
-<pre><code class="language-text">mongodb+srv://YOUR_DB_USER:YOUR_DB_PASSWORD@ia340.example.mongodb.net/?appName=ia340</code></pre>
-<p>The hostname above is fictional. Use your own complete working Atlas URI, with the real database username, password, and cluster hostname; do not submit the placeholder values. Python selects <code>lab8.tweet_collection</code> in the query, so a <code>/lab8</code> suffix is not required. Keep the real URI only in <strong>Colab Secrets and the private Canvas submission</strong>.</p>
-<p>The instructor uses this URI to verify the source data. A missing or inaccessible URI prevents that verification; fix access and resubmit under the course deadline and late-work rules. A connection failure is not an empty dataset.</p>
-<h2 id="rubric">Rubric — 100 points</h2>
-<p><strong>Lecture Exercises (20) + Independent Questions (40) + AI Use (20) + Submission &amp; Source Access (20).</strong> Each question includes its own result explanation; there is no separate Summary requirement.</p>
-<div aria-label="Lab 10 rubric" class="rubric-scroll" role="region" tabindex="0"><table class="rubric-table"><colgroup><col class="criterion-col"/><col class="points-col"/><col/></colgroup>
-<thead><tr><th>Criterion</th><th>Points</th><th>What the instructor checks</th></tr></thead><tbody>
-<tr><td><strong>Lecture Exercises</strong><br/><code>lecture10.ipynb</code></td><td><strong>20</strong></td><td>Executed insert/update/delete practice in <code>lab9.demo</code>, saved-query demonstrations, a pandas text table, and an aggregation chart or supported empty result. Keep the code and outputs. <strong>No Summary or AI Use section is required here.</strong></td></tr>
-<tr><td><strong>Independent Questions</strong><br/><code>lab10.ipynb</code></td><td><strong>40</strong></td><td><strong>Four questions, 10 points each.</strong> Each includes a Markdown question, the actual MongoDB query, runnable Python with the required table or chart, and a brief Markdown explanation of the actual results. Use a distinct DataFrame for each question. Correctly supported empty results are acceptable.</td></tr>
-<tr><td><strong>AI Use</strong><br/><code>lab10.ipynb</code> only</td><td><strong>20</strong></td><td>Identify the approved tools actually used, where and how they helped, their limitations, and how you checked or corrected their output. State reused code or no new AI use honestly. <strong>No prompt transcript or separate Summary.</strong></td></tr>
-<tr><td><strong>Submission &amp; Source Access</strong></td><td><strong>20</strong></td><td>Canvas contains the correct GitHub <strong>repository root URL</strong> and a complete working <strong>MongoDB connection string</strong>. Both <code>lecture10.ipynb</code> and <code>lab10.ipynb</code> are at the repository root on <code>main</code>, saved directly from Colab with outputs, the <strong>Created using Colab</strong> commit message, and a working <strong>Open in Colab</strong> button.</td></tr>
-<tr><td><strong>Total</strong></td><td><strong>100</strong></td><td>20 + 40 + 20 + 20</td></tr></tbody></table></div>
-<p>Each criterion uses <strong>PASS = full criterion points</strong> and <strong>MISSING = 0</strong> as default ratings; the instructor may assign intermediate scores for partial work. Q1–Q4 are worth 10 points each. Submission checks assess delivery and source access, not the same analysis a second time. Correctly supported empty results can earn full credit.</p>
-<h3>Credential safety — a deduction, not a points category</h3>
-<p><strong>No points are awarded for credential safety.</strong> If any real MongoDB connection string, password, API key, token, or secret value is exposed in submitted GitHub files, notebook Markdown, saved outputs, screenshots, or their history, <strong>deduct 20 points once from the otherwise earned assignment score</strong>. The score cannot fall below 0. Do not apply another submission deduction for that same credential exposure.</p>
-<p>Remove the exposed value and revoke or rotate it promptly. Removing it later does not erase the exposure. Placeholder examples and code that reads a Colab Secret without displaying its value are not credential exposure.</p>
-<p>The separate unapproved-AI policy applies to the entire assignment. Follow the Canvas deadline and the <a href="../../syllabus/">course late-work policy</a>; both the Canvas submission and the GitHub version used for grading must meet the deadline.</p>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://www.mongodb.com/docs/atlas/atlas-ui/query-with-natural-language/prompt-natural-language-query/">MongoDB: Generate queries using natural language</a></li>
-<li><a href="https://www.mongodb.com/docs/atlas/atlas-ui/query-with-natural-language/prompt-natural-language-aggregation/">MongoDB: Generate aggregation pipelines using natural language</a></li>
-<li><a href="https://github.com/googlecolab/colabtools/blob/main/notebooks/colab-github-demo.ipynb">Google Colab: Using Colab with GitHub</a></li>
-<li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">pandas: DataFrame</a></li>
-<li><a href="https://www.mongodb.com/docs/atlas/atlas-ui/export-query-to-language/">MongoDB: Export a query to Python</a></li><li><a href="https://www.mongodb.com/docs/atlas/atlas-ui/agg-pipeline-builder/export-pipeline-to-language/">MongoDB: Export a pipeline to Python</a></li><li><a href="https://pandas.pydata.org/docs/reference/api/pandas.json_normalize.html">pandas: json_normalize</a></li></ul></main><script>
-'use strict';
-const slides=[...document.querySelectorAll('.slide')];
-const selector=document.getElementById('slide-select');
-if(slides.length){
- let current=1;
- function show(n){current=Math.max(1,Math.min(slides.length,n));slides.forEach((s,i)=>s.classList.toggle('current',i+1===current));selector.value=String(current);document.getElementById('slide-status').textContent=`${current} / ${slides.length}`;document.getElementById('previous').disabled=current===1;document.getElementById('next').disabled=current===slides.length;history.replaceState(null,'',`#slide-${current}`);const jumps=[...document.querySelectorAll('[data-jump]')];jumps.forEach((b,i)=>b.classList.toggle('active',current>=Number(b.dataset.jump)&&(!jumps[i+1]||current<Number(jumps[i+1].dataset.jump))));slides[current-1].scrollTop=0;}
- document.getElementById('previous').onclick=()=>show(current-1);
- document.getElementById('next').onclick=()=>show(current+1);
- selector.onchange=()=>show(Number(selector.value));
- document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>show(Number(b.dataset.jump)));
- document.addEventListener('keydown',e=>{if(e.target.closest('select,input,textarea,button,a'))return;if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}});
- document.getElementById('fullscreen').onclick=async()=>{try{document.fullscreenElement?await document.exitFullscreen():await document.documentElement.requestFullscreen()}catch{document.getElementById('fullscreen').textContent='Use browser fullscreen'}};
- show(Number(location.hash.match(/slide-(\d+)/)?.[1])||1);
-}
-document.querySelectorAll('pre').forEach(pre=>{const box=document.createElement('div');box.className='codebox';pre.replaceWith(box);box.append(pre);const b=document.createElement('button');b.type='button';b.className='copy-code';b.textContent='Copy';b.setAttribute('aria-label','Copy code');b.onclick=async()=>{try{await navigator.clipboard.writeText(pre.textContent);b.textContent='Copied'}catch{const range=document.createRange();range.selectNodeContents(pre);const sel=window.getSelection();sel.removeAllRanges();sel.addRange(range);b.textContent='Selected'}};box.append(b)});
-const table=(headers,rows)=>`<table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-document.querySelectorAll('[data-crud]').forEach(el=>{
- el.innerHTML='<div class="example-controls"></div><div class="example-content" aria-live="polite"></div><p class="fiction">Fictional teaching records · no database connection</p>';
- const labels=['Start empty','Insert 3','Change a value','Add a field','Delete 1'];
- const absent='<span class="example-note">not present</span>';
- const states=[[],[[1,'Alice',2,absent],[2,'Ben',5,absent],[3,'Cara',1,absent]],[[1,'Alice','<strong>7</strong>',absent],[2,'Ben',5,absent],[3,'Cara',1,absent]],[[1,'Alice',7,absent],[2,'Ben',5,'<strong>data</strong>'],[3,'Cara',1,absent]],[[1,'Alice',7,absent],[2,'Ben',5,'data']]];
- const notes=['Start with an empty lab9.demo collection.','The for loop calls insert_one once for each document.','update_one selects _id 1. $set changes Alice’s likes to 7.','update_one selects _id 2. $set adds topic: data to Ben’s document.','delete_one removes _id 3. Alice and Ben remain.'];
- const controls=el.querySelector('.example-controls'),out=el.querySelector('.example-content');
- const show=i=>{controls.querySelectorAll('button').forEach((b,k)=>b.setAttribute('aria-pressed',String(k===i)));out.innerHTML=(i?table(['_id','name','likes','topic'],states[i]):'<div class="empty-state"><b>0</b>documents</div>')+`<div class="example-meta"><span class="count-chip">${states[i].length} documents</span><span class="example-note">${notes[i]}</span></div>`};
- labels.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t;b.onclick=()=>show(i);controls.append(b)});show(0);
-});
-document.querySelectorAll('[data-grain]').forEach(el=>{
- el.innerHTML='<div class="example-controls"></div><div class="example-content" aria-live="polite"></div><p class="fiction">Fictional teaching records · a profile location is self-reported text</p>';
- const labels=['Tweet documents','One row per user','Count profile locations'];
- const headers=[['tweet.id','user.id','user.location'],['user.id','user.location'],['Profile location','Distinct users']];
- const rows=[[['T1','U1','Richmond'],['T2','U1','Richmond'],['T3','U2','Richmond'],['T4','U3','(blank)']],[['U1','Richmond'],['U2','Richmond'],['U3','(blank)']],[['Richmond',2]]];
- const notes=['Three tweet documents have Richmond, but two belong to the same user.','U1 is now counted once. There are three distinct users.','Two distinct users report Richmond. The blank location is omitted.'];
- const controls=el.querySelector('.example-controls'),out=el.querySelector('.example-content');
- const show=i=>{controls.querySelectorAll('button').forEach((b,k)=>b.setAttribute('aria-pressed',String(k===i)));out.innerHTML=table(headers[i],rows[i])+`<p class="example-note">${notes[i]}</p>`};
- labels.forEach((t,i)=>{let b=document.createElement('button');b.textContent=t;b.onclick=()=>show(i);controls.append(b)});show(0);
-});
-</script></body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IA340 Lab 10 — Analyze Your Twitter/X Data with Python</title><link rel="stylesheet" href="../../assets/week-9/course.css"><style>
+.lab-page{max-width:1160px;margin:30px auto 65px;padding:36px 44px;background:#fff;border:1px solid var(--line);border-radius:14px;font-size:18px;line-height:1.65}.lab-page h1{font-size:35px;color:#403255;line-height:1.2}.lab-page h2{font-size:27px;color:#513875;margin-top:34px;padding-top:16px;border-top:2px solid #e9e3ef}.lab-page h3{font-size:22px;margin-top:24px}.lab-page pre{font-size:16px;line-height:1.5}.lab-page p{margin:12px 0}.lab-page li{margin-bottom:7px}.lab-page table{font-size:17px}.lab-page th,.lab-page td{vertical-align:top;white-space:normal!important;overflow-wrap:anywhere}.note{padding:13px 17px;border-left:4px solid #278069;background:#f1f8f5;margin:18px 0}.warning{border-left-color:#a64d2c;background:#fff7ee}.small{font-size:15px}.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}.card{padding:18px;border:1px solid var(--line);border-top:4px solid #65448f;border-radius:9px;background:#faf9fd}.card h3{margin-top:0}.table-scroll{overflow-x:auto}.rubric td:nth-child(2),.rubric th:nth-child(2){white-space:nowrap!important;width:90px;text-align:center}.rubric tr:last-child{background:#eee8f5;font-weight:700}.lab-top{max-width:1160px;margin:20px auto;font-size:16px;display:flex;gap:22px}code{overflow-wrap:anywhere}@media(max-width:760px){.lab-page{margin:15px 10px;padding:24px 19px;font-size:17px}.lab-page h1{font-size:29px}.lab-page h2{font-size:24px}.split{grid-template-columns:1fr}.lab-page pre{font-size:14px}.lab-top{padding:0 15px;flex-wrap:wrap}.lab-page table{font-size:15px}}@media print{.lab-top{display:none}.lab-page{border:0;margin:0;max-width:none;padding:0;font-size:12px}.lab-page h1{font-size:25px}.lab-page h2{font-size:19px}.lab-page table{font-size:11px}}
+</style></head><body><nav class="lab-top" aria-label="Course links"><a href="../../">Course Home</a><a href="../../modules/module-10/">Week 10 lecture</a><a href="../../syllabus/">Syllabus</a></nav><main class="lab-page">
+<h1>Lab 10 — Analyze Your Twitter/X Data with Python</h1>
+<p class="small">IA 340 · 100 points · October 26–30, 2026 · Independent lab: Wednesday, October 28 · Due date: see Canvas.</p>
+<p>Complete the guided lecture on shared fictional data, then repeat the query-to-pandas workflow independently with your own Twitter/X data. The lecture and lab are separate notebooks. You do not need a saved <code>lab9.py</code> file or any previously exported Lab 9 query.</p>
+<div class="split"><article class="card"><h3>Lecture · 30 points</h3><p><code>lecture10.ipynb</code><br><code>lec9.dummy_data</code></p><p>100 identical fictional records; CRUD practice; three query exercises. Everyone should obtain the same checked data results.</p></article><article class="card"><h3>Independent lab · 60 points</h3><p><code>lab10.ipynb</code><br><code>lab8.tweet_collection</code></p><p>Your own collected posts; four read-only questions; AI Use and Summary. Results will differ among students.</p></article></div>
+<p class="note">The remaining <strong>10 points</strong> assess submission format and source access. Keep the lecture's writes entirely in <code>lec9.dummy_data</code>. The independent lab must not change your Twitter data.</p>
+<h2>1. Prepare two Colab notebooks</h2>
+<p>Create both notebooks in <strong>Google Colab</strong>. Save them at the root of your assigned GitHub repository on branch <code>main</code> as <code>lecture10.ipynb</code> and <code>lab10.ipynb</code>.</p>
+<p>In each notebook, reuse the Secrets-based connection setup to create <code>client</code>, and import pandas and your plotting library. Keep the real connection string in the Colab Secret <code>MONGODB_CONNECTION_STRING</code>; never print it. Follow the <a href="../../modules/module-10/#slide-3">lecture setup</a>.</p>
+<p><strong>Do not collect more tweets or rerun Lab 8's collection/insertion cells.</strong> For the independent lab, read your existing <code>lab8.tweet_collection</code>. Do not insert, update, delete, drop, change indexes, or use <code>$out</code> or <code>$merge</code> in that collection.</p>
+<h2>2. Complete the guided lecture — 30 points</h2>
+<p>Follow the <a href="../../modules/module-10/">Week 10 lecture</a> and keep headings, executable code, and visible results in <code>lecture10.ipynb</code>.</p>
+<h3>A. Insert, update, and delete — 12 points</h3>
+<p>Generate and insert the same 100 fictional posts into <code>lec9.dummy_data</code>. Insert the temporary document <code>w10-demo</code>; change an existing value and a nested location field; add a new scalar field and a list field; add an item to that list; delete only the temporary document. Show the changes and verify that the original 100-record baseline remains unchanged.</p>
+<p>Repeated setup checks the existing baseline instead of inserting duplicates. Do not rerun the temporary insert until its exact-ID delete has been completed. If a baseline assertion fails, stop and inspect the lecture collection rather than clearing an unknown collection.</p>
+<h3>B. Three AI-assisted query exercises — 18 points</h3>
+<p>Each exercise is worth 6 points. Use MongoDB's built-in AI on the website to create and check the query. Export complete Python with <strong>Include Driver Syntax</strong>, run it using your existing <code>client</code>, and convert the result with the same <code>list(result) → pd.json_normalize(records) → display(...)</code> pattern.</p>
+<table><thead><tr><th>Exercise</th><th>DataFrame</th><th>Required output</th></tr></thead><tbody><tr><td>Ten most-liked Fairfax posts</td><td><code>df_posts</code></td><td>Initial DataFrame + Gemini-assisted readable post table</td></tr><tr><td>Five distinct users with the most followers</td><td><code>df_users</code></td><td>Initial DataFrame + Gemini-assisted horizontal bar chart</td></tr><tr><td>Occurrences of tags in the nested hashtag arrays</td><td><code>df_tags</code></td><td>Initial DataFrame + Gemini-assisted bar chart</td></tr></tbody></table>
+<p>For each exercise, keep a Markdown question, the actual query in a Markdown fenced code block, the runnable Python and its outputs, and a brief Markdown finding. Use the lecture's expected values to check correctness. These fixed-data exercises have non-empty results; an empty lecture result needs debugging.</p>
+<p><strong>No separate AI Use or Summary section is required in the lecture notebook.</strong> Those two sections belong in the independent notebook only. Keep the table and charts saved with their code.</p>
+<h2>3. Repeat the workflow independently</h2>
+<p>In <code>lab10.ipynb</code>, use MongoDB's built-in AI to develop queries for Q1–Q4 against <strong>your own Twitter/X data</strong>. Do not copy the lecture's fictional records or its fixed answers into the lab. The data shape is different:</p>
+<table><thead><tr><th>Lecture example</th><th>Your Twitter/X collection</th></tr></thead><tbody><tr><td><code>text</code>, <code>likes</code></td><td><code>tweet.text</code>, <code>tweet.public_metrics.like_count</code></td></tr><tr><td><code>user.followers</code></td><td><code>user.public_metrics.followers_count</code></td></tr><tr><td><code>user.location.city</code></td><td><code>user.location</code> is profile text</td></tr><tr><td><code>entities.hashtags.tag</code></td><td><code>tweet.entities.hashtags.tag</code></td></tr></tbody></table>
+<h3>Use this cell structure for every question</h3>
+<table><thead><tr><th>Step</th><th>Cell type</th><th>What to include</th></tr></thead><tbody><tr><td>1. Question</td><td>Markdown</td><td>The question number and heading, such as <code>## Q1. Tweets with the most likes</code>.</td></tr><tr><td>2. Actual query</td><td>Markdown</td><td>The MongoDB query or aggregation pipeline you actually used, in a fenced code block. Check and correct the AI output. Do not submit prompt transcripts or chat history.</td></tr><tr><td>3. Python and output</td><td>Code</td><td>Run the full Python export, load a question-specific DataFrame, display its initial contents, and use Gemini inside Colab to create the required final table or chart. Keep executed outputs visible.</td></tr><tr><td>4. Findings</td><td>Markdown</td><td>Answer the question using your actual output. Explain the leading results and any relevant limitation or valid empty result.</td></tr></tbody></table>
+<p>The query in Markdown is documentation. Its runnable Python version goes in a code cell. Use additional code cells as needed; no extra <code>.py</code> submission or separate report is required.</p>
+<h3>Export complete Python — Include Driver Syntax is required</h3>
+<p>In the MongoDB website, run and check the query, then choose <strong>Export Code / Export to Language → Python → Include Driver Syntax</strong>. The export must include <code>result = client[...].find(...)</code> or <code>result = client[...].aggregate(...)</code>, with all supporting variables. Parameters or pipeline stages alone do not create <code>result</code>.</p>
+<p>Use your existing Secrets-based <code>client</code>. Omit another connection initialization and never paste a real URI into a notebook. Use the actual exported result variable consistently. This requirement does not retroactively change Lab 9 grading.</p>
+<h3>Use the same conversion, with a new DataFrame name</h3>
+<pre><code># Run Q1's complete exported query first.
+records = list(result)
+df_q1 = pd.json_normalize(records)
+display(df_q1)</code></pre>
+<p>Repeat exactly this pattern for Q2–Q4, changing the DataFrame name to <code>df_q2</code>, <code>df_q3</code>, and <code>df_q4</code>. The conversion does not depend on fixed column names. Display first; then let Gemini inspect the actual columns and help select fields, show complete text, format a table, or create a chart.</p>
+<p class="note">Run each question in order: <strong>query → conversion → display/chart → findings</strong>. The shared names <code>result</code> and <code>records</code> can be reused, but keep a different DataFrame for each question. Do not run all queries first and convert only the final result.</p>
+<p><code>list(result)</code> consumes a cursor. To convert again, rerun that query first. To redisplay loaded data, run only <code>display(df_q1)</code> (or the relevant name). A missing field, failed query, exhausted cursor, or stale DataFrame is not evidence of an empty dataset. Do not conceal a failure with a fallback that shows unrelated data or invented values.</p>
+<p>Colab's optional interactive viewer is useful for inspection, but it does not replace saved outputs. The initial DataFrame display does not replace the final output required below.</p>
+<h2>4. Answer the four questions — 40 points</h2>
+<h3 id="q1">Q1. Which ten collected tweets have the most likes? — 10 points</h3>
+<p>Create a <strong>pandas table</strong> with <strong>Tweet text</strong> on the left and <strong>Likes</strong> on the right. Display up to 10 unique tweets, from highest to lowest <code>tweet.public_metrics.like_count</code>.</p>
+<ul><li>Show the complete <code>tweet.text</code>, without truncation.</li><li>Count each <code>tweet.id</code> once. If repeated, use its highest stored numeric like count.</li><li>Use a consistent tie-break, such as sorting by <code>tweet.id</code>.</li></ul>
+<p>In the Markdown findings, describe what the most-liked posts discuss. These are stored counts from collection time, not live counts.</p>
+<h3 id="q2">Q2. Which ten users in your collection have the most followers? — 10 points</h3>
+<p>Create a <strong>horizontal bar chart</strong> for up to 10 distinct users, ranked by <code>user.public_metrics.followers_count</code>.</p>
+<ul><li>Count each <code>user.id</code> once, even if the user wrote several collected tweets. Use the highest stored numeric follower count for that user.</li><li>Label the bars with <code>user.username</code> and the numeric axis <strong>Followers</strong>. Put the largest value at the top and use a descriptive title.</li><li>Do not rank by <code>following_count</code> or by the number of collected tweets.</li></ul>
+<p>In the Markdown findings, identify the leading user and compare their follower count with the others. An additional final table is optional.</p>
+<h3 id="q3">Q3. Which profile locations occur among the most users? — 10 points</h3>
+<p>Create a <strong>bar chart</strong> for up to 10 non-empty profile locations, using <code>user.location</code> and counting <strong>distinct <code>user.id</code> values</strong>.</p>
+<ul><li>Exclude missing, null, empty, and whitespace-only locations. Trim surrounding spaces; otherwise preserve spelling and capitalization.</li><li>If one user has different non-empty locations, choose one consistently and explain the rule.</li><li>Label the count axis <strong>Distinct users</strong>. Choose a clear title and bar orientation.</li></ul>
+<p>In the Markdown findings, identify the leading location labels and explain that they are self-reported profile text. Labels such as <code>NYC</code> and <code>New York</code> remain separate. If no usable locations exist, display the successfully executed empty query result and explain why no chart is possible.</p>
+<h3 id="q4">Q4. Which hashtags occur most often? — 10 points</h3>
+<p>Create a <strong>bar chart</strong> for up to 10 hashtags from <code>tweet.entities.hashtags.tag</code>. Use MongoDB AI to build and check the required array aggregation.</p>
+<ul><li>Count each tag's <strong>occurrences in the stored hashtag arrays</strong>. A post with two different tags contributes one occurrence to each.</li><li>Preserve spelling and capitalization: <code>Election</code> and <code>election</code> remain separate.</li><li>Label the count axis <strong>Hashtag occurrences</strong>. Choose a clear title and bar orientation.</li></ul>
+<p>Describe the leading tags and what the counts measure. If only one or two tags occur, plot those. If none occur, display the successfully executed empty result and write <strong>“No hashtags found; hashtag occurrences: 0.”</strong> No chart is required for that valid empty result. Do not invent hashtags, extract substitutes from text, or add rows for a fuller chart.</p>
+<h3>Small or incomplete results</h3>
+<p>Show all qualifying results when there are fewer than ten. Missing or nonnumeric like/follower counts are <strong>unknown, not zero</strong>; exclude them from rankings and report the number excluded. Correctly executed and explained empty results can earn full credit. A connection error, failed query, or unexecuted cell does not establish an empty result.</p>
+<h2>5. AI Use — 10 points; lab10.ipynb only</h2>
+<p>After Q4, add a Markdown section titled <strong>AI Use</strong>. Identify the approved tools you actually used, the questions or steps where they helped, and how you verified or corrected their output. Include a specific limitation or check, such as a wrong field path, counting posts instead of users, or a chart label that needed correction.</p>
+<p>Be honest about the work performed and any code adapted from the lecture. Do not fabricate an AI interaction. No prompt transcript is required; never include credentials. If an approved feature is unavailable, contact the instructor before substituting another tool.</p>
+<h2>6. Summary — 10 points; lab10.ipynb only</h2>
+<p>End with a Markdown section titled <strong>Summary</strong>. Write approximately 4–6 sentences that synthesize at least two findings from your own results, identify an important limitation of the collected data, and explain what the MongoDB → Python → pandas workflow helped you analyze. This is a synthesis, not a second copy of all four answers.</p>
+<p>Discuss actual results, including small or empty results where relevant. Do not claim that a limited collected sample represents all Twitter/X activity.</p>
+<h2>7. AI policy</h2>
+<p>The only approved AI tools are <strong>MongoDB's built-in AI query tools</strong> and <strong>Gemini inside Google Colab</strong>. You are responsible for understanding and verifying all queries, code, outputs, and Markdown answers.</p>
+<p>Other AI websites, coding agents, extensions, and AI APIs are not permitted. Having an outside AI tool complete a notebook and copying or uploading it into Colab is not permitted. Saving it through Colab does not make outside AI use acceptable. Do not put credentials into AI prompts.</p>
+<p class="note warning"><strong>Confirmed use of an unapproved AI tool results in 0 points for the entire assignment. Repeated violations will be reported to the JMU Honor Council.</strong> This policy applies to both notebooks.</p>
+<h2>8. Save both notebooks directly from Colab to GitHub</h2>
+<ol><li>Keep the lecture's executed code and outputs. Do not rerun insert cells just to save. Run the independent read-only notebook from beginning to end and inspect its outputs.</li><li>Check code, Markdown, outputs, and screenshots for secrets.</li><li>In Colab, use <strong>File → Save a copy in GitHub</strong> (the menu may say “to GitHub”). Select your assigned repository, branch <code>main</code>, and the correct filename at the root.</li><li>Keep the commit message <code>Created using Colab</code> and leave <strong>Include a link to Colab</strong> checked. Save both <code>lecture10.ipynb</code> and <code>lab10.ipynb</code>.</li><li>On GitHub, verify each notebook's filename, saved outputs, commit message, and working <strong>Open in Colab</strong> button. Check that the lab contains Q1–Q4, AI Use, and Summary.</li></ol>
+<p><strong>No manual GitHub upload and no notebook completed elsewhere and uploaded into Colab.</strong> Save later revisions from Colab again. Saving only to Google Drive is not submission. The commit message and button do not replace completing the work through the required workflow; retain your working notebooks and be ready to explain or rerun your work.</p>
+<h2>9. Submit exactly two values in Canvas</h2>
+<p>In <strong>Canvas → Lab 10</strong>, submit two values on separate lines, <strong>without labels or extra text</strong>.</p>
+<p><strong>Line 1:</strong> your assigned GitHub repository <strong>root URL</strong>. Select your section's format:</p>
+<pre><code>IA340-1: https://github.com/JMU-Data/ia340-fa26-1-&lt;your-github-username&gt;
+IA340-2: https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;</code></pre>
+<p>Submit only your own URL, without the section label. Stop at the repository name: no individual notebook link or Colab sharing URL. Both notebooks must be at the repository root on <code>main</code> and accessible to the instructor.</p>
+<p><strong>Line 2:</strong> your complete working MongoDB connection string, including the password, for instructor verification of your source data. Submit it <strong>only in private Canvas</strong>, not GitHub.</p>
+<p class="small">Format example — fictional placeholders, not a usable connection:</p><pre><code>mongodb+srv://YOUR_DB_USER:YOUR_DB_PASSWORD@ia340.example.mongodb.net/?appName=ia340</code></pre>
+<p>Use your own complete Atlas URI, not the example. Queries select <code>lab8.tweet_collection</code>, so a <code>/lab8</code> URI suffix is not required. Keep the real URI only in Colab Secrets and the private Canvas submission. A missing or inaccessible URI prevents source verification; fix access under the course deadline and late-work rules. A connection failure is not an empty dataset.</p>
+<h2>Rubric — 100 points</h2>
+<p><strong>Lecture 30 + independent lab 60 + submission/access 10.</strong> The independent lab's 60 points comprise four questions (40), AI Use (10), and Summary (10).</p>
+<div class="table-scroll"><table class="rubric"><thead><tr><th>Criterion</th><th>Points</th><th>Evidence</th></tr></thead><tbody>
+<tr><td>Lecture Exercises<br><code>lecture10.ipynb</code></td><td>30</td><td>CRUD and unchanged 100-record baseline (12); three complete AI-query → Python → DataFrame → Gemini-output exercises with brief findings (6 each). Keep executed evidence. No separate AI Use or Summary.</td></tr>
+<tr><td>Independent Questions<br><code>lab10.ipynb</code></td><td>40</td><td>Q1–Q4, 10 each. Question, actual query, runnable Python, initial question-specific DataFrame, final required output, and findings. One text table and three bar charts, or correctly supported empty results. Use your own source data.</td></tr>
+<tr><td>AI Use</td><td>10</td><td>Approved tools actually used, tasks supported, a specific limitation/check/correction, and honest attribution. Lab notebook only; no prompt transcript.</td></tr>
+<tr><td>Summary</td><td>10</td><td>4–6 sentences synthesizing at least two findings, a data limitation, and the role of the workflow. Lab notebook only.</td></tr>
+<tr><td>Submission &amp; Source Access</td><td>10</td><td>Correct repository root URL and working private Canvas URI; both notebooks at the root on main; instructor access; direct Colab saves with visible outputs, Created using Colab, and working Open in Colab links.</td></tr>
+<tr><td>Total</td><td>100</td><td>30 + 40 + 10 + 10 + 10</td></tr></tbody></table></div>
+<p class="small">Default ratings are <strong>PASS = full criterion points</strong> and <strong>MISSING = 0</strong>; the instructor may assign intermediate scores for partial work. Submission checks assess delivery and access, not the same analysis twice. Valid empty results may earn full credit; a failed or unexecuted query may not.</p>
+<h3>Credential safety — the existing one-time deduction remains</h3>
+<p>No separate points are awarded for credential safety. Exposing a real connection string, password, API key, token, or secret value in submitted GitHub files, Markdown, saved outputs, screenshots, or history causes a <strong>one-time 20-point deduction</strong> from the otherwise earned assignment score, floored at zero. Do not deduct again under Submission for that same exposure.</p>
+<p>Remove and revoke or rotate an exposed secret promptly; later removal does not erase the exposure. Placeholders and reading a Colab Secret without revealing its value are not exposure. The unapproved-AI policy separately applies to the entire assignment.</p>
+<p>Follow the Canvas deadline and <a href="../../syllabus/">course late-work policy</a>. Both the Canvas submission and the GitHub version used for grading must meet the deadline.</p>
+<h2>References</h2>
+<p class="small"><a href="https://www.mongodb.com/docs/atlas/atlas-ui/query-with-natural-language/">MongoDB AI queries</a> · <a href="https://www.mongodb.com/docs/atlas/atlas-ui/export-query-to-language/">Export queries</a> · <a href="https://www.mongodb.com/docs/atlas/atlas-ui/export-pipeline-to-language/">Export pipelines</a> · <a href="https://pandas.pydata.org/docs/reference/api/pandas.json_normalize.html">pandas json_normalize</a> · <a href="https://colab.research.google.com/github/googlecolab/colabtools/blob/main/notebooks/colab-github-demo.ipynb">Colab and GitHub</a></p>
+</main></body></html>

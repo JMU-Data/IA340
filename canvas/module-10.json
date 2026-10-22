@@ -29,19 +29,19 @@
       },
       {
         "key": "independent-questions",
-        "description": "Lab Questions — lab10.ipynb: Q1–Q4, 10 points each. Include the actual query, executable Python, required output, and brief Markdown findings. Q1: the 20 most-liked tweets, complete text and likes in a pandas table. Q2: ten most-followed users, bar chart of usernames and follower counts. Q3: common profile locations based on users, bar chart. Q4: up to ten popular hashtags, bar chart; explain a successful query with no hashtags in Markdown instead. No separate overall Summary. Read the student's existing lab8.tweet_collection without changing it.",
+        "description": "Lab Questions — lab10.ipynb: Q1–Q4, 10 pts each. Include query, executable Python, required table/chart output, and brief findings in Markdown. Read student's existing lab8.tweet_collection without changing it. No separate overall Summary.",
         "points": 40.0,
         "ratings": [{"key": "pass", "description": "PASS", "points": 40.0}, {"key": "missing", "description": "MISSING", "points": 0.0}]
       },
       {
         "key": "ai-use",
-        "description": "AI Use — in lab10.ipynb after Q4: 3–4 sentences stating the approved tools used and how they helped, a limitation or check, and a privacy risk or precaution. Approved tools: MongoDB built-in AI and Gemini inside Colab. Confirmed unapproved AI use results in zero for the entire assignment; repeated violations will be reported to the JMU Honor Council.",
+        "description": "AI Use — lab10.ipynb after Q4: 3–4 sentences on approved tools (MongoDB AI, Colab Gemini), how they helped, a check/limitation, and privacy risk. Unapproved AI use yields 0 for the assignment; repeated violations reported to Honor Council.",
         "points": 10.0,
         "ratings": [{"key": "pass", "description": "PASS", "points": 10.0}, {"key": "missing", "description": "MISSING", "points": 0.0}]
       },
       {
         "key": "submission-source-access",
-        "description": "Submission & Source Access: correct assigned GitHub repository root URL and a complete working MongoDB connection string on separate lines in private Canvas. Both lecture10.ipynb and lab10.ipynb at the repository root on main, accessible to the instructor and saved directly from Colab with outputs, Created using Colab, and working Open in Colab links. Credential exposure is a separate one-time 20-point deduction, floored at zero; do not double-deduct the same exposure under this criterion.",
+        "description": "Submission & Source Access: assigned GitHub root URL and working MongoDB URI in private Canvas. lecture10.ipynb and lab10.ipynb at repo root on main with outputs. Credential exposure is a one-time 20-pt deduction floored at zero (not double-deducted).",
         "points": 20.0,
         "ratings": [{"key": "pass", "description": "PASS", "points": 20.0}, {"key": "missing", "description": "MISSING", "points": 0.0}]
       }

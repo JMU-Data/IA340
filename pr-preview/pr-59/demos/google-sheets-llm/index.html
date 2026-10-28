@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IA340 · LLMs in Google Sheets — Classroom Demo</title>
+<title>IA340 · OPTIONAL Instructor Demo — LLMs in Google Sheets</title>
 <style>
 :root{color-scheme:light;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#243548;background:#f8faf9}
 *{box-sizing:border-box}body{margin:0;line-height:1.55}.wrap{max-width:1220px;margin:auto;padding:24px}
@@ -23,17 +23,18 @@ table{border-collapse:collapse;width:100%;font-size:.91rem;min-width:710px}th{te
 footer{padding:25px 0 36px;border-top:1px solid #e0e9e5;font-size:.9rem;color:#687a73}
 @media(max-width:600px){.wrap{padding:17px}.hero{padding:22px 0}.grid{grid-template-columns:1fr}}
 </style></head><body>
-<header><div class="wrap hero"><div class="eyebrow">IA 340 · Data Mining · Week 11</div>
-<h1>One row. Many LLM tasks.</h1><p>Start with just <b>two input columns</b>: a text message and a location. Google Sheets’ <code>=AI()</code> can then help classify the message, extract entities, summarize it, or estimate coordinates.</p>
-<div class="chips"><span>10 synthetic messages</span><span>10 public addresses</span><span>6 repeatable AI columns</span><span>No API key in the spreadsheet</span></div>
+<header><div class="wrap hero"><div class="eyebrow">IA 340 · Data Mining · Week 11 · OPTIONAL INSTRUCTOR DEMO</div>
+<h1>One row. Many LLM tasks.</h1><p>Start with just <b>two input columns</b>: a text message and a location. Google Sheets’ <code>=AI()</code> can then help classify the message, extract entities, summarize it, or estimate coordinates. This is an <strong>instructor-led demonstration, not an assignment</strong>.</p>
+<div class="chips"><span>10 synthetic messages</span><span>10 public addresses</span><span>6 repeatable AI columns</span><span>No student account access required to watch</span></div>
 <div class="actions"><a class="link" href="./demo-data.csv" download>Download the 10-row CSV</a><a class="link secondary" href="https://support.google.com/docs/answer/15877199" target="_blank" rel="noopener">Google’s official =AI() guide</a></div>
 </div></header>
 <main class="wrap">
-<section><h2>Classroom workflow</h2><div class="steps">
-<div class="step"><b>1</b><div>Import <strong>demo-data.csv</strong> into a new Google Sheet. Columns A and B contain the inputs.</div></div>
+<section class="note"><strong>Optional — instructor demonstration only.</strong> Access to <code>=AI()</code> is not available for every Google account. Students can simply watch the demonstration. No paid subscription, feature access, data submission, or Google Sheets AI work is required. Wednesday Lab follows the original Colab / Gemini LLM API / MongoDB / Python plan.</section>
+<section><h2>Instructor demo workflow</h2><div class="steps">
+<div class="step"><b>1</b><div>The instructor opens a prepared Google Sheet (or imports <strong>demo-data.csv</strong>). Columns A and B contain the inputs.</div></div>
 <div class="step"><b>2</b><div>Add six result headers: <strong>Sentiment, Anger?, Organizations, Summary, Latitude, Longitude</strong> in columns C–H.</div></div>
-<div class="step"><b>3</b><div>Copy the formulas below into row 2 (C2–H2), click <strong>Generate and insert</strong> where available, then fill down a few rows.</div></div>
-<div class="step"><b>4</b><div>Compare outputs across rows. Check coordinates against a <strong>trusted map or geocoder</strong> before GIS use.</div></div>
+<div class="step"><b>3</b><div>Instructor: paste one or two formulas below into C2–H2, click <strong>Generate and insert</strong> if available, and optionally fill down a few rows. Students only observe.</div></div>
+<div class="step"><b>4</b><div>Discuss sample outputs across rows, or demonstrate with screenshots if access is unavailable. Check coordinates against a <strong>trusted map or geocoder</strong> before GIS use.</div></div>
 </div></section>
 <section><h2>The same 10 rows for every task</h2><p class="muted">Sample social-media-style posts are fictional. Location addresses are real public venues; they do not describe private users or student locations.</p>
 <div class="preview"><table><thead><tr><th>#</th><th>A · Text Message</th><th>B · Location / Address</th></tr></thead><tbody><tr><td class="index">1</td><td>JMU hosted an excellent AI workshop. I learned several practical tools.</td><td>800 S Main St, Harrisonburg, VA 22807</td></tr>
@@ -53,7 +54,7 @@ footer{padding:25px 0 36px;border-top:1px solid #e0e9e5;font-size:.9rem;color:#6
 <article class="task"><div class="task-top"><span class="column">F</span><div><strong>Summary</strong><small>Short English summary</small></div></div><pre id="formula-F">=AI(&quot;Summarize this message in one short sentence of at most 12 words. Return only the summary.&quot;, A2)</pre><button class="copy" data-col="F">Copy formula</button></article>
 <article class="task"><div class="task-top"><span class="column">G</span><div><strong>Latitude</strong><small>Approximate, unverified</small></div></div><pre id="formula-G">=AI(&quot;Estimate the latitude for this street address in decimal degrees. Return only one number, or Unknown if uncertain. Do not add explanations.&quot;, B2)</pre><button class="copy" data-col="G">Copy formula</button></article>
 <article class="task"><div class="task-top"><span class="column">H</span><div><strong>Longitude</strong><small>Approximate, unverified</small></div></div><pre id="formula-H">=AI(&quot;Estimate the longitude for this street address in decimal degrees. Return only one number, or Unknown if uncertain. Do not add explanations.&quot;, B2)</pre><button class="copy" data-col="H">Copy formula</button></article></div></section>
-<section class="note"><strong>Teaching distinction: extraction vs. geocoding.</strong> An LLM may invent or approximate coordinates, even for a real address. The latitude and longitude are an experiment in LLM behavior, <b>not GIS-quality geocoding</b>. Also, Sheets’ =AI() access and generation quotas vary by account; students without access can still follow the demonstration.</section>
+<section class="note"><strong>Teaching distinction: extraction vs. geocoding.</strong> An LLM may invent or approximate coordinates, even for a real address. The latitude and longitude are an experiment in LLM behavior, <b>not GIS-quality geocoding</b>. Sheets’ =AI() access and generation quotas vary by account; this optional instructor demo has no student participation, paid-license, or grading requirement.</section>
 </main><footer><div class="wrap">IA340 · Public sample content · No real tweets, student data, credentials, or private addresses. Google Sheets AI functions and the Gemini LLM API are different workflows.</div></footer>
 <script>
 document.querySelectorAll(".copy").forEach(function(button){

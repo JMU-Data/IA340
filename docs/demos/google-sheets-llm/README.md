@@ -1,4 +1,6 @@
-# IA340 · Week 11 · Google Sheets LLM classroom demo
+# IA340 · Week 11 · OPTIONAL instructor-led Google Sheets LLM demo
+
+**OPTIONAL, INSTRUCTOR DEMO ONLY — not a student task or graded activity.** Students do not need access to the `=AI()` feature, a Google AI paid plan, or an API key to watch. The Wednesday Lab remains Colab / Gemini LLM API / MongoDB / Python.
 
 **Public, synthetic demonstration only.** No real X/Twitter data, students, private addresses, credentials, or Canvas data are included.
 
@@ -17,7 +19,7 @@ One **row is one message**. Columns `A` and `B` contain the data; the same six A
 | G | Latitude | B |
 | H | Longitude | B |
 
-The CSV intentionally includes **only the two input columns**. Copy the six sample formulas from the [GitHub Pages demo](./index.html) into C2:H2 and fill down selectively for live teaching. Do **not** generate all 60 answers automatically. Google Sheets `=AI()` availability and quota depend on the current account. No API key is required within the spreadsheet formula.
+The CSV intentionally includes **only the two input columns**. For an **instructor-led** demonstration, copy one or two sample formulas from the [GitHub Pages demo](./index.html) into C2:H2 and optionally fill down a few rows. Students can simply observe, including when their accounts do not support `=AI()`. Do **not** generate all 60 answers automatically. Google Sheets `=AI()` availability and quota depend on the account, and a spreadsheet formula does not need an API key.
 
 **Important:** LLM-estimated latitude/longitude is not authoritative geocoding. Validate against a trusted map/geocoding tool before mapping. Outputs can be wrong or inconsistent.
 
@@ -40,4 +42,4 @@ All ten **messages are invented** for teaching; there is no real post, person, o
 
 ## Boundary
 
-This is an optional **Monday lecture demo**, not a new Lab requirement. The Wednesday Lab retains its Colab, Gemini LLM API, MongoDB, and Python workflow. Only merge this public site content after instructor approval.
+This is an **optional Monday instructor-led demonstration**, not a student exercise, submission, paid-license requirement, or grading criterion. The Wednesday Lab retains its Colab, Gemini LLM API, MongoDB, and Python workflow. Only merge this public site content after instructor approval.

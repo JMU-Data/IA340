@@ -699,3 +699,13 @@ client.close()
 **Code explained — Close the database connection:** **`client.close()`:** ends the MongoDB connection after you finish reviewing and saving your notebook.
 
 **Lecture: 40 points · Lab: 60 points.** The optional Google Sheets demonstration is not graded. See the separate Lab 11 assignment for the complete requirements.
+
+---
+
+## 38 · Check Your Google Cloud Billing Later
+
+Google Cloud Billing reports may take time to show recent Gemini API charges. Check again **the next day or a few days later**, even if today's usage looks empty.
+
+Open **Google Cloud → Billing → Reports** and review the dates, product, usage, and cost. The instructor example shows **$0.26**; your actual charges and reporting delay may differ.
+
+<figure class="figure"><img class="demo-shot" src="assets/Cloud_Billing_Usage_Delay.png" alt="Google Cloud Billing report showing an example cost of $0.26 and a breakdown of Gemini API usage by SKU."/><figcaption>Instructor Google Cloud Billing report: example API charges visible after a reporting delay. Costs and timing may differ for your project.</figcaption></figure>

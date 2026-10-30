@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'"><title>Census API request and response — offline demonstration</title><style>*{box-sizing:border-box}body{margin:0;background:#fff;color:#1f2328;font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}main{max-width:1160px;margin:auto;padding:18px 24px}h1{font-size:28px;line-height:1.2;margin:5px 0 8px}h2{font-size:20px;margin:0 0 12px}.kicker{font-size:13px;font-weight:700;color:#0969da;letter-spacing:.07em}.intro{color:#57606a;margin:0 0 18px}.controls{display:flex;gap:15px;align-items:end;flex-wrap:wrap;padding:12px;background:#f6f8fa;border:1px solid #d0d7de;border-radius:9px;margin:12px 0}label{display:block;font-size:16px;font-weight:600}select,input[type=text],input[type=number]{display:block;margin-top:5px;border:1px solid #8c959f;border-radius:5px;padding:8px;background:white;font:inherit;max-width:100%}input[type=number]{width:160px}input[type=checkbox]{width:19px;height:19px;vertical-align:middle}button{border:1px solid #0969da;border-radius:6px;background:#0969da;color:white;font:inherit;font-weight:600;font-size:16px;line-height:1.4;padding:9px 15px;cursor:pointer}button.secondary{background:white;color:#0969da}button:disabled{opacity:.45;cursor:default}:focus-visible{outline:3px solid #bf8700;outline-offset:3px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{min-width:0;border:1px solid #d0d7de;border-radius:8px;padding:13px;overflow:auto}.sql{display:block;background:#ddf4ff;border-left:4px solid #0969da;border-radius:5px;padding:12px;margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere;font:18px/1.35 ui-monospace,Consolas,monospace}table{width:100%;border-collapse:collapse;font-size:16px}th,td{padding:6px 10px;border-bottom:1px solid #d0d7de;text-align:left;vertical-align:top}th{background:#f6f8fa;font-weight:650}td.num{font-variant-numeric:tabular-nums}tr.dim{opacity:.43}tr.hit{background:#dafbe1}.hint{color:#57606a;font-size:15px;margin:12px 0 0}.status{min-height:28px;font-size:16px;font-weight:600;color:#1a7f37}.note{border-left:4px solid #1a7f37;padding:10px 14px;background:#dafbe1;margin:14px 0}.foot{margin-top:14px;border-top:1px solid #d0d7de;padding-top:12px;font-size:13px;color:#57606a}.chips{display:flex;gap:12px;flex-wrap:wrap}.chips label{border:1px solid #d0d7de;border-radius:6px;background:white;padding:10px 15px}.code-label{font:500 17px ui-monospace,Consolas,monospace}p{margin:.55rem 0}pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.small{font-size:14px}[hidden]{display:none!important}@media(max-width:740px){main{padding:16px}.grid{grid-template-columns:1fr}h1{font-size:24px}.sql{font-size:16px}th,td{padding:7px}table{font-size:15px}}
+.sql{background:#fafbfc;border:1px solid #d0d7de;padding:12px;font-size:21px;line-height:1.55;white-space:normal;overflow-x:auto;overflow-wrap:normal}.sql .line{display:block;white-space:pre-wrap;overflow-wrap:anywhere;padding:1px 10px;border-left:4px solid transparent;min-height:1.55em}.sql .line.active{background:#fff1a8;border-left-color:#bf8700;color:#24292f}.kw{color:#0550ae;font-weight:750}.metric{font-size:36px;font-weight:750;color:#0969da;margin:12px 0}.state{font-weight:650;padding:8px 12px;border:1px solid #d0d7de;border-radius:6px}.pass{font-weight:700;color:#1a7f37}.fail{font-weight:650;color:#57606a}.legend{font-size:15px;color:#57606a}button{white-space:normal}.grid .sql{font-size:19px}.panel{overflow-wrap:anywhere}.chips label{font-size:17px}.groupcard{background:#ddf4ff;padding:12px;margin:8px 0;border-radius:8px}.groupcard:nth-child(even){background:#dafbe1}@media(max-width:740px){.sql{font-size:18px}.sql .line{padding:2px 6px}.grid .sql{font-size:17px}.controls{align-items:stretch}.controls label{max-width:100%}select{max-width:100%}}
+h3{font-size:17px;margin:14px 0 5px}.legend{min-height:48px}.note{font-size:16px}.grid{grid-template-columns:1.08fr 1fr}.panel table{font-size:15px}.panel th,.panel td{padding:6px 7px}.controls{gap:12px}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style></head><body><main>
+<h1>Change a request. Inspect the response.</h1>
+<p class="intro">The Census API returns records to Colab. An API response does not insert anything into PostgreSQL.</p>
+<p class="note"><strong>Offline demonstration only.</strong> A few sample county identities and annual observations; all population/income numbers are invented teaching values, not Census estimates. No API call or database write occurs.</p>
+<div class="controls">
+<label>State<select id="state"><option value="VA">Virginia — 51</option><option value="MD">Maryland — 24</option></select></label>
+<label>Survey year<select id="year"></select></label>
+<label>Requested fields<select id="fields"><option value="names">County directory (Cell 4)</option><option value="population" selected>Annual population</option><option value="income">Annual income</option></select></label>
+<label>Highlight only<select id="focus"><option value="geo">Geography filter</option><option value="year">Survey year</option><option value="fields">Requested fields</option></select></label>
+</div>
+<pre class="sql" id="sql" aria-label="Python API request"></pre>
+<p id="status" class="status" aria-live="polite"></p>
+<div class="grid" aria-live="polite">
+<section class="panel"><h2>API-style response — simulated</h2><p id="response-context" class="legend"></p><div id="response"></div></section>
+<section class="panel"><h2>Mapped rows — preview, NOT inserted</h2><p id="mapped-context" class="legend"></p><div id="stored"></div></section>
+</div>
+<p id="change-note" class="note"></p>
+<p class="hint"><strong>State and annual year</strong> change the matching request and response. The <strong>county directory</strong> uses a fixed 2020 geographic reference, not the selected annual survey year. Highlight only changes code emphasis.</p>
+<footer class="foot">us selects the state. The Census county directory supplies county names, including places without annual observations. Only ACS 1-year supplies population and income. This demonstration makes no network requests or database writes.</footer>
+</main><script>"use strict";const $=id=>document.getElementById(id);
+const esc=v=>String(v===null?'NULL':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function table(data,cols,mark=null){return '<table><thead><tr>'+cols.map(c=>'<th scope="col">'+esc(c)+'</th>').join('')+(mark?'<th>Match?</th>':'')+'</tr></thead><tbody>'+data.map(r=>'<tr'+(mark?' class="'+(mark(r)?'hit':'dim')+'"':'')+'>'+cols.map(c=>'<td class="num">'+esc(r[c])+'</td>').join('')+(mark?'<td class="'+(mark(r)?'pass':'fail')+'">'+(mark(r)?'YES':'NO')+'</td>':'')+'</tr>').join('')+'</tbody></table>'+(data.length?'':'<p class="hint">No rows.</p>');}
+function showSQL(lines,active=[],id='sql'){ $(id).innerHTML=lines.map((l,i)=>'<span class="line'+(active.includes(i)?' active':'')+'">'+esc(l).replace(/\b(SELECT|FROM|WHERE|AND|OR|BETWEEN|IN|ORDER BY|GROUP BY|LIMIT|DESC|ASC|AS|LIKE|INSERT INTO|VALUES|COMMIT|HAVING|AVG|SUM|COUNT|MIN|MAX)\b/g,'<b class="kw">$1</b>')+'</span>').join('');}
+
+const places={
+ VA:{code:'51',label:'Virginia',rows:[
+  {NAME:'Fairfax County, Virginia',state:'51',county:'059',covered:true,basePopulation:1000000,popStep:10000,baseIncome:95000,incomeStep:2000},
+  {NAME:'Arlington County, Virginia',state:'51',county:'013',covered:true,basePopulation:220000,popStep:2200,baseIncome:105000,incomeStep:2300},
+  {NAME:'Harrisonburg city, Virginia',state:'51',county:'660',covered:false}]},
+ MD:{code:'24',label:'Maryland',rows:[
+  {NAME:'Montgomery County, Maryland',state:'24',county:'031',covered:true,basePopulation:980000,popStep:8000,baseIncome:92000,incomeStep:1800},
+  {NAME:'Baltimore city, Maryland',state:'24',county:'510',covered:true,basePopulation:620000,popStep:-4000,baseIncome:40000,incomeStep:1000},
+  {NAME:'Kent County, Maryland',state:'24',county:'029',covered:false}]}
+};
+// A tiny local illustration of the library's dataset-year metadata; never a live API call.
+const supportedYears=new Set([2015,2016,2017,2018,2019,2021,2022,2023,2024]);
+for(let y=2015;y<=2024;y++){const opt=document.createElement('option');opt.value=String(y);opt.textContent=String(y);$('year').append(opt);}
+function render(){
+ const stateKey=$('state').value,d=places[stateKey],y=Number($('year').value),field=$('fields').value,focus=$('focus').value;
+ const directory=field==='names';
+ $('year').disabled=directory;
+ $('year').parentElement.hidden=directory;
+ const variable=field==='population'?'B01003_001E':'B19013_001E';
+ const lines=directory
+  ?['from us import states','STATE = states.'+stateKey,'GEO = {"for": "county:*",','       "in": f"state:{STATE.fips}"}','c.pl.get("NAME", GEO, year=2020)']
+  :['from us import states','STATE = states.'+stateKey,'c.acs1.state_county(','    "'+variable+'", STATE.fips, Census.ALL,','    year='+y,')'];
+ const active=directory?(focus==='geo'?[1,2,3]:[4]):(focus==='geo'?[1,3]:focus==='year'?[4]:[3]);
+ showSQL(lines,active);
+ const names=d.rows.map(r=>({fips:r.state+r.county,name:r.NAME.slice(0,r.NAME.lastIndexOf(', '))}));
+ $('mapped-context').textContent='County directory: '+d.label+' · fixed 2020 reference · 3 illustrated identities';
+ let mapped='<h3>name — identities remain</h3>'+table(names,['fips','name']);
+ if(directory){
+  const raw=d.rows.map(r=>({NAME:r.NAME,state:r.state,county:r.county}));
+  $('response').innerHTML=table(raw,['NAME','state','county']);
+  $('response-context').textContent=d.label+' · Census county directory · 2020 geography';
+  $('stored').innerHTML=mapped;
+  $('status').textContent='Read county identities once. No population or income estimate is requested.';
+  $('change-note').textContent='These three directory examples include a county-equivalent with no annual observations in this simulation. Its name still belongs in the name table. Only the annual observations vary with survey year.';
+  return;
+ }
+ $('response-context').textContent=d.label+' · ACS 1-year · survey year '+y;
+ if(!supportedYears.has(y)){
+  $('response').innerHTML='<p><strong>UnsupportedYearException</strong></p><p>The library does not support this dataset/year. This is not a successful API response containing an empty list.</p>';
+  $('stored').innerHTML=mapped+'<h3>'+esc(field)+'</h3><p>No annual observation inserted for this request.</p>';
+  $('status').textContent=y+': unsupported dataset/year. The collection loop reports this outcome and moves to the next year.';
+  $('change-note').textContent='The county directory is independent and remains available. Investigate the missing annual year using SQL and the official publication notes. No zero or NULL placeholder is inserted.';
+  return;
+ }
+ const raw=d.rows.filter(r=>r.covered).map(r=>({
+  [variable]:String(field==='population'?r.basePopulation+(y-2015)*r.popStep:r.baseIncome+(y-2015)*r.incomeStep),
+  state:r.state,county:r.county
+ }));
+ $('response').innerHTML=table(raw,[variable,'state','county']);
+ const observations=raw.map(r=>({fips:r.state+r.county,[field]:Number(r[variable]),year:y}));
+ $('stored').innerHTML=mapped+'<h3>'+esc(field)+' — published observations only</h3>'+table(observations,['fips',field,'year']);
+ $('status').textContent=d.label+' · '+y+' · '+field+': 2 simulated observations; 3 county identities remain.';
+ $('change-note').textContent='All numbers and coverage shown here are teaching fixtures, not a verified source response. Changing the annual year changes the simulated values. A missing observation does not remove a county name.';
+}
+['state','year','fields','focus'].forEach(id=>$(id).addEventListener('change',render));
+$('year').value='2024';render();
+</script></body></html>

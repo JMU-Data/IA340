@@ -27,8 +27,9 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/modules/module-9/" style="text-decoration: none; color: #57606a;">Module 9</a>
   <a href="{{ site.baseurl }}/assignments/lab-9/" style="text-decoration: none; color: #57606a;">Lab 9</a>
   <a href="{{ site.baseurl }}/modules/module-10/" style="text-decoration: none; color: #57606a;">Module 10</a>
-  <a href="{{ site.baseurl }}/modules/module-11/" style="text-decoration: none; color: #57606a;">Module 11</a>
   <a href="{{ site.baseurl }}/assignments/lab-10/" style="text-decoration: none; color: #57606a;">Lab 10</a>
+  <a href="{{ site.baseurl }}/modules/module-11/" style="text-decoration: none; color: #57606a;">Module 11</a>
+  <a href="{{ site.baseurl }}/assignments/lab-11/" style="text-decoration: none; color: #57606a;">Lab 11</a>
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="text-decoration: none; color: #57606a;">Google AI Certificate</a>
 </nav>
 
@@ -151,6 +152,16 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-10/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
     <h3 style="margin-top: 0; color: #1a7f37;">Lab 10 · Analyze Your Twitter/X Data</h3>
     <p style="margin-bottom: 0; color: #57606a;">Query your own tweets with Python and pandas; one table, three charts, and two Colab notebooks.</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/modules/module-11/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #0969da;">Module 11 · LLM Analysis of Twitter Data</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Use the Gemini API with Colab and MongoDB to analyze sentiment, people, translations, and summaries.</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/lab-11/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #1a7f37;">Lab 11 · Anger and Organization Analysis</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Extend your Lecture notebook: detect anger, extract organizations, and explain two MongoDB charts.</p>
   </a>
 
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow: 0.2s;">

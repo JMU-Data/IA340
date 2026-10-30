@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Week 11 · Let Tweets Speak | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Week 11 · Let Tweets Speak" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
+<meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-62/modules/module-11/lecture.html" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-62/modules/module-11/lecture.html" />
+<meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Week 11 · Let Tweets Speak" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Week 11 · Let Tweets Speak","url":"https://jmu-data.github.io/IA340/pr-preview/pr-62/modules/module-11/lecture.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-62/assets/css/style.css?v=8cb198df567b2b924611074345b3b5707fa893dd">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/IA340/pr-preview/pr-62/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://jmu-data.github.io/IA340/pr-preview/pr-62/">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</a></h1>
+      
+
+      <h1 id="week-11--let-tweets-speak">Week 11 · Let Tweets Speak</h1>
+
+<h3 id="large-language-models--twitter-data">Large Language Models + Twitter Data</h3>
+
+<div class="hero"><div><span class="eyebrow">IA 340 · MONDAY · NOV 2</span><h2>Let an LLM read the text.</h2><p>From MongoDB queries to text analysis: sentiment, named people, translation, and summary.</p><div class="pillbar"><span>Gemini LLM API</span><span>Lab 8 tweets</span><span>MongoDB</span><span>pandas</span><span>Python charts</span></div></div><div class="tweet-stack"><div class="tiny-tweet">“The bus arrived early!” <b>🙂</b></div><div class="tiny-tweet">“I waited an hour.” <b>🙁</b></div><div class="tiny-tweet">“What do the messages mean?” <b>?</b></div></div></div>
+
+<p><strong>Today:</strong> Understand the LLM → optional Google Sheets activity → Gemini API + MongoDB + Python hands-on.</p>
+
+<hr />
+
+<h2 id="01--from-numeric-queries-to-text-meaning">01 · From numeric queries to text meaning</h2>
+
+<p>Previously, we used <strong>quantitative queries</strong> to count, filter, sort, and compare data: likes, hashtags, followers, and locations.</p>
+
+<p>LLMs can also <strong>read text</strong> and generate new fields that we could not easily compute with an ordinary numeric query.</p>
+
+<div class="two-cards"><div class="lesson-card mint"><h3>Structured or semi-structured output</h3><p>Sentiment labels, a JSON list of names, or numeric values. Store and query them, then create charts or maps.</p></div><div class="lesson-card lilac"><h3>Unstructured output</h3><p>Translation and summary. Read them beside the original messages, or use them in later analysis.</p></div></div>
+
+<p><strong>Same idea:</strong> Data in → analysis → output. An LLM adds meaning-based analysis to our existing database skills.</p>
+
+<hr />
+
+<h2 id="02--what-is-a-large-language-model">02 · What is a Large Language Model?</h2>
+
+<p>A <strong>Large Language Model (LLM)</strong> learns language patterns from large amounts of text. We provide a <strong>prompt and context</strong>; the model generates a <strong>response</strong>.</p>
+
+<div class="mini-path"><span>Prompt + context</span><b>→</b><span>Large language model</span><b>→</b><span>Response</span></div>
+
+<p>Responses can be <strong>structured</strong>, <strong>semi-structured</strong> (such as JSON), or <strong>free text</strong>. Output format is something we can request in the prompt.</p>
+
+<p><strong>Important:</strong> The model does not automatically know what is in our MongoDB database, and its response is not automatically correct.</p>
+
+<hr />
+
+<h2 id="03--one-text-many-outputs">03 · One text, many outputs</h2>
+
+<div class="tweet-focus"><div class="tag">ILLUSTRATIVE TWEET</div>“Maria Lopez praised City Transit’s new bus service.”</div>
+<div class="analysis-grid"><article><span>🙂</span><b>Sentiment</b><p>Positive</p><small>Label</small></article><article><span>👤</span><b>People</b><p>["Maria Lopez"]</p><small>JSON list</small></article><article><span>🏢</span><b>Organizations</b><p>["City Transit"]</p><small>JSON list</small></article><article><span>🌏</span><b>Translate</b><p>Text in another language</p><small>Free text</small></article><article><span>📝</span><b>Summary</b><p>Maria likes the new bus service.</p><small>Free text</small></article><article><span>📍</span><b>Location</b><p>Latitude and longitude</p><small>Structured fields</small></article></div>
+
+<p>The <strong>same input</strong> can produce different results depending on the question. People and organizations may have several names, so a list is useful.</p>
+
+<hr />
+
+<h2 id="04--prompt--action--context--output-format">04 · Prompt = action + context + output format</h2>
+
+<p>Tell the model <strong>what to do</strong>, supply the <strong>text or data</strong> it should analyze, and specify the <strong>response format</strong>.</p>
+
+<figure class="figure"><svg viewBox="0 0 1040 298" role="img" aria-label="Prompt assembled from instruction, sample tweet text as context, and requested output format"><rect width="1040" height="298" rx="24" fill="#fffaf2" /><rect x="34" y="48" width="295" height="191" rx="20" fill="#e6f4ef" /><text x="58" y="84" fill="#1d6b58" font-size="20" font-weight="700">1 · ACTION</text><text x="58" y="127" fill="#295e51" font-size="19">“Classify the sentiment.”</text><text x="58" y="159" fill="#295e51" font-size="18">Read the text,</text><text x="58" y="187" fill="#295e51" font-size="18">do not guess facts.</text><text x="349" y="152" font-size="39" fill="#759c8d">+</text><rect x="395" y="48" width="295" height="191" rx="20" fill="#feecd7" /><text x="419" y="84" fill="#af6c35" font-size="20" font-weight="700">2 · CONTEXT</text><text x="419" y="130" fill="#765844" font-size="18">“I am furious about</text><text x="419" y="157" fill="#765844" font-size="18">today’s bus delays!”</text><text x="419" y="193" fill="#765844" font-size="17">The text to analyze.</text><text x="706" y="152" font-size="39" fill="#759c8d">+</text><rect x="752" y="48" width="253" height="191" rx="20" fill="#ece7fb" /><text x="774" y="84" fill="#7155a7" font-size="17" font-weight="700">3 · RESPONSE FORMAT</text><text x="774" y="130" fill="#655292" font-size="18">Answer only:</text><text x="774" y="164" fill="#655292" font-size="18" font-weight="700">Positive / Neutral /</text><text x="774" y="193" fill="#655292" font-size="20" font-weight="700">Negative</text><text x="35" y="273" fill="#607a6b" font-size="18">A clear prompt makes the answer easier to interpret and visualize.</text></svg></figure>
+
+<p>For this class, prompts should be short and clear. We will verify representative responses against the original tweets.</p>
+
+<hr />
+
+<h2 id="05--two-easy-ways-to-use-an-llm">05 · Two easy ways to use an LLM</h2>
+
+<div class="two-cards"><div class="lesson-card mint"><h3>Inside an application</h3><p>In an eligible <strong>Google Sheets</strong> account, <code>=AI()</code> can analyze a cell and put the answer back into the sheet.</p><p><b>Optional classroom activity.</b></p></div><div class="lesson-card peach"><h3>Through a Python API</h3><p>Colab sends a prompt to Gemini; Python receives the response, saves it to MongoDB, and creates visualizations.</p><p><b>Our main lecture and Lab workflow.</b></p></div></div>
+
+<p>We will try the simple spreadsheet example first, then do the repeatable Python workflow together.</p>
+
+<hr />
+
+<h2 id="06--optional--google-sheets-sentiment-demonstration">06 · Optional · Google Sheets sentiment demonstration</h2>
+
+<p><strong>Optional classroom demo:</strong> Download the <a href="/IA340/pr-preview/pr-62/modules/module-11/assets/sample-data.csv">10-row sample CSV</a>, then import it into <strong>your own Google Sheet</strong> (File → Import → Upload). It has only two columns: <strong>Text Message</strong> and <strong>Location / Address</strong>.</p>
+
+<p>When your Google account supports the function, <code class="language-plaintext highlighter-rouge">=AI("Instruction", A2)</code> sends the text of cell A2 to a model and inserts its response into the sheet. For example, you can ask for a sentiment label.</p>
+
+<figure class="figure"><img class="demo-shot" src="assets/Sheets_Sentiment.png" alt="Sentiment example: the AI formula reads a message from column A and produces a classification." /><figcaption>Sentiment example: the AI formula reads a message from column A and produces a classification.</figcaption></figure>
+
+<p><strong>Google AI Pro and eligible Workspace accounts may have access; availability varies.</strong> If unavailable, just watch. No purchase, submission, or grade.</p>
+
+<hr />
+
+<h2 id="07--optional--extract-latitude-and-longitude">07 · Optional · extract latitude and longitude</h2>
+
+<p>The input may also be a <strong>place or address</strong>, not just a text message. Use the address in column B as context and ask the AI function to estimate one numeric coordinate.</p>
+
+<figure class="figure"><img class="demo-shot" src="assets/Sheets_Location_Prompt.png" alt="Location example: an AI formula reads the address in B2 and estimates a latitude." /><figcaption>Location example: an AI formula reads the address in B2 and estimates a latitude.</figcaption></figure>
+
+<p><strong>Important:</strong> A generated coordinate is an approximation, not geocoding ground truth. It needs validation before geographic analysis.</p>
+
+<hr />
+
+<h2 id="08--optional--look-at-the-generated-results">08 · Optional · look at the generated results</h2>
+
+<p>After generating a few cells, inspect whether the output is consistent. Do all latitude values use the same decimal-degree format? Are there any values in degrees-minutes-seconds?</p>
+
+<figure class="figure"><img class="demo-shot" src="assets/Sheets_Location_Results.png" alt="Sample results: sentiment labels and latitude/longitude estimates. Some coordinates are formatted inconsistently." /><figcaption>Sample results: sentiment labels and latitude/longitude estimates. Some coordinates are formatted inconsistently.</figcaption></figure>
+
+<p><strong>Discussion:</strong> A tidy spreadsheet does not guarantee accurate coordinates. Validate or convert inconsistent formats before mapping.</p>
+
+<hr />
+
+<h2 id="09--optional--gemini-created-geospatial-map">09 · Optional · Gemini-created geospatial map</h2>
+
+<p>Gemini can also use the spreadsheet’s analysis results to create a <strong>map-style visualization</strong>. This example is an AI-generated view of the ten sample places, colored by sentiment.</p>
+
+<figure class="figure"><img class="demo-shot" src="assets/Sheets_Map.png" alt="Instructor example: Gemini-generated geospatial map with sentiment categories and a row-by-row results panel." /><figcaption>Instructor example: Gemini-generated geospatial map with sentiment categories and a row-by-row results panel.</figcaption></figure>
+
+<p>This demonstrates how structured output can support visualization. <strong>It is a Gemini-generated view, not a verified GIS map</strong>; inspect the addresses, coordinates, labels, and category counts before relying on it.</p>
+
+<hr />
+
+<h2 id="10--what-does-the-gemini-llm-api-do">10 · What does the Gemini LLM API do?</h2>
+
+<p>An <strong>API (Application Programming Interface)</strong> lets <strong>Python</strong> send the prompt and context to Gemini, then receive the response.</p>
+
+<figure class="figure"><svg viewBox="0 0 1080 290" role="img" aria-label="Colab Python sends a request with prompt and text over the Gemini LLM API, then receives a response"><defs><marker id="arr-a" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0 0L12 5L0 10Z" fill="#3d9587" /></marker></defs><rect width="1080" height="290" rx="25" fill="#fffaf2" /><rect x="30" y="70" width="263" height="156" rx="18" fill="#e8f2fe" /><text x="161" y="112" font-size="23" text-anchor="middle" fill="#335f92" font-weight="700">COLAB · PYTHON</text><text x="161" y="151" text-anchor="middle" font-size="21" fill="#335f92">prompt + tweet text</text><text x="161" y="187" text-anchor="middle" font-size="18" fill="#5e83a8">send a request</text><rect x="395" y="96" width="286" height="103" rx="45" fill="#e6f6ec" stroke="#8bc6af" stroke-width="3" /><text x="538" y="138" text-anchor="middle" font-weight="700" font-size="24" fill="#19624f">Gemini LLM API</text><text x="538" y="170" text-anchor="middle" font-size="17" fill="#276f5e">a way to ask the model</text><rect x="794" y="70" width="255" height="156" rx="18" fill="#f1eafd" /><text x="921" y="112" font-size="23" text-anchor="middle" fill="#7657a8" font-weight="700">GEMINI MODEL</text><text x="921" y="149" font-size="20" text-anchor="middle" fill="#7657a8">reads your context</text><text x="921" y="182" font-size="18" text-anchor="middle" fill="#8068a4">generates output</text><path d="M295 123 L386 123" stroke="#3d9587" stroke-width="5" marker-end="url(#arr-a)" /><path d="M684 123 L783 123" stroke="#3d9587" stroke-width="5" marker-end="url(#arr-a)" /><path d="M793 214 C662 267 425 267 296 214" stroke="#db8f5f" stroke-width="5" fill="none" marker-end="url(#arr-a)" /><text x="542" y="270" font-size="18" text-anchor="middle" fill="#b56b42">response.text comes back to Python</text><text x="36" y="39" font-size="22" font-weight="700" fill="#174d43">API = Application Programming Interface</text></svg><figcaption>Python sends the prompt and context. Gemini returns the answer; Python decides what to save and draw.</figcaption></figure>
+
+<p>Python—not Gemini—reads our MongoDB collection and decides what to write back to MongoDB.</p>
+
+<hr />
+
+<h2 id="11--our-workflow-read-analyze-save-query-chart">11 · Our workflow: read, analyze, save, query, chart</h2>
+
+<figure class="figure"><svg viewBox="0 0 1060 400" role="img" aria-label="Read existing Lab 8 tweets, analyze them with Gemini, save fields in the same documents, query the saved results, then create pandas DataFrames and charts."><defs><marker id="arr-query-flow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#287f72" /></marker></defs><rect width="1060" height="400" rx="24" fill="#fffaf2" /><g text-anchor="middle" font-family="sans-serif"><rect x="35" y="45" width="280" height="112" rx="19" fill="#e1f2e9" /><text x="175" y="84" fill="#215c4d" font-size="22" font-weight="700">Read Lab 8 tweets</text><text x="175" y="119" fill="#326c5c" font-size="18">lab8.tweet_collection</text><rect x="390" y="45" width="280" height="112" rx="19" fill="#e8f1fd" /><text x="530" y="84" fill="#335f92" font-size="22" font-weight="700">Python: tweet_data</text><text x="530" y="119" fill="#335f92" font-size="18">tweet IDs + text</text><rect x="745" y="45" width="280" height="112" rx="19" fill="#eee7fc" /><text x="885" y="84" fill="#6d54a6" font-size="22" font-weight="700">Gemini LLM API</text><text x="885" y="119" fill="#6d54a6" font-size="18">analyze the text</text><rect x="745" y="259" width="280" height="112" rx="19" fill="#e1f2e9" /><text x="885" y="298" fill="#215c4d" font-size="22" font-weight="700">Write: $set fields</text><text x="885" y="333" fill="#326c5c" font-size="18">same original tweets</text><rect x="390" y="259" width="280" height="112" rx="19" fill="#e8f1fd" /><text x="530" y="298" fill="#335f92" font-size="22" font-weight="700">Query saved results</text><text x="530" y="333" fill="#335f92" font-size="18">MongoDB AI → export Python</text><rect x="35" y="259" width="280" height="112" rx="19" fill="#ffecd9" /><text x="175" y="298" fill="#98602e" font-size="22" font-weight="700">pandas + charts</text><text x="175" y="333" fill="#98602e" font-size="18">use the query results</text></g><g stroke="#287f72" stroke-width="4" fill="none" marker-end="url(#arr-query-flow)"><path d="M320 101H380" /><path d="M675 101H735" /><path d="M885 162V249" /><path d="M740 315H680" /><path d="M385 315H325" /></g><text x="530" y="211" text-anchor="middle" fill="#536d61" font-size="20">Complete the analysis and writes before querying for charts.</text></svg><figcaption>Reuse the database skills from earlier labs: retrieve documents, update fields, and query the saved values.</figcaption></figure>
+
+<p>We will use the <strong>same <code class="language-plaintext highlighter-rouge">lab8.tweet_collection</code></strong>. No new Twitter collection or database is required.</p>
+
+<hr />
+
+<h2 id="12--model-providers-and-model-choices">12 · Model providers and model choices</h2>
+
+<p>Examples of LLM providers include <strong>Google (Gemini)</strong>, <strong>OpenAI</strong>, <strong>Anthropic (Claude)</strong>, and <strong>Moonshot AI (Kimi)</strong>. Some models are hosted services; some releases offer downloadable weights under their licenses.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>What differs?</th>
+      <th>Why it matters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Reasoning and response quality</td>
+      <td>Harder tasks may need a stronger model.</td>
+    </tr>
+    <tr>
+      <td>Context / token limits</td>
+      <td>Longer text requires a model that can accept it.</td>
+    </tr>
+    <tr>
+      <td>Speed and API price</td>
+      <td>More capable models may be slower or more expensive. Check actual model pricing.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Our course uses Gemini because of the Google teaching environment and available credits. <strong>Google AI Pro for Sheets and the Gemini LLM API have different access and billing arrangements.</strong></p>
+
+<hr />
+
+<h2 id="13--google-cloud--enable-agent-platform-api">13 · Google Cloud · Enable Agent Platform API</h2>
+
+<p><strong>First, select the Google Cloud project</strong> you intend to use. In <strong>APIs &amp; Services → Library</strong>, search for <strong>Agent Platform API</strong>, open its product page, and click <strong>Enable</strong> if it is not already enabled.</p>
+
+<figure class="figure"><img class="demo-shot" src="assets/Cloud_Enable_Agent_Platform.png" alt="Google Cloud API Library: select Agent Platform API and click Enable in the correct project." /><figcaption>Google Cloud API Library: select Agent Platform API and click Enable in the correct project.</figcaption></figure>
+
+<p>Use the <strong>Gemini Enterprise Agent Platform</strong> route shown here. The project must be permitted to use the service, subject to its quota and billing settings.</p>
+
+<hr />
+
+<h2 id="14--google-cloud--open-agent-platform">14 · Google Cloud · Open Agent Platform</h2>
+
+<p>After enabling the API, open <strong>Agent Platform</strong> in Google Cloud. For the classroom API-key workflow, locate <strong>Authenticate</strong> and choose the <strong>API Key</strong> setup option.</p>
+
+<figure class="figure"><img class="demo-shot" src="assets/Cloud_Agent_Platform_Auth.png" alt="Agent Platform: Authenticate offers an API Key option for quick testing, alongside Application Default Credentials." /><figcaption>Agent Platform: Authenticate offers an API Key option for quick testing, alongside Application Default Credentials.</figcaption></figure>
+
+<p>Google also offers Application Default Credentials for production use. <strong>For this Colab demonstration, follow the API-key path shown here.</strong></p>
+
+<hr />
+
+<h2 id="15--google-cloud--create-your-agent-platform-key">15 · Google Cloud · Create your Agent Platform key</h2>
+
+<p>In the Agent Platform API-key setup screen, choose <strong>Create API Key</strong>. Copy the newly created key into your private Colab Secrets panel; do not put the key into Python cells, screenshots, or GitHub.</p>
+
+<figure class="figure"><img class="demo-shot" src="assets/Cloud_Create_Key.png" alt="Gemini Enterprise Agent Platform: API Keys section with Create API Key button." /><figcaption>Gemini Enterprise Agent Platform: API Keys section with Create API Key button.</figcaption></figure>
+
+<p>Check that your Cloud project, API access, and quota correspond to the key you created.</p>
+
+<hr />
+
+<h2 id="16--colab-secrets--google_cloud_api_key">16 · Colab Secrets · GOOGLE_CLOUD_API_KEY</h2>
+
+<p>In Colab, open the <strong>Secrets</strong> panel (key icon), add these two secrets, and enable <strong>Notebook access</strong> for them:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">GOOGLE_CLOUD_API_KEY</code> — the Agent Platform API key you just created.</li>
+  <li><code class="language-plaintext highlighter-rouge">MONGODB_CONNECTION_STRING</code> — your existing MongoDB connection string.</li>
+</ul>
+
+<figure class="figure"><img class="demo-shot" src="assets/Colab_Secrets_Google_Cloud.png" alt="Colab Secrets: GOOGLE_CLOUD_API_KEY and MONGODB_CONNECTION_STRING with key values hidden." /><figcaption>Colab Secrets: GOOGLE_CLOUD_API_KEY and MONGODB_CONNECTION_STRING with key values hidden.</figcaption></figure>
+
+<p>The <strong>Secret name must match the Python code exactly</strong>. Keep the value private. No <code class="language-plaintext highlighter-rouge">GEMINI_API_KEY</code> variable is used in this lecture.</p>
+
+<hr />
+
+<h2 id="17--install-and-import">17 · Install and import</h2>
+
+<p><strong>Colab Cells 1–2.</strong> Install only the packages needed for the LLM and MongoDB connection. The code is the primary classroom example.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">pip</span> <span class="o">-</span><span class="n">q</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">genai</span> <span class="n">pymongo</span>
+
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">userdata</span>
+<span class="kn">from</span> <span class="nn">google</span> <span class="kn">import</span> <span class="n">genai</span>
+<span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>  <span class="c1"># Progress bar for long loops
+</span></code></pre></div></div>
+
+<p><strong>Code explained — Python setup:</strong> <strong><code class="language-plaintext highlighter-rouge">%pip install</code>:</strong> gets the Gemini and MongoDB packages. <strong><code class="language-plaintext highlighter-rouge">import</code>:</strong> makes each library available; <code class="language-plaintext highlighter-rouge">tqdm</code> is the progress bar used in the later loops.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Install.png" alt="Instructor verification: installation and imports completed successfully." /><figcaption>Instructor verification: installation and imports completed successfully.</figcaption></figure></div></div>
+
+<hr />
+
+<h2 id="18--connect-to-gemini-and-test-one-question">18 · Connect to Gemini and test one question</h2>
+
+<p><strong>Colab Cell 3.</strong> The tested Enterprise client uses <code class="language-plaintext highlighter-rouge">GOOGLE_CLOUD_API_KEY</code> from Colab Secrets.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gemini</span> <span class="o">=</span> <span class="n">genai</span><span class="p">.</span><span class="n">Client</span><span class="p">(</span><span class="n">enterprise</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">userdata</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"GOOGLE_CLOUD_API_KEY"</span><span class="p">))</span>
+<span class="n">model</span> <span class="o">=</span> <span class="s">"gemini-3.5-flash-lite"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">gemini</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">generate_content</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">contents</span><span class="o">=</span><span class="s">"What is a large language model? Explain in one sentence."</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Python calls the Gemini API:</strong> <strong><code class="language-plaintext highlighter-rouge">genai.Client(...)</code>:</strong> connects using the Cloud API key stored in Secrets. <strong><code class="language-plaintext highlighter-rouge">generate_content()</code>:</strong> sends the question; <code class="language-plaintext highlighter-rouge">response.text</code> is the text returned by Gemini.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/First_Call.png" alt="Instructor verification: Gemini returned a response in Colab." /><figcaption>Instructor verification: Gemini returned a response in Colab.</figcaption></figure></div></div>
+
+<hr />
+
+<h2 id="19--add-tweet-text-as-context">19 · Add tweet text as context</h2>
+
+<p><strong>Colab Cell 4.</strong> Insert the text in the prompt with a simple Python f-string.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text</span> <span class="o">=</span> <span class="s">"The city launched new buses. Riders praise them but report delays."</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"What concern do riders report? Use only this text: </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s">"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">gemini</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">generate_content</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">contents</span><span class="o">=</span><span class="n">prompt</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Python builds a prompt:</strong> <strong><code class="language-plaintext highlighter-rouge">text</code>:</strong> is the example context Gemini should read. <strong><code class="language-plaintext highlighter-rouge">prompt = f"...{text}"</code>:</strong> combines an instruction with that text; <code class="language-plaintext highlighter-rouge">generate_content()</code> asks Gemini to answer.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Context.png" alt="Instructor verification: Gemini answered the question about the given text." /><figcaption>Instructor verification: Gemini answered the question about the given text.</figcaption></figure></div></div>
+
+<hr />
+
+<h2 id="20--reuse-one-gemini-helper">20 · Reuse one Gemini helper</h2>
+
+<p><strong>Colab Cell 5.</strong> Plain-text tasks use <code class="language-plaintext highlighter-rouge">gemini_help(prompt)</code>; People uses <code class="language-plaintext highlighter-rouge">gemini_help(prompt, json_list=True)</code> for a JSON list.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gemini_help</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">json_list</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="c1"># Force a JSON list when extracting people; ordinary tasks return plain text.
+</span>    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s">"response_mime_type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span> <span class="s">"response_schema"</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]}</span> <span class="k">if</span> <span class="n">json_list</span> <span class="k">else</span> <span class="bp">None</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">gemini</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">generate_content</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">contents</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"Gemini returned an empty response"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Reusable Python helper:</strong> <strong><code class="language-plaintext highlighter-rouge">def gemini_help(prompt)</code>:</strong> creates a shortcut for repeated Gemini API requests. <strong><code class="language-plaintext highlighter-rouge">json_list=True</code>:</strong> requests a JSON list for People; other tasks return ordinary text; an empty response raises an error.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Helper.png" alt="Instructor verification: this same helper appears in the working Colab notebook." /><figcaption>Instructor verification: this same helper appears in the working Colab notebook.</figcaption></figure></div></div>
+
+<hr />
+
+<h2 id="21--read-lab-8-tweets-from-mongodb">21 · Read Lab 8 tweets from MongoDB</h2>
+
+<p><strong>Colab Cell 6.</strong> Use the existing MongoDB <code class="language-plaintext highlighter-rouge">client</code> and the familiar <code class="language-plaintext highlighter-rouge">filter / project / find()</code> workflow.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">userdata</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"MONGODB_CONNECTION_STRING"</span><span class="p">))</span>
+<span class="n">tweet_collection</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s">"lab8"</span><span class="p">][</span><span class="s">"tweet_collection"</span><span class="p">]</span>
+
+<span class="nb">filter</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">project</span> <span class="o">=</span> <span class="p">{</span><span class="s">"tweet.id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"tweet.text"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"_id"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s">"lab8"</span><span class="p">][</span><span class="s">"tweet_collection"</span><span class="p">].</span><span class="n">find</span><span class="p">(</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="nb">filter</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">project</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Python reads MongoDB:</strong> <strong><code class="language-plaintext highlighter-rouge">filter = {}</code>:</strong> requests all tweets; <code class="language-plaintext highlighter-rouge">project</code> selects the ID and text and excludes <code class="language-plaintext highlighter-rouge">_id</code>. <strong><code class="language-plaintext highlighter-rouge">find()</code>:</strong> returns a MongoDB cursor, not a pandas table yet.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Query_All.png" alt="Instructor verification: the MongoDB query reads original tweet IDs and text." /><figcaption>Instructor verification: the MongoDB query reads original tweet IDs and text.</figcaption></figure></div></div>
+
+<hr />
+
+<h2 id="22--create-tweet_data-once">22 · Create tweet_data once</h2>
+
+<p><strong>Colab Cell 7.</strong> Convert the cursor into records and keep tweet IDs and text in a reusable list.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">records</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="n">tweet_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+    <span class="n">tweet_data</span><span class="p">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s">"tweet_id"</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s">"tweet"</span><span class="p">][</span><span class="s">"id"</span><span class="p">],</span>
+        <span class="s">"tweet_text"</span><span class="p">:</span> <span class="n">record</span><span class="p">[</span><span class="s">"tweet"</span><span class="p">][</span><span class="s">"text"</span><span class="p">]</span>
+    <span class="p">})</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Number of tweets:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tweet_data</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Python prepares reusable data:</strong> <strong><code class="language-plaintext highlighter-rouge">list(results)</code>:</strong> reads the MongoDB cursor once into Python records. <strong><code class="language-plaintext highlighter-rouge">tweet_data.append(...)</code>:</strong> stores each tweet ID and text together, ready for the next three analyses.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Tweet_List.png" alt="Instructor verification: 200 tweets were loaded in this example; your total may differ." /><figcaption>Instructor verification: 200 tweets were loaded in this example; your total may differ.</figcaption></figure></div></div>
+
+<p><strong>Remember:</strong> After <code class="language-plaintext highlighter-rouge">list(results)</code>, the cursor has been consumed. Rerun the query cell if you need to fetch the records again.</p>
+
+<hr />
+
+<h2 id="23--sentiment-analysis--run-the-full-code">23 · Sentiment analysis — run the full code</h2>
+
+<p><strong>Colab Cell 8.</strong> Classify each tweet as <strong>Positive, Neutral, or Negative</strong>, then update <code class="language-plaintext highlighter-rouge">tweet.sentiment</code> in the same document. The progress bar shows completed iterations and <code class="language-plaintext highlighter-rouge">try/except</code> records failures.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">tweet_data</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"Classify this tweet as Positive, Neutral, or Negative. Return only the label. Tweet: </span><span class="si">{</span><span class="n">tweet</span><span class="p">[</span><span class="s">'tweet_text'</span><span class="p">]</span><span class="si">}</span><span class="s">"</span>
+        <span class="n">sentiment</span> <span class="o">=</span> <span class="n">gemini_help</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+        <span class="n">tweet_collection</span><span class="p">.</span><span class="n">update_one</span><span class="p">(</span>
+            <span class="p">{</span><span class="s">"tweet.id"</span><span class="p">:</span> <span class="n">tweet</span><span class="p">[</span><span class="s">"tweet_id"</span><span class="p">]},</span>
+            <span class="p">{</span><span class="s">"$set"</span><span class="p">:</span> <span class="p">{</span><span class="s">"tweet.sentiment"</span><span class="p">:</span> <span class="n">sentiment</span><span class="p">}}</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Skipped sentiment for tweet </span><span class="si">{</span><span class="n">tweet</span><span class="p">[</span><span class="s">'tweet_id'</span><span class="p">]</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Gemini analyzes; Python saves:</strong> <strong><code class="language-plaintext highlighter-rouge">tqdm(tweet_data)</code>:</strong> shows the number of tweets processed; no extra student input. <strong><code class="language-plaintext highlighter-rouge">prompt</code> / <code class="language-plaintext highlighter-rouge">gemini_help()</code>:</strong> ask Gemini to classify the current tweet; <code class="language-plaintext highlighter-rouge">$set</code> writes <code class="language-plaintext highlighter-rouge">tweet.sentiment</code>. <strong><code class="language-plaintext highlighter-rouge">try/except</code>:</strong> reports a failed tweet and continues without writing a false result.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Sentiment_Run.png" alt="Sentiment loop completed: 200/200 on the instructor dataset." /><figcaption>Sentiment loop completed: 200/200 on the instructor dataset.</figcaption></figure><figure class="verify-shot"><img class="demo-shot" src="assets/Mongo_Sentiment_People.png" alt="MongoDB verification: the original tweet now contains saved sentiment (and a people list)." /><figcaption>MongoDB verification: the original tweet now contains saved sentiment (and a people list).</figcaption></figure></div></div>
+
+<p><strong>Check:</strong> A visible progress bar is not proof every write succeeded. Inspect messages and the new field in MongoDB.</p>
+
+<hr />
+
+<h2 id="24--extract-people--save-a-json-list">24 · Extract people — save a JSON list</h2>
+
+<p><strong>Colab Cell 9.</strong> People must be a list, for example <code class="language-plaintext highlighter-rouge">['Maria', 'Alex']</code>; <code class="language-plaintext highlighter-rouge">[]</code> means the text has no named person. A parsing/API failure is reported and skipped.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">tweet_data</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"Extract every person explicitly named in this tweet. Use [] when none. Tweet: </span><span class="si">{</span><span class="n">tweet</span><span class="p">[</span><span class="s">'tweet_text'</span><span class="p">]</span><span class="si">}</span><span class="s">"</span>
+        <span class="n">people</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">gemini_help</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">json_list</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+        <span class="n">tweet_collection</span><span class="p">.</span><span class="n">update_one</span><span class="p">(</span>
+            <span class="p">{</span><span class="s">"tweet.id"</span><span class="p">:</span> <span class="n">tweet</span><span class="p">[</span><span class="s">"tweet_id"</span><span class="p">]},</span>
+            <span class="p">{</span><span class="s">"$set"</span><span class="p">:</span> <span class="p">{</span><span class="s">"tweet.people"</span><span class="p">:</span> <span class="n">people</span><span class="p">}}</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Skipped people for tweet </span><span class="si">{</span><span class="n">tweet</span><span class="p">[</span><span class="s">'tweet_id'</span><span class="p">]</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Gemini returns a list; Python saves:</strong> <strong><code class="language-plaintext highlighter-rouge">prompt</code>:</strong> asks for all person names in the current tweet, or an empty list. <strong><code class="language-plaintext highlighter-rouge">json.loads()</code>:</strong> converts Gemini’s JSON text into a real Python list; <code class="language-plaintext highlighter-rouge">$set</code> saves <code class="language-plaintext highlighter-rouge">tweet.people</code>. <strong><code class="language-plaintext highlighter-rouge">except</code>:</strong> skips a failed request rather than treating it as <code class="language-plaintext highlighter-rouge">[]</code>.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/People_Run.png" alt="People extraction progress in Colab." /><figcaption>People extraction progress in Colab.</figcaption></figure><figure class="verify-shot"><img class="demo-shot" src="assets/Mongo_Sentiment_People.png" alt="MongoDB verification: sentiment label and a people array in the original tweet." /><figcaption>MongoDB verification: sentiment label and a people array in the original tweet.</figcaption></figure></div></div>
+
+<hr />
+
+<h2 id="25--translate-tweets--save-text">25 · Translate tweets — save text</h2>
+
+<p><strong>Colab Cell 10.</strong> You may choose <strong>any</strong> target language by changing <code class="language-plaintext highlighter-rouge">language</code>. The destination field remains <code class="language-plaintext highlighter-rouge">tweet.translate</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">language</span> <span class="o">=</span> <span class="s">"Chinese"</span>  <span class="c1"># Change to any language you prefer.
+</span><span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">tweet_data</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"Translate this tweet into </span><span class="si">{</span><span class="n">language</span><span class="si">}</span><span class="s">. Return only the translation. Tweet: </span><span class="si">{</span><span class="n">tweet</span><span class="p">[</span><span class="s">'tweet_text'</span><span class="p">]</span><span class="si">}</span><span class="s">"</span>
+        <span class="n">translation</span> <span class="o">=</span> <span class="n">gemini_help</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+        <span class="n">tweet_collection</span><span class="p">.</span><span class="n">update_one</span><span class="p">(</span>
+            <span class="p">{</span><span class="s">"tweet.id"</span><span class="p">:</span> <span class="n">tweet</span><span class="p">[</span><span class="s">"tweet_id"</span><span class="p">]},</span>
+            <span class="p">{</span><span class="s">"$set"</span><span class="p">:</span> <span class="p">{</span><span class="s">"tweet.translate"</span><span class="p">:</span> <span class="n">translation</span><span class="p">}}</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Skipped translation for tweet </span><span class="si">{</span><span class="n">tweet</span><span class="p">[</span><span class="s">'tweet_id'</span><span class="p">]</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Gemini translates; Python saves:</strong> <strong><code class="language-plaintext highlighter-rouge">language</code>:</strong> selects the translation language; the <code class="language-plaintext highlighter-rouge">prompt</code> includes that choice and tweet text. <strong><code class="language-plaintext highlighter-rouge">gemini_help()</code> / <code class="language-plaintext highlighter-rouge">$set</code>:</strong> get the translated text and save it as <code class="language-plaintext highlighter-rouge">tweet.translate</code>.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Translate_Run.png" alt="Instructor verification: translation loop." /><figcaption>Instructor verification: translation loop.</figcaption></figure><figure class="verify-shot"><img class="demo-shot" src="assets/Mongo_Translate.png" alt="MongoDB verification: tweet.translate was written beside the original text." /><figcaption>MongoDB verification: tweet.translate was written beside the original text.</figcaption></figure></div></div>
+
+<hr />
+
+<h2 id="26--summarize-the-whole-dataset-once">26 · Summarize the whole dataset once</h2>
+
+<p><strong>Colab Cell 11.</strong> Join the texts of all tweets and send <strong>one</strong> request. This is a corpus-level summary—not a separate summary for each tweet.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">all_tweets</span> <span class="o">=</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s">"tweet_text"</span><span class="p">]</span> <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweet_data</span><span class="p">)</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""Summarize the main themes and patterns across all </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tweet_data</span><span class="p">)</span><span class="si">}</span><span class="s"> tweets
+in about 150 words. Write ONE overall summary, not a summary of each tweet.
+Tweets:
+</span><span class="si">{</span><span class="n">all_tweets</span><span class="si">}</span><span class="s">"""</span>
+
+<span class="n">overall_summary</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">overall_summary</span> <span class="o">=</span> <span class="n">gemini_help</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">overall_summary</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Overall summary failed:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — One prompt for the whole dataset:</strong> <strong><code class="language-plaintext highlighter-rouge">"\n".join(...)</code>:</strong> combines all tweet texts into a single context. <strong><code class="language-plaintext highlighter-rouge">prompt</code> / <code class="language-plaintext highlighter-rouge">gemini_help()</code>:</strong> ask Gemini for ONE overall summary; <code class="language-plaintext highlighter-rouge">print()</code> displays it without copying it to every tweet.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Overall_Summary.png" alt="Instructor verification: the combined tweets produce one overall summary." /><figcaption>Instructor verification: the combined tweets produce one overall summary.</figcaption></figure></div></div>
+
+<p>Review whether the summary reflects the full collection. Larger inputs must fit the selected model’s context window.</p>
+
+<hr />
+
+<h2 id="27--query-in-mongodb--result--pandas">27 · Query in MongoDB → result → pandas</h2>
+
+<p><strong>The same process as Lab 10:</strong> Generate your own query in MongoDB, inspect its output, export Python with <strong>Include Driver Syntax</strong>, run it to create <code class="language-plaintext highlighter-rouge">result</code>, and convert it to pandas.</p>
+
+<div class="mini-path"><span>MongoDB query</span><b>→</b><span>Export Python</span><b>→</b><span>result</span><b>→</b><span>df_posts</span><b>→</b><span>visualization</span></div>
+
+<p><strong>One reusable Colab cell</strong> works after each exported query:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">records</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">df_posts</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_posts</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — MongoDB export → Python DataFrame:</strong> <strong>MongoDB Atlas:</strong> generates the query; exporting with Driver Syntax produces Python <code class="language-plaintext highlighter-rouge">result = ...</code>. <strong><code class="language-plaintext highlighter-rouge">list(result)</code> / <code class="language-plaintext highlighter-rouge">pd.json_normalize()</code>:</strong> convert those returned records to <code class="language-plaintext highlighter-rouge">df_posts</code>; <code class="language-plaintext highlighter-rouge">display()</code> shows the table.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Export_Python.png" alt="MongoDB export: Python with Driver Syntax. Sensitive connection details are masked." /><figcaption>MongoDB export: Python with Driver Syntax. Sensitive connection details are masked.</figcaption></figure></div></div>
+
+<p>The <strong>query runs first</strong>. The DataFrame then displays the actual fields returned by that query; do not invent or hardcode column names.</p>
+
+<hr />
+
+<h2 id="28--sentiment--mongodb-aggregation-code">28 · Sentiment — MongoDB aggregation code</h2>
+
+<p><strong>Instructor-exported query.</strong> In Atlas, generate and run a query that counts the values of <code class="language-plaintext highlighter-rouge">tweet.sentiment</code>, then export Python. This is the <strong>actual code</strong> from the example notebook, not another backup query.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s">'lab8'</span><span class="p">][</span><span class="s">'tweet_collection'</span><span class="p">].</span><span class="n">aggregate</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s">'$group'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'_id'</span><span class="p">:</span> <span class="s">'$tweet.sentiment'</span><span class="p">,</span>
+            <span class="s">'count'</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">'$sum'</span><span class="p">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s">'$sort'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'count'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s">'_id'</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">])</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Query code generated in MongoDB Atlas:</strong> <strong>Natural-language request:</strong> “Count the value of different sentiments” generates a MongoDB aggregation. <strong><code class="language-plaintext highlighter-rouge">$group</code> / <code class="language-plaintext highlighter-rouge">$sum</code> / <code class="language-plaintext highlighter-rouge">$sort</code>:</strong> count tweets per sentiment and sort the results; <code class="language-plaintext highlighter-rouge">result</code> holds the returned cursor.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Sentiment_Query.png" alt="MongoDB verification: group sentiment labels and count tweets." /><figcaption>MongoDB verification: group sentiment labels and count tweets.</figcaption></figure><figure class="verify-shot"><img class="demo-shot" src="assets/Exported_Sentiment.png" alt="Instructor verification: exported query executed in Colab." /><figcaption>Instructor verification: exported query executed in Colab.</figcaption></figure></div></div>
+
+<p><em>Instructor screenshot — MongoDB Atlas: a natural-language request generates the Sentiment pipeline.</em></p>
+
+<p><img src="assets/Screenshot 2026-10-29 165335.png" alt="MongoDB Atlas: a natural-language request generates the Sentiment pipeline." /></p>
+
+<hr />
+
+<h2 id="29--sentiment--convert-result-into-df_posts">29 · Sentiment — convert result into df_posts</h2>
+
+<p>Once the exported query has created <code class="language-plaintext highlighter-rouge">result</code>, run the <strong>same three-line DataFrame code</strong>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">records</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">df_posts</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_posts</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Python inspects MongoDB results:</strong> <strong><code class="language-plaintext highlighter-rouge">result</code>:</strong> comes from the query on the previous page, not a new Gemini request. <strong><code class="language-plaintext highlighter-rouge">pd.json_normalize(records)</code>:</strong> creates <code class="language-plaintext highlighter-rouge">df_posts</code> with <code class="language-plaintext highlighter-rouge">_id</code> (sentiment) and <code class="language-plaintext highlighter-rouge">count</code> for the chart.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Sentiment_DataFrame_detail.png" data-fullsrc="assets/Sentiment_DataFrame.png" alt="Instructor DataFrame: sentiment labels and counts, not three individual tweets." /><figcaption>Instructor DataFrame: sentiment labels and counts, not three individual tweets.</figcaption></figure></div></div>
+
+<p>Check that <code class="language-plaintext highlighter-rouge">df_posts</code> has columns such as <code class="language-plaintext highlighter-rouge">_id</code> and <code class="language-plaintext highlighter-rouge">count</code> before asking Gemini to draw a chart.</p>
+
+<p><em>Instructor screenshot — Gemini in Colab: prompt for a bar chart of <code class="language-plaintext highlighter-rouge">df_posts</code> (the generated code appears on the next page).</em></p>
+
+<p><img src="assets/Screenshot 2026-10-29 165704.png" alt="Gemini in Colab: prompt for a bar chart of `df_posts` (the generated code appears on the next page)." /></p>
+
+<hr />
+
+<h2 id="30--sentiment--chart-code-generated-with-gemini">30 · Sentiment — chart code generated with Gemini</h2>
+
+<p>Ask <strong>Gemini in Colab</strong> to create a bar chart from the DataFrame you just displayed. The instructor’s working chart code is shown below; adapt it if your returned columns differ.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># Create a bar chart of the sentiment counts
+</span><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'_id'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'count'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_posts</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'viridis'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'_id'</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Tweet Sentiment Distribution'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Sentiment'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Number of Tweets'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'y'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">'--'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Chart code suggested by Gemini in Colab:</strong> <strong>Gemini in Colab:</strong> uses the displayed <code class="language-plaintext highlighter-rouge">df_posts</code> as context to suggest chart code. <strong><code class="language-plaintext highlighter-rouge">sns.barplot(...)</code>:</strong> draws sentiment labels (<code class="language-plaintext highlighter-rouge">_id</code>) against tweet totals (<code class="language-plaintext highlighter-rouge">count</code>); <code class="language-plaintext highlighter-rouge">plt.show()</code> displays it.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Sentiment_Gemini_Chart.png" alt="Instructor verification: the sentiment bar chart matches the DataFrame counts." /><figcaption>Instructor verification: the sentiment bar chart matches the DataFrame counts.</figcaption></figure></div></div>
+
+<p>The bar heights should equal the counts returned by MongoDB. Verify the categories and totals.</p>
+
+<hr />
+
+<h2 id="31--people--mongodb-aggregation-code">31 · People — MongoDB aggregation code</h2>
+
+<p>Ask MongoDB to <strong>unwind <code class="language-plaintext highlighter-rouge">tweet.people</code>, group names, and count mentions</strong>. This is the actual exported code from the instructor notebook.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s">'lab8'</span><span class="p">][</span><span class="s">'tweet_collection'</span><span class="p">].</span><span class="n">aggregate</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s">'$unwind'</span><span class="p">:</span> <span class="s">'$tweet.people'</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s">'$group'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'_id'</span><span class="p">:</span> <span class="s">'$tweet.people'</span><span class="p">,</span>
+            <span class="s">'count'</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">'$sum'</span><span class="p">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s">'$sort'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'count'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s">'_id'</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">])</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Query code generated in MongoDB Atlas:</strong> <strong>Natural-language request:</strong> “Count the value of different people in the tweet.people field” creates the pipeline. <strong><code class="language-plaintext highlighter-rouge">$unwind</code> / <code class="language-plaintext highlighter-rouge">$group</code> / <code class="language-plaintext highlighter-rouge">$sort</code>:</strong> turn list items into names, count mentions, and rank the results.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/People_Query.png" alt="MongoDB verification: unwind the people array, group and count names." /><figcaption>MongoDB verification: unwind the people array, group and count names.</figcaption></figure></div></div>
+
+<p><em>Instructor screenshot — MongoDB Atlas: a natural-language request generates the People pipeline.</em></p>
+
+<p><img src="assets/Screenshot 2026-10-29 165752.png" alt="MongoDB Atlas: a natural-language request generates the People pipeline." /></p>
+
+<hr />
+
+<h2 id="32--people--convert-result-into-df_posts">32 · People — convert result into df_posts</h2>
+
+<p>Run the query above first, then reuse the <strong>exact same three-line conversion</strong>. <code class="language-plaintext highlighter-rouge">df_posts</code> may be reused after finishing the previous question.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">records</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">df_posts</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_posts</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Python inspects MongoDB results:</strong> <strong><code class="language-plaintext highlighter-rouge">list(result)</code>:</strong> collects the people-query results. <strong><code class="language-plaintext highlighter-rouge">df_posts</code>:</strong> shows names in <code class="language-plaintext highlighter-rouge">_id</code> and their mention counts in <code class="language-plaintext highlighter-rouge">count</code>.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/People_DataFrame_detail.png" data-fullsrc="assets/People_DataFrame.png" alt="Instructor DataFrame: the returned people and mention counts." /><figcaption>Instructor DataFrame: the returned people and mention counts.</figcaption></figure></div></div>
+
+<hr />
+
+<h2 id="33--people--chart-code-generated-with-gemini">33 · People — chart code generated with Gemini</h2>
+
+<p>Ask Gemini in Colab for a horizontal bar chart of the most-mentioned people. Compare its suggested code and plot with the instructor example below.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># Filter the top 10 most frequently mentioned people for clarity
+</span><span class="n">top_people</span> <span class="o">=</span> <span class="n">df_posts</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'count'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'_id'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">top_people</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'mako'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'_id'</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Top 10 Most Frequently Mentioned People'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Mention Count'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Person Name / Handle'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">'x'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">'--'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Chart code suggested by Gemini in Colab:</strong> <strong><code class="language-plaintext highlighter-rouge">df_posts.head(10)</code>:</strong> keeps the ten highest-ranked people. <strong><code class="language-plaintext highlighter-rouge">sns.barplot(x="count", y="_id", ...)</code>:</strong> makes a horizontal comparison; the result must match MongoDB counts.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/People_Chart.png" alt="Instructor verification: horizontal bar chart of the most-mentioned people." /><figcaption>Instructor verification: horizontal bar chart of the most-mentioned people.</figcaption></figure></div></div>
+
+<p>A single tweet can mention several people, so total mentions may exceed the number of tweets.</p>
+
+<hr />
+
+<h2 id="34--translations--mongodb-aggregation-code">34 · Translations — MongoDB aggregation code</h2>
+
+<p>Use MongoDB to return <strong>the ten most-liked tweets</strong> and their saved translations. Read the text output as a table, rather than counting translation strings.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s">'lab8'</span><span class="p">][</span><span class="s">'tweet_collection'</span><span class="p">].</span><span class="n">aggregate</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s">'$sort'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'tweet.public_metrics.like_count'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s">'$limit'</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s">'$project'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'_id'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s">'tweet.public_metrics.like_count'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s">'tweet.translate'</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">])</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Query code generated in MongoDB Atlas:</strong> <strong>Natural-language request:</strong> “Show the translation of the tweets with the top 10 most likes”. <strong><code class="language-plaintext highlighter-rouge">$sort</code> / <code class="language-plaintext highlighter-rouge">$limit</code> / <code class="language-plaintext highlighter-rouge">$project</code>:</strong> choose the most-liked tweets and return only requested fields.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Translate_Query.png" alt="MongoDB verification: sort by likes, limit ten, and return translations." /><figcaption>MongoDB verification: sort by likes, limit ten, and return translations.</figcaption></figure></div></div>
+
+<p><em>Instructor screenshot — MongoDB Atlas: a natural-language request generates the Translation query.</em></p>
+
+<p><img src="assets/Screenshot 2026-10-29 170043.png" alt="MongoDB Atlas: a natural-language request generates the Translation query." /></p>
+
+<hr />
+
+<h2 id="35--translations--display-as-a-pandas-table">35 · Translations — display as a pandas table</h2>
+
+<p>Run the exported translation query to produce <code class="language-plaintext highlighter-rouge">result</code>. Then display the DataFrame:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">records</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">df_posts</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_posts</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Python displays free-text results:</strong> <strong><code class="language-plaintext highlighter-rouge">result</code>:</strong> contains the exported MongoDB query’s rows. <strong><code class="language-plaintext highlighter-rouge">pd.json_normalize</code> / <code class="language-plaintext highlighter-rouge">display</code>:</strong> put the saved translations and like counts into a table; no bar chart is needed.</p>
+
+<div class="verify-results"><div class="verify-label">Verify the result against these instructor screenshots · click to enlarge</div><div class="verify-gallery"><figure class="verify-shot"><img class="demo-shot" src="assets/Translate_Table_detail.png" data-fullsrc="assets/Translate_Table.png" alt="Instructor verification: translations and like counts appear in the pandas table." /><figcaption>Instructor verification: translations and like counts appear in the pandas table.</figcaption></figure></div></div>
+
+<p>No bar chart is needed for individual translations. Check the meaning against the original text.</p>
+
+<hr />
+
+<h2 id="36--wednesday-lab--repeat-with-new-fields">36 · Wednesday Lab — repeat with new fields</h2>
+
+<p>Use <strong>your own completed <code class="language-plaintext highlighter-rouge">lec11.ipynb</code></strong> as the reference. Keep its setup and processing structure, but write your own prompts, query, chart code and explanations.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Monday Lecture (complete code)</th>
+      <th>Wednesday Lab (your code)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sentiment → <code class="language-plaintext highlighter-rouge">tweet.sentiment</code></td>
+      <td>Anger → <code class="language-plaintext highlighter-rouge">tweet.anger</code></td>
+    </tr>
+    <tr>
+      <td>People list → <code class="language-plaintext highlighter-rouge">tweet.people</code></td>
+      <td>Organizations list → <code class="language-plaintext highlighter-rouge">tweet.organizations</code></td>
+    </tr>
+    <tr>
+      <td>MongoDB <code class="language-plaintext highlighter-rouge">result</code> → <code class="language-plaintext highlighter-rouge">df_posts</code> → chart</td>
+      <td>Repeat for the two new fields</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Lab requires two analyses, two queries, two DataFrames and two charts</strong>, plus your Summary and AI Use. No new tweets, no profile-location task and no mandatory Sheets activity.</p>
+
+<hr />
+
+<h2 id="37--finish-and-save-your-colab-notebooks">37 · Finish and save your Colab notebooks</h2>
+
+<p>Your <strong><code class="language-plaintext highlighter-rouge">lec11.ipynb</code></strong> should contain the three saved LLM analysis fields (<code class="language-plaintext highlighter-rouge">sentiment</code>, <code class="language-plaintext highlighter-rouge">people</code>, <code class="language-plaintext highlighter-rouge">translate</code>), <strong>one overall dataset summary</strong>, the executed MongoDB queries, two charts and a translation table. Inspect any failed API calls and keep credentials in Secrets.</p>
+
+<p>Your <strong><code class="language-plaintext highlighter-rouge">lab11.ipynb</code></strong> should adapt the same process to anger and organizations, with query results, charts and your own findings.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><strong>Code explained — Close the database connection:</strong> <strong><code class="language-plaintext highlighter-rouge">client.close()</code>:</strong> ends the MongoDB connection after you finish reviewing and saving your notebook.</p>
+
+<p><strong>Lecture: 40 points · Lab: 60 points.</strong> The optional Google Sheets demonstration is not graded. See the separate Lab 11 assignment for the complete requirements.</p>
+
+<hr />
+
+<h2 id="38--check-your-google-cloud-billing-later">38 · Check Your Google Cloud Billing Later</h2>
+
+<p>Google Cloud Billing reports may take time to show recent Gemini API charges. Check again <strong>the next day or a few days later</strong>, even if today’s usage looks empty.</p>
+
+<p>Open <strong>Google Cloud → Billing → Reports</strong> and review the dates, product, usage, and cost. The instructor example shows <strong>$0.26</strong>; your actual charges and reporting delay may differ.</p>
+
+<figure class="figure"><img class="demo-shot" src="assets/Cloud_Billing_Usage_Delay.png" alt="Google Cloud Billing report showing an example cost of $0.26 and a breakdown of Gemini API usage by SKU." /><figcaption>Instructor Google Cloud Billing report: example API charges visible after a reporting delay. Costs and timing may differ for your project.</figcaption></figure>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/JMU-Data/IA340/edit/gh-pages/modules/module-11/lecture.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

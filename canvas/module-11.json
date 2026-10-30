@@ -1,0 +1,144 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "lab-11",
+      "title": "Lab 11 — Anger and Organization Analysis",
+      "assignment_group": "Labs",
+      "points": 100,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-11/"
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "lab-11-rubric",
+      "title": "Lab 11 — Anger and Organization Analysis",
+      "assignment": "lab-11",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "lecture-data-generation",
+          "description": "Lecture — lec11.ipynb: save tweet.sentiment, tweet.people (list), and tweet.translate in the original lab8.tweet_collection; generate one overall summary in Colab, with executed evidence.",
+          "points": 20,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "lecture-queries-visualization",
+          "description": "Lecture — lec11.ipynb: query saved analysis fields using MongoDB/Python; include pandas results, sentiment and people charts, a translation table, and executed outputs.",
+          "points": 20,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "lab-data-generation",
+          "description": "Lab — lab11.ipynb: independently analyze anger and organizations; save tweet.anger (True/False) and tweet.organizations (list) in the original lab8.tweet_collection.",
+          "points": 20,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "lab-queries-visualization",
+          "description": "Lab — lab11.ipynb: run anger and organization-mention queries, display two pandas DataFrames and two charts, and explain findings grounded in actual results.",
+          "points": 30,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "lab-summary-ai-use",
+          "description": "Lab — lab11.ipynb: final Markdown Summary & AI Use explains anger and organization findings, use of Gemini API or query/chart assistance, and what the student checked or changed.",
+          "points": 10,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "module-11",
+      "title": "Module 11",
+      "published": true,
+      "items": [
+        {
+          "key": "lecture",
+          "type": "ExternalUrl",
+          "title": "Lecture — LLM Analysis of Twitter Data",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/modules/module-11/",
+          "assignment": null
+        },
+        {
+          "key": "lab-11",
+          "type": "Assignment",
+          "title": "Lab 11 — Anger and Organization Analysis",
+          "published": true,
+          "external_url": null,
+          "assignment": "lab-11"
+        }
+      ]
+    }
+  ]
+}

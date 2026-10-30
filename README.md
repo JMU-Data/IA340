@@ -36,6 +36,7 @@
 - [Module 9: MongoDB Queries & Aggregation Pipelines](docs/modules/module-9/index.html)
 - [Lab 9: MongoDB Query & Aggregation Pipelines](docs/assignments/lab-9/index.html)
 - [Module 10: MongoDB Data Analysis with Python](docs/modules/module-10/index.html)
+- [Module 11: LLM Analysis of Twitter Data](docs/modules/module-11/index.html)
 - [Lab 10: Analyze Your Twitter/X Data with Python](docs/assignments/lab-10/index.html)
 - [Google AI Professional Certificate Assignment](docs/assignments/google-ai-professional-certificate/index.md)
 

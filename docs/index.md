@@ -27,6 +27,7 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/modules/module-9/" style="text-decoration: none; color: #57606a;">Module 9</a>
   <a href="{{ site.baseurl }}/assignments/lab-9/" style="text-decoration: none; color: #57606a;">Lab 9</a>
   <a href="{{ site.baseurl }}/modules/module-10/" style="text-decoration: none; color: #57606a;">Module 10</a>
+  <a href="{{ site.baseurl }}/modules/module-11/" style="text-decoration: none; color: #57606a;">Module 11</a>
   <a href="{{ site.baseurl }}/assignments/lab-10/" style="text-decoration: none; color: #57606a;">Lab 10</a>
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="text-decoration: none; color: #57606a;">Google AI Certificate</a>
 </nav>

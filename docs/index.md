@@ -30,6 +30,8 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-10/" style="text-decoration: none; color: #57606a;">Lab 10</a>
   <a href="{{ site.baseurl }}/modules/module-11/" style="text-decoration: none; color: #57606a;">Module 11</a>
   <a href="{{ site.baseurl }}/assignments/lab-11/" style="text-decoration: none; color: #57606a;">Lab 11</a>
+  <a href="{{ site.baseurl }}/modules/module-12/" style="text-decoration: none; color: #57606a;">Module 12</a>
+  <a href="{{ site.baseurl }}/assignments/lab-12/" style="text-decoration: none; color: #57606a;">Lab 12</a>
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="text-decoration: none; color: #57606a;">Google AI Certificate</a>
 </nav>
 
@@ -164,6 +166,16 @@ title: "Home - IA 340"
     <p style="margin-bottom: 0; color: #57606a;">Extend your Lecture notebook: detect anger, extract organizations, and explain two MongoDB charts.</p>
   </a>
 
+  <a href="{{ site.baseurl }}/modules/module-12/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #0969da;">Module 12 · Embeddings, Semantic Search, and RAG</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Compare keyword and vector retrieval, then build a Gemini chatbot with visible tweet evidence.</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/lab-12/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #1a7f37;">Lab 12 · Explore Your Tweets with Gemini and RAG</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Choose and document your keyword, collect new tweets, define an LLM analysis, make two charts, and check a RAG chatbot's evidence.</p>
+  </a>
+
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow: 0.2s;">
     <h3 style="margin-top: 0; color: #8250df; display: flex; align-items: center; gap: 0.5rem;">🎓 Google AI Professional Certificate</h3>
     <p style="margin-bottom: 0; color: #57606a;">Complete three individual courses and submit their public verification URLs to Canvas for full credit.</p>
@@ -197,3 +209,4 @@ Email: **weixx@jmu.edu**
 ## Repository / Reuse / Privacy Boundary
 
 This site is published directly from the course's public GitHub repository using GitHub Pages. All source markdown files, public materials, and instructional assets are maintained in the [JMU-Data/IA340 Repository](https://github.com/JMU-Data/IA340). Private student data, grading operations, and internal Canvas details are managed securely outside of this public repository.
+

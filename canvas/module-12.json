@@ -1,0 +1,161 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "lab-12",
+      "title": "Lab 12 — Explore Your Tweets with Gemini and RAG",
+      "assignment_group": "Labs",
+      "points": 100,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-12/"
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "lab-12-rubric",
+      "title": "Lab 12 — Explore Your Tweets with Gemini and RAG",
+      "assignment": "lab-12",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "lecture-embeddings-index",
+          "description": "Lecture — lec12.ipynb: generate and save embeddings for existing lab8.tweet_collection tweets; show embedding dimensions, matching vector-index settings, and readiness evidence.",
+          "points": 20,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "lecture-retrieval-grounded-answer",
+          "description": "Lecture — lec12.ipynb: compare keyword and semantic retrieval, display source IDs and text, and produce a RAG answer supported by checkable retrieved sources.",
+          "points": 20,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "lab-new-data",
+          "description": "Lab — lab12.ipynb: state the chosen keyword, exact X API query, and research question; collect 50–200 unique new tweets (target 100) into lab12.tweet_collection with unique tweet.id, collection_meta, retrieval time, and count evidence.",
+          "points": 10,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "lab-custom-analysis-charts",
+          "description": "Lab — lab12.ipynb: define a custom Gemini classification and its labels, save valid results, check five labels against original text, and report missing results; complete an original-field quantitative analysis and category summary with two DataFrames, two charts, and interpretations.",
+          "points": 15,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 15
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "lab-retrieval-rag-chatbot",
+          "description": "Lab — lab12.ipynb: generate embeddings and a ready vector index for lab12.tweet_collection; compare keyword and semantic retrieval, display source IDs/text and vector scores, and demonstrate source-based RAG answers plus one follow-up question.",
+          "points": 20,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "lab-evidence-tests-reflection",
+          "description": "Lab — lab12.ipynb: save supported, paraphrased, and insufficient-evidence questions with retrieved sources, answers, and the student's evidence checks; explain findings, limitations, AI use, and what was verified or corrected.",
+          "points": 15,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 15
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "module-12",
+      "title": "Module 12",
+      "published": true,
+      "items": [
+        {
+          "key": "lecture",
+          "type": "ExternalUrl",
+          "title": "Lecture — Embeddings, Vector Search, and RAG",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/modules/module-12/",
+          "assignment": null
+        },
+        {
+          "key": "lab-12",
+          "type": "Assignment",
+          "title": "Lab 12 — Explore Your Tweets with Gemini and RAG",
+          "published": true,
+          "external_url": null,
+          "assignment": "lab-12"
+        }
+      ]
+    }
+  ]
+}

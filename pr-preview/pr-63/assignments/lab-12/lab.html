@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>IA340 · Lab 12 — Explore Your Tweets with Gemini and RAG | IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="IA340 · Lab 12 — Explore Your Tweets with Gemini and RAG" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="James Madison University Intelligence Analysis Fall 2026" />
+<meta property="og:description" content="James Madison University Intelligence Analysis Fall 2026" />
+<link rel="canonical" href="https://jmu-data.github.io/IA340/pr-preview/pr-63/assignments/lab-12/lab.html" />
+<meta property="og:url" content="https://jmu-data.github.io/IA340/pr-preview/pr-63/assignments/lab-12/lab.html" />
+<meta property="og:site_name" content="IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="IA340 · Lab 12 — Explore Your Tweets with Gemini and RAG" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"IA340 · Lab 12 — Explore Your Tweets with Gemini and RAG","url":"https://jmu-data.github.io/IA340/pr-preview/pr-63/assignments/lab-12/lab.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/IA340/pr-preview/pr-63/assets/css/style.css?v=3957d96685d313617d133176a24871f6618856a1">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/IA340/pr-preview/pr-63/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://jmu-data.github.io/IA340/pr-preview/pr-63/">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</a></h1>
+      
+
+      <h1 id="ia340--lab-12--explore-your-tweets-with-gemini-and-rag">IA340 · Lab 12 — Explore Your Tweets with Gemini and RAG</h1>
+
+<p><strong>Wednesday, November 11, 2026 · Google Colab · 100 points · Due: see Canvas</strong></p>
+
+<p><a href="../../modules/module-12/">Week 12 Lecture</a> · <a href="../lab-8/">Lab 8 collection instructions</a></p>
+
+<h2 id="goal">Goal</h2>
+
+<p>Choose your own keyword, collect a <strong>new Twitter/X dataset</strong>, and investigate a question that interests you. Use Gemini for a text-analysis task you design, visualize your findings, and build a RAG chatbot that answers questions using evidence from your tweets.</p>
+
+<div class="mini-path"><span>Collect new tweets</span><b>→</b><span>Analyze + chart</span><b>→</b><span>Retrieve + answer</span><b>→</b><span>Check the evidence</span></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Use for this week</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lecture notebook</td>
+      <td><code class="language-plaintext highlighter-rouge">lec12.ipynb</code> — use your existing <code class="language-plaintext highlighter-rouge">lab8.tweet_collection</code></td>
+    </tr>
+    <tr>
+      <td>Lab notebook</td>
+      <td><code class="language-plaintext highlighter-rouge">lab12.ipynb</code> — collect new data into <code class="language-plaintext highlighter-rouge">lab12.tweet_collection</code></td>
+    </tr>
+    <tr>
+      <td>Collection size</td>
+      <td><strong>50–200 unique real tweets; aim for 100</strong></td>
+    </tr>
+    <tr>
+      <td>Keyword and question</td>
+      <td>Your choice; write both clearly in your notebook</td>
+    </tr>
+    <tr>
+      <td>Tools</td>
+      <td>The course Google Cloud Gemini workflow, MongoDB Atlas, and Google Colab</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="before-the-lab--complete-the-lecture-notebook">Before the Lab · Complete the Lecture notebook</h2>
+
+<p>In <strong><code class="language-plaintext highlighter-rouge">lec12.ipynb</code></strong>, follow the Week 12 lecture using the tweets already stored in <strong><code class="language-plaintext highlighter-rouge">lab8.tweet_collection</code></strong>. Keep the original text and other fields. Save your executed code and readable outputs showing:</p>
+
+<ul>
+  <li>Generated embeddings, their dimensions, and the matching vector-index configuration and readiness check.</li>
+  <li>A keyword-search and semantic-search comparison, with the retrieved source text visible.</li>
+  <li>A RAG answer with source IDs that can be checked against the retrieved tweets.</li>
+</ul>
+
+<p>The Lecture is worth <strong>40 points</strong>. Use your completed notebook as the reference for Part 2 below.</p>
+
+<h2 id="part-1--collect-analyze-and-visualize-new-tweets">Part 1 · Collect, analyze, and visualize new tweets</h2>
+
+<h3 id="11--define-your-question-and-collect-the-data">1.1 · Define your question and collect the data</h3>
+
+<p>Create <strong><code class="language-plaintext highlighter-rouge">lab12.ipynb</code></strong>. Begin with a Markdown cell that states:</p>
+
+<ol>
+  <li>Your <strong>chosen keyword</strong> and why you chose it.</li>
+  <li>The <strong>exact Twitter/X API search query</strong>, including any operators you use.</li>
+  <li>Your <strong>research question</strong>: what do you want to learn from these tweets?</li>
+</ol>
+
+<p>Adapt your Lab 8 collection code. Select database <strong><code class="language-plaintext highlighter-rouge">lab12</code></strong> and collection <strong><code class="language-plaintext highlighter-rouge">tweet_collection</code></strong>, and collect fresh tweets for your chosen query. Preserve the original <code class="language-plaintext highlighter-rouge">tweet</code> and available matching <code class="language-plaintext highlighter-rouge">user</code> records, create the unique <strong><code class="language-plaintext highlighter-rouge">tweet.id</code></strong> index, and keep <strong><code class="language-plaintext highlighter-rouge">collection_meta</code></strong> with the source, exact query, and retrieval time. Your existing Lab 8 collection remains the Lecture dataset.</p>
+
+<p>Use the course-approved X access and keep <strong><code class="language-plaintext highlighter-rouge">TWITTER_BEARER_TOKEN</code></strong>, <strong><code class="language-plaintext highlighter-rouge">MONGODB_CONNECTION_STRING</code></strong>, and <strong><code class="language-plaintext highlighter-rouge">GOOGLE_CLOUD_API_KEY</code></strong> in Colab Secrets. Reuse the existing classroom Gemini connection and MongoDB setup.</p>
+
+<p><strong>Aim for 100 tweets; 50–200 unique real tweets meets the requirement.</strong> Check the stored count before making a paid request. Follow the Lab 8 limited-pagination pattern if the first page leaves you below 50; check the count after each page and stop within the allowed range. If access fails or a query returns too few posts, record what happened and ask the instructor before repeatedly making requests.</p>
+
+<p>Show your final <strong>unique record count</strong> and <strong>retrieval date/time, including the time zone</strong>, in the notebook. Inspect a few saved documents to confirm the text, query, and metadata match your collection.</p>
+
+<h3 id="12--design-one-gemini-text-analysis-task">1.2 · Design one Gemini text-analysis task</h3>
+
+<p>Choose <strong>at least one analysis that produces useful categories</strong> for your research question. For example, you could classify the main topic, identify the type of question a post asks, or classify its communication purpose. <strong>You define the task and the labels</strong>; there is no required set of topic names.</p>
+
+<ul>
+  <li>In Markdown, describe the task, list your allowed labels, and explain what each label means. State how you will handle a tweet that does not fit a category clearly.</li>
+  <li>Adapt the processing pattern from your Week 11 notebook. Include the prompt in your code, request a consistent response format, and save the valid result in the matching original document in <strong><code class="language-plaintext highlighter-rouge">lab12.tweet_collection</code></strong>. Choose and document a field name; <code class="language-plaintext highlighter-rouge">tweet.topic</code> is one possible example.</li>
+  <li>Show <strong>five original tweets alongside their generated labels</strong>. For each, explain whether the label fits the text and identify any correction you made. This is a check of the model’s output, not a new round of data collection.</li>
+  <li>Report the number of valid results and failed or skipped requests. A failed request is <strong>missing analysis</strong>, not a category. Do not count missing or invalid results as a valid label.</li>
+</ul>
+
+<p>Keep the original tweet text. Describe the labels as <strong>model-generated classifications</strong> when reporting your findings.</p>
+
+<h3 id="13--answer-two-analytical-questions-with-two-charts">1.3 · Answer two analytical questions with two charts</h3>
+
+<p>Create the following two analyses using your <strong>new Lab 12 dataset</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Analysis</th>
+      <th>Required result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Quantitative analysis of an original field</strong></td>
+      <td>Ask a numerical question about the collected data, such as activity over time or recorded engagement. Use MongoDB or pandas to calculate the answer; display the result and an appropriate chart.</td>
+    </tr>
+    <tr>
+      <td><strong>Summary of your Gemini categories</strong></td>
+      <td>Query the saved classification field, calculate the category counts or percentages, display the result, and create a chart. State the number of valid labels used and account for missing results.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For <strong>each</strong> analysis, keep the question, executed query/calculation, displayed DataFrame, chart, and a brief interpretation together. You may use MongoDB’s query assistant or Gemini in Colab to help write code, then inspect the returned values and chart labels yourself.</p>
+
+<p>Use database/Python calculations for totals and percentages. Explain what the <strong>collected dataset</strong> shows; it is not a representative sample of everyone on Twitter/X.</p>
+
+<h2 id="part-2--build-and-evaluate-your-rag-chatbot">Part 2 · Build and evaluate your RAG chatbot</h2>
+
+<h3 id="21--generate-embeddings-and-create-the-vector-index">2.1 · Generate embeddings and create the vector index</h3>
+
+<p>Adapt <strong><code class="language-plaintext highlighter-rouge">lec12.ipynb</code></strong> to <strong><code class="language-plaintext highlighter-rouge">lab12.tweet_collection</code></strong>. Generate embeddings from the <strong>original tweet text</strong>, save them with the matching records, and create the vector index using the same model, dimensions, field path, and similarity setting as your Lecture implementation.</p>
+
+<p>Show the number of valid stored embeddings and the index readiness check. Report skipped or failed texts. Before querying, confirm that the question embedding uses the same embedding model and dimensions as the stored document vectors. Follow the Lecture’s document/query task settings.</p>
+
+<p>If the index is still building, wait for readiness and check again. If a call fails, inspect that stage and resume the affected work; do not recollect the dataset or silently replace failed embeddings with made-up values.</p>
+
+<h3 id="22--compare-keyword-search-and-semantic-search">2.2 · Compare keyword search and semantic search</h3>
+
+<p>Choose an information need connected to your research question. Show the <strong>keyword or phrase used for literal search</strong> and the <strong>question used for semantic search</strong>, then run both on your Lab 12 data.</p>
+
+<ul>
+  <li>For keyword matches, show the tweet/source IDs and original text.</li>
+  <li>For semantic retrieval, show the tweet/source IDs, original text, and <strong>vector-search scores</strong>.</li>
+  <li>Explain which returned tweets are useful for the question and why. Identify an irrelevant result if one appears.</li>
+</ul>
+
+<p><strong>Report the results you actually get.</strong> Keyword search does not have to fail, and semantic search does not have to be better for every query. A vector score measures similarity under the chosen search setup; it is not proof that the source answers the question.</p>
+
+<h3 id="23--generate-answers-with-visible-sources">2.3 · Generate answers with visible sources</h3>
+
+<p>Use the retrieved original tweets as context for Gemini. Your chatbot should answer from that evidence, cite the displayed source IDs, and state when the evidence is insufficient. Show the retrieved sources alongside the answer so someone can check its claims.</p>
+
+<p>Include <strong>one follow-up question</strong> to a previous answer. Keep its subject clear in the query used for retrieval and inspect the newly retrieved evidence. A conversational answer still needs sources.</p>
+
+<p>Do not use only the top retrieved tweets to calculate a percentage or total for the whole collection. Use the complete relevant dataset and the Part 1 aggregation workflow for those questions.</p>
+
+<h3 id="24--check-three-types-of-questions">2.4 · Check three types of questions</h3>
+
+<p>Save the question, retrieved sources, chatbot answer, and <strong>your own evidence check</strong> for each test below. You may reuse the comparison and chat outputs above; extra copies are unnecessary.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test</th>
+      <th>What to demonstrate</th>
+      <th>What to explain yourself</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Supported question</strong></td>
+      <td>Ask a question that your collected tweets can answer.</td>
+      <td>Identify the source IDs that support the answer and check that the answer adds no unsupported details.</td>
+    </tr>
+    <tr>
+      <td><strong>Paraphrased question</strong></td>
+      <td>Express the same information need using different words.</td>
+      <td>Compare the retrieved sources and explain whether the meaning was preserved and the answer is still supported.</td>
+    </tr>
+    <tr>
+      <td><strong>Question without sufficient evidence</strong></td>
+      <td>Ask for a detail that your dataset does not establish.</td>
+      <td>Explain what evidence is missing and check whether the chatbot acknowledges that limitation. Similar-looking results alone are not enough.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If a test exposes a problem, describe it. You may adjust the prompt or retrieval query, rerun that test, and explain what improved or remains uncertain. The aim is to evaluate your system honestly.</p>
+
+<h2 id="findings-and-ai-use">Findings and AI Use</h2>
+
+<p>End <strong><code class="language-plaintext highlighter-rouge">lab12.ipynb</code></strong> with a <strong>Summary &amp; AI Use</strong> Markdown cell:</p>
+
+<ul>
+  <li>In about <strong>4–6 sentences</strong>, explain your main numerical and classification findings, what the keyword/semantic comparison showed, and one limitation revealed by the RAG tests. Refer to your actual outputs.</li>
+  <li>In about <strong>2–3 sentences</strong>, explain how you used the Gemini API and any query/chart assistance, and what you checked or changed yourself.</li>
+</ul>
+
+<p>Your final explanation is your interpretation of the evidence. A separate report, prompt-history export, or additional AI-generated summary is not required.</p>
+
+<h2 id="submit">Submit</h2>
+
+<p>Save <strong><code class="language-plaintext highlighter-rouge">lec12.ipynb</code></strong> and <strong><code class="language-plaintext highlighter-rouge">lab12.ipynb</code></strong> at the root of your assigned private GitHub repository, with code and readable executed outputs. Submit <strong>two values on separate lines in private Canvas</strong>:</p>
+
+<ol>
+  <li>Your <strong>GitHub repository root URL</strong>.</li>
+  <li>Your <strong>working MongoDB connection string</strong>, only in the private Canvas submission field.</li>
+</ol>
+
+<p><strong>IA340-1:</strong> <code class="language-plaintext highlighter-rouge">https://github.com/JMU-Data/ia340-fa26-1-&lt;your-github-username&gt;</code><br />
+<strong>IA340-2:</strong> <code class="language-plaintext highlighter-rouge">https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;</code></p>
+
+<p>Never put a connection string, password, API key, or bearer token in GitHub, notebook code/output, screenshots, or AI prompts. Do not submit your Google Cloud API key.</p>
+
+<h2 id="rubric--100-points">Rubric — 100 points</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th style="text-align: right">Points</th>
+      <th>What is assessed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Lecture · Embeddings and index</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">lec12.ipynb</code>: generate and save embeddings for existing Lab 8 tweets; show matching dimensions/index settings and readiness evidence.</td>
+    </tr>
+    <tr>
+      <td><strong>Lecture · Retrieval and source-based answer</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">lec12.ipynb</code>: compare keyword and semantic retrieval, display source text, and produce a RAG answer with checkable source IDs.</td>
+    </tr>
+    <tr>
+      <td><strong>Lab · New data collection</strong></td>
+      <td style="text-align: right"><strong>10</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">lab12.ipynb</code>: state the chosen keyword, exact API query, and research question; store 50–200 unique new tweets in <code class="language-plaintext highlighter-rouge">lab12.tweet_collection</code>, with metadata, retrieval time, and count evidence.</td>
+    </tr>
+    <tr>
+      <td><strong>Lab · Custom analysis and two charts</strong></td>
+      <td style="text-align: right"><strong>15</strong></td>
+      <td>Define and save a custom Gemini classification, inspect five labels against their texts, report missing results, and complete the original-field quantitative analysis and classification summary with two DataFrames, two charts, and interpretations.</td>
+    </tr>
+    <tr>
+      <td><strong>Lab · Retrieval and RAG chatbot</strong></td>
+      <td style="text-align: right"><strong>20</strong></td>
+      <td>Generate Lab 12 embeddings and a ready vector index, compare keyword/semantic retrieval, show source IDs/text/vector scores, and demonstrate source-based answers plus one follow-up.</td>
+    </tr>
+    <tr>
+      <td><strong>Lab · Evidence tests, reflection, and AI Use</strong></td>
+      <td style="text-align: right"><strong>15</strong></td>
+      <td>Check supported, paraphrased, and insufficient-evidence questions against their sources; explain actual findings and limitations, AI use, and what was verified or corrected.</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td style="text-align: right"><strong>100</strong></td>
+      <td><strong>Lecture 40 + Lab 60.</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Deductions:</strong> incorrect/inaccessible GitHub URL <strong>−10</strong>; missing/unusable private Canvas MongoDB connection string <strong>−10</strong>; exposed credential <strong>−20 once</strong>. Scores cannot fall below zero. Revoke/rotate any exposed secret and remove it from the exposed location.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/JMU-Data/IA340/edit/gh-pages/assignments/lab-12/lab.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

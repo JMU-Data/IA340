@@ -1,146 +1,100 @@
-# IA340 · Lab 12 — Explore Your Tweets with Gemini and RAG
+# IA340 · Lab 12 — Post-Election Tweet Analysis and RAG
 
 **Wednesday, November 11, 2026 · Google Colab · 100 points · Due: see Canvas**
 
-[Week 12 Lecture](../../modules/module-12/) · [Lab 8 collection instructions](../lab-8/)
+[Week 12 Lecture](../../modules/module-12/) · [Lab 8 collection instructions](../lab-8/) · [Lab 11 Gemini examples](../lab-11/)
 
-## Goal
+## What you will submit
 
-Choose your own keyword, collect a **new Twitter/X dataset**, and investigate a question that interests you. Use Gemini for a text-analysis task you design, visualize your findings, and build a RAG chatbot that answers questions using evidence from your tweets.
+**Finish the Lecture first.** Create a new Colab notebook called **`lec12.ipynb`**. Copy and run every lecture code cell in order using your existing `lab8.tweet_collection`. Keep the outputs. Save the notebook in your assigned IA340 GitHub repository.
 
-<div class="mini-path"><span>Collect new tweets</span><b>→</b><span>Analyze + chart</span><b>→</b><span>Retrieve + answer</span><b>→</b><span>Check the evidence</span></div>
+Next create a **second** notebook named **`lab12.ipynb`**. This notebook contains the three Lab parts below: **Part 1 — Collect**, **Part 2 — Gemini analysis and charts**, and **Part 3 — RAG chatbot**, followed by an **AI Use** section. You will upload **both notebooks** to the root of the assigned GitHub repository.
 
-| Setting | Use for this week |
+<div class="mini-path"><span>Complete Lecture</span><b>→</b><span>Part 1 · Collect</span><b>→</b><span>Part 2 · Analyze</span><b>→</b><span>Part 3 · RAG</span><b>→</b><span>AI Use</span></div>
+
+### Lecture — 30 points
+
+In `lec12.ipynb`, follow the lecture's alternating theory-and-code demonstrations. Use the existing `lab8.tweet_collection`: connect to MongoDB and Gemini, try the existing text index, generate and store embeddings, create a Vector Search index, retrieve tweet evidence, and run the RAG chatbot. **Run the cells yourself**; do not submit the instructor screenshots as your own outputs.
+
+## Lab — `lab12.ipynb`
+
+### Part 1 — Collect new election tweets (15 points)
+
+**Step 1. Reuse Lab 8 code to collect data.** Use the **Twitter/X API**, exactly as in Lab 8, with the fixed keyword/search query **`election`**. Collect **50–200 unique new tweets** (about **100** is a good target) related to the period after the November 3, 2026 U.S. election. Your retrieved posts must have timestamps consistent with this period; if the API returns older posts, adjust the allowed time filters while preserving the keyword.
+
+In a Markdown cell, write the **keyword**, **exact X API query** (including any date/time filters), **collection date**, and **research question**: *How do people in my collected tweets react to the election outcome, and which people do they mention?*
+
+Save the records in a **new MongoDB database `lab12`**, collection **`tweet_collection`**. Preserve the original tweet data, use the `tweet.id` uniqueness pattern from Lab 8, and show the total count plus a few original tweets. Reuse Lab 8 collection limits and avoid duplicate API requests.
+
+### Part 2 — Use Gemini to analyze tweets and make two bar charts (25 points)
+
+**Step 2. Analyze the collected tweets with a large language model.** You **must** adapt your **Week 11 Gemini API** code, design your own prompts, call the Gemini model on the tweet texts, and save the results to the matching MongoDB documents. Do not use keyword-only heuristics or manually label the entire collection.
+
+**Analysis A — Reaction to the election outcome.** Ask Gemini to assign **exactly one** of these labels to each tweet:
+
+| Label | Meaning |
 |---|---|
-| Lecture notebook | `lec12.ipynb` — use your existing `lab8.tweet_collection` |
-| Lab notebook | `lab12.ipynb` — collect new data into `lab12.tweet_collection` |
-| Collection size | **50–200 unique real tweets; aim for 100** |
-| Keyword and question | Your choice; write both clearly in your notebook |
-| Tools | The course Google Cloud Gemini workflow, MongoDB Atlas, and Google Colab |
+| **Happy** | Clearly pleased or satisfied with the election outcome. |
+| **Unhappy** | Clearly disappointed or dissatisfied with the election outcome. |
+| **No clear reaction** | Unclear, neutral, mixed, or not discussing a reaction to the outcome. |
 
-## Before the Lab · Complete the Lecture notebook
+Example prompt: *"Read the following tweet. Classify its explicit reaction to the election outcome as Happy, Unhappy, or No clear reaction. Return exactly one label. Do not infer the author's opinion from a party, username, or unstated beliefs. Tweet: ..."*
 
-In **`lec12.ipynb`**, follow the Week 12 lecture using the tweets already stored in **`lab8.tweet_collection`**. Keep the original text and other fields. Save your executed code and readable outputs showing:
+Save the result in **`tweet.reaction`**. Display at least **five original tweets beside their labels** to check whether the model followed your instructions. If a model request fails, leave it missing; do not turn a failure into "No clear reaction."
 
-- Generated embeddings, their dimensions, and the matching vector-index configuration and readiness check.
-- A keyword-search and semantic-search comparison, with the retrieved source text visible.
-- A RAG answer with source IDs that can be checked against the retrieved tweets.
+**Chart 1 — Reaction bar chart.** Use MongoDB queries or pandas to count **Happy**, **Unhappy**, and **No clear reaction**. Show the **counts and percentages** in a DataFrame, followed by **one labeled bar chart**. Report missing/failed labels separately from the three reaction categories.
 
-The Lecture is worth **40 points**. Use your completed notebook as the reference for Part 2 below.
+**Analysis B — People explicitly mentioned.** Using the **same Week 11 Gemini pattern**, design another prompt that extracts **the names of people actually written in each tweet**. Return a **list of names**; an empty list `[]` means that the tweet mentions nobody by name. Do not invent names based on titles, roles, parties, or pronouns. Save the list in **`tweet.people`**, then display at least **five original tweets alongside their extracted names**. Treat failed API requests as missing, not as empty lists.
 
-## Part 1 · Collect, analyze, and visualize new tweets
+**Chart 2 — People mentioned bar chart.** Count each named person **at most once per tweet**. Standardize obvious duplicate spellings, show a DataFrame with the **top 10 people and their counts**, and create **one labeled bar chart**. Mention count is not the same as approval or support.
 
-### 1.1 · Define your question and collect the data
+**Part 2 Summary (Markdown).** After the two charts, write a short summary **in your own words**: what the reaction counts show, which people appeared most often, and one limitation of the sample or Gemini analysis. Your charts describe **your collected tweets**, not national voter sentiment.
 
-Create **`lab12.ipynb`**. Begin with a Markdown cell that states:
+### Part 3 — Build a Vector Search RAG chatbot (20 points)
 
-1. Your **chosen keyword** and why you chose it.
-2. The **exact Twitter/X API search query**, including any operators you use.
-3. Your **research question**: what do you want to learn from these tweets?
+**Step 3. Adapt the Lecture RAG code to your new collection.** Continue in the same `lab12.ipynb`. Set your collection to **`client["lab12"]["tweet_collection"]`** and follow this order:
 
-Adapt your Lab 8 collection code. Select database **`lab12`** and collection **`tweet_collection`**, and collect fresh tweets for your chosen query. Preserve the original `tweet` and available matching `user` records, create the unique **`tweet.id`** index, and keep **`collection_meta`** with the source, exact query, and retrieval time. Your existing Lab 8 collection remains the Lecture dataset.
+1. Generate **Gemini embeddings** from the original `tweet.text` of all collected tweets and save them in `tweet.embedding`.
+2. Create the **MongoDB Atlas Vector Search index** using the same embedding model, dimensions, field path, and cosine similarity demonstrated in the lecture. Wait until the index is queryable.
+3. Reuse the lecture's **`vector_search()`**, prompt template, and Gemini chatbot to ask questions about your own election tweets. **You do not need to run keyword/text search or compare search methods in this Lab part.**
 
-Use the course-approved X access and keep **`TWITTER_BEARER_TOKEN`**, **`MONGODB_CONNECTION_STRING`**, and **`GOOGLE_CLOUD_API_KEY`** in Colab Secrets. Reuse the existing classroom Gemini connection and MongoDB setup.
+Ask **at least three meaningful questions**, such as:
 
-**Aim for 100 tweets; 50–200 unique real tweets meets the requirement.** Check the stored count before making a paid request. Follow the Lab 8 limited-pagination pattern if the first page leaves you below 50; check the count after each page and stop within the allowed range. If access fails or a query returns too few posts, record what happened and ask the instructor before repeatedly making requests.
+- Why do some tweets express unhappiness about the election results? What reasons do they actually mention?
+- What are some tweets happy about? What positive reactions appear?
+- Which people are mentioned in connection with the election results, and what do those tweets say?
 
-Show your final **unique record count** and **retrieval date/time, including the time zone**, in the notebook. Inspect a few saved documents to confirm the text, query, and metadata match your collection.
+For **each** question, preserve the **exact question**, the **retrieved tweet IDs and source text**, and **the actual Gemini answer**. Under it, write **your own 1–2 sentence summary**, explaining what you learned and whether the cited tweets support the answer. The chatbot can generate different wording on later runs; preserve **what you actually observed**, rather than inventing or rewriting a model response.
 
-### 1.2 · Design one Gemini text-analysis task
+**Part 3 Summary (Markdown).** After the chat examples, summarize the main themes you noticed and explain a limitation or question that your tweets could not answer. Do not extrapolate a few retrieved tweets to all voters. For dataset-wide numbers, refer back to Part 2's charts.
 
-Choose **at least one analysis that produces useful categories** for your research question. For example, you could classify the main topic, identify the type of question a post asks, or classify its communication purpose. **You define the task and the labels**; there is no required set of topic names.
+### AI Use — 10 points
 
-- In Markdown, describe the task, list your allowed labels, and explain what each label means. State how you will handle a tweet that does not fit a category clearly.
-- Adapt the processing pattern from your Week 11 notebook. Include the prompt in your code, request a consistent response format, and save the valid result in the matching original document in **`lab12.tweet_collection`**. Choose and document a field name; `tweet.topic` is one possible example.
-- Show **five original tweets alongside their generated labels**. For each, explain whether the label fits the text and identify any correction you made. This is a check of the model's output, not a new round of data collection.
-- Report the number of valid results and failed or skipped requests. A failed request is **missing analysis**, not a category. Do not count missing or invalid results as a valid label.
+End `lab12.ipynb` with a separate **AI Use** Markdown cell. Briefly explain **which AI tools you used**, **how you used them**, and **which outputs, labels, or answers you personally checked or corrected**.
 
-Keep the original tweet text. Describe the labels as **model-generated classifications** when reporting your findings.
+## Save and submit — two notebooks, two Canvas values
 
-### 1.3 · Answer two analytical questions with two charts
+Save **both** `lec12.ipynb` and `lab12.ipynb` **at the root of your assigned private IA340 GitHub repository**, with code, readable output, Markdown explanations, and your written summaries. **Any questions and discussions you include in the notebooks will be stored on GitHub** and can be read by anyone with repository access; if you post work to a public repo, anyone can read it. Keep your writing respectful and do not publish secrets or personal information.
 
-Create the following two analyses using your **new Lab 12 dataset**:
+Submit **exactly two values, each on its own line, in private Canvas**:
 
-| Analysis | Required result |
-|---|---|
-| **Quantitative analysis of an original field** | Ask a numerical question about the collected data, such as activity over time or recorded engagement. Use MongoDB or pandas to calculate the answer; display the result and an appropriate chart. |
-| **Summary of your Gemini categories** | Query the saved classification field, calculate the category counts or percentages, display the result, and create a chart. State the number of valid labels used and account for missing results. |
-
-For **each** analysis, keep the question, executed query/calculation, displayed DataFrame, chart, and a brief interpretation together. You may use MongoDB's query assistant or Gemini in Colab to help write code, then inspect the returned values and chart labels yourself.
-
-Use database/Python calculations for totals and percentages. Explain what the **collected dataset** shows; it is not a representative sample of everyone on Twitter/X.
-
-## Part 2 · Build and evaluate your RAG chatbot
-
-### 2.1 · Generate embeddings and create the vector index
-
-Adapt **`lec12.ipynb`** to **`lab12.tweet_collection`**. Generate embeddings from the **original tweet text**, save them with the matching records, and create the vector index using the same model, dimensions, field path, and similarity setting as your Lecture implementation.
-
-Show the number of valid stored embeddings and the index readiness check. Report skipped or failed texts. Before querying, confirm that the question embedding uses the same embedding model and dimensions as the stored document vectors. Follow the Lecture's document/query task settings.
-
-If the index is still building, wait for readiness and check again. If a call fails, inspect that stage and resume the affected work; do not recollect the dataset or silently replace failed embeddings with made-up values.
-
-### 2.2 · Compare keyword search and semantic search
-
-Choose an information need connected to your research question. Show the **keyword or phrase used for literal search** and the **question used for semantic search**, then run both on your Lab 12 data.
-
-- For keyword matches, show the tweet/source IDs and original text.
-- For semantic retrieval, show the tweet/source IDs, original text, and **vector-search scores**.
-- Explain which returned tweets are useful for the question and why. Identify an irrelevant result if one appears.
-
-**Report the results you actually get.** Keyword search does not have to fail, and semantic search does not have to be better for every query. A vector score measures similarity under the chosen search setup; it is not proof that the source answers the question.
-
-### 2.3 · Generate answers with visible sources
-
-Use the retrieved original tweets as context for Gemini. Your chatbot should answer from that evidence, cite the displayed source IDs, and state when the evidence is insufficient. Show the retrieved sources alongside the answer so someone can check its claims.
-
-Include **one follow-up question** to a previous answer. Keep its subject clear in the query used for retrieval and inspect the newly retrieved evidence. A conversational answer still needs sources.
-
-Do not use only the top retrieved tweets to calculate a percentage or total for the whole collection. Use the complete relevant dataset and the Part 1 aggregation workflow for those questions.
-
-### 2.4 · Check three types of questions
-
-Save the question, retrieved sources, chatbot answer, and **your own evidence check** for each test below. You may reuse the comparison and chat outputs above; extra copies are unnecessary.
-
-| Test | What to demonstrate | What to explain yourself |
-|---|---|---|
-| **Supported question** | Ask a question that your collected tweets can answer. | Identify the source IDs that support the answer and check that the answer adds no unsupported details. |
-| **Paraphrased question** | Express the same information need using different words. | Compare the retrieved sources and explain whether the meaning was preserved and the answer is still supported. |
-| **Question without sufficient evidence** | Ask for a detail that your dataset does not establish. | Explain what evidence is missing and check whether the chatbot acknowledges that limitation. Similar-looking results alone are not enough. |
-
-If a test exposes a problem, describe it. You may adjust the prompt or retrieval query, rerun that test, and explain what improved or remains uncertain. The aim is to evaluate your system honestly.
-
-## Findings and AI Use
-
-End **`lab12.ipynb`** with a **Summary & AI Use** Markdown cell:
-
-- In about **4–6 sentences**, explain your main numerical and classification findings, what the keyword/semantic comparison showed, and one limitation revealed by the RAG tests. Refer to your actual outputs.
-- In about **2–3 sentences**, explain how you used the Gemini API and any query/chart assistance, and what you checked or changed yourself.
-
-Your final explanation is your interpretation of the evidence. A separate report, prompt-history export, or additional AI-generated summary is not required.
-
-## Submit
-
-Save **`lec12.ipynb`** and **`lab12.ipynb`** at the root of your assigned private GitHub repository, with code and readable executed outputs. Submit **two values on separate lines in private Canvas**:
-
-1. Your **GitHub repository root URL**.
-2. Your **working MongoDB connection string**, only in the private Canvas submission field.
+1. **Your GitHub repository root URL**.
+2. **Your working MongoDB connection string** (only in private Canvas, never in GitHub).
 
 **IA340-1:** `https://github.com/JMU-Data/ia340-fa26-1-<your-github-username>`  
 **IA340-2:** `https://github.com/JMU-Data/ia340-fa26-2-<your-github-username>`
 
-Never put a connection string, password, API key, or bearer token in GitHub, notebook code/output, screenshots, or AI prompts. Do not submit your Google Cloud API key.
+Use **Colab Secrets** for API keys, the X token, and the MongoDB URI. Never put credentials in your repository, notebook outputs, screenshots, prompts, or code. If a credential is exposed, rotate it promptly.
 
 ## Rubric — 100 points
 
 | Component | Points | What is assessed |
 |---|---:|---|
-| **Lecture · Embeddings and index** | **20** | `lec12.ipynb`: generate and save embeddings for existing Lab 8 tweets; show matching dimensions/index settings and readiness evidence. |
-| **Lecture · Retrieval and source-based answer** | **20** | `lec12.ipynb`: compare keyword and semantic retrieval, display source text, and produce a RAG answer with checkable source IDs. |
-| **Lab · New data collection** | **10** | `lab12.ipynb`: state the chosen keyword, exact API query, and research question; store 50–200 unique new tweets in `lab12.tweet_collection`, with metadata, retrieval time, and count evidence. |
-| **Lab · Custom analysis and two charts** | **15** | Define and save a custom Gemini classification, inspect five labels against their texts, report missing results, and complete the original-field quantitative analysis and classification summary with two DataFrames, two charts, and interpretations. |
-| **Lab · Retrieval and RAG chatbot** | **20** | Generate Lab 12 embeddings and a ready vector index, compare keyword/semantic retrieval, show source IDs/text/vector scores, and demonstrate source-based answers plus one follow-up. |
-| **Lab · Evidence tests, reflection, and AI Use** | **15** | Check supported, paraphrased, and insufficient-evidence questions against their sources; explain actual findings and limitations, AI use, and what was verified or corrected. |
-| **Total** | **100** | **Lecture 40 + Lab 60.** |
+| **Lecture — `lec12.ipynb`** | **30** | Complete and run the lecture examples in your own notebook; keep the outputs and upload to GitHub. |
+| **Part 1 — Collect** | **15** | Use Lab 8 code to collect 50–200 new `election` tweets into `lab12.tweet_collection` and document the query/count. |
+| **Part 2 — Gemini + two charts** | **25** | Use Gemini API for reaction classification and name extraction; save and inspect results; create two specified bar charts and a Part 2 Summary. |
+| **Part 3 — RAG chatbot** | **20** | Generate embeddings, build the Vector Search index, record at least three Q&A turns and source evidence, and write a Part 3 Summary. |
+| **AI Use** | **10** | Describe your AI tools, how you used them, and what you checked yourself. |
+| **Total** | **100** | |
 
-**Deductions:** incorrect/inaccessible GitHub URL **−10**; missing/unusable private Canvas MongoDB connection string **−10**; exposed credential **−20 once**. Scores cannot fall below zero. Revoke/rotate any exposed secret and remove it from the exposed location.
+**Additional deductions:** incorrect/inaccessible GitHub repository URL **−10**; missing/nonworking MongoDB connection string **−10**; exposed credentials **−20 once**. These deductions apply after the rubric, and the final score cannot be less than zero. Fix broken access and rotate any exposed credential.

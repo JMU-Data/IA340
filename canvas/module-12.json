@@ -1,0 +1,144 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "lab-12",
+      "title": "Lab 12 — Post-Election Tweet Analysis and RAG",
+      "assignment_group": "Labs",
+      "points": 100,
+      "due_at": null,
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-12/"
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "lab-12-rubric",
+      "title": "Lab 12 — Post-Election Tweet Analysis and RAG",
+      "assignment": "lab-12",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "lecture",
+          "description": "Lecture — lec12.ipynb: run the 14 short code cells interleaved with the lecture, show keyword search, embeddings, vector index, retrieval, and RAG chat on lab8.tweet_collection.",
+          "points": 30,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "part-1",
+          "description": "Lab Part 1 — lab12.ipynb: use Lab 8 X API code to collect 50–200 unique new election tweets into lab12.tweet_collection; document query, collection time, and count.",
+          "points": 15,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 15
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "part-2",
+          "description": "Lab Part 2 — lab12.ipynb: Gemini API reaction labels and named people, saved to MongoDB and checked; exactly two bar charts with DataFrames and a written summary.",
+          "points": 25,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 25
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "part-3",
+          "description": "Lab Part 3 — lab12.ipynb: embed the new tweets, build the Vector Search index, ask and save at least three RAG questions with retrieved sources, actual answers, and personal summaries.",
+          "points": 20,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 20
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "ai-use",
+          "description": "AI Use — a final Markdown section lists the AI tools used, how they were used, and the student’s own checks/corrections.",
+          "points": 10,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "module-12",
+      "title": "Module 12",
+      "published": true,
+      "items": [
+        {
+          "key": "lecture",
+          "type": "ExternalUrl",
+          "title": "Lecture — Embeddings, Vector Search, and RAG",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/modules/module-12/",
+          "assignment": null
+        },
+        {
+          "key": "lab-12",
+          "type": "Assignment",
+          "title": "Lab 12 — Explore Your Tweets with Gemini and RAG",
+          "published": true,
+          "external_url": null,
+          "assignment": "lab-12"
+        }
+      ]
+    }
+  ]
+}

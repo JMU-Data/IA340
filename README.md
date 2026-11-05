@@ -39,6 +39,8 @@
 - [Lab 10: Analyze Your Twitter/X Data with Python](docs/assignments/lab-10/index.html)
 - [Module 11: LLM Analysis of Twitter Data](docs/modules/module-11/index.html)
 - [Lab 11: Anger and Organization Analysis](docs/assignments/lab-11/index.html)
+- [Module 12: Embeddings, Semantic Search, and RAG](docs/modules/module-12/index.html)
+- [Lab 12: Explore Your Tweets with Gemini and RAG](docs/assignments/lab-12/index.html)
 - [Google AI Professional Certificate Assignment](docs/assignments/google-ai-professional-certificate/index.md)
 
 ## Course Overview
@@ -80,3 +82,4 @@ Code in this repository is licensed under the [MIT License](LICENSE-CODE).
 Course materials, documentation, slides, and other original educational content are licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0) License](LICENSE-CONTENT), unless otherwise noted.
 
 Third-party datasets, images, figures, software, and other externally sourced materials retain their original licenses or terms and are not automatically covered by these repository licenses.
+

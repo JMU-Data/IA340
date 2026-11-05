@@ -7,7 +7,7 @@
   "assignments": [
     {
       "key": "lab-12",
-      "title": "Lab 12 — Explore Your Tweets with Gemini and RAG",
+      "title": "Lab 12 — Post-Election Tweet Analysis and RAG",
       "assignment_group": "Labs",
       "points": 100,
       "due_at": null,
@@ -23,14 +23,65 @@
   "rubrics": [
     {
       "key": "lab-12-rubric",
-      "title": "Lab 12 — Explore Your Tweets with Gemini and RAG",
+      "title": "Lab 12 — Post-Election Tweet Analysis and RAG",
       "assignment": "lab-12",
       "use_for_grading": true,
       "scoring": "ratings",
       "criteria": [
         {
-          "key": "lecture-embeddings-index",
-          "description": "Lecture — lec12.ipynb: generate and save embeddings for existing lab8.tweet_collection tweets; show embedding dimensions, matching vector-index settings, and readiness evidence.",
+          "key": "lecture",
+          "description": "Lecture — lec12.ipynb: run the 14 short code cells interleaved with the lecture, show keyword search, embeddings, vector index, retrieval, and RAG chat on lab8.tweet_collection.",
+          "points": 30,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 30
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "part-1",
+          "description": "Lab Part 1 — lab12.ipynb: use Lab 8 X API code to collect 50–200 unique new election tweets into lab12.tweet_collection; document query, collection time, and count.",
+          "points": 15,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 15
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "part-2",
+          "description": "Lab Part 2 — lab12.ipynb: Gemini API reaction labels and named people, saved to MongoDB and checked; exactly two bar charts with DataFrames and a written summary.",
+          "points": 25,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 25
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "part-3",
+          "description": "Lab Part 3 — lab12.ipynb: embed the new tweets, build the Vector Search index, ask and save at least three RAG questions with retrieved sources, actual answers, and personal summaries.",
           "points": 20,
           "ratings": [
             {
@@ -46,82 +97,14 @@
           ]
         },
         {
-          "key": "lecture-retrieval-grounded-answer",
-          "description": "Lecture — lec12.ipynb: compare keyword and semantic retrieval, display source IDs and text, and produce a RAG answer supported by checkable retrieved sources.",
-          "points": 20,
-          "ratings": [
-            {
-              "key": "pass",
-              "description": "PASS",
-              "points": 20
-            },
-            {
-              "key": "missing",
-              "description": "MISSING",
-              "points": 0
-            }
-          ]
-        },
-        {
-          "key": "lab-new-data",
-          "description": "Lab — lab12.ipynb: state the chosen keyword, exact X API query, and research question; collect 50–200 unique new tweets (target 100) into lab12.tweet_collection with unique tweet.id, collection_meta, retrieval time, and count evidence.",
+          "key": "ai-use",
+          "description": "AI Use — a final Markdown section lists the AI tools used, how they were used, and the student’s own checks/corrections.",
           "points": 10,
           "ratings": [
             {
               "key": "pass",
               "description": "PASS",
               "points": 10
-            },
-            {
-              "key": "missing",
-              "description": "MISSING",
-              "points": 0
-            }
-          ]
-        },
-        {
-          "key": "lab-custom-analysis-charts",
-          "description": "Lab — lab12.ipynb: define a custom Gemini classification and its labels, save valid results, check five labels against original text, and report missing results; complete an original-field quantitative analysis and category summary with two DataFrames, two charts, and interpretations.",
-          "points": 15,
-          "ratings": [
-            {
-              "key": "pass",
-              "description": "PASS",
-              "points": 15
-            },
-            {
-              "key": "missing",
-              "description": "MISSING",
-              "points": 0
-            }
-          ]
-        },
-        {
-          "key": "lab-retrieval-rag-chatbot",
-          "description": "Lab — lab12.ipynb: generate embeddings and a ready vector index for lab12.tweet_collection; compare keyword and semantic retrieval, display source IDs/text and vector scores, and demonstrate source-based RAG answers plus one follow-up question.",
-          "points": 20,
-          "ratings": [
-            {
-              "key": "pass",
-              "description": "PASS",
-              "points": 20
-            },
-            {
-              "key": "missing",
-              "description": "MISSING",
-              "points": 0
-            }
-          ]
-        },
-        {
-          "key": "lab-evidence-tests-reflection",
-          "description": "Lab — lab12.ipynb: save supported, paraphrased, and insufficient-evidence questions with retrieved sources, answers, and the student's evidence checks; explain findings, limitations, AI use, and what was verified or corrected.",
-          "points": 15,
-          "ratings": [
-            {
-              "key": "pass",
-              "description": "PASS",
-              "points": 15
             },
             {
               "key": "missing",

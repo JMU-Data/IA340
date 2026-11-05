@@ -133,7 +133,7 @@
         {
           "key": "lab-12",
           "type": "Assignment",
-          "title": "Lab 12 — Explore Your Tweets with Gemini and RAG",
+          "title": "Lab 12 — Post-Election Tweet Analysis and RAG",
           "published": true,
           "external_url": null,
           "assignment": "lab-12"

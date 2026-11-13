@@ -33,16 +33,7 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/modules/module-12/" style="text-decoration: none; color: #57606a;">Module 12</a>
   <a href="{{ site.baseurl }}/assignments/lab-12/" style="text-decoration: none; color: #57606a;">Lab 12</a>
 
-  <a href="{{ site.baseurl }}/assignments/lab-13/#section-1-visualize-your-twitter-data-with-mongodb-charts" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
-    <h3 style="margin-top: 0; color: #1a7f37;">Lab 13A · MongoDB Charts Dashboard</h3>
-    <p style="margin-bottom: 0; color: #57606a;">Build and share six charts using your existing Week 8 Twitter/X data (50 points).</p>
-  </a>
-  <a href="{{ site.baseurl }}/assignments/lab-13/#section-2-research-with-gemini-notebook" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
-    <h3 style="margin-top: 0; color: #1a7f37;">Lab 13B · Gemini Notebook Research</h3>
-    <p style="margin-bottom: 0; color: #57606a;">Research with sources and Studio, share the whole Notebook, and write a reflection (50 points).</p>
-  </a>
-  <a href="{{ site.baseurl }}/assignments/lab-13/#section-1-visualize-your-twitter-data-with-mongodb-charts" style="text-decoration: none; color: #57606a;">Lab 13A</a>
-  <a href="{{ site.baseurl }}/assignments/lab-13/#section-2-research-with-gemini-notebook" style="text-decoration: none; color: #57606a;">Lab 13B</a>
+  <a href="{{ site.baseurl }}/assignments/lab-13/" style="text-decoration: none; color: #57606a;">Lab 13</a>
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="text-decoration: none; color: #57606a;">Google AI Certificate</a>
 </nav>
 
@@ -185,6 +176,11 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-12/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
     <h3 style="margin-top: 0; color: #1a7f37;">Lab 12 · Explore Your Tweets with Gemini and RAG</h3>
     <p style="margin-bottom: 0; color: #57606a;">Choose and document your keyword, collect new tweets, define an LLM analysis, make two charts, and check a RAG chatbot's evidence.</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/lab-13/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #1a7f37;">Lab 13 · MongoDB Charts &amp; Gemini Notebook</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Build a dashboard from your Week 8 Twitter/X data, then explore source-grounded research and Studio with Gemini Notebook.</p>
   </a>
 
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow: 0.2s;">

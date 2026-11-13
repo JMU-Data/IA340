@@ -44,7 +44,7 @@
       "criteria": [
         {
           "key": "dashboard",
-          "description": "Six MongoDB Charts built from the student's Lab 8 Twitter data: total, time series, sentiment+anger, top accounts, people/organizations, and geographic view (empty map with evidence-based explanation acceptable). Public dashboard and data source must be accessible using submitted Dashboard URL.",
+          "description": "Six MongoDB Charts from Lab 8 Twitter data: total, time series, sentiment+anger, top accounts, people/organizations, and geographic view (explained empty map acceptable). Public dashboard and data source must be accessible using submitted Dashboard URL.",
           "points": 50,
           "ratings": [
             {

@@ -41,8 +41,7 @@
 - [Lab 11: Anger and Organization Analysis](docs/assignments/lab-11/index.html)
 - [Module 12: Embeddings, Semantic Search, and RAG](docs/modules/module-12/index.html)
 - [Lab 12: Explore Your Tweets with Gemini and RAG](docs/assignments/lab-12/index.html)
-- [Lab 13A: MongoDB Charts Dashboard](docs/assignments/lab-13/index.html#section-1-visualize-your-twitter-data-with-mongodb-charts)
-- [Lab 13B: Gemini Notebook Research and Studio](docs/assignments/lab-13/index.html#section-2-research-with-gemini-notebook)
+- [Lab 13: MongoDB Charts Dashboard and Gemini Notebook](docs/assignments/lab-13/index.html)
 - [Google AI Professional Certificate Assignment](docs/assignments/google-ai-professional-certificate/index.md)
 
 ## Course Overview

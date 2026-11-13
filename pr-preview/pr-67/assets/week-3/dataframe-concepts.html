@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DataFrame, Series, Rows, Columns, and Index</title>
+  <style>
+    :root{
+      --bg:#f6f8fa;--panel:#fff;--text:#1f2328;--muted:#57606a;--line:#d0d7de;
+      --accent:#0969da;--accent-soft:#ddf4ff;--row:#dafbe1;--index:#fff8c5;--code:#0d1117;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+    .stage{width:min(1200px,100%);min-height:675px;margin:0 auto;padding:20px;display:grid;grid-template-rows:auto auto 1fr auto;gap:13px}
+    header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    h1{margin:0;font-size:clamp(24px,3vw,38px);line-height:1.12}
+    .subtitle{margin:6px 0 0;color:var(--muted)}
+    .badge{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 11px;color:var(--muted);font-size:13px;white-space:nowrap}
+    .controls{display:flex;flex-wrap:wrap;gap:8px}
+    button{font:inherit;font-weight:750;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text);padding:9px 13px;cursor:pointer;transition:.16s ease}
+    button:hover{transform:translateY(-1px);border-color:var(--accent)}
+    button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .workspace{display:grid;grid-template-columns:1.16fr .84fr;gap:13px;min-height:0}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 2px rgba(31,35,40,.05)}
+    .panel-title{padding:10px 13px;border-bottom:1px solid var(--line);font-weight:760;display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .table-wrap{overflow:auto;padding:14px}
+    table{width:100%;border-collapse:separate;border-spacing:0;font-variant-numeric:tabular-nums;border:2px solid transparent;border-radius:9px;overflow:hidden;transition:.2s ease}
+    table.active-frame{border-color:var(--accent);box-shadow:0 0 0 4px rgba(9,105,218,.10)}
+    th,td{padding:12px 11px;border-right:1px solid #eaeef2;border-bottom:1px solid #eaeef2;text-align:left;transition:.22s ease;font-size:14px}
+    thead th{background:#f6f8fa;font-weight:800}
+    tr:last-child th,tr:last-child td{border-bottom:0}
+    th:last-child,td:last-child{border-right:0}
+    .index-head,.index-cell{background:#f6f8fa;color:var(--muted);font-weight:800;text-align:center;min-width:48px}
+    .cell-dim{opacity:.26}
+    .series-hit,.column-hit{background:var(--accent-soft)!important;font-weight:800;opacity:1!important}
+    .row-hit{background:var(--row)!important;font-weight:750;opacity:1!important}
+    .index-hit{background:var(--index)!important;color:#7a5200!important;font-weight:850;opacity:1!important}
+    .side{display:grid;grid-template-rows:auto 1fr;gap:13px;min-height:0}
+    .code{margin:0;padding:16px;background:var(--code);color:#e6edf3;font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;min-height:112px}
+    .explain{padding:16px;line-height:1.5}
+    .explain h2{margin:0 0 8px;font-size:20px}
+    .explain p{margin:0 0 10px}
+    .type{display:inline-block;border-radius:999px;padding:4px 9px;background:var(--accent-soft);color:#0550ae;font-weight:850;font-size:12px}
+    .dimension{font-weight:800;color:var(--muted);font-size:13px}
+    footer{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:13px}
+    @media(max-width:880px){.workspace{grid-template-columns:1fr}.stage{min-height:auto;padding:13px}header{flex-direction:column}.badge{white-space:normal}}
+  </style>
+</head>
+<body>
+<main class="stage">
+  <header>
+    <div>
+      <h1>What Part of the Table Are We Talking About?</h1>
+      <p class="subtitle">Select a concept and connect the visual part of the table to the pandas object.</p>
+    </div>
+    <div class="badge">Illustrative COVID-19 rows</div>
+  </header>
+
+  <nav class="controls" aria-label="Pandas table concepts">
+    <button data-mode="dataframe" aria-pressed="true">DataFrame</button>
+    <button data-mode="series" aria-pressed="false">Series</button>
+    <button data-mode="row" aria-pressed="false">Row</button>
+    <button data-mode="column" aria-pressed="false">Column</button>
+    <button data-mode="index" aria-pressed="false">Index</button>
+  </nav>
+
+  <section class="workspace">
+    <article class="panel">
+      <div class="panel-title"><span>Mini DataFrame: <code>covid</code></span><span id="dimension" class="dimension">4 rows × 4 columns</span></div>
+      <div class="table-wrap">
+        <table id="table" class="active-frame">
+          <thead>
+            <tr><th class="index-head">index</th><th data-col="date">date</th><th data-col="country">country</th><th data-col="cases">cases</th><th data-col="deaths">deaths</th></tr>
+          </thead>
+          <tbody>
+            <tr data-row="0"><th class="index-cell">0</th><td data-col="date">2020-12-14</td><td data-col="country">Afghanistan</td><td data-col="cases">746</td><td data-col="deaths">6</td></tr>
+            <tr data-row="1"><th class="index-cell">1</th><td data-col="date">2020-12-13</td><td data-col="country">Afghanistan</td><td data-col="cases">298</td><td data-col="deaths">9</td></tr>
+            <tr data-row="2"><th class="index-cell">2</th><td data-col="date">2020-12-14</td><td data-col="country">United_States_of_America</td><td data-col="cases">189723</td><td data-col="deaths">1340</td></tr>
+            <tr data-row="3"><th class="index-cell">3</th><td data-col="date">2020-12-13</td><td data-col="country">United_States_of_America</td><td data-col="cases">216017</td><td data-col="deaths">2315</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <aside class="side">
+      <article class="panel">
+        <div class="panel-title">Pandas expression</div>
+        <pre id="code" class="code">covid</pre>
+      </article>
+      <article class="panel explain">
+        <h2 id="title">DataFrame: the complete table</h2>
+        <p><span id="type" class="type">pandas.DataFrame</span></p>
+        <p id="explanation">A DataFrame is a two-dimensional labeled table containing rows and columns.</p>
+        <p><strong>Think:</strong> <span id="think">the whole dataset currently stored in memory.</span></p>
+      </article>
+    </aside>
+  </section>
+
+  <footer>
+    <span>A Series is one-dimensional; a DataFrame is two-dimensional.</span>
+    <span>IA340 Week 3</span>
+  </footer>
+</main>
+<script>
+  const buttons=[...document.querySelectorAll('button[data-mode]')];
+  const table=document.getElementById('table');
+  const cells=[...table.querySelectorAll('th,td')];
+  const code=document.getElementById('code');
+  const title=document.getElementById('title');
+  const type=document.getElementById('type');
+  const explanation=document.getElementById('explanation');
+  const think=document.getElementById('think');
+  const dimension=document.getElementById('dimension');
+
+  function reset(){
+    cells.forEach(c=>c.classList.remove('cell-dim','series-hit','column-hit','row-hit','index-hit'));
+    table.classList.remove('active-frame');
+  }
+
+  function dimAll(){ cells.forEach(c=>c.classList.add('cell-dim')); }
+
+  function setMode(mode){
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));
+    reset();
+    if(mode==='series'){
+      dimAll();
+      table.querySelectorAll('[data-col="cases"]').forEach(c=>{c.classList.remove('cell-dim');c.classList.add('series-hit')});
+      code.textContent='covid["cases"]';
+      title.textContent='Series: one labeled column';
+      type.textContent='pandas.Series';
+      explanation.textContent='Selecting one column with a single column name returns a one-dimensional Series with values and index labels.';
+      think.textContent='one variable across all observations.';
+      dimension.textContent='4 values + index';
+    }else if(mode==='row'){
+      dimAll();
+      table.querySelectorAll('tr[data-row="1"] > *').forEach(c=>{c.classList.remove('cell-dim');c.classList.add('row-hit')});
+      code.textContent='covid.iloc[1]';
+      title.textContent='Row: one observation';
+      type.textContent='pandas.Series';
+      explanation.textContent='A row contains the values recorded for one observation. Selecting one row with iloc returns a Series indexed by column names.';
+      think.textContent='one country-date observation across several variables.';
+      dimension.textContent='1 observation';
+    }else if(mode==='column'){
+      dimAll();
+      table.querySelectorAll('[data-col="country"]').forEach(c=>{c.classList.remove('cell-dim');c.classList.add('column-hit')});
+      code.textContent='covid[["country"]]';
+      title.textContent='Column: one variable';
+      type.textContent='pandas.DataFrame';
+      explanation.textContent='A column is a variable. Double brackets keep the result as a one-column DataFrame rather than a Series.';
+      think.textContent='the country variable, still represented as a table.';
+      dimension.textContent='4 rows × 1 column';
+    }else if(mode==='index'){
+      dimAll();
+      table.querySelectorAll('.index-head,.index-cell').forEach(c=>{c.classList.remove('cell-dim');c.classList.add('index-hit')});
+      code.textContent='covid.index';
+      title.textContent='Index: row labels';
+      type.textContent='pandas.Index';
+      explanation.textContent='The index supplies row labels. Here the labels are 0, 1, 2, and 3. The index is not a normal data column: pandas uses it to identify and align rows, and those labels stay attached when you filter or sort unless you reset the index.';
+      think.textContent='row identity and alignment, not another measured variable.';
+      dimension.textContent='4 row labels';
+    }else{
+      table.classList.add('active-frame');
+      code.textContent='covid';
+      title.textContent='DataFrame: the complete table';
+      type.textContent='pandas.DataFrame';
+      explanation.textContent='A DataFrame is a two-dimensional labeled table containing rows and columns.';
+      think.textContent='the whole dataset currently stored in memory.';
+      dimension.textContent='4 rows × 4 columns';
+    }
+  }
+
+  buttons.forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+  setMode('dataframe');
+</script>
+</body>
+</html>

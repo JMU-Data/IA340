@@ -1,10 +1,10 @@
 # Lab 13: MongoDB Dashboards and Gemini Notebook
 
-**Week 13 · November 16 and 18, 2026 · Two Labs (50 points each; 100 total) · Due Friday, November 20, 2026 at 11:59 PM EST**
+**Week 13 · November 16 and 18, 2026 · One Lab (100 points) · Due Friday, November 20, 2026 at 11:59 PM EST**
 
-Week 13 has **two Labs and no Lecture**, presented together on this page. First, communicate findings from the Twitter/X data you collected in **Week 8** with a MongoDB Charts dashboard. Second, use **Gemini Notebook (formerly NotebookLM)** to research a topic, ask source-grounded questions, and experiment with AI-generated research products in Studio.
+Week 13 has **one Lab with two sections and no Lecture**, presented together on this page. First, communicate findings from the Twitter/X data you collected in **Week 8** with a MongoDB Charts dashboard. Second, use **Gemini Notebook (formerly NotebookLM)** to research a topic, ask source-grounded questions, and experiment with AI-generated research products in Studio.
 
-**Two separate Canvas Lab submissions:** In **Lab 13A**, submit your public MongoDB Dashboard URL. In **Lab 13B**, submit your **ENTIRE Gemini Notebook URL** plus a **2–3-sentence intelligence-analysis reflection**. Do not submit individual Studio artifact links.
+**One Canvas Lab 13 submission:** In the **same Canvas text-entry box**, submit your public MongoDB Dashboard URL, your **ENTIRE Gemini Notebook URL**, and a **2–3-sentence intelligence-analysis reflection**. Do not submit individual Studio artifact links.
 
 **What you will create**
 
@@ -12,7 +12,7 @@ Week 13 has **two Labs and no Lecture**, presented together on this page. First,
 | --- | --- | --- |
 | **1 · MongoDB Charts** | Six visualizations from your Week 8 tweets, including a geographic view | **Public dashboard URL** |
 | **2 · Gemini Notebook** | Research a topic, import relevant sources, explore source-grounded Chat and Studio; **try an Interactive Report** | **Public full-notebook URL** |
-| **Reflection** | Explain how this workflow might help an intelligence analyst and a limitation you noticed | **2–3 sentences in the Lab 13B Canvas submission box** |
+| **Reflection** | Explain how this workflow might help an intelligence analyst and a limitation you noticed | **2–3 sentences in the same Lab 13 Canvas submission box** |
 
 Use your existing MongoDB Atlas account and the **personal Google account designated for this course**. A paid Google AI plan is **not required**.
 
@@ -436,39 +436,42 @@ For grading, **the amount of research and the number of artifacts are not a cont
 
 ### Step 7 — Write your reflection and submit in Canvas LMS
 
-In the **Canvas LMS Lab 13B (Gemini Notebook) text-entry box**, write a **2–3-sentence reflection in your own words** alongside your FULL Notebook URL:
+In the **single Canvas LMS Lab 13 text-entry box**, write a **2–3-sentence reflection in your own words** alongside your MongoDB Dashboard URL and FULL Notebook URL:
 
 - **Usefulness:** How might Gemini Notebook's source-grounded chat or generated Studio products help with an **intelligence analysis** task?
 - **Evidence and judgment:** Which output or finding was useful to you, and what limitation did you notice (for example, source bias, hallucinations, or usage limits)?
 
 You may describe an Interactive Report or another Studio product you tried. You do **not** need to write a long technical report or create a separate reflection file.
 
-## Submission — Two Canvas Lab Assignments
+## Submission — One Canvas Lab 13 Assignment
 
-Complete **both** Canvas Lab assignments by **Friday, November 20, 2026 at 11:59 PM EST**. These are **two separate text-entry submissions**, not one submission containing both URLs.
+Complete **Lab 13** by **Friday, November 20, 2026 at 11:59 PM EST**. There is **one Canvas assignment worth 100 points** and **one Online Text Entry submission** containing all three items:
 
-1. **Lab 13A — MongoDB Charts Dashboard (50 points):** Submit only your **public Dashboard URL** in the Lab 13A Canvas text-entry box. Verify the dashboard and charts load in an incognito window signed out of MongoDB.
-2. **Lab 13B — Gemini Notebook (50 points):** Submit the URL of your **ENTIRE publicly shared Notebook** plus a **2–3-sentence reflection** in the Lab 13B Canvas text-entry box. Verify the full Notebook with another signed-in Google account.
+1. **MongoDB Charts Dashboard URL (50 points):** Paste the public URL of the dashboard built using your Week 8 tweets. Verify that the dashboard and charts load in an incognito window signed out of MongoDB Atlas.
+2. **ENTIRE Gemini Notebook URL (40 points):** Paste the publicly shared URL of your **whole Notebook**, not an individual Studio artifact. Verify that it opens for another signed-in Google account.
+3. **Intelligence-analysis Reflection (10 points):** Write 2–3 sentences in your own words about a potential intelligence-analysis use case and one limitation you observed.
+
+Submit **both URLs and your reflection together in the single Lab 13 Canvas text-entry box**. There is no separate submission for each section.
 
 **Do not submit** an individual Video Overview or Interactive Report `/artifact/` URL instead of the full Notebook URL. Sharing individual products is demonstrated for exploration, **not required for submission**. Do not submit MongoDB connection strings, API keys, GitHub notebooks, or separate Gemini chat links.
 
-**Access rule:** An inaccessible Dashboard URL receives **0/50** for Lab 13A. An inaccessible entire-Notebook URL receives **0/40** for the Notebook criterion in Lab 13B; the Canvas-written Reflection remains separately worth 10 points. Existing course late-work policies apply.
+**Access rule:** An inaccessible Dashboard URL receives **0/50** for the Dashboard criterion. An inaccessible entire-Notebook URL receives **0/40** for the Notebook criterion. The Canvas-written Reflection remains separately worth **10 points**. Existing course late-work policies apply.
 
 ### Before you submit
 
-- My **Lab 13A** dashboard uses my Week 8 Twitter/X data and contains six charts, including a location map (or an explained empty map).
-- My **Lab 13B** Notebook has relevant imported sources, I explored Chat with cited sources, and I attempted an Interactive Report or documented an account limit.
+- My **MongoDB Charts dashboard** uses my Week 8 Twitter/X data and contains six charts, including a location map (or an explained empty map).
+- My **Gemini Notebook** has relevant imported sources, I explored Chat with citations, and I attempted an Interactive Report or documented an account limit.
 - My **ENTIRE Notebook URL**, not an individual artifact URL, opens for a permitted viewer.
-- I submitted **the Dashboard URL in Lab 13A** and **the full Notebook URL plus reflection in Lab 13B**.
+- I submitted **the Dashboard URL, entire Notebook URL, and 2–3-sentence reflection together in one Canvas Lab 13 submission**.
 
-## Rubric — Two Labs, 100 Points Total
+## Rubric — Lab 13 (100 Points)
 
-| Canvas Lab / criterion | Points | What is assessed |
+| Canvas Lab 13 criterion | Points | What is assessed |
 | --- | ---: | --- |
-| **Lab 13A — MongoDB Dashboard** | **50** | Six charts using Week 8 data, readable layout, public data-source/dashboard access, and a working URL. An explained empty map is acceptable. |
-| **Lab 13B — Gemini Notebook** | **40** | Public **entire-notebook URL**, relevant sources, source-based Chat, and an Interactive Report attempt/visible Studio products when possible; free-tier limits are acceptable when explained. |
-| **Lab 13B — Intelligence Reflection** | **10** | 2–3 original sentences in Canvas about an intelligence-analysis use and a limitation. |
-| **Total across both labs** | **100** | **Lab 13A 50 + Lab 13B (40 + 10) 50**. Both due Friday, November 20, 2026 at 11:59 PM EST. |
+| **MongoDB Dashboard** | **50** | Six charts using Week 8 data, readable layout, public data-source/dashboard access, and a working URL. An explained empty map is acceptable. |
+| **Gemini Notebook** | **40** | Public **entire-notebook URL**, relevant sources, source-based Chat, and an Interactive Report attempt/visible Studio products when possible; free-tier limits are acceptable when explained. |
+| **Intelligence Reflection** | **10** | 2–3 original sentences in Canvas about an intelligence-analysis use and a limitation. |
+| **Total — One Lab 13** | **100** | **50 + 40 + 10 = 100 points**, due Friday, November 20, 2026 at 11:59 PM EST. |
 
 Canvas defaults to **PASS (full criterion points)** and **MISSING (0)**. The instructor may enter an intermediate score manually. Paid accounts and extra artifacts receive no additional points.
 

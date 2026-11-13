@@ -6,10 +6,10 @@
   ],
   "assignments": [
     {
-      "key": "lab-13a-dashboard",
-      "title": "Lab 13A — MongoDB Charts Dashboard",
+      "key": "lab-13",
+      "title": "Lab 13 — MongoDB Charts Dashboard and Gemini Notebook",
       "assignment_group": "Labs",
-      "points": 50,
+      "points": 100,
       "due_at": "2026-11-20T23:59:00-05:00",
       "published": true,
       "submission_types": [
@@ -17,28 +17,14 @@
       ],
       "allowed_extensions": [],
       "description": null,
-      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-13/#section-1-visualize-your-twitter-data-with-mongodb-charts"
-    },
-    {
-      "key": "lab-13b-gemini-notebook",
-      "title": "Lab 13B — Gemini Notebook Research and Studio",
-      "assignment_group": "Labs",
-      "points": 50,
-      "due_at": "2026-11-20T23:59:00-05:00",
-      "published": true,
-      "submission_types": [
-        "online_text_entry"
-      ],
-      "allowed_extensions": [],
-      "description": null,
-      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-13/#section-2-research-with-gemini-notebook"
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/lab-13/"
     }
   ],
   "rubrics": [
     {
-      "key": "lab-13a-rubric",
-      "title": "Lab 13A — MongoDB Charts Dashboard",
-      "assignment": "lab-13a-dashboard",
+      "key": "lab-13-rubric",
+      "title": "Lab 13 — Dashboard, Notebook, and Reflection",
+      "assignment": "lab-13",
       "use_for_grading": true,
       "scoring": "ratings",
       "criteria": [
@@ -58,16 +44,7 @@
               "points": 0
             }
           ]
-        }
-      ]
-    },
-    {
-      "key": "lab-13b-rubric",
-      "title": "Lab 13B — Gemini Notebook Research and Studio",
-      "assignment": "lab-13b-gemini-notebook",
-      "use_for_grading": true,
-      "scoring": "ratings",
-      "criteria": [
+        },
         {
           "key": "notebook",
           "description": "Public ENTIRE Gemini Notebook URL showing a topic, imported research sources, source-grounded Chat exploration, Studio products/Interactive Report attempt. Paid tier and fixed product count not required; quota restrictions may be documented.",
@@ -87,7 +64,7 @@
         },
         {
           "key": "reflection",
-          "description": "Student's own 2–3 sentences in the Lab 13B Canvas text-entry describing an intelligence analysis use case and one limitation.",
+          "description": "Student's own 2–3 sentences in the Lab 13 Canvas text-entry explaining an intelligence-analysis use case and one limitation.",
           "points": 10,
           "ratings": [
             {
@@ -108,24 +85,16 @@
   "modules": [
     {
       "key": "module-13",
-      "title": "Module 13 — Two Labs",
+      "title": "Module 13 — Lab 13",
       "published": true,
       "items": [
         {
-          "key": "lab-13a-dashboard",
+          "key": "lab-13",
           "type": "Assignment",
-          "title": "Lab 13A — MongoDB Charts Dashboard",
+          "title": "Lab 13 — MongoDB Charts Dashboard and Gemini Notebook",
           "published": true,
           "external_url": null,
-          "assignment": "lab-13a-dashboard"
-        },
-        {
-          "key": "lab-13b-gemini-notebook",
-          "type": "Assignment",
-          "title": "Lab 13B — Gemini Notebook Research and Studio",
-          "published": true,
-          "external_url": null,
-          "assignment": "lab-13b-gemini-notebook"
+          "assignment": "lab-13"
         }
       ]
     }

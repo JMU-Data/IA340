@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="IA340 Final Project: Post-Election Analysis, four Canvas assignments and rubrics." name="description"/>
+<title>IA340 Final Project — Post-Election Analysis</title>
+<style>
+:root{--purple:#450084;--purple-dark:#2c0b49;--gold:#cbb677;--ink:#242330;--muted:#666273;--paper:#fff;--background:#f5f3f8;--line:#ded9e8;--light:#f4effb;--nav-width:218px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;background:var(--background);color:var(--ink);font:16px/1.68 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--purple);text-underline-offset:3px}a:hover{color:#6d2bac}a:focus-visible,button:focus-visible,.table-wrap:focus-visible{outline:3px solid #8b62b1;outline-offset:3px}p{margin:0 0 1.05rem}strong{font-weight:680}ul,ol{margin:.65rem 0 1.35rem;padding-left:1.5rem}li{padding-left:.15rem;margin:.45rem 0}h1,h2,h3{line-height:1.23;letter-spacing:-.025em}h1{font-size:clamp(2.35rem,4.8vw,4.2rem);margin:.5rem 0 1.2rem;font-weight:730;max-width:770px}h2{font-size:1.85rem;color:var(--purple-dark);margin:0 0 1rem;max-width:800px}h3{font-size:1.2rem;margin:2rem 0 .9rem;color:var(--purple-dark)}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--light);color:#4a286c;padding:.1em .28em;border-radius:4px;font-size:.86em;overflow-wrap:anywhere}pre{margin:1.3rem 0;padding:1.15rem 1.3rem;border:1px solid var(--line);border-left:4px solid #9e7bc0;border-radius:8px;background:#f7f5fa;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.94rem;line-height:1.65}pre code{background:none;padding:0;color:#34303f;font-size:.92em}hr{border:0;border-top:1px solid var(--line);margin:2rem 0}.skip{position:fixed;left:16px;top:-100px;background:white;padding:10px;z-index:100}.skip:focus{top:10px}.site-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}.header-inner{max-width:1380px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 36px}.brand{display:flex;gap:14px;align-items:center}.brand-mark{background:var(--purple);color:white;font-size:.84rem;font-weight:750;letter-spacing:.04em;padding:8px 11px;border-radius:6px}.brand-title{font-weight:650;font-size:.92rem;color:var(--purple-dark)}.brand-sub{font-size:.76rem;color:var(--muted)}.header-actions{display:flex;align-items:center;gap:18px;font-size:.82rem}.draft-badge{border:1px solid #d7cae5;border-radius:999px;padding:4px 10px;background:var(--light);font-size:.72rem;font-weight:750;letter-spacing:.07em;color:var(--purple);white-space:nowrap}.print-button{border:1px solid var(--line);background:white;border-radius:6px;padding:7px 12px;font:inherit;cursor:pointer;color:var(--purple-dark)}.hero{background:var(--purple-dark);color:white;border-bottom:5px solid var(--gold)}.hero-inner{max-width:1380px;margin:auto;padding:52px 36px 42px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#e7d69f;font-size:.75rem;font-weight:750}.hero-copy{max-width:920px;color:#eae4f2;font-size:1.04rem;line-height:1.75}.hero-copy strong{color:white}.hero-copy p:last-child{margin-bottom:0}.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:30px;max-width:1040px}.score-card{display:flex;flex-direction:column;gap:12px;color:#fff;border:1px solid #63477d;text-decoration:none;border-radius:9px;padding:15px 20px;background:rgba(255,255,255,.035);transition:background .12s}.score-card:hover{background:rgba(255,255,255,.1);color:white}.score-label{font-size:.77rem;color:#e5dbef;font-weight:550}.score{font-size:2rem;font-weight:750;line-height:1}.score small{font-size:.77rem;font-weight:450;color:#e5dbef}.page-layout{display:grid;grid-template-columns:var(--nav-width) minmax(0,1fr);gap:30px;max-width:1380px;margin:auto;padding:32px 36px 60px}.sidebar{align-self:start;position:sticky;top:99px}.nav-title{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;font-weight:750;color:var(--muted);margin:4px 0 12px}.sidebar nav{display:grid;gap:5px}.sidebar a{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:center;font-size:.79rem;line-height:1.45;text-decoration:none;color:#51475d;padding:10px 8px;border-radius:6px}.sidebar a:hover{background:#ebe3f4;color:var(--purple)}.nav-prefix{font-size:.66rem;color:#83798d;font-weight:650}.nav-points{font-size:.75rem;font-weight:750;color:var(--purple)}.sidebar a:first-child,.sidebar a:last-child{grid-template-columns:1fr}.sidebar a:first-child .nav-prefix,.sidebar a:last-child .nav-prefix{display:none}.sidebar-note{border-top:1px solid var(--line);margin-top:20px;padding:17px 8px;color:var(--muted);font-size:.76rem;line-height:1.65}.sidebar-note strong{color:var(--purple-dark)}main{min-width:0}.content-section{background:white;border:1px solid var(--line);border-radius:12px;padding:34px 36px;margin-bottom:25px;scroll-margin-top:92px;box-shadow:0 2px 5px rgba(32,12,52,.018)}.assignment{border-top:4px solid var(--purple)}.assignment>p:first-of-type{font-size:.9rem;color:var(--purple);margin-bottom:1.7rem}.table-wrap{overflow-x:auto;margin:1.3rem 0 1.6rem;border:1px solid var(--line);border-radius:8px;max-width:100%}table{border-collapse:collapse;width:100%;font-size:.86rem;line-height:1.6;min-width:590px}th{background:#f0eaf6;color:var(--purple-dark);font-weight:700;text-align:left;vertical-align:top}th,td{padding:12px 14px;border-bottom:1px solid #e8e2ee}td{vertical-align:top}tbody tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fcfbfd}table th:first-child,table td:first-child{min-width:160px}table th:nth-child(2),table td:nth-child(2){min-width:60px}tbody td:first-child{font-weight:530;color:#3c2e4b}table strong{font-weight:750}blockquote{margin:1.5rem 0;padding:20px 23px;background:#fff8e8;border-left:5px solid var(--gold);border-radius:0 8px 8px 0;color:#3a2b17}blockquote p:last-child{margin-bottom:0}blockquote strong{font-weight:730}.rubric-heading{padding:12px 15px;border-left:4px solid var(--gold);background:#f8f5ec;margin-top:2rem}.page-footer{max-width:1380px;margin:auto;padding:0 36px 35px;font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between;gap:20px}.mobile-jump{display:none}
+@media(max-width:1100px){.header-inner{padding-inline:24px}.hero-inner{padding:40px 24px 34px}.page-layout{padding:24px;gap:20px;grid-template-columns:190px minmax(0,1fr)}.content-section{padding:26px 25px}.brand-sub{max-width:400px}table{font-size:.82rem}th,td{padding:10px 11px}.score-card{padding:14px}}
+@media(max-width:800px){.brand-title{font-size:.8rem}.brand-sub{display:none}.header-actions>a{display:none}.header-actions{gap:9px}.header-inner{padding:12px 18px}.hero-inner{padding:33px 20px 29px}.hero-copy{font-size:.97rem}.score-grid{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:23px}.score-card{gap:10px}.score-label{font-size:.73rem}.score{font-size:1.7rem}.page-layout{display:block;padding:18px 12px}.sidebar{position:static;margin-bottom:18px}.sidebar .nav-title,.sidebar-note{display:none}.sidebar nav{display:flex;gap:8px;overflow-x:auto;padding:0 6px 8px}.sidebar a{display:flex;flex:none;background:white;border:1px solid var(--line);padding:8px 11px;gap:7px}.sidebar a:first-child,.sidebar a:last-child{display:flex}.sidebar a .nav-prefix{display:none}.content-section{padding:25px 20px;border-radius:9px;margin-bottom:18px}h2{font-size:1.55rem}h3{font-size:1.14rem}body{font-size:15px}blockquote{padding:16px 18px}.table-wrap{margin-inline:0}table{min-width:650px;font-size:.84rem}.page-footer{padding:0 20px 25px;flex-direction:column;gap:5px}.draft-badge{font-size:.63rem}.print-button{font-size:.76rem;padding:6px 8px}.brand-mark{padding:7px 9px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.score-card{transition:none}}
+@media print{html{scroll-behavior:auto}body{background:white;font-size:10pt;line-height:1.5}.site-header,.sidebar,.print-button,.skip{display:none}.hero{background:white!important;color:var(--purple-dark);border-bottom:2px solid var(--purple)}.hero-inner{padding:0 0 18pt}.eyebrow{color:var(--purple)}h1{font-size:28pt}.hero-copy,.hero-copy strong{color:var(--ink);font-size:10pt}.score-grid{margin-top:15pt;gap:8pt}.score-card{background:white;color:var(--ink);border:1px solid var(--line);padding:8pt}.score-label,.score small{color:var(--muted)}.score{font-size:20pt}.page-layout{display:block;padding:18pt 0}.content-section{border:0;border-radius:0;box-shadow:none;padding:0;margin-bottom:24pt}.assignment{break-before:page;border-top:2px solid var(--purple);padding-top:15pt}h2{font-size:19pt}h3{font-size:13pt;break-after:avoid}.table-wrap{overflow:visible;break-inside:auto}table{min-width:0;font-size:8.5pt}th,td{padding:7pt}thead{display:table-header-group}tr{break-inside:avoid}pre,blockquote{break-inside:avoid}.page-footer{padding:0;font-size:8pt}a{color:inherit}p,li{orphans:3;widows:3}@page{size:letter;margin:.65in}}
+
+.hero-copy>p:first-child {font-size:.9rem;opacity:.92}
+.content-section blockquote strong {font-weight:800}
+.content-section pre {white-space:pre-wrap;overflow-wrap:anywhere}
+.table-wrap td:nth-child(2) {font-variant-numeric:tabular-nums}
+.score-card:focus-visible,.sidebar a:focus-visible,a:focus-visible{outline:3px solid #7964d6;outline-offset:3px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main-content">Skip to instructions</a>
+<header class="site-header"><div class="header-inner"><div class="brand"><span class="brand-mark">IA340</span><div><div class="brand-title">Final Project · Fall 2026</div><div class="brand-sub">Data Mining, Modeling, and Knowledge Discovery in Databases</div></div></div><div class="header-actions"><a href="../../" rel="noopener noreferrer" target="_blank">Course home</a><button class="print-button" id="print-page" type="button">Print</button></div></div></header>
+<div class="hero"><div class="hero-inner"><p class="eyebrow">IA340 · Fall 2026</p><h1>Final Project</h1><div class="hero-copy"><p><strong>Post-Election Analysis</strong> · Analyze 2026 U.S. midterm election discussions with LLMs, vector search, MongoDB Charts, and NotebookLM.</p><p><strong>Deadlines: December 4, 11, and 16, 2026.</strong> All deadlines are at 11:59 PM EST.</p></div>
+<div class="score-grid"><a class="score-card" href="#assignment-1"><span class="score-label">01 · Notebook Analysis</span><span class="score">35 <small>pts</small></span><span class="score-label">Due Dec 4</span></a><a class="score-card" href="#assignment-2"><span class="score-label">02 · MongoDB Data</span><span class="score">30 <small>pts</small></span><span class="score-label">Due Dec 4</span></a><a class="score-card" href="#assignment-3"><span class="score-label">03 · Dashboard</span><span class="score">20 <small>pts</small></span><span class="score-label">Due Dec 11</span></a><a class="score-card" href="#assignment-4"><span class="score-label">04 · Interactive Report</span><span class="score">15 <small>pts</small></span><span class="score-label">Due Dec 16</span></a></div>
+</div></div>
+<div class="page-layout"><aside aria-label="Page navigation" class="sidebar"><p class="nav-title">On this page</p><nav><a href="#overview"><span class="nav-prefix">•</span><span>Overview</span></a><a href="#requirements"><span class="nav-prefix">•</span><span>Project requirements</span></a><a href="#assignment-1"><span class="nav-prefix">01</span><span>Notebook Analysis</span><span class="nav-points">35</span></a><a href="#assignment-2"><span class="nav-prefix">02</span><span>MongoDB Data</span><span class="nav-points">30</span></a><a href="#assignment-3"><span class="nav-prefix">03</span><span>Dashboard</span><span class="nav-points">20</span></a><a href="#assignment-4"><span class="nav-prefix">04</span><span>Interactive Report</span><span class="nav-points">15</span></a><a href="#schedule"><span class="nav-prefix">•</span><span>Class schedule</span></a></nav></aside>
+<main id="main-content"><section aria-labelledby="overview-heading" class="content-section" id="overview"><h2 id="overview-heading">Overview</h2>
+<p><strong>Fall 2026 · 100 points</strong></p>
+<p>Analyze Twitter/X discussions following the <strong>2026 U.S. midterm elections</strong>. Choose relevant keywords (such as <code>election</code> or <code>midterm</code>), collect your own tweets, analyze them using a large language model (LLM), and build a vector-search chatbot. Present your results in a MongoDB Charts dashboard and a supplementary NotebookLM interactive report.</p>
+<p>Submit each of the four assignments separately in Canvas. <strong>Enter only the required URL or connection string.</strong></p>
+<div aria-label="Overview table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Canvas assignment</th>
+<th style="text-align:right">Points</th>
+<th>Deadline</th>
+<th>Submission</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Notebook Analysis</strong></td>
+<td style="text-align:right"><strong>35</strong></td>
+<td>Friday, December 4</td>
+<td>GitHub repository root URL</td>
+</tr>
+<tr>
+<td><strong>2. MongoDB Data</strong></td>
+<td style="text-align:right"><strong>30</strong></td>
+<td>Friday, December 4</td>
+<td>MongoDB connection string</td>
+</tr>
+<tr>
+<td><strong>3. MongoDB Dashboard</strong></td>
+<td style="text-align:right"><strong>20</strong></td>
+<td>Friday, December 11</td>
+<td>Public dashboard URL</td>
+</tr>
+<tr>
+<td><strong>4. NotebookLM Interactive Report</strong></td>
+<td style="text-align:right"><strong>15</strong></td>
+<td>Wednesday, December 16</td>
+<td>Interactive report URL</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align:right"><strong>100</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>All deadlines are at <strong>11:59 PM EST</strong>.</p>
+<h3>Submission and feedback policy</h3>
+<ul>
+<li><strong>Late submissions and resubmissions are not accepted.</strong> Late or missing submissions receive zero points.</li>
+<li>Submit completed work by each assignment's deadline. Incomplete work is graded according to the rubric.</li>
+<li>The instructor will make every effort to provide feedback after each deadline, but feedback is not guaranteed. You may collect additional tweets, correct your data, or reprocess it after December 4 to improve your dashboard. Grades for Assignments 1 and 2 will not change as a result of these corrections.</li>
+</ul>
+</section><section aria-labelledby="requirements-heading" class="content-section" id="requirements"><h2 id="requirements-heading">Project requirements</h2>
+<ul>
+<li>
+<p><strong>Data collection:</strong> Use <a href="https://jmu-data.github.io/IA340/assignments/lab-8/" rel="noopener noreferrer" target="_blank">Lab 8</a> to collect <strong>200–500 new, unique tweets</strong> after the Final Project is assigned and by December 4. Preserve the original tweet, author, and other available API metadata, including <code>collection_meta</code>. The instructor will verify the collection dates using <code>collection_meta.retrieved_at</code>.</p>
+</li>
+<li>
+<p><strong>MongoDB:</strong> Use database <code>final</code> and collection <code>tweet_collection</code>.</p>
+</li>
+<li>
+<p><strong>LLM processing:</strong> Follow <a href="https://jmu-data.github.io/IA340/modules/module-11/" rel="noopener noreferrer" target="_blank">Lecture 11</a> and <a href="https://jmu-data.github.io/IA340/assignments/lab-11/" rel="noopener noreferrer" target="_blank">Lab 11</a>. Save both results in the corresponding MongoDB documents:</p>
+<ul>
+<li><code>tweet.reaction</code> — A binary classification with exactly two allowed string values: <code>happy</code> or <code>not_happy</code>. Use <code>happy</code> if the tweet expresses happiness or satisfaction with the election outcome; otherwise, use <code>not_happy</code>.</li>
+<li><code>tweet.people</code> — A JSON list (array of strings) containing the names of people explicitly mentioned in the tweet. Use <code>[]</code> when no people are named.</li>
+</ul>
+<p>Do not record failed LLM requests as valid results.</p>
+</li>
+<li>
+<p><strong>Vector search:</strong> Follow <a href="https://jmu-data.github.io/IA340/modules/module-12/" rel="noopener noreferrer" target="_blank">Lecture 12</a> to generate 768-dimensional embeddings using <code>gemini-embedding-001</code>, save them in <code>tweet.embedding</code>, and create a working MongoDB Atlas Vector Search index with 768 dimensions and cosine similarity. Monitor your Gemini API usage and avoid unnecessary repeated processing. Use your vector-search chatbot to ask several questions about your collected tweets.</p>
+</li>
+<li>
+<p><strong>Notebook:</strong> Complete the entire workflow (data collection, LLM processing, vector embeddings, vector index creation, and chatbot analysis) in one notebook, <code>final.ipynb</code>. Save it at the root of your assigned IA340 GitHub repository on <code>main</code>.</p>
+</li>
+</ul>
+</section><section aria-labelledby="assignment-1-heading" class="content-section assignment" id="assignment-1"><h2 id="assignment-1-heading">Assignment 1 — Notebook Analysis</h2>
+<p><strong>35 points · Due Friday, December 4, 2026, at 11:59 PM EST</strong></p>
+<p>Create and run one Google Colab notebook named <code>final.ipynb</code>. Include your code and saved execution outputs.</p>
+<h3>Notebook requirements</h3>
+<ol>
+<li><strong>Collect and store data (Lab 8).</strong> Adapt your Lab 8 Twitter/X collection code to use your selected keywords and store the collected tweets in <code>final.tweet_collection</code>.</li>
+<li><strong>LLM processing (Lecture 11 and Lab 11).</strong> Adapt your Gemini API code to generate the two required results: a binary reaction (<code>happy</code> or <code>not_happy</code>) and a JSON list of mentioned people. Save the results in <code>tweet.reaction</code> and <code>tweet.people</code>. Check the stored results in MongoDB Data Explorer.</li>
+<li><strong>Vector embeddings and chatbot (Lecture 12).</strong> Generate Gemini embeddings with 768 dimensions, save them in <code>tweet.embedding</code>, create the matching Vector Search index, and use the chatbot to ask several questions about your collected tweets. Keep your questions, retrieved tweets, and chatbot answers in the notebook.</li>
+<li><strong>Summary.</strong> At the end of the notebook, write a Markdown summary <strong>in your own words</strong> that includes:
+<ul>
+<li>Keywords used, number of tweets collected, and when the data was collected.</li>
+<li>The AI tools you used and how you used them.</li>
+<li>Your preliminary findings from the LLM analysis and vector-search chatbot.</li>
+</ul>
+</li>
+</ol>
+<h3>Submit in Canvas</h3>
+<p>Submit only the <strong>root URL of your assigned IA340 GitHub repository</strong>. Save <code>final.ipynb</code> on <code>main</code> before the deadline.</p>
+<h3>Rubric (35 points)</h3>
+<div aria-label="Assignment 1 — Notebook Analysis table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th style="text-align:right">Points</th>
+<th>What is assessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data collection code</strong></td>
+<td style="text-align:right"><strong>10</strong></td>
+<td>Correct API collection code, keyword selection, MongoDB insertion, and execution outputs.</td>
+</tr>
+<tr>
+<td><strong>LLM processing code</strong></td>
+<td style="text-align:right"><strong>10</strong></td>
+<td>Appropriate prompts, correct LLM API calls, and code that saves reaction and people results to the corresponding documents.</td>
+</tr>
+<tr>
+<td><strong>Vector embeddings and chatbot</strong></td>
+<td style="text-align:right"><strong>10</strong></td>
+<td>Correct embedding, indexing, and vector-search code; executed chatbot questions and answers.</td>
+</tr>
+<tr>
+<td><strong>Summary and AI use</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td>A student-written Markdown summary in <code>final.ipynb</code> covering keywords, tweet count, collection time, AI tools, and preliminary findings from both analyses.</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align:right"><strong>35</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Grading:</strong> Late submissions, inaccessible GitHub repositories, or a missing <code>final.ipynb</code> receive <strong>0 points</strong>. The notebook must be committed by the deadline.</p>
+<p><strong>Credentials:</strong> Use Colab Secrets for API keys, tokens, passwords, and the MongoDB connection string. Exposing a real credential in GitHub, notebook outputs, or other public project materials results in a <strong>10-point deduction</strong> from this assignment (once, minimum score 0).</p>
+</section><section aria-labelledby="assignment-2-heading" class="content-section assignment" id="assignment-2"><h2 id="assignment-2-heading">Assignment 2 — MongoDB Data</h2>
+<p><strong>30 points · Due Friday, December 4, 2026, at 11:59 PM EST</strong></p>
+<p>The instructor will check <code>final.tweet_collection</code> for:</p>
+<ol>
+<li><strong>Tweets:</strong> 200–500 unique new tweets, collected within the project period, with the original records and available metadata.</li>
+<li><strong>LLM results:</strong> A valid <code>tweet.reaction</code> value (<code>happy</code> or <code>not_happy</code>) and a <code>tweet.people</code> JSON list for each processed tweet.</li>
+<li><strong>Vector embeddings:</strong> Valid 768-dimensional Gemini embeddings in <code>tweet.embedding</code> and a working MongoDB Atlas Vector Search index with matching dimensions.</li>
+</ol>
+<h3>Submit in Canvas</h3>
+<p>Submit only your <strong>working MongoDB connection string</strong> in the private Canvas submission box. Make sure the instructor can connect to your database and access <code>final.tweet_collection</code>. Do not publish the connection string elsewhere.</p>
+<h3>Rubric (30 points)</h3>
+<div aria-label="Assignment 2 — MongoDB Data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th style="text-align:right">Points</th>
+<th>What is assessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tweets and metadata</strong></td>
+<td style="text-align:right"><strong>10</strong></td>
+<td>200–500 unique new tweets, original metadata, and valid collection dates. Counts outside the required range receive reduced credit.</td>
+</tr>
+<tr>
+<td><strong>LLM results</strong></td>
+<td style="text-align:right"><strong>10</strong></td>
+<td>Correctly stored binary reaction values (<code>happy</code> or <code>not_happy</code>) and JSON lists of mentioned people.</td>
+</tr>
+<tr>
+<td><strong>Embeddings and index</strong></td>
+<td style="text-align:right"><strong>10</strong></td>
+<td>Correctly stored 768-dimensional Gemini embeddings and a working, matching Vector Search index.</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align:right"><strong>30</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Grading:</strong> Late submissions, inaccessible connections or data, or no valid tweets collected within the required period receive <strong>0 points</strong>.</p>
+</section><section aria-labelledby="assignment-3-heading" class="content-section assignment" id="assignment-3"><h2 id="assignment-3-heading">Assignment 3 — MongoDB Dashboard</h2>
+<p><strong>20 points · Due Friday, December 11, 2026, at 11:59 PM EST</strong></p>
+<p>Follow <a href="https://jmu-data.github.io/IA340/assignments/lab-13/" rel="noopener noreferrer" target="_blank">Lab 13</a> to create a dashboard using <code>final.tweet_collection</code>. You may use corrected or newly processed data to build your dashboard. These improvements will not change your grades for Assignments 1 and 2.</p>
+<p>Include at least four visualizations:</p>
+<div aria-label="Assignment 3 — MongoDB Dashboard table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Required visualization</th>
+<th>What to display</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Total tweets</strong></td>
+<td>Number of unique tweets collected.</td>
+</tr>
+<tr>
+<td><strong>2. Tweets over time</strong></td>
+<td>Tweet counts by posting time (<code>tweet.created_at</code>). Convert the field to a Date type in MongoDB Charts and choose a suitable time interval.</td>
+</tr>
+<tr>
+<td><strong>3. Reactions</strong></td>
+<td>A bar chart showing the counts of <code>happy</code> and <code>not_happy</code> tweets.</td>
+</tr>
+<tr>
+<td><strong>4. Mentioned people</strong></td>
+<td>The most frequently mentioned people and their mention counts, using <code>tweet.people</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use clear titles and labels. <strong>Both the dashboard and its Charts data source must be publicly viewable.</strong> Test the dashboard URL while signed out.</p>
+<h3>Submit in Canvas</h3>
+<p>Submit only your <strong>public MongoDB Charts dashboard URL</strong>.</p>
+<h3>Rubric (20 points)</h3>
+<div aria-label="Assignment 3 — MongoDB Dashboard table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th style="text-align:right">Points</th>
+<th>What is assessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Total tweets</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td>Accurate tweet count, clearly displayed.</td>
+</tr>
+<tr>
+<td><strong>Tweet timeline</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td>Accurate counts by posting time using <code>tweet.created_at</code> converted to Date, with a readable time axis.</td>
+</tr>
+<tr>
+<td><strong>Reaction chart</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td>Correct <code>happy</code> and <code>not_happy</code> counts in a clearly labeled bar chart.</td>
+</tr>
+<tr>
+<td><strong>Mentioned-people chart</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td>Correct people and mention counts, with a clear presentation.</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align:right"><strong>20</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Grading:</strong> Late submissions or a dashboard or Charts data source that is not publicly accessible receive <strong>0 points</strong>.</p>
+</section><section aria-labelledby="assignment-4-heading" class="content-section assignment" id="assignment-4"><h2 id="assignment-4-heading">Assignment 4 — NotebookLM Interactive Report</h2>
+<p><strong>15 points · Due Wednesday, December 16, 2026, at 11:59 PM EST</strong></p>
+<p>Use NotebookLM to create an interactive report that provides complementary information about the <strong>2026 U.S. midterm elections</strong>. Select relevant outside sources, such as news reports, official election information, or research. There is no required number of sources.</p>
+<p>Include the following three components in your interactive report:</p>
+<ol>
+<li><strong>Text summary:</strong> A clear, well-organized summary of the election topic that provides context for your Twitter/X analysis.</li>
+<li><strong>Mind map:</strong> A relevant, readable mind map.</li>
+<li><strong>Infographic:</strong> A relevant, readable visual summary of the topic.</li>
+</ol>
+<p><strong>Example:</strong> <a href="https://notebook.google.com/notebook/9ea453ed-98fc-45d3-8775-c8c7f90d7f62/artifact/8d4158d0-8889-4c4f-b3b3-999260d8f899" rel="noopener noreferrer" target="_blank">Instructor's interactive report</a></p>
+<h3>Submit in Canvas</h3>
+<p>Submit only the <strong>direct URL to your interactive report</strong>, not the main NotebookLM notebook URL. Make sure the instructor can access the report and all three required components.</p>
+<h3>Rubric (15 points)</h3>
+<div aria-label="Assignment 4 — NotebookLM Interactive Report table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th style="text-align:right">Points</th>
+<th>What is assessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Text summary</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td>Clear, accurate, well-formatted summary of relevant supplementary information.</td>
+</tr>
+<tr>
+<td><strong>Mind map</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td>Relevant, readable, and accessible mind map.</td>
+</tr>
+<tr>
+<td><strong>Infographic</strong></td>
+<td style="text-align:right"><strong>5</strong></td>
+<td>Relevant, readable, and accessible infographic.</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align:right"><strong>15</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Grading:</strong> Late submissions, inaccessible reports, or submission of the main notebook URL instead of the interactive report URL receive <strong>0 points</strong>.</p>
+</section><section aria-labelledby="schedule-heading" class="content-section" id="schedule"><h2 id="schedule-heading">Class schedule</h2>
+<div aria-label="Class schedule table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Dates</th>
+<th>Meeting format</th>
+<th>Attendance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>November 30 and December 2</strong></td>
+<td>In-person class</td>
+<td><strong>Required</strong></td>
+</tr>
+<tr>
+<td><strong>December 7 and 9</strong></td>
+<td>Zoom Q&amp;A during your regular class time</td>
+<td><strong>Not required</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>There will be no in-person class or separate office hours on December 7 and 9. The Zoom link will be posted in Canvas. If you have Final Project questions, join Zoom during your regular class time.</p>
+<hr/>
+<p>Follow the <a href="../../syllabus/" rel="noopener noreferrer" target="_blank">IA340 course syllabus and academic-integrity policy</a>.</p>
+</section></main></div>
+<footer class="page-footer"><span>IA340 · Fall 2026 · Final Project</span><span>Post-Election Analysis</span></footer>
+<script>document.getElementById('print-page').addEventListener('click',function(){window.print()})</script>
+</body></html>

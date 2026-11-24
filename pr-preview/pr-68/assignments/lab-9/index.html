@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Lab 9 · IA 340</title><link href="../../assets/week-9/course.css" rel="stylesheet"/></head><body class="lab"><nav class="lab-nav"><span>IA 340 · Week 9</span><a href="../../">Course Home</a><a href="../../modules/module-9/">Week 9 Lecture</a></nav><main class="lab-page"><h1>Lab 9 — MongoDB Query &amp; Aggregation Pipelines</h1>
+<p><strong>IA 340 · 100 points · October 19–23, 2026 · Due date: see Canvas.</strong></p>
+<p>Complete this lab independently on Wednesday using <strong><code>lab8.tweet_collection</code></strong>. Refer to the <a href="lecture.html">Week 9 lecture</a>. Use <strong>MongoDB Atlas Data Explorer and its built-in AI</strong> to develop your queries, then run and verify the results.</p>
+<h2>Questions</h2>
+<ol>
+<li><strong>Total tweets:</strong> How many tweets have you collected?</li>
+<li><strong>Users with locations:</strong> How many users provide a non-empty location? Count each <code>user.id</code> once.</li>
+<li><strong>Text search:</strong> How many tweets match <strong>Trump</strong> using <code>$text</code> on <code>tweet.text</code>?</li>
+<li><strong>Most-followed user:</strong> Which user has the most followers? Give the name, username, and follower count.</li>
+<li><strong>Most popular hashtag:</strong> What is the most common hashtag, and how many times does it occur? Count <code>tweet.entities.hashtags.tag</code> as stored. If there are none, report <strong>None</strong> and <strong>0</strong>.</li>
+</ol>
+<p>For a tie, you may report any one of the tied users or hashtags.</p>
+<h2>Save your work</h2>
+<h3>1. Create <code>lab9.py</code> in GitHub</h3>
+<p>Open your <strong>existing course repository</strong>. Select <strong>Add file → Create new file</strong>, enter <strong><code>lab9.py</code></strong> in the filename box, and use the editor below it. The <strong><code>.py</code> extension</strong> identifies a Python file. Keep <strong>one file for all five questions</strong>.</p>
+<figure class="teacher-shot"><button aria-haspopup="dialog" aria-label="Enlarge screenshot in this page" class="image-zoom-trigger" type="button"><img alt="GitHub file editor showing lab9.py, Python # comments, and the exported result = client[...] query." src="../../assets/week-9/screenshots/165756.png"/></button><figcaption>Create <code>lab9.py</code>. Write the question and answer in <code>#</code> comments, followed by the exported query.<span class="image-hint"> Click to enlarge in this page.</span></figcaption></figure>
+<h3>2. Record the question, answer, and exported query</h3>
+<p>For <strong>Q1–Q5</strong>, write the question and your verified answer in Python <strong><code>#</code> comments</strong>, followed by the complete <strong>Python-exported query</strong> below <code># Query:</code>. Here is <strong>one example for Q1</strong>, using the instructor's example result:</p>
+<pre><code class="language-python"><span class="tk-comment"># Q1. How many tweets have you collected?</span>
+<span class="tk-comment"># Answer: 200</span>
+<span class="tk-comment"># Query:</span>
+<span class="tk-method">result</span> = <span class="tk-method">client</span>[<span class="tk-value">'lab8'</span>][<span class="tk-value">'tweet_collection'</span>].<span class="tk-method">aggregate</span>([
+    {
+        <span class="tk-op">'$count'</span>: <span class="tk-value">'tweet_count'</span>
+    }
+])
+</code></pre>
+<p><strong>200 is the instructor's example, not a required answer.</strong> Use your actual result, and repeat the question–answer–query layout for Q2–Q5.</p>
+<p>The <code>#</code> lines are <strong>Python comments</strong>, so your file can be reused in Colab next week. The queries require a <code>client</code> connection, which we will create separately. <strong>Do not include credentials or connection initialization in GitHub.</strong></p>
+<h3>3. Export Python; exclude the connection initialization</h3>
+<p>In Atlas, click <strong>Export Code</strong>. In the <strong>right-hand Exported Query / Exported Pipeline pane</strong>, choose <strong>Python</strong> and <strong>CHECK Include Driver Syntax</strong>.</p>
+<p>Copy the complete <strong><code>result = client[...]</code></strong> query block. If a document query also defines <code>filter</code>, <code>project</code>, <code>sort</code>, <code>limit</code>, or other inputs above <code>result</code>, keep those definitions too.</p>
+<p><strong>DO NOT COPY <code>client = MongoClient(...)</code>.</strong> Keep all credentials out of GitHub code and notebooks: no API keys, connection strings, passwords, certificates, or other connection setup. <strong>Keep the <code>client['lab8']['tweet_collection']</code> reference inside the query</strong>; we will supply our own connection next week. Import statements are not required in this submission.</p>
+<h3>4. Commit and check</h3>
+<p>Click <strong>Commit changes…</strong>, enter a message such as <strong>Add Lab 9 queries and answers</strong>, and commit using your normal course workflow. Check that <strong><code>lab9.py</code> is on the repository's main/default branch</strong> and Q1–Q5 each have an answer and matching query.</p>
+<h2>Submit TWO items in Canvas</h2>
+<p>Paste these on separate lines in <strong>Canvas → Lab 9</strong>:</p>
+<p><strong>1. GitHub repository URL</strong> — the root URL of your <strong>assigned private IA340 repository under <code>JMU-Data</code></strong>, not a direct link to <code>lab9.py</code>. Use the format for your section:</p>
+<pre><code class="language-text">IA340-1: https://github.com/JMU-Data/ia340-fa26-1-&lt;your-github-username&gt;
+IA340-2: https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;
+</code></pre>
+<p><strong>2. MongoDB connection string</strong> — your complete working URI, including the password. Submit it <strong>only in Canvas</strong>, never in GitHub.</p>
+<pre><code class="language-text">mongodb+srv://demo:IA340-data@ia340.example.mongodb.net/?appName=ia340
+</code></pre>
+<p>Replace <code>&lt;your-github-username&gt;</code> with your own GitHub username and submit <strong>only your section's repository URL</strong> (without the <code>IA340-1:</code> / <code>IA340-2:</code> label). The URL must stop at the repository name—do not append <code>/tree/main</code> or <code>/blob/main/lab9.py</code>, and do not submit the public <code>JMU-Data/IA340</code> course repository. The MongoDB hostname above is <strong>fictional</strong>; use your own cluster hostname and working course URI.</p>
+<h2>Rubric — 100 points</h2>
+<table class="rubric-table">
+<thead><tr><th scope="col">Criterion</th><th scope="col">Points</th><th scope="col">What the instructor checks</th></tr></thead>
+<tbody>
+<tr><td><strong>MongoDB connection and accessibility</strong></td><td><strong>20</strong></td><td>The MongoDB URI submitted in Canvas has the correct format and allows the instructor to connect to and read <code>lab8.tweet_collection</code>.</td></tr>
+<tr><td><strong>Answers (Q1–Q5)</strong></td><td><strong>30</strong></td><td><strong>6 points per question.</strong> Each answer matches the data actually stored in your own collection, using the definitions in the questions.</td></tr>
+<tr><td><strong>Queries (Q1–Q5)</strong></td><td><strong>30</strong></td><td><strong>6 points per question.</strong> Each saved Python-exported query correctly answers its question and includes the required filters, fields, stages, sort, limit, and any supporting variable definitions.</td></tr>
+<tr><td><strong>GitHub submission format and credential safety</strong></td><td><strong>20</strong></td><td>The submitted URL opens your assigned <code>JMU-Data/ia340-fa26-[section]-[username]</code> repository; <code>lab9.py</code> is on the main/default branch with Q1–Q5 question, answer, and query sections; both Canvas submission items are present. GitHub must contain no MongoDB URI, password, API key, certificate, <code>client = MongoClient(...)</code> initialization, or other credentials. <strong>Any real credential exposed in GitHub makes this entire criterion 0/20.</strong></td></tr>
+<tr><td><strong>Total</strong></td><td><strong>100</strong></td><td></td></tr>
+</tbody></table>
+<p><strong>Connection requirement:</strong> If the original Canvas connection string is missing, invalid, or inaccessible for any reason, <strong>the Lab receives 0 until a working connection is provided and verified</strong>. Once access is restored, the instructor grades the work using the rubric above but deducts <strong>20 points once</strong> from the resulting score because the original connection was not usable. The temporary 0 is not an additional penalty. The course late-work policy still applies when relevant.</p>
+<p><strong>Credential safety:</strong> If any real credential is exposed in GitHub (including files, screenshots, notebooks, or Git history), <strong>20 points are deducted: the entire GitHub submission format and credential safety criterion receives 0/20</strong>, even if the credential is later removed. Remove the exposed credential and revoke/rotate it promptly.</p>
+<p>No separate report, data file, or screenshot submission is required. Follow the Canvas deadline and course late-work policy.</p>
+</main><script src="../../assets/week-9/lecture.js"></script></body></html>

@@ -1,0 +1,119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="IA340 Lab 12: post-election tweets, Gemini analysis and charts, MongoDB Vector Search and RAG."><title>IA340 Lab 12 · Post-Election Tweet Analysis and RAG</title><style>
+:root{--dark:#164a40;--body:#2f5047;--mint:#e2f1e6;--cream:#fcf9f1;--line:#d5e5d9}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:20px}body{margin:0;background:#e9f0e9;color:var(--body);font:18px/1.72 system-ui,-apple-system,Segoe UI,Arial,sans-serif}.page{max-width:1110px;margin:38px auto;background:var(--cream);border-radius:23px;box-shadow:0 20px 60px #204f3b14;overflow:hidden}.mast{background:linear-gradient(120deg,#175344,#3e9278);color:#fff;padding:36px 55px}.mast span{font-size:14px;letter-spacing:.13em;font-weight:800;text-transform:uppercase}.mast h1{font-size:44px;line-height:1.16;margin:12px 0}.mast p{margin:10px 0 0}.jump{display:flex;gap:12px 22px;flex-wrap:wrap;background:#e2eee4;padding:15px 55px;font-size:15px;font-weight:700}.jump a{color:#165444;text-decoration:none;border-bottom:1px solid #16544455}.jump a:hover,.jump a:focus-visible{border-bottom-color:#165444}.content{padding:24px 55px 62px;min-width:0}.content h2{font-size:31px;border-bottom:2px solid #d7e8dc;padding-top:25px;padding-bottom:12px;line-height:1.3;color:var(--dark)}.content h3{color:#176657;font-size:24px;line-height:1.35;margin:30px 0 12px}.content p{margin:12px 0}.content li{margin:9px 0}.content ul,.content ol{padding-left:29px}.content code{background:#e7eee8;color:#226856;padding:2px 4px;border-radius:5px;font-size:.91em;overflow-wrap:anywhere}.content a{color:#146e5b;overflow-wrap:anywhere}.mini-path{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:17px;background:#e5f4eb;border-radius:17px;margin:25px 0}.mini-path span{padding:7px 13px;border-radius:11px;background:#fff;font-weight:700;font-size:15px;min-width:0}.mini-path b{color:#397c67}.table-scroll{overflow-x:auto;margin:25px 0;border:1px solid #dbe6dc;border-radius:12px}.content table{border-collapse:collapse;width:100%;background:#fff;font-size:16px;line-height:1.6}.content th,.content td{border-bottom:1px solid #e0e9df;text-align:left;padding:13px;vertical-align:top;overflow-wrap:anywhere}.content th{background:#dcefe3;color:#164a40}.content tr:last-child td{border-bottom:0}.content th:first-child{min-width:155px}.content .rubric th:nth-child(2),.content .rubric td:nth-child(2){text-align:right;white-space:nowrap;min-width:64px}.foot{background:#165444;color:#dff1e8;font-size:14px;padding:18px 55px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.foot a{color:#dff1e8}.content h2::before{content:'●';font-size:15px;color:#bc8150;margin-right:12px;vertical-align:middle}:focus-visible{outline:3px solid #bc8150;outline-offset:4px}@media(max-width:690px){.page{margin:0;border-radius:0}.mast{padding:30px 24px}.mast h1{font-size:33px}.jump{padding:14px 24px;gap:9px 18px}.content{padding:20px 22px 42px}.content h2{font-size:27px}.content h3{font-size:23px}.content table{font-size:15px;min-width:540px}.content th,.content td{padding:11px}.content .rubric{min-width:650px}.foot{padding:18px 22px}.mini-path{gap:8px;padding:12px}.mini-path span{font-size:14px;padding:6px 9px}}@media print{html{scroll-behavior:auto}body{background:white;font-size:12pt;line-height:1.45}.page{margin:0;box-shadow:none;border-radius:0}.mast{padding:20px 30px;print-color-adjust:exact}.mast h1{font-size:28pt}.jump{display:none}.content{padding:12px 30px}.content h2{font-size:20pt}.content h3{font-size:16pt}.content h2,.content h3{break-after:avoid}.content table{font-size:10pt;min-width:0}.content .rubric{min-width:0}.table-scroll{overflow:visible}.content tr{break-inside:avoid}.foot{padding:14px 30px}}
+</style></head><body><main class="page"><header class="mast"><span>IA340 · Week 12 · Wednesday Lab</span><h1>Post-Election Tweet Analysis and RAG</h1><p>Complete Lecture · Collect · Analyze and chart · RAG chatbot</p></header><nav class="jump" aria-label="Lab sections"><a href="#what-you-will-submit">What you will submit</a><a href="#lecture-30-points">Lecture</a><a href="#lab-lab12-ipynb">Lab</a><a href="#part-1-collect-new-election-tweets-15-points">Part 1</a><a href="#part-2-use-gemini-to-analyze-tweets-and-make-two-bar-charts-25-points">Part 2</a><a href="#part-3-build-a-vector-search-rag-chatbot-20-points">Part 3</a><a href="#ai-use-10-points">AI Use</a><a href="#save-and-submit-two-notebooks-two-canvas-values">Save and submit</a><a href="#rubric-100-points">Rubric</a></nav><article class="content">
+<p><strong>Wednesday, November 11, 2026 · Google Colab · 100 points · Due: see Canvas</strong></p>
+<p><a href="../../modules/module-12/">Week 12 Lecture</a> · <a href="../lab-8/">Lab 8 collection instructions</a> · <a href="../lab-11/">Lab 11 Gemini examples</a></p>
+<h2 id="what-you-will-submit">What you will submit</h2>
+<p><strong>Finish the Lecture first.</strong> Create a new Colab notebook called <strong><code>lec12.ipynb</code></strong>. Copy and run every lecture code cell in order using your existing <code>lab8.tweet_collection</code>. Keep the outputs. Save the notebook in your assigned IA340 GitHub repository.</p>
+<p>Next create a <strong>second</strong> notebook named <strong><code>lab12.ipynb</code></strong>. This notebook contains the three Lab parts below: <strong>Part 1 — Collect</strong>, <strong>Part 2 — Gemini analysis and charts</strong>, and <strong>Part 3 — RAG chatbot</strong>, followed by an <strong>AI Use</strong> section. You will upload <strong>both notebooks</strong> to the root of the assigned GitHub repository.</p>
+<div class="mini-path"><span>Complete Lecture</span><b>→</b><span>Part 1 · Collect</span><b>→</b><span>Part 2 · Analyze</span><b>→</b><span>Part 3 · RAG</span><b>→</b><span>AI Use</span></div>
+<h3 id="lecture-30-points">Lecture — 30 points</h3>
+<p>In <code>lec12.ipynb</code>, follow the lecture's alternating theory-and-code demonstrations. Use the existing <code>lab8.tweet_collection</code>: connect to MongoDB and Gemini, try the existing text index, generate and store embeddings, create a Vector Search index, retrieve tweet evidence, and run the RAG chatbot. <strong>Run the cells yourself</strong>; do not submit the instructor screenshots as your own outputs.</p>
+<h2 id="lab-lab12-ipynb">Lab — <code>lab12.ipynb</code></h2>
+<h3 id="part-1-collect-new-election-tweets-15-points">Part 1 — Collect new election tweets (15 points)</h3>
+<p><strong>Step 1. Reuse Lab 8 code to collect data.</strong> Use the <strong>Twitter/X API</strong>, exactly as in Lab 8, with the fixed keyword/search query <strong><code>election</code></strong>. Collect <strong>50–200 unique new tweets</strong> (about <strong>100</strong> is a good target) related to the period after the November 3, 2026 U.S. election. Your retrieved posts must have timestamps consistent with this period; if the API returns older posts, adjust the allowed time filters while preserving the keyword.</p>
+<p>In a Markdown cell, write the <strong>keyword</strong>, <strong>exact X API query</strong> (including any date/time filters), <strong>collection date</strong>, and <strong>research question</strong>: <em>How do people in my collected tweets react to the election outcome, and which people do they mention?</em></p>
+<p>Save the records in a <strong>new MongoDB database <code>lab12</code></strong>, collection <strong><code>tweet_collection</code></strong>. Preserve the original tweet data, use the <code>tweet.id</code> uniqueness pattern from Lab 8, and show the total count plus a few original tweets. Reuse Lab 8 collection limits and avoid duplicate API requests.</p>
+<h3 id="part-2-use-gemini-to-analyze-tweets-and-make-two-bar-charts-25-points">Part 2 — Use Gemini to analyze tweets and make two bar charts (25 points)</h3>
+<p><strong>Step 2. Analyze the collected tweets with a large language model.</strong> You <strong>must</strong> adapt your <strong>Week 11 Gemini API</strong> code, design your own prompts, call the Gemini model on the tweet texts, and save the results to the matching MongoDB documents. Do not use keyword-only heuristics or manually label the entire collection.</p>
+<p><strong>Analysis A — Reaction to the election outcome.</strong> Ask Gemini to assign <strong>exactly one</strong> of these labels to each tweet:</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Happy</strong></td>
+<td>Clearly pleased or satisfied with the election outcome.</td>
+</tr>
+<tr>
+<td><strong>Unhappy</strong></td>
+<td>Clearly disappointed or dissatisfied with the election outcome.</td>
+</tr>
+<tr>
+<td><strong>No clear reaction</strong></td>
+<td>Unclear, neutral, mixed, or not discussing a reaction to the outcome.</td>
+</tr>
+</tbody>
+</table>
+<p>Example prompt: <em>"Read the following tweet. Classify its explicit reaction to the election outcome as Happy, Unhappy, or No clear reaction. Return exactly one label. Do not infer the author's opinion from a party, username, or unstated beliefs. Tweet: ..."</em></p>
+<p>Save the result in <strong><code>tweet.reaction</code></strong>. Display at least <strong>five original tweets beside their labels</strong> to check whether the model followed your instructions. If a model request fails, leave it missing; do not turn a failure into "No clear reaction."</p>
+<p><strong>Chart 1 — Reaction bar chart.</strong> Use MongoDB queries or pandas to count <strong>Happy</strong>, <strong>Unhappy</strong>, and <strong>No clear reaction</strong>. Show the <strong>counts and percentages</strong> in a DataFrame, followed by <strong>one labeled bar chart</strong>. Report missing/failed labels separately from the three reaction categories.</p>
+<p><strong>Analysis B — People explicitly mentioned.</strong> Using the <strong>same Week 11 Gemini pattern</strong>, design another prompt that extracts <strong>the names of people actually written in each tweet</strong>. Return a <strong>list of names</strong>; an empty list <code>[]</code> means that the tweet mentions nobody by name. Do not invent names based on titles, roles, parties, or pronouns. Save the list in <strong><code>tweet.people</code></strong>, then display at least <strong>five original tweets alongside their extracted names</strong>. Treat failed API requests as missing, not as empty lists.</p>
+<p><strong>Chart 2 — People mentioned bar chart.</strong> Count each named person <strong>at most once per tweet</strong>. Standardize obvious duplicate spellings, show a DataFrame with the <strong>top 10 people and their counts</strong>, and create <strong>one labeled bar chart</strong>. Mention count is not the same as approval or support.</p>
+<p><strong>Part 2 Summary (Markdown).</strong> After the two charts, write a short summary <strong>in your own words</strong>: what the reaction counts show, which people appeared most often, and one limitation of the sample or Gemini analysis. Your charts describe <strong>your collected tweets</strong>, not national voter sentiment.</p>
+<h3 id="part-3-build-a-vector-search-rag-chatbot-20-points">Part 3 — Build a Vector Search RAG chatbot (20 points)</h3>
+<p><strong>Step 3. Adapt the Lecture RAG code to your new collection.</strong> Continue in the same <code>lab12.ipynb</code>. Set your collection to <strong><code>client["lab12"]["tweet_collection"]</code></strong> and follow this order:</p>
+<ol>
+<li>Generate <strong>Gemini embeddings</strong> from the original <code>tweet.text</code> of all collected tweets and save them in <code>tweet.embedding</code>.</li>
+<li>Create the <strong>MongoDB Atlas Vector Search index</strong> using the same embedding model, dimensions, field path, and cosine similarity demonstrated in the lecture. Wait until the index is queryable.</li>
+<li>Reuse the lecture's <strong><code>vector_search()</code></strong>, prompt template, and Gemini chatbot to ask questions about your own election tweets. <strong>You do not need to run keyword/text search or compare search methods in this Lab part.</strong></li>
+</ol>
+<p>Ask <strong>at least three meaningful questions</strong>, such as:</p>
+<ul>
+<li>Why do some tweets express unhappiness about the election results? What reasons do they actually mention?</li>
+<li>What are some tweets happy about? What positive reactions appear?</li>
+<li>Which people are mentioned in connection with the election results, and what do those tweets say?</li>
+</ul>
+<p>For <strong>each</strong> question, preserve the <strong>exact question</strong>, the <strong>retrieved tweet IDs and source text</strong>, and <strong>the actual Gemini answer</strong>. Under it, write <strong>your own 1–2 sentence summary</strong>, explaining what you learned and whether the cited tweets support the answer. The chatbot can generate different wording on later runs; preserve <strong>what you actually observed</strong>, rather than inventing or rewriting a model response.</p>
+<p><strong>Part 3 Summary (Markdown).</strong> After the chat examples, summarize the main themes you noticed and explain a limitation or question that your tweets could not answer. Do not extrapolate a few retrieved tweets to all voters. For dataset-wide numbers, refer back to Part 2's charts.</p>
+<h3 id="ai-use-10-points">AI Use — 10 points</h3>
+<p>End <code>lab12.ipynb</code> with a separate <strong>AI Use</strong> Markdown cell. Briefly explain <strong>which AI tools you used</strong>, <strong>how you used them</strong>, and <strong>which outputs, labels, or answers you personally checked or corrected</strong>.</p>
+<h2 id="save-and-submit-two-notebooks-two-canvas-values">Save and submit — two notebooks, two Canvas values</h2>
+<p>Save <strong>both</strong> <code>lec12.ipynb</code> and <code>lab12.ipynb</code> <strong>at the root of your assigned private IA340 GitHub repository</strong>, with code, readable output, Markdown explanations, and your written summaries. <strong>Any questions and discussions you include in the notebooks will be stored on GitHub</strong> and can be read by anyone with repository access; if you post work to a public repo, anyone can read it. Keep your writing respectful and do not publish secrets or personal information.</p>
+<p>Submit <strong>exactly two values, each on its own line, in private Canvas</strong>:</p>
+<ol>
+<li><strong>Your GitHub repository root URL</strong>.</li>
+<li><strong>Your working MongoDB connection string</strong> (only in private Canvas, never in GitHub).</li>
+</ol>
+<p><strong>IA340-1:</strong> <code>https://github.com/JMU-Data/ia340-fa26-1-&lt;your-github-username&gt;</code><br/>
+<strong>IA340-2:</strong> <code>https://github.com/JMU-Data/ia340-fa26-2-&lt;your-github-username&gt;</code></p>
+<p>Use <strong>Colab Secrets</strong> for API keys, the X token, and the MongoDB URI. Never put credentials in your repository, notebook outputs, screenshots, prompts, or code. If a credential is exposed, rotate it promptly.</p>
+<h2 id="rubric-100-points">Rubric — 100 points</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th style="text-align:right">Points</th>
+<th>What is assessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lecture — <code>lec12.ipynb</code></strong></td>
+<td style="text-align:right"><strong>30</strong></td>
+<td>Complete and run the lecture examples in your own notebook; keep the outputs and upload to GitHub.</td>
+</tr>
+<tr>
+<td><strong>Part 1 — Collect</strong></td>
+<td style="text-align:right"><strong>15</strong></td>
+<td>Use Lab 8 code to collect 50–200 new <code>election</code> tweets into <code>lab12.tweet_collection</code> and document the query/count.</td>
+</tr>
+<tr>
+<td><strong>Part 2 — Gemini + two charts</strong></td>
+<td style="text-align:right"><strong>25</strong></td>
+<td>Use Gemini API for reaction classification and name extraction; save and inspect results; create two specified bar charts and a Part 2 Summary.</td>
+</tr>
+<tr>
+<td><strong>Part 3 — RAG chatbot</strong></td>
+<td style="text-align:right"><strong>20</strong></td>
+<td>Generate embeddings, build the Vector Search index, record at least three Q&amp;A turns and source evidence, and write a Part 3 Summary.</td>
+</tr>
+<tr>
+<td><strong>AI Use</strong></td>
+<td style="text-align:right"><strong>10</strong></td>
+<td>Describe your AI tools, how you used them, and what you checked yourself.</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align:right"><strong>100</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Additional deductions:</strong> incorrect/inaccessible GitHub repository URL <strong>−10</strong>; missing/nonworking MongoDB connection string <strong>−10</strong>; exposed credentials <strong>−20 once</strong>. These deductions apply after the rubric, and the final score cannot be less than zero. Fix broken access and rotate any exposed credential.</p>
+</article><footer class="foot"><span>IA340 · Week 12 · Fall 2026</span><a href="https://jmu-data.github.io/IA340/">Course home</a></footer></main></body></html>

@@ -5,7 +5,7 @@ title: "Syllabus - IA 340"
 
 # IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases
 
-**Syllabus updated: October 8, 2026**
+**Syllabus updated: November 24, 2026**
 
 <nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
   <a href="{{ site.baseurl }}/" style="text-decoration: none; color: #57606a;">Home</a>
@@ -157,7 +157,7 @@ Python checks may produce **automatic comments** visible to both students and th
 - **Late labs, including revisions after grading:** Lab assignments may be submitted or resubmitted after the deadline, **even after a score or comments have been posted**. If you want an updated version evaluated, it is a late submission and is subject to the late-work penalty. Correcting an issue mentioned in automatic or instructor feedback does not waive that penalty.
 - **Which timestamp counts:** For work submitted through Canvas and evaluated in GitHub, Tableau, or another external system, the effective submission time is **whichever is later: the Canvas submission timestamp or the last-modified/published timestamp of the artifact version used for grading**. If multiple artifacts are evaluated, the latest of their relevant timestamps applies. A Canvas submission made on time does **not** make later edits to a graded GitHub file/notebook or Tableau workbook on time. If you want the version modified after the deadline graded, that version is **late**. An earlier version can be considered on time only if its pre-deadline contents and timestamp can be verified; later changes not used for grading do not make that earlier version late.
 - **Late penalty:** Late lab submissions or resubmissions incur **10% of the total assignment points per day late, up to a maximum of 40%**, unless prior arrangements have been made. A late revision may result in a **lower final score** than the original submission if the late penalty exceeds the points you would recover. Consider the penalty before requesting a reevaluation.
-- **Class projects:** Late submissions and resubmissions **after the deadline are not accepted** for the Mini Project or Final Project. You may revise project work before its deadline, but a post-deadline change cannot replace the on-time project version for grading.
+- **Class projects:** Late submissions and resubmissions after the deadline are not accepted for the Mini Project. For the Final Project, late submissions and resubmissions are not accepted; submit completed work by each assignment's deadline. Incomplete work is graded according to its rubric. Feedback is not guaranteed. Corrections to data or analysis for subsequent assignments do not change grades for previously submitted assignments.
 - **Final exam week:** **No late submissions** are accepted during final exam week.
 
 ## Attendance & Registered Section Policy
@@ -184,22 +184,26 @@ During the semester, there may be days during which the class will not meet due 
 
 ## Final Project
 
-Complete a social-data investigation using the methods practiced in class: collect project-specific Twitter/X data through the course-approved workflow, store it in MongoDB, analyze it with document queries, aggregation, Python, and Gemini, and communicate the findings through a dashboard. Keep the new project data in a clearly identified project collection.
+[Final Project Instructions — Post-Election Analysis](../assignments/final-project/)
 
-**One final-project submission, with two assessment components:**
+Complete an end-to-end social-data investigation using the course workflows for Twitter/X collection, MongoDB, Gemini LLM processing, vector embeddings and chatbot retrieval, MongoDB Charts, and NotebookLM. The Final Project remains **20% of the course grade**.
 
-1. **Project database:** Submit a working MongoDB connection string privately in Canvas so the instructor can inspect the new data collected and stored for your final project.
-2. **Dashboard and findings:** Submit a dashboard link presenting the project question, query/aggregation results, Python and Gemini analysis, and clear explanations of the findings. Include a **shared NotebookLM link** alongside the dashboard as supporting evidence, with your source materials and source-based brief available to the instructor. NotebookLM is reviewed within this component, not as a third separately graded component.
+Submit four separate Canvas assignments (100 project points total). Enter only the required URL or connection string.
 
-Submit these links and the connection string together in **one Canvas assignment entry**. No separate code notebook, query file, GitHub README, or exported written report is required for the final-project submission. Weekly notebook and query-lab requirements remain as specified in their assignments.
+| Assignment | Points | Deadline | Submission |
+|---|---:|---|---|
+| Notebook Analysis | 35 | December 4 | GitHub repository root URL |
+| MongoDB Data | 30 | December 4 | MongoDB connection string (private Canvas) |
+| MongoDB Dashboard | 20 | December 11 | Public dashboard URL |
+| NotebookLM Interactive Report | 15 | December 16 | Direct interactive report URL |
 
-The four project meetings in Weeks 15–16 provide time for collection and storage; queries, Python, and Gemini analysis; dashboard development; and NotebookLM synthesis, verification, and final refinement. **There is no final presentation.** Submit during final exam week by the deadline posted in Canvas.
+All deadlines are **11:59 PM EST**. Follow the linked instructions for the detailed requirements, rubrics, credential policy, and feedback rules. There is no final presentation. Attendance is required for the in-person classes on November 30 and December 2. On December 7 and 9, optional Zoom Q&A is available during regular class time; there are no separate office hours on those dates. The Zoom link will be posted in Canvas.
 
 ---
 
 ## Course Schedule (Fall 2026)
 
-*Schedule updated: October 7, 2026*
+*Schedule updated: November 24, 2026*
 
 Weeks 9–12 pair Monday instruction and demonstration with Wednesday independent practice on students' own data. Week 13 provides a dashboard workshop on Monday and a NotebookLM workshop on Wednesday. Use only the AI tools and features authorized under the course AI Policy.
 
@@ -219,9 +223,9 @@ Weeks 9–12 pair Monday instruction and demonstration with Wednesday independen
 | **Week 12** | Nov 9–13 | Embeddings & Retrieval-Augmented Generation (RAG) | **Mon Nov 9:** Gemini embeddings, semantic similarity, retrieval, and a complete source-grounded answer demonstration.<br>**Wed Nov 11:** Adapt the course starter into a chatbot over the student's data; test retrieved sources, supported answers, and questions the data cannot answer. | RAG/chatbot artifact with source-based tests. |
 | **Week 13** | Nov 16–20 | Dashboard & NotebookLM | **Mon Nov 16:** Build a dashboard from the checked MongoDB, Python, and Gemini analysis results.<br>**Wed Nov 18:** Use **NotebookLM** to organize sources, synthesize findings, and verify a source-based brief. | Dashboard link and shared NotebookLM notebook. |
 | **Week 14** | Nov 23–27 | Thanksgiving Holiday | *No Class* | **Thanksgiving Holiday** (No Class) |
-| **Week 15** | Nov 30–Dec 4 | Final Project (Part 1) | **Mon Nov 30 — Session 1:** Define the project question, collect project data, store it in MongoDB, and check data quality.<br>**Wed Dec 2 — Session 2:** Complete queries/aggregation, Python analysis, and a focused Gemini text-analysis task; store and verify the results. | |
-| **Week 16** | Dec 7–11 | Final Project (Part 2) | **Mon Dec 7 — Session 3:** Build and verify the analytical dashboard.<br>**Wed Dec 9 — Session 4:** Use NotebookLM to synthesize the project evidence, check claims and sources, and complete project refinement. | |
-| **Week 17** | Dec 12–18 | Final Exam Week — Final Project Submission | Submit **one final-project entry**: the MongoDB connection string and dashboard link, with the shared NotebookLM link as supporting evidence. **No final presentation.** | **Final Project Due** — see Canvas.<br>*(No late submissions during exam week)* |
+| **Week 15** | Nov 30–Dec 4 | [Final Project (Part 1)](../assignments/final-project/) | **Mon Nov 30 and Wed Dec 2:** In-person classes; attendance required. Complete data collection, LLM processing, embeddings, vector search, and the chatbot notebook. | **Assignments 1 and 2 due Friday, Dec 4, 11:59 PM EST.** |
+| **Week 16** | Dec 7–11 | [Final Project (Part 2)](../assignments/final-project/) | **Mon Dec 7 and Wed Dec 9:** Optional Zoom Q&A during regular class time. Attendance not required; no separate office hours. See Canvas for the Zoom link. | **Assignment 3 (Dashboard) due Friday, Dec 11, 11:59 PM EST.** |
+| **Week 17** | Dec 12–18 | Final Exam Week — Final Project Submission | Complete the [NotebookLM Interactive Report](../assignments/final-project/#assignment-4). **No final presentation.** | **Assignment 4 due Wednesday, Dec 16, 11:59 PM EST.** No late submissions. |
 
 ---
 

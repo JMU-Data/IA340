@@ -1,0 +1,390 @@
+{
+  "schema_version": "canvas-content-profile/v1",
+  "course_key": "ia340",
+  "allowed_hosts": [
+    "jmu-data.github.io"
+  ],
+  "assignments": [
+    {
+      "key": "final-project-1",
+      "title": "Final Project 1 — Notebook Analysis",
+      "assignment_group": "Final Project",
+      "points": 35,
+      "due_at": "2026-12-04T23:59:00-05:00",
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/final-project/#assignment-1"
+    },
+    {
+      "key": "final-project-2",
+      "title": "Final Project 2 — MongoDB Data",
+      "assignment_group": "Final Project",
+      "points": 30,
+      "due_at": "2026-12-04T23:59:00-05:00",
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/final-project/#assignment-2"
+    },
+    {
+      "key": "final-project-3",
+      "title": "Final Project 3 — MongoDB Dashboard",
+      "assignment_group": "Final Project",
+      "points": 20,
+      "due_at": "2026-12-11T23:59:00-05:00",
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/final-project/#assignment-3"
+    },
+    {
+      "key": "final-project-4",
+      "title": "Final Project 4 — NotebookLM Interactive Report",
+      "assignment_group": "Final Project",
+      "points": 15,
+      "due_at": "2026-12-16T23:59:00-05:00",
+      "published": true,
+      "submission_types": [
+        "online_text_entry"
+      ],
+      "allowed_extensions": [],
+      "description": null,
+      "instruction_url": "https://jmu-data.github.io/IA340/assignments/final-project/#assignment-4"
+    }
+  ],
+  "rubrics": [
+    {
+      "key": "final-project-1-rubric",
+      "title": "Final Project 1 — Notebook Analysis",
+      "assignment": "final-project-1",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "data-collection-code",
+          "description": "Data collection code: Correct API collection code, keyword selection, MongoDB insertion, and execution outputs.",
+          "points": 10,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "llm-processing-code",
+          "description": "LLM processing code: Appropriate prompts, correct LLM API calls, and code that saves reaction and people results to the corresponding documents.",
+          "points": 10,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "vector-embeddings-chatbot",
+          "description": "Vector embeddings and chatbot: Correct embedding, indexing, and vector-search code; executed chatbot questions and answers.",
+          "points": 10,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "summary-ai-use",
+          "description": "Summary and AI use: A student-written Markdown summary in final.ipynb covering keywords, tweet count, collection time, AI tools, and preliminary findings from both analyses.",
+          "points": 5,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 5
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "final-project-2-rubric",
+      "title": "Final Project 2 — MongoDB Data",
+      "assignment": "final-project-2",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "tweets-metadata",
+          "description": "Tweets and metadata: 200–500 unique new tweets, original metadata, and valid collection dates. Counts outside the required range receive reduced credit.",
+          "points": 10,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "llm-results",
+          "description": "LLM results: Correctly stored binary reaction values (happy or not_happy) and JSON lists of mentioned people.",
+          "points": 10,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "embeddings-index",
+          "description": "Embeddings and index: Correctly stored 768-dimensional Gemini embeddings and a working, matching Vector Search index.",
+          "points": 10,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 10
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "final-project-3-rubric",
+      "title": "Final Project 3 — MongoDB Dashboard",
+      "assignment": "final-project-3",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "total-tweets",
+          "description": "Total tweets: Accurate tweet count, clearly displayed.",
+          "points": 5,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 5
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "tweet-timeline",
+          "description": "Tweet timeline: Accurate counts by posting time using tweet.created_at converted to Date, with a readable time axis.",
+          "points": 5,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 5
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "reaction-chart",
+          "description": "Reaction chart: Correct happy and not_happy counts in a clearly labeled bar chart.",
+          "points": 5,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 5
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "mentioned-people-chart",
+          "description": "Mentioned-people chart: Correct people and mention counts, with a clear presentation.",
+          "points": 5,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 5
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "final-project-4-rubric",
+      "title": "Final Project 4 — NotebookLM Interactive Report",
+      "assignment": "final-project-4",
+      "use_for_grading": true,
+      "scoring": "ratings",
+      "criteria": [
+        {
+          "key": "text-summary",
+          "description": "Text summary: Clear, accurate, well-formatted summary of relevant supplementary information.",
+          "points": 5,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 5
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "mind-map",
+          "description": "Mind map: Relevant, readable, and accessible mind map.",
+          "points": 5,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 5
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "key": "infographic",
+          "description": "Infographic: Relevant, readable, and accessible infographic.",
+          "points": 5,
+          "ratings": [
+            {
+              "key": "pass",
+              "description": "PASS",
+              "points": 5
+            },
+            {
+              "key": "missing",
+              "description": "MISSING",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "key": "final-project",
+      "title": "Final Project",
+      "published": true,
+      "items": [
+        {
+          "key": "instructions",
+          "type": "ExternalUrl",
+          "title": "Final Project Instructions",
+          "published": true,
+          "external_url": "https://jmu-data.github.io/IA340/assignments/final-project/",
+          "assignment": null
+        },
+        {
+          "key": "final-project-1",
+          "type": "Assignment",
+          "title": "Final Project 1 — Notebook Analysis",
+          "published": true,
+          "external_url": null,
+          "assignment": "final-project-1"
+        },
+        {
+          "key": "final-project-2",
+          "type": "Assignment",
+          "title": "Final Project 2 — MongoDB Data",
+          "published": true,
+          "external_url": null,
+          "assignment": "final-project-2"
+        },
+        {
+          "key": "final-project-3",
+          "type": "Assignment",
+          "title": "Final Project 3 — MongoDB Dashboard",
+          "published": true,
+          "external_url": null,
+          "assignment": "final-project-3"
+        },
+        {
+          "key": "final-project-4",
+          "type": "Assignment",
+          "title": "Final Project 4 — NotebookLM Interactive Report",
+          "published": true,
+          "external_url": null,
+          "assignment": "final-project-4"
+        }
+      ]
+    }
+  ]
+}

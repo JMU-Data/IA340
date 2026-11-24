@@ -42,6 +42,7 @@
 - [Module 12: Embeddings, Semantic Search, and RAG](docs/modules/module-12/index.html)
 - [Lab 12: Explore Your Tweets with Gemini and RAG](docs/assignments/lab-12/index.html)
 - [Lab 13: MongoDB Charts Dashboard and Gemini Notebook](docs/assignments/lab-13/index.html)
+- [Final Project: Post-Election Analysis](docs/assignments/final-project/index.html)
 - [Google AI Professional Certificate Assignment](docs/assignments/google-ai-professional-certificate/index.md)
 
 ## Course Overview

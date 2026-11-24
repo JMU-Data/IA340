@@ -34,6 +34,7 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-12/" style="text-decoration: none; color: #57606a;">Lab 12</a>
 
   <a href="{{ site.baseurl }}/assignments/lab-13/" style="text-decoration: none; color: #57606a;">Lab 13</a>
+  <a href="{{ site.baseurl }}/assignments/final-project/" style="text-decoration: none; color: #57606a;">Final Project</a>
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="text-decoration: none; color: #57606a;">Google AI Certificate</a>
 </nav>
 
@@ -181,6 +182,11 @@ title: "Home - IA 340"
   <a href="{{ site.baseurl }}/assignments/lab-13/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
     <h3 style="margin-top: 0; color: #1a7f37;">Lab 13 · MongoDB Charts &amp; Gemini Notebook</h3>
     <p style="margin-bottom: 0; color: #57606a;">Build a dashboard from your Week 8 Twitter/X data, then explore source-grounded research and Studio with Gemini Notebook.</p>
+  </a>
+
+  <a href="{{ site.baseurl }}/assignments/final-project/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa;">
+    <h3 style="margin-top: 0; color: #8250df;">Final Project · Post-Election Analysis</h3>
+    <p style="margin-bottom: 0; color: #57606a;">Collect and analyze new tweets, build a vector-search chatbot, and present your findings in a dashboard and NotebookLM interactive report. Due December 4, 11, and 16.</p>
   </a>
 
   <a href="{{ site.baseurl }}/assignments/google-ai-professional-certificate/" style="display: block; text-decoration: none; color: inherit; border: 1px solid #d0d7de; border-radius: 6px; padding: 1.5rem; background: #f6f8fa; transition: border-color 0.2s, box-shadow: 0.2s;">

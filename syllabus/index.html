@@ -22,7 +22,7 @@
 {"@context":"https://schema.org","@type":"WebPage","description":"James Madison University Intelligence Analysis Fall 2026","headline":"Syllabus - IA 340","url":"https://jmu-data.github.io/IA340/syllabus/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=4f3f6e36d0a5716605b9a509cc6561082dc78e7b">
+    <link rel="stylesheet" href="/IA340/assets/css/style.css?v=12f21b5ad446d622144349b7858200dae3ece5d1">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -43,7 +43,7 @@
 
       <h1 id="ia-340-data-mining-modeling-and-knowledge-discovery-in-databases">IA 340: Data Mining, Modeling, and Knowledge Discovery in Databases</h1>
 
-<p><strong>Syllabus updated: October 8, 2026</strong></p>
+<p><strong>Syllabus updated: November 24, 2026</strong></p>
 
 <nav style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eaecef; padding-bottom: 1rem; font-size: 0.95em;">
   <a href="/IA340/" style="text-decoration: none; color: #57606a;">Home</a>
@@ -273,7 +273,7 @@
   <li><strong>Late labs, including revisions after grading:</strong> Lab assignments may be submitted or resubmitted after the deadline, <strong>even after a score or comments have been posted</strong>. If you want an updated version evaluated, it is a late submission and is subject to the late-work penalty. Correcting an issue mentioned in automatic or instructor feedback does not waive that penalty.</li>
   <li><strong>Which timestamp counts:</strong> For work submitted through Canvas and evaluated in GitHub, Tableau, or another external system, the effective submission time is <strong>whichever is later: the Canvas submission timestamp or the last-modified/published timestamp of the artifact version used for grading</strong>. If multiple artifacts are evaluated, the latest of their relevant timestamps applies. A Canvas submission made on time does <strong>not</strong> make later edits to a graded GitHub file/notebook or Tableau workbook on time. If you want the version modified after the deadline graded, that version is <strong>late</strong>. An earlier version can be considered on time only if its pre-deadline contents and timestamp can be verified; later changes not used for grading do not make that earlier version late.</li>
   <li><strong>Late penalty:</strong> Late lab submissions or resubmissions incur <strong>10% of the total assignment points per day late, up to a maximum of 40%</strong>, unless prior arrangements have been made. A late revision may result in a <strong>lower final score</strong> than the original submission if the late penalty exceeds the points you would recover. Consider the penalty before requesting a reevaluation.</li>
-  <li><strong>Class projects:</strong> Late submissions and resubmissions <strong>after the deadline are not accepted</strong> for the Mini Project or Final Project. You may revise project work before its deadline, but a post-deadline change cannot replace the on-time project version for grading.</li>
+  <li><strong>Class projects:</strong> Late submissions and resubmissions after the deadline are not accepted for the Mini Project. For the Final Project, late submissions and resubmissions are not accepted; submit completed work by each assignment’s deadline. Incomplete work is graded according to its rubric. Feedback is not guaranteed. Corrections to data or analysis for subsequent assignments do not change grades for previously submitted assignments.</li>
   <li><strong>Final exam week:</strong> <strong>No late submissions</strong> are accepted during final exam week.</li>
 </ul>
 
@@ -308,24 +308,56 @@
 
 <h2 id="final-project">Final Project</h2>
 
-<p>Complete a social-data investigation using the methods practiced in class: collect project-specific Twitter/X data through the course-approved workflow, store it in MongoDB, analyze it with document queries, aggregation, Python, and Gemini, and communicate the findings through a dashboard. Keep the new project data in a clearly identified project collection.</p>
+<p><a href="../assignments/final-project/">Final Project Instructions — Post-Election Analysis</a></p>
 
-<p><strong>One final-project submission, with two assessment components:</strong></p>
+<p>Complete an end-to-end social-data investigation using the course workflows for Twitter/X collection, MongoDB, Gemini LLM processing, vector embeddings and chatbot retrieval, MongoDB Charts, and NotebookLM. The Final Project remains <strong>20% of the course grade</strong>.</p>
 
-<ol>
-  <li><strong>Project database:</strong> Submit a working MongoDB connection string privately in Canvas so the instructor can inspect the new data collected and stored for your final project.</li>
-  <li><strong>Dashboard and findings:</strong> Submit a dashboard link presenting the project question, query/aggregation results, Python and Gemini analysis, and clear explanations of the findings. Include a <strong>shared NotebookLM link</strong> alongside the dashboard as supporting evidence, with your source materials and source-based brief available to the instructor. NotebookLM is reviewed within this component, not as a third separately graded component.</li>
-</ol>
+<p>Submit four separate Canvas assignments (100 project points total). Enter only the required URL or connection string.</p>
 
-<p>Submit these links and the connection string together in <strong>one Canvas assignment entry</strong>. No separate code notebook, query file, GitHub README, or exported written report is required for the final-project submission. Weekly notebook and query-lab requirements remain as specified in their assignments.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Assignment</th>
+      <th style="text-align: right">Points</th>
+      <th>Deadline</th>
+      <th>Submission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Notebook Analysis</td>
+      <td style="text-align: right">35</td>
+      <td>December 4</td>
+      <td>GitHub repository root URL</td>
+    </tr>
+    <tr>
+      <td>MongoDB Data</td>
+      <td style="text-align: right">30</td>
+      <td>December 4</td>
+      <td>MongoDB connection string (private Canvas)</td>
+    </tr>
+    <tr>
+      <td>MongoDB Dashboard</td>
+      <td style="text-align: right">20</td>
+      <td>December 11</td>
+      <td>Public dashboard URL</td>
+    </tr>
+    <tr>
+      <td>NotebookLM Interactive Report</td>
+      <td style="text-align: right">15</td>
+      <td>December 16</td>
+      <td>Direct interactive report URL</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>The four project meetings in Weeks 15–16 provide time for collection and storage; queries, Python, and Gemini analysis; dashboard development; and NotebookLM synthesis, verification, and final refinement. <strong>There is no final presentation.</strong> Submit during final exam week by the deadline posted in Canvas.</p>
+<p>All deadlines are <strong>11:59 PM EST</strong>. Follow the linked instructions for the detailed requirements, rubrics, credential policy, and feedback rules. There is no final presentation. Attendance is required for the in-person classes on November 30 and December 2. On December 7 and 9, optional Zoom Q&amp;A is available during regular class time; there are no separate office hours on those dates. The Zoom link will be posted in Canvas.</p>
 
 <hr />
 
 <h2 id="course-schedule-fall-2026">Course Schedule (Fall 2026)</h2>
 
-<p><em>Schedule updated: October 7, 2026</em></p>
+<p><em>Schedule updated: November 24, 2026</em></p>
 
 <p>Weeks 9–12 pair Monday instruction and demonstration with Wednesday independent practice on students’ own data. Week 13 provides a dashboard workshop on Monday and a NotebookLM workshop on Wednesday. Use only the AI tools and features authorized under the course AI Policy.</p>
 
@@ -441,23 +473,23 @@
     <tr>
       <td style="text-align: center"><strong>Week 15</strong></td>
       <td style="text-align: left">Nov 30–Dec 4</td>
-      <td style="text-align: left">Final Project (Part 1)</td>
-      <td style="text-align: left"><strong>Mon Nov 30 — Session 1:</strong> Define the project question, collect project data, store it in MongoDB, and check data quality.<br /><strong>Wed Dec 2 — Session 2:</strong> Complete queries/aggregation, Python analysis, and a focused Gemini text-analysis task; store and verify the results.</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><a href="../assignments/final-project/">Final Project (Part 1)</a></td>
+      <td style="text-align: left"><strong>Mon Nov 30 and Wed Dec 2:</strong> In-person classes; attendance required. Complete data collection, LLM processing, embeddings, vector search, and the chatbot notebook.</td>
+      <td style="text-align: left"><strong>Assignments 1 and 2 due Friday, Dec 4, 11:59 PM EST.</strong></td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 16</strong></td>
       <td style="text-align: left">Dec 7–11</td>
-      <td style="text-align: left">Final Project (Part 2)</td>
-      <td style="text-align: left"><strong>Mon Dec 7 — Session 3:</strong> Build and verify the analytical dashboard.<br /><strong>Wed Dec 9 — Session 4:</strong> Use NotebookLM to synthesize the project evidence, check claims and sources, and complete project refinement.</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><a href="../assignments/final-project/">Final Project (Part 2)</a></td>
+      <td style="text-align: left"><strong>Mon Dec 7 and Wed Dec 9:</strong> Optional Zoom Q&amp;A during regular class time. Attendance not required; no separate office hours. See Canvas for the Zoom link.</td>
+      <td style="text-align: left"><strong>Assignment 3 (Dashboard) due Friday, Dec 11, 11:59 PM EST.</strong></td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>Week 17</strong></td>
       <td style="text-align: left">Dec 12–18</td>
       <td style="text-align: left">Final Exam Week — Final Project Submission</td>
-      <td style="text-align: left">Submit <strong>one final-project entry</strong>: the MongoDB connection string and dashboard link, with the shared NotebookLM link as supporting evidence. <strong>No final presentation.</strong></td>
-      <td style="text-align: left"><strong>Final Project Due</strong> — see Canvas.<br /><em>(No late submissions during exam week)</em></td>
+      <td style="text-align: left">Complete the <a href="../assignments/final-project/#assignment-4">NotebookLM Interactive Report</a>. <strong>No final presentation.</strong></td>
+      <td style="text-align: left"><strong>Assignment 4 due Wednesday, Dec 16, 11:59 PM EST.</strong> No late submissions.</td>
     </tr>
   </tbody>
 </table>
